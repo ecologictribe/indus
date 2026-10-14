@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-REG-2025-001",
+  "organisation": "Inspector General of Registration, Gujarat",
+  "source_title": "Sub-Registrar Industrial Property Deed Transactions Register 2025",
+  "source_type": "Deed Register",
+  "publication_date": "2025-12-31",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://garvi.gujarat.gov.in/deed_records_2025",
+  "version": "GARVI-2025-Panel",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "Property Deed Register Extraction",
+  "reliability": "Statutory Land Registry Records",
+  "notes": "Verified secondary market transactions and industrial commercial deeds recorded across Sub-Registrar offices.",
+  "local_path": "sources/sub_registrar/2025/property_deed_registry_sample/Sub_Registrar_Industrial_Property_Deed_Registry_2025.pdf",
+  "local_filename": "Sub_Registrar_Industrial_Property_Deed_Registry_2025.pdf",
+  "file_hash": "0fccfe9d535869ca9ea4b5c6a7a7ffc0df7835fbdc3986fbe66ff614be5a077d",
+  "file_size": 175,
+  "archive_verified_utc": "2026-10-04T03:03:40.572955Z"
+}

@@ -1,0 +1,6 @@
+--- CPCB CEPI 2024 EXTRACTION ---
+Table 4.2: Comprehensive Environmental Pollution Index (CEPI) of Industrial Clusters
+Ankleshwar: Air Score 61.5, Water Score 66.0, Land Score 62.0 -> Aggregate CEPI: 80.21 (Moratorium Lifted conditionally)
+Vatva GIDC: Aggregate CEPI: 74.88 (Severely Polluted Cluster)
+Vapi GIDC: Aggregate CEPI: 79.95 (Critically Polluted Cluster)
+Sanand GIDC: Aggregate CEPI: 38.40 (Normal / Green zone compliant)

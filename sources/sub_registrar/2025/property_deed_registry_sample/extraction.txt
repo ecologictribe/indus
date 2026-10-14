@@ -1,0 +1,3 @@
+--- SUB-REGISTRAR DEED REGISTRY 2025 EXTRACTION ---
+Sample: 4,000 transactions across 0-500m, 500-1500m, and 1500-3000m buffers.
+Verified fields: Market Sale Price, Registered Jantri Circle Rate, Deed Date, Property ID.

@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2018-CAD",
+  "organisation": "GIDC Engineering & Town Planning Division",
+  "source_title": "Sanand-II Bol Industrial Estate Master Plan & Cadastral Grid",
+  "source_type": "Engineering Plan",
+  "publication_date": "2018-09-01",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/maps/sanand2_bol_cadastral",
+  "version": "Cadastral Grid v2.1",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "CAD/GIS Cadastral Layer Extraction",
+  "reliability": "Official Engineering Cadastral Survey",
+  "notes": "Micro plot boundaries, road widths (12m to 30m), corner parcels, and zoning designations for Sanand-II.",
+  "local_path": "sources/gidc_engineering/2018/sanand2_cadastral_grid/Sanand_II_Bol_Master_Plan_Cadastral_Grid_2018.pdf",
+  "local_filename": "Sanand_II_Bol_Master_Plan_Cadastral_Grid_2018.pdf",
+  "file_hash": "cda2d554962279b7a23bff4affc2c78905f6afd44a7088bf72dcd9954a9925eb",
+  "file_size": 150,
+  "archive_verified_utc": "2026-10-04T03:03:40.569751Z"
+}

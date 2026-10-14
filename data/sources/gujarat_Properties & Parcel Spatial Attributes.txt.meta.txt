@@ -1,0 +1,27 @@
+meta_file: gujarat_Properties & Parcel Spatial Attributes.txt.meta.txt
+file_name: sources/gujarat_Properties & Parcel Spatial Attributes.txt
+original_name: sources/Properties & Parcel Spatial Attributes.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 339
+modified_utc: 2026-10-03T07:42:19.550614+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 2 dataset(s).
+
+--- CONTENT VERBATIM ---
+  | Properties
+  | Properties & Parcel Spatial Attributes	
+  | Tracked residential and commercial land parcels, apartments, and houses across discrete spatial distance buffers.
+  |
+  |  DATA SOURCE: Sub-Registrar Offices (Revenue Department), Gujarat Real Estate Regulatory Authority (GUJRERA) project filings, and GIS Hedonic buffer radial calculations.
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_10_properties_spatial_attributes_gujrat.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.004828+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

@@ -1,0 +1,269 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: subdistricts_talukas (Subdistricts & Talukas (250 Talukas))
+# Table Order: Module 3 of 12 Core Schema Tables
+# Total Records: 250 rows
+# Export Timestamp (UTC): 2026-10-03T07:31:45.688101Z
+"# DATA SOURCE: Gujarat Land Revenue Code, Taluka Panchayat administrative records, and GIDC regional maps."
+# Description: Tehsils and Talukas within each district hosting industrial estates.
+# Primary Key: taluka_id
+# Foreign Key Constraints: district_id -> districts(district_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * taluka_id: Primary key identifier
+#   * district_id: Foreign key reference to districts table
+"#   * taluka_name: Official Taluka/Subdistrict name (e.g., Sanand, Ankleshwar, Choryasi, Bavla)"
+# ==============================================================================
+
+taluka_id,district_id,taluka_name
+1,1,Apparel Park
+2,1,Behrampura
+3,1,Bhagapura
+4,1,Chharodi
+5,1,Dhandhuka
+6,1,Dholka
+7,1,Kathwada
+8,1,Kerala
+9,1,Khoraj
+10,1,Mandal Vitthalapur
+11,1,Naroda
+12,1,Odhav
+13,1,Sanand
+14,1,Sanand Women Park
+15,1,Vatva
+16,1,Viramgam
+17,1,Bavla
+18,1,Changodar
+19,1,Hansalpur
+20,1,Hanspura
+21,2,Bhat
+22,2,Dehgam
+23,2,Gandhinagar
+24,2,Mansa
+25,2,Mega It Park Gandhinagar
+26,3,Himatnagar
+27,3,Idar
+28,3,Khedbrahma
+29,3,Talod
+30,3,Vijaynagar
+31,4,Bhiloda
+32,4,Malpur
+33,4,Modasa
+34,4,Shinavada Msme
+35,4,Meghraj
+36,4,Dhansura
+37,5,Aithor Msme
+38,5,Aithor Non Msme
+39,5,Chanasma
+40,5,Chhatral
+41,5,Gozaria
+42,5,Iffco Estate
+43,5,Kadi
+44,5,Kalol
+45,5,Kheralu
+46,5,Kukarwada
+47,5,Lanva
+48,5,Mehsana
+49,5,Ranasan
+50,5,Unjha
+51,5,Visnagar
+52,6,Balisana
+53,6,Charup
+54,6,Harij
+55,6,Patan
+56,6,Radhanpur
+57,6,Sami
+58,6,Sidhpur
+59,7,Ambaji
+60,7,Amirgadh
+61,7,Chandisar
+62,7,Chhapi
+63,7,Deesa
+64,7,Deodar
+65,7,Mudetha Agro Food Park
+66,7,Palanpur
+67,7,Sihori
+68,8,Borsad
+69,8,Indranaj Msme
+70,8,Indranaj Non Msme
+71,8,Khambhat
+72,8,Ode
+73,8,Petlad
+74,8,Sojitra
+75,8,Umreth
+76,8,Vitthal Udyognagar
+77,9,Kapadwanj
+78,9,Matar
+79,9,Nadiad
+80,9,Thasra
+81,10,Balasinor
+82,11,Dabhoi
+83,11,Makarpura
+84,11,Nandesari
+85,11,Pcc
+86,11,Por Ramangamdi
+87,11,Ranoli
+88,11,Savli
+89,11,Savli Biotech Park
+90,11,Vaghodia
+91,11,Vadsar
+92,12,Pavi Jetpur
+93,12,Sankheda
+94,13,Godhra
+95,13,Halol
+96,13,Halol Expansion Halol 2 Maswad Msme Park
+97,13,Jambughoda
+98,13,Kalol
+99,13,Sehra
+100,14,Dahod
+101,14,Devgadhbariya
+102,15,Ankleshwar
+103,15,Atali
+104,15,Bharuch
+105,15,Borkhadi
+106,15,Dahej
+107,15,Dungari
+108,15,Hansot
+109,15,Jambusar
+110,15,Jhagadia
+111,15,Juned
+112,15,Kanerao
+113,15,Kharchi
+114,15,Nabhipur
+115,15,Palej
+116,15,Panoli
+117,15,Saykha
+118,15,Saykha Women Park
+119,15,Tilakwada
+120,15,Vagra
+121,15,Valia
+122,15,Vilayat
+123,16,Dediyapada
+124,16,Rajpipla
+125,16,Sagbara
+126,17,Apparel Park Sachin
+127,17,Hajira
+128,17,Ichchapore
+129,17,Katargam
+130,17,Khatodara
+131,17,Miyawadi
+132,17,Miyawadi Msme Women Development Park
+133,17,Olpad
+134,17,Pandesara
+135,17,Sachin
+136,17,Gavier Magdalla
+137,17,Kawas
+138,18,Bardoli
+139,18,Doswada
+140,18,Nizar
+141,18,Valod
+142,19,Bhilad
+143,19,Dharampur
+144,19,Dungra
+145,19,Pardi
+146,19,Sarigam
+147,19,Umargam
+148,19,Valsad
+149,19,Vapi
+150,20,Bilimora
+151,20,Navsari
+152,20,Unai
+153,21,Bamanbore
+154,21,Chotila
+155,21,Dhrangadhra
+156,21,Halvad
+157,21,Lakhtar
+158,21,Limbdi
+159,21,Sayla
+160,21,Surendranagar
+161,21,Thangadh
+162,21,Vanod
+163,22,Aji Estate
+164,22,Anandpar
+165,22,Bhaktinagar
+166,22,Chhapra Agro Food Park
+167,22,Dhoraji
+168,22,Gondal
+169,22,Hadamtala
+170,22,Jamvadi
+171,22,Jasdan
+172,22,Jetpur
+173,22,Khirasara Msme
+174,22,Khirasara Non Msme
+175,22,Khirasara
+176,22,Kuvadva
+177,22,Lodhika
+178,22,Padadhari
+179,22,Piparadi
+180,22,Shapar Veraval
+181,22,Upleta
+182,22,Vaghasiya
+183,23,Chhattar Mitana Msme
+184,23,Chhattar Mitana Non Msme
+185,23,Morbi
+186,23,Rafaleshwar
+187,23,Wankaner
+188,24,Dhrol
+189,24,Jamnagar
+190,24,Kalawad Msme
+191,24,Kalawad Non Msme
+192,24,Shekhpat
+193,25,Arambhada
+194,25,Bhanvad
+195,25,Bhatia
+196,25,Jamkhambhaliya
+197,26,Junagadh
+198,26,Sheel
+199,26,Sutrapada
+200,26,Visavadar
+201,27,Veraval
+202,28,Dharampur
+203,28,Miyani
+204,28,Porbandar
+205,28,Vanana
+206,29,Chitra
+207,29,Dhasa
+208,29,Madhiya
+209,29,Mahuva
+210,29,Narigam Msme
+211,29,Narigam Non Msme
+212,29,Palitana
+213,29,Sihor
+214,29,Vallabhipur
+215,29,Vartej
+216,29,Vithalwadi
+217,30,Botad
+218,30,Kaniyad
+219,31,Amreli
+220,31,Babra
+221,31,Damnagar
+222,31,Jafrabad
+223,31,Lathi
+224,31,Liliya
+225,31,Rajula
+226,31,Savarkundla
+227,32,Anjar
+228,32,Bhadreshwar
+229,32,Bhuj
+230,32,Chitrod
+231,32,Dhrub
+232,32,Gandhidham
+233,32,Madhapur
+234,32,Makhel
+235,32,Mandvi
+236,32,Mithi Rohar
+237,32,Motichirai
+238,32,Mundra
+239,32,Nagor
+240,32,Nakhatrana
+241,21,Dasada
+242,22,Rajkot
+243,1,Mandal
+244,9,Kheda
+245,17,Kamrej
+246,5,Jotana
+247,11,Karjan
+248,17,Mandvi
+249,27,Kodinar
+250,11,Vadodara

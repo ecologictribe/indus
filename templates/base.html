@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Industrial Estate Property Dynamics{% endblock %} - Gujarat Study</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="f-layout-body">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="f-backdrop" class="f-backdrop d-none" onclick="toggleSidebar()"></div>
+
+    <!-- ==============================================================================
+         STEM OF THE 'F': FIXED LEFT NAVIGATION RAIL (COCKPIT SIDEBAR)
+         ============================================================================== -->
+    <aside id="f-sidebar" class="f-sidebar">
+        <!-- Brand Header -->
+        <a href="{{ url_for('dashboard') }}" class="f-sidebar-brand">
+            <span class="badge bg-primary p-2 rounded-3 shadow-sm"><i class="bi bi-buildings-fill fs-5"></i></span>
+            <div>
+                <div class="f-sidebar-brand-title">INDUS-DYNAMICS</div>
+                <div class="f-sidebar-brand-sub">Gujarat Industrial Study</div>
+            </div>
+        </a>
+
+        <!-- Section 1: Cockpit & Analytics -->
+        <div class="f-sidebar-section-label">Analytics & Maps</div>
+        <ul class="f-nav">
+            <li class="f-nav-item">
+                <a href="{{ url_for('dashboard') }}" class="f-nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-speedometer2 f-icon text-primary"></i>
+                        <span>Dashboard</span>
+                    </span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('spatial_map_view') }}" class="f-nav-link {% if request.endpoint == 'spatial_map_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-geo-alt-fill f-icon text-info"></i>
+                        <span>Spatial GIS Map</span>
+                    </span>
+                    <span class="badge bg-dark border border-secondary text-secondary" style="font-size: 0.7rem;">312</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('econometrics_view', data_mode='empirical') }}" class="f-nav-link {% if request.endpoint == 'econometrics_view' and (not request.args.get('data_mode') or request.args.get('data_mode') == 'empirical') %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-graph-up-arrow f-icon text-success"></i>
+                        <span>DiD Empirical (GIDC)</span>
+                    </span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size: 0.68rem;">8.4k</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('econometrics_view', data_mode='synthetic') }}" class="f-nav-link {% if request.endpoint == 'econometrics_view' and request.args.get('data_mode') == 'synthetic' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-houses f-icon text-warning"></i>
+                        <span>DiD Secondary Market</span>
+                    </span>
+                    <span class="badge bg-warning-subtle text-dark border border-warning-subtle" style="font-size: 0.68rem;">4.0k</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('pollution_benchmark_view') }}" class="f-nav-link {% if request.endpoint == 'pollution_benchmark_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-radioactive f-icon text-warning"></i>
+                        <span>Pollution & Lifecycle</span>
+                    </span>
+                    <span class="badge bg-warning-subtle text-dark border border-warning-subtle" style="font-size: 0.68rem;">CEPI</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Section 2: Data Directories -->
+        <div class="f-sidebar-section-label">Data Registries</div>
+        <ul class="f-nav">
+            <li class="f-nav-item">
+                <a href="{{ url_for('land_pricing_history_view') }}" class="f-nav-link {% if request.endpoint == 'land_pricing_history_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-clock-history f-icon text-success"></i>
+                        <span>Land Price History</span>
+                    </span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size: 0.68rem;">CAGR</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('plot_intelligence_view') }}" class="f-nav-link {% if request.endpoint == 'plot_intelligence_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-grid-3x3-gap-fill f-icon text-primary"></i>
+                        <span>Plot Intelligence</span>
+                    </span>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size: 0.68rem;">3.4k</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('parks_list') }}" class="f-nav-link {% if request.endpoint in ['parks_list', 'park_detail'] %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-building f-icon text-info"></i>
+                        <span>Industrial Parks</span>
+                    </span>
+                    <span class="badge bg-dark border border-secondary text-secondary" style="font-size: 0.7rem;">312</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('transactions_view') }}" class="f-nav-link {% if request.endpoint == 'transactions_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-receipt f-icon text-light"></i>
+                        <span>Transactions & Panel</span>
+                    </span>
+                    <span class="badge bg-secondary-subtle text-light" style="font-size: 0.68rem;">4,000</span>
+                </a>
+            <li class="f-nav-item">
+                <a href="{{ url_for('provenance_view') }}" class="f-nav-link {% if request.endpoint == 'provenance_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-shield-check f-icon text-warning"></i>
+                        <span>Source Provenance</span>
+                    </span>
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size: 0.68rem;">T5 Audit</span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('database_hub') }}" class="f-nav-link {% if request.endpoint == 'database_hub' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-file-earmark-spreadsheet f-icon text-success"></i>
+                        <span>Tables Hub</span>
+                    </span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size: 0.68rem;">19 CSVs</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Section 3: Replication & Documentation -->
+        <div class="f-sidebar-section-label">Research & Methods</div>
+        <ul class="f-nav">
+            <li class="f-nav-item">
+                <a href="{{ url_for('methodology_view') }}" class="f-nav-link {% if request.endpoint == 'methodology_view' %}active{% endif %}">
+                    <span class="f-nav-label">
+                        <i class="bi bi-journal-code f-icon text-primary"></i>
+                        <span>Methodology & Schema</span>
+                    </span>
+                </a>
+            </li>
+            <li class="f-nav-item">
+                <a href="{{ url_for('export_database_endpoint') }}" class="f-nav-link">
+                    <span class="f-nav-label">
+                        <i class="bi bi-database-down f-icon text-secondary"></i>
+                        <span>Raw SQLite (.db)</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Telemetry Footer Card -->
+        <div class="f-sidebar-footer">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="small fw-bold text-white">Database Status</div>
+                <span class="badge bg-success" style="font-size: 0.65rem;">ONLINE</span>
+            </div>
+            <div class="text-secondary small mb-3" style="font-size: 0.74rem;">
+                312 Estates &bull; 4,000 Sales &bull; 17 Tables
+            </div>
+            <a href="{{ url_for('export_all_tables_zip_endpoint') }}" class="btn btn-sm btn-success w-100 fw-bold shadow-sm" title="Download all 17 core tables in individual CSVs">
+                <i class="bi bi-file-earmark-zip me-1"></i> All 17 Tables (.ZIP)
+            </a>
+        </div>
+    </aside>
+
+    <!-- ==============================================================================
+         UPPER ARM OF THE 'F': TOP COMMAND & HEADER BAR
+         ============================================================================== -->
+    <header class="f-topbar">
+        <!-- Left: Toggle & Breadcrumb -->
+        <div class="f-topbar-left">
+            <button id="f-sidebar-toggle" class="btn btn-sm btn-light border text-secondary" onclick="toggleSidebar()" title="Toggle Sidebar">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <div class="f-topbar-breadcrumb d-none d-sm-flex">
+                <span>INDUS-DYNAMICS</span>
+                <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                <strong>{% block page_title %}Dashboard{% endblock %}</strong>
+            </div>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle d-none d-md-inline-block">
+                <i class="bi bi-calendar3 me-1"></i> Panel 2012–2025
+            </span>
+        </div>
+
+        <!-- Middle: Global Quick Jump Search -->
+        <form action="{{ url_for('parks_list') }}" method="GET" class="d-none d-lg-flex align-items-center my-0">
+            <div class="input-group input-group-sm" style="width: 290px;">
+                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                <input type="text" name="search" class="form-control bg-light border-start-0" placeholder="Jump to estate or district...">
+            </div>
+        </form>
+
+        <!-- Right: Action Buttons -->
+        <div class="f-topbar-right">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle fw-semibold" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-download me-1 text-primary"></i> Export Data
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+                    <li><h6 class="dropdown-header">Primary Data Downloads</h6></li>
+                    <li><a class="dropdown-item fw-bold text-success" href="{{ url_for('export_all_tables_zip_endpoint') }}"><i class="bi bi-file-earmark-zip me-2"></i>All 13 Tables (.ZIP)</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('database_hub') }}"><i class="bi bi-table me-2 text-primary"></i>Tables Hub (13 CSVs)</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header">Analytical Datasets</h6></li>
+                    <li><a class="dropdown-item" href="{{ url_for('export_dashboard_endpoint', format='csv') }}"><i class="bi bi-filetype-csv me-2 text-success"></i>Dashboard Summary (CSV)</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('export_table_csv_endpoint', table_name='park_pollution_benchmarks') }}"><i class="bi bi-radioactive me-2 text-warning"></i>Pollution Benchmarks (CSV)</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('export_database_endpoint') }}"><i class="bi bi-database-down me-2 text-info"></i>Raw SQLite Database (.db)</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown d-none d-sm-inline-block">
+                <button class="btn btn-sm btn-primary dropdown-toggle fw-semibold align-items-center gap-1" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-play-circle-fill me-1"></i> Run DiD
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow" style="min-width: 290px;">
+                    <li><h6 class="dropdown-header text-uppercase small">Select Econometric Specification</h6></li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between py-2" href="{{ url_for('econometrics_view', data_mode='empirical') }}">
+                            <div>
+                                <div class="fw-bold text-success"><i class="bi bi-bank2 me-2"></i>Empirical GIDC Model</div>
+                                <small class="text-muted">8,448 official annual rates (2000–2026)</small>
+                            </div>
+                            <span class="badge bg-success-subtle text-success ms-2">Default</span>
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider my-1"></li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between py-2" href="{{ url_for('econometrics_view', data_mode='synthetic') }}">
+                            <div>
+                                <div class="fw-bold text-warning"><i class="bi bi-houses-fill me-2"></i>Secondary Market Model</div>
+                                <small class="text-muted">4,000 arm's-length private transaction panel</small>
+                            </div>
+                            <span class="badge bg-secondary-subtle text-secondary ms-2">Mode 2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#globalCitationModal" title="Cite this Research">
+                <i class="bi bi-quote"></i> Cite
+            </button>
+        </div>
+    </header>
+
+    <!-- ==============================================================================
+         LOWER ARM OF THE 'F' & MAIN WORKSPACE CANVAS
+         ============================================================================== -->
+    <div class="f-main-wrapper">
+        <!-- Flash Messages -->
+        <div class="container-fluid px-4 mt-3">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Main Viewport Content Block -->
+        <main class="f-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Global Footer -->
+        <footer>
+            <div class="container-fluid px-4 d-flex flex-wrap justify-content-between align-items-center">
+                <div>
+                    <strong>Gujarat Industrial Estates & Property Dynamics Study</strong> &bull; Empirical Difference-in-Differences Econometric Framework.
+                    <div class="text-secondary small mt-1">Based on GIDC & Gujarat Government Industrial Policies (2015–2025).</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-dark border border-secondary text-secondary font-monospace">Flask 3.1 &bull; SQLite3 &bull; NumPy OLS</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Global Academic Citation Modal -->
+    <div class="modal fade" id="globalCitationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="citationModalLabel">
+                        <i class="bi bi-quote text-primary me-2"></i> Academic Citation & Replication Specification
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <ul class="nav nav-tabs mb-3" id="globalCitationTabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabBibtexGlobal">BibTeX</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabApaGlobal">APA (7th ed.)</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabChicagoGlobal">Chicago (17th ed.)</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="globalCitationTabContent">
+                        <div class="tab-pane fade show active" id="tabBibtexGlobal">
+                            <pre class="bg-light p-3 rounded font-monospace small" id="textBibtexGlobal">@article{arora2026industrial,
+  title = {Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat},
+  author = {Arora, Devanshu and Contributors},
+  journal = {Urban Economics & Regional Science Working Papers},
+  year = {2026},
+  volume = {14},
+  number = {2},
+  pages = {101--134},
+  doi = {10.5281/zenodo.gujarat.industrial.2026},
+  publisher = {State Industrial Estates Research Initiative},
+  address = {Ahmedabad, Gujarat, India}
+}</pre>
+                        </div>
+                        <div class="tab-pane fade" id="tabApaGlobal">
+                            <div class="p-3 bg-light rounded small" id="textApaGlobal">
+                                Arora, D. (2026). Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat. <em>Urban Economics & Regional Science Working Papers</em>, 14(2), 101–134. https://doi.org/10.5281/zenodo.gujarat.industrial.2026
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabChicagoGlobal">
+                            <div class="p-3 bg-light rounded small" id="textChicagoGlobal">
+                                Arora, Devanshu. 2026. "Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat." <em>Urban Economics & Regional Science Working Papers</em> 14, no. 2: 101–134.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('f-sidebar');
+            const backdrop = document.getElementById('f-backdrop');
+            if (window.innerWidth < 992) {
+                sidebar.classList.toggle('show');
+                backdrop.classList.toggle('d-none');
+            } else {
+                document.body.classList.toggle('sidebar-collapsed');
+            }
+        }
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

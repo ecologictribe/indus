@@ -1,0 +1,28 @@
+meta_file: gujarat_Industail_Parks.txt.meta.txt
+file_name: sources/gujarat_Industail_Parks.txt
+original_name: sources/Industail_Parks.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 209
+modified_utc: 2026-10-03T07:39:12.426033+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 6 dataset(s).
+
+--- CONTENT VERBATIM ---
+  | GIDC Official Portal (gidc.gujarat.gov.in), Gujarat State Industrial Policy (2015/2020), Sanctioned Private Industrial Parks under Govt. Resolution (G.R. dated 21/04/2015), and OpenStreetMap spatial geocoding.
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_05_industrial_parks.csv
+  - gujarat_Industrial_Parks_and_GIDC_Estates.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+  - gujarat_industrial_parks.csv
+  - gujarat_industrial_parks.geojson
+  - gujarat_industrial_parks.json
+NOTE: filename misspelled 'Industail' (should be Industrial); quoted exactly.
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.004308+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

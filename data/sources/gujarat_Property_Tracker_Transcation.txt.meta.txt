@@ -1,0 +1,27 @@
+meta_file: gujarat_Property_Tracker_Transcation.txt.meta.txt
+file_name: sources/gujarat_Property_Tracker_Transcation.txt
+original_name: sources/Property_Tracker_Transcation.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 549
+modified_utc: 2026-10-03T07:42:55.663473+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 2 dataset(s).
+
+--- CONTENT VERBATIM ---
+  | Multi-year micro-level sale observations tracking real open-market prices against registered statutory circle rates (Jantar) from 2012 to 2025.
+  |
+  |  DATA SOURCE: Inspector General of Registration (IGR Gujarat) stamped transaction registry, Ready Reckoner / Jantar annual rate sheets (2012–2025), and National Housing Bank (NHB) RESIDEX verification.
+  | Columns: transaction_id, property_id, sale_date, sale_year, sale_quarter, market_transaction_price, price_per_sqm, registered_circle_rate_sqm, circle_to_market_ratio, is_repeat_sale, is_arms_length
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_10_properties_spatial_attributes_gujrat.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+NOTE: filename misspelled 'Transcation' (should be Transaction); quoted exactly.
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.004828+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

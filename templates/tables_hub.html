@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Core Database Tables & Data Sources Hub (All {{ tables|length }} Tables CSV){% endblock %}
+{% block page_title %}13 Tables CSV Hub{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2">
+                    <i class="bi bi-file-earmark-spreadsheet-fill me-1"></i> Data & Metadata Export Hub
+                </span>
+                <h1 class="h2 fw-bold text-white mb-1">{{ tables|length }} Core Database Tables & Primary Data Sources</h1>
+                <p class="text-secondary mb-0">
+                    Direct access to export all {{ tables|length }} relational tables in CSV format with comprehensive metadata preambles and explicit institutional data source citations.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a href="{{ url_for('export_all_tables_zip_endpoint') }}" class="btn btn-success py-2 px-3 fw-bold shadow">
+                    <i class="bi bi-file-earmark-zip-fill me-1"></i> Download All {{ tables|length }} Tables (.ZIP)
+                </a>
+                <a href="{{ url_for('export_database_endpoint') }}" class="btn btn-outline-info py-2 px-3">
+                    <i class="bi bi-database-down me-1"></i> Raw SQLite (.db)
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- KPI Summary Bar -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Relational Tables</div>
+                <div class="stat-value text-primary">{{ tables|length }}</div>
+                <div class="stat-delta text-muted">Complete Econometric Schema</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Total Observations</div>
+                <div class="stat-value text-dark">{{ "{:,}".format(total_records) }}</div>
+                <div class="stat-delta text-success"><i class="bi bi-check-circle"></i> Fully Ingested & Verified</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Data Sources</div>
+                <div class="stat-value text-info">GIDC / GPCB / IGR</div>
+                <div class="stat-delta text-muted">Official State Gazette & Reg.</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Export Packaging</div>
+                <div class="stat-value text-success">CSV + Meta</div>
+                <div class="stat-delta text-muted">Commented Preamble Ready</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions & Quick Zip Banner -->
+    <div class="alert alert-info border-0 shadow-sm d-flex flex-wrap align-items-center justify-content-between p-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <div class="fs-2 text-primary"><i class="bi bi-info-circle-fill"></i></div>
+            <div>
+                <strong class="text-dark">How to ingest these CSV files in Python / Pandas / R / Stata:</strong>
+                <div class="small text-muted mt-1">
+                    Every exported CSV includes a commented metadata header (prefixed with <code>#</code>) detailing the table schema, record count, and <strong>exact institutional data source</strong>. Use <code>comment='#'</code> when reading with Pandas (e.g. <code>pd.read_csv('filename.csv', comment='#')</code>).
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 mt-md-0">
+            <a href="{{ url_for('export_all_tables_zip_endpoint') }}" class="btn btn-sm btn-primary">
+                <i class="bi bi-download me-1"></i> Get All {{ tables|length }} as ZIP
+            </a>
+        </div>
+    </div>
+
+    <!-- Tables Directory Card -->
+    <div class="dashboard-card mb-4">
+        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+            <div class="fw-bold">
+                <i class="bi bi-table text-primary me-2"></i> Relational Database Schema Directory (Modules 01–{{ "%02d"|format(tables|length) }})
+            </div>
+            <span class="badge bg-secondary font-monospace">{{ tables|length }} Core Relational Tables</span>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-custom table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            <th style="width: 220px;">Table Name</th>
+                            <th>Description & Primary Data Source</th>
+                            <th style="width: 110px;">Row Count</th>
+                            <th style="width: 140px;">Primary Key</th>
+                            <th style="width: 150px;" class="text-end">Download CSV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in tables %}
+                        <tr>
+                            <td class="font-monospace fw-bold text-muted">{{ "%02d"|format(t.order) }}</td>
+                            <td>
+                                <strong class="d-block text-dark font-monospace">{{ t.table_name }}</strong>
+                                <span class="badge bg-light text-secondary border small">{{ t.display_name }}</span>
+                            </td>
+                            <td>
+                                <p class="mb-1 text-dark small fw-semibold">{{ t.description }}</p>
+                                <div class="p-2 rounded bg-light border-start border-3 border-info small">
+                                    <strong class="text-primary"><i class="bi bi-building-check me-1"></i> DATA SOURCE:</strong>
+                                    <span class="text-muted">{{ t.data_source }}</span>
+                                </div>
+                                <div class="mt-1 small text-muted font-monospace" style="font-size: 0.76rem;">
+                                    <strong>Columns:</strong> {{ t.columns|join(', ') }}
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary-subtle text-primary font-monospace fs-6 px-2 py-1">
+                                    {{ "{:,}".format(t.row_count) }}
+                                </span>
+                            </td>
+                            <td>
+                                <code class="small text-dark">{{ t.primary_key }}</code>
+                                {% if t.foreign_keys != 'None (Root Entity)' %}
+                                    <div class="small text-muted" style="font-size: 0.72rem;">FK: {{ t.foreign_keys }}</div>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <a href="{{ url_for('export_table_csv_endpoint', table_name=t.table_name) }}" class="btn btn-sm btn-outline-success py-1 px-3 fw-semibold">
+                                    <i class="bi bi-filetype-csv me-1"></i> CSV + Meta
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card-footer bg-light p-3 d-flex justify-content-between align-items-center">
+            <span class="small text-muted">
+                All {{ tables|length }} tables adhere strictly to 3NF spatial hierarchy constraints and SQLite foreign key relationships.
+            </span>
+            <a href="{{ url_for('export_all_tables_zip_endpoint') }}" class="btn btn-success btn-sm fw-bold">
+                <i class="bi bi-file-earmark-zip me-1"></i> Download All {{ tables|length }} Tables (.ZIP)
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

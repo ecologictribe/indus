@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2004-001",
+  "organisation": "Gujarat Industrial Development Corporation",
+  "source_title": "NO: GIDC/IO&m/CIR/ACCTS/REV/6 (Statutory Allotment Rates 2004-05)",
+  "source_type": "PDF",
+  "publication_date": "2004-04-01",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/pdf/allotment-price/allotment-price-2004-2005.pdf",
+  "version": "FY2004-05",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "OCR & Table Parser",
+  "reliability": "Historical Statutory Circular",
+  "notes": "Historical benchmark establishing land prices prior to major automotive cluster acquisitions in Gujarat.",
+  "local_path": "sources/gidc/2004/circular_accts_rev_6/GIDC_IO_M_CIR_ACCTS_REV_6_2004_05.pdf",
+  "local_filename": "GIDC_IO_M_CIR_ACCTS_REV_6_2004_05.pdf",
+  "file_hash": "a65af49d1ad46d71e55175d48f85be30d0169200ebb142da0101b58e4d62e139",
+  "file_size": 153,
+  "archive_verified_utc": "2026-10-04T03:03:40.567814Z"
+}

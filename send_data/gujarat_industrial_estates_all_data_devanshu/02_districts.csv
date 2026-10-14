@@ -1,0 +1,52 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: districts (Districts Master (32 Districts))
+# Table Order: Module 2 of 17 Core Schema Tables
+# Total Records: 32 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.175488Z
+"# DATA SOURCE: Revenue Department, Government of Gujarat & GIDC Divisional Office geographical hierarchy."
+# Description: Second-tier administrative division encompassing all industrial districts in Gujarat.
+# Primary Key: district_id
+# Foreign Key Constraints: state_id -> states(state_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * district_id: Primary key identifier
+#   * state_id: Foreign key reference to states table
+"#   * district_name: Official district name (e.g., Ahmedabad, Bharuch, Surat, Vadodara)"
+#   * census_code: Census of India district identifier code
+# ==============================================================================
+
+district_id,state_id,district_name,census_code
+1,1,Ahmedabad,
+2,1,Gandhinagar,
+3,1,Sabarkantha,
+4,1,Aravalli,
+5,1,Mehsana,
+6,1,Patan,
+7,1,Banaskantha,
+8,1,Anand,
+9,1,Kheda,
+10,1,Mahisagar,
+11,1,Vadodara,
+12,1,Chhota Udepur,
+13,1,Panchmahal,
+14,1,Dahod,
+15,1,Bharuch,
+16,1,Narmada,
+17,1,Surat,
+18,1,Tapi,
+19,1,Valsad,
+20,1,Navsari,
+21,1,Surendranagar,
+22,1,Rajkot,
+23,1,Morbi,
+24,1,Jamnagar,
+25,1,Devbhoomi Dwarka,
+26,1,Junagadh,
+27,1,Gir Somnath,
+28,1,Porbandar,
+29,1,Bhavnagar,
+30,1,Botad,
+31,1,Amreli,
+32,1,Kutch,

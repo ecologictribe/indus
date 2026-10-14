@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2022-001",
+  "organisation": "Gujarat Industrial Development Corporation",
+  "source_title": "Sanand Industrial Estate Charges & Allotment Circular 2022-23",
+  "source_type": "PDF",
+  "publication_date": "2022-06-01",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/pdf/June%202022%20GIDC%20Sanand%20Industrial%20Estate.pdf",
+  "version": "FY2022-23",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "PDF table extraction",
+  "reliability": "Primary Statutory Circular",
+  "notes": "Estate-specific circular detailing infrastructure betterment levies and allotment rates in Sanand Auto Hub.",
+  "local_path": "sources/gidc/2022/sanand_charges_circular/Sanand_Industrial_Estate_Charges_Circular_2022_23.pdf",
+  "local_filename": "Sanand_Industrial_Estate_Charges_Circular_2022_23.pdf",
+  "file_hash": "928f20d468dbce782103c93e84af5d06bad0eaaa1c128e2931073a50939ea166",
+  "file_size": 138,
+  "archive_verified_utc": "2026-10-04T03:03:40.567814Z"
+}

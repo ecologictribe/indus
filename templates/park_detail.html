@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}{{ park.park_name }} - Profile & Lifecycle{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-2">
+                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}" class="text-secondary text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url_for('parks_list') }}" class="text-secondary text-decoration-none">Parks</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">{{ park.park_name }}</li>
+            </ol>
+        </nav>
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-primary px-3 py-1">{{ park.authority_type }}</span>
+                    <span class="badge bg-secondary">{{ park.district_name }} District</span>
+                    {% if park.has_cetp %}
+                        <span class="badge bg-success"><i class="bi bi-shield-check me-1"></i> CETP Active</span>
+                    {% endif %}
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">{{ park.park_name }}</h1>
+                <p class="text-secondary mb-0">
+                    <i class="bi bi-geo-alt me-1"></i> {{ park.address or (park.taluka_name ~ ', District ' ~ park.district_name ~ ', Gujarat') }}
+                </p>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-download me-1"></i> Export Dossier
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Estate Factsheet & Panels</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_park_dossier_endpoint', park_id=park.park_id, format='json') }}"><i class="bi bi-filetype-json me-2 text-warning"></i>Full Park Dossier + Meta (JSON)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_park_dossier_endpoint', park_id=park.park_id, format='csv') }}"><i class="bi bi-filetype-csv me-2 text-success"></i>Timeline & Metrics Table (CSV)</a></li>
+                    </ul>
+                </div>
+                <a href="{{ url_for('spatial_map_view') }}" class="btn btn-outline-light">
+                    <i class="bi bi-map me-1"></i> Locate Map
+                </a>
+                <a href="{{ url_for('econometrics_view') }}" class="btn btn-primary">
+                    <i class="bi bi-graph-up me-1"></i> Run DiD
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- Top Metadata Grid & Spatial Buffers Map -->
+    <div class="row g-4 mb-4">
+        <!-- Park Specifications -->
+        <div class="col-lg-6">
+            <div class="dashboard-card h-100">
+                <div class="card-header bg-white">
+                    <span class="fw-bold"><i class="bi bi-info-circle text-primary me-2"></i> Estate Specifications</span>
+                    <span class="badge bg-light text-dark border">Established: {{ park.notification_year or 'N/A' }}</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="text-muted small">Sector Classification</div>
+                            <div class="fw-bold fs-6 text-dark">{{ park.sector_category }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-muted small">Authority Type</div>
+                            <div class="fw-bold fs-6 text-dark">{{ park.authority_type }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-muted small">Total Developed Area</div>
+                            <div class="fw-bold fs-6 text-primary">
+                                {% if park.total_area_acres %}{{ "{:,.0f}".format(park.total_area_acres) }} Acres{% else %}N/A{% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-muted small">Planning Regulation</div>
+                            <div class="fw-bold fs-6 text-dark">{{ park.planning_type or 'Standard GIDC Industrial' }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-muted small">CETP Effluent Treatment</div>
+                            <div class="fw-bold fs-6">
+                                {% if park.has_cetp %}
+                                    <span class="text-success"><i class="bi bi-check-circle-fill"></i> Operational ZLD</span>
+                                {% else %}
+                                    <span class="text-muted"><i class="bi bi-dash-circle"></i> Non-Chemical / Individual ETP</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-muted small">Coordinates (Lat, Lng)</div>
+                            <div class="font-monospace small text-dark">{{ park.latitude or 'N/A' }}, {{ park.longitude or 'N/A' }}</div>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <h6 class="fw-bold small text-uppercase text-secondary mb-2">Administrative Contact Details</h6>
+                    <p class="small text-muted mb-1">
+                        <strong>Office / Contact:</strong> {{ park.phone or 'GIDC Regional Divisional Office' }}
+                    </p>
+                    <p class="small text-muted mb-0">
+                        <strong>Official Email:</strong> <code>{{ park.email or 'support@gidcgujarat.org' }}</code>
+                    </p>
+                    {% if park.notes %}
+                        <div class="mt-3 p-2 bg-light rounded small">
+                            <strong>Official Approval Note:</strong> {{ park.notes }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini Spatial Buffer Map -->
+        <div class="col-lg-6">
+            <div class="dashboard-card h-100">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="bi bi-bullseye text-danger me-2"></i> Spatial Distance Buffer Gradients</span>
+                    <span class="badge bg-secondary font-monospace">Hedonic Gradients</span>
+                </div>
+                <div class="card-body p-3">
+                    <div id="park-detail-map" style="height: 280px;"></div>
+                    <div class="d-flex justify-content-around mt-2 pt-2 border-top small text-center">
+                        <div>
+                            <span class="badge badge-buffer-drag d-block mb-1">&lt;0.5 km</span>
+                            <span class="text-danger fw-bold">-6.1% Drag</span>
+                        </div>
+                        <div>
+                            <span class="badge badge-buffer-mid d-block mb-1">0.5 - 1.5 km</span>
+                            <span class="text-success fw-bold">+9.3% Moderate</span>
+                        </div>
+                        <div>
+                            <span class="badge badge-buffer-sweet d-block mb-1">3.0 - 8.0 km</span>
+                            <span class="text-purple fw-bold" style="color:#6d28d9;">+24.1% Sweet Spot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anchor Facilities -->
+    <div class="dashboard-card mb-4">
+        <div class="card-header bg-white py-3">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-award-fill text-warning fs-5"></i>
+                <span class="fw-bold">Anchor Facilities & Major Industrial Plants</span>
+            </div>
+            <span class="badge bg-warning text-dark">{{ anchors|length }} Major Tenants</span>
+        </div>
+        <div class="card-body p-0">
+            {% if anchors %}
+                <div class="table-responsive">
+                    <table class="table table-custom table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Anchor Company</th>
+                                <th>Industry Sector</th>
+                                <th>Proposed Investment</th>
+                                <th>Actual Investment</th>
+                                <th>Commissioning Date</th>
+                                <th>Direct Employment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in anchors %}
+                            <tr>
+                                <td class="fw-bold text-dark">{{ a.company_name }}</td>
+                                <td>{{ a.industry_type }}</td>
+                                <td class="fw-bold text-primary">₹{{ "{:,.0f}".format(a.proposed_investment_inr) }} Cr</td>
+                                <td class="fw-semibold">₹{{ "{:,.0f}".format(a.actual_investment_inr or a.proposed_investment_inr) }} Cr</td>
+                                <td>{{ a.commencement_date or 'Operational' }}</td>
+                                <td><span class="badge bg-light text-dark border">{{ "{:,}".format(a.estimated_employment or 1500) }} Jobs</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="p-4 text-center text-muted">
+                    <i class="bi bi-info-circle fs-3 d-block mb-2"></i>
+                    No dedicated mega-anchor registered. Estate operates under a distributed MSME / multi-tenant industrial park framework.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Chronological Lifecycle Milestones Timeline -->
+    <div class="dashboard-card mb-4">
+        <div class="card-header bg-white py-3">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-calendar3-range-fill text-primary"></i>
+                <span class="fw-bold">Chronological Lifecycle Milestones (DiD Event Windows)</span>
+            </div>
+            <span class="badge bg-primary">{{ events|length }} Milestones Logged</span>
+        </div>
+        <div class="card-body p-4">
+            <ul class="timeline mb-0">
+                {% for ev in events %}
+                <li class="timeline-item {% if ev.event_year >= 2018 %}active{% endif %}">
+                    <div class="d-flex align-items-baseline gap-2 mb-1">
+                        <span class="fw-bold text-dark">{{ ev.event_type }}</span>
+                        <span class="badge bg-secondary-subtle text-secondary border font-monospace">{{ ev.event_date }}</span>
+                        <span class="badge {% if ev.event_year >= 2018 %}bg-success{% else %}bg-secondary{% endif %}">
+                            Year {{ ev.event_year }}
+                        </span>
+                    </div>
+                    <p class="text-muted small mb-0">{{ ev.description }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Annual Density & Environmental Metrics -->
+    {% if metrics %}
+    <div class="dashboard-card mb-4">
+        <div class="card-header bg-white py-3">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-activity text-info"></i>
+                <span class="fw-bold">Annual Operational Density & Environmental Metrics</span>
+            </div>
+            <span class="badge bg-info-subtle text-info border">Multi-Year Panel</span>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-custom table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Assessment Year</th>
+                            <th>Occupancy Rate (%)</th>
+                            <th>FSI Utilized (%)</th>
+                            <th>Active Factory Units</th>
+                            <th>CEPI Pollution Score</th>
+                            <th>Air Quality (PM2.5)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for m in metrics %}
+                        <tr>
+                            <td class="fw-bold font-monospace">{{ m.assessment_year }}</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="height: 6px;">
+                                        <div class="progress-bar bg-success" style="width: {{ m.occupancy_rate_pct }}%;"></div>
+                                    </div>
+                                    <span class="small fw-bold">{{ m.occupancy_rate_pct }}%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="height: 6px;">
+                                        <div class="progress-bar bg-primary" style="width: {{ m.avg_fsi_utilized_pct }}%;"></div>
+                                    </div>
+                                    <span class="small fw-bold">{{ m.avg_fsi_utilized_pct }}%</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-light text-dark border">{{ m.active_units_count }} Units</span></td>
+                            <td>
+                                {% if m.cepi_score >= 70 %}
+                                    <span class="badge bg-danger text-white">{{ m.cepi_score }} (Critically Polluted)</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">{{ m.cepi_score }} (Moderately Polluted)</span>
+                                {% endif %}
+                            </td>
+                            <td><span class="font-monospace">{{ m.pm2_5_level }} &mu;g/m&sup3;</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const lat = {{ park.latitude or 22.5 }};
+        const lng = {{ park.longitude or 72.0 }};
+        const parkName = "{{ park.park_name }}";
+
+        const detailMap = L.map('park-detail-map').setView([lat, lng], 12);
+        
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            maxZoom: 18
+        }).addTo(detailMap);
+
+        // Center Marker
+        L.marker([lat, lng]).addTo(detailMap)
+            .bindPopup(`<strong>${parkName}</strong><br>Center Point`)
+            .openPopup();
+
+        // 0.5km buffer
+        L.circle([lat, lng], {
+            radius: 500,
+            color: '#ef4444',
+            fillColor: '#ef4444',
+            fillOpacity: 0.25,
+            weight: 2
+        }).bindTooltip('<0.5km Proximity Drag').addTo(detailMap);
+
+        // 1.5km buffer
+        L.circle([lat, lng], {
+            radius: 1500,
+            color: '#10b981',
+            fillColor: '#10b981',
+            fillOpacity: 0.15,
+            weight: 1.5
+        }).bindTooltip('0.5 - 1.5km Transition Zone').addTo(detailMap);
+
+        // 8.0km buffer
+        L.circle([lat, lng], {
+            radius: 8000,
+            color: '#8b5cf6',
+            fillColor: '#8b5cf6',
+            fillOpacity: 0.08,
+            weight: 1.5,
+            dashArray: '4, 4'
+        }).bindTooltip('3 - 8km Sweet Spot').addTo(detailMap);
+    });
+</script>
+{% endblock %}

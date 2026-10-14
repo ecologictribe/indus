@@ -1,0 +1,519 @@
+I would make the prompt more explicit about **provenance, traceability, local archiving, and value-level citations**. The important improvement is that the system should not merely maintain a bibliography; it should be possible to trace **every important value back to the exact source document, page/table/section, and original URL**.
+
+## Source Archiving, Data Provenance and Value-Level Traceability
+
+A substantial portion of the data used in our case study/research has been extracted from PDF files, Word documents, HTML pages, websites, spreadsheets, and other source materials. We have successfully processed many of these sources and are already recording references, source names, and organisations.
+
+However, there is currently a major **data-provenance and traceability gap**.
+
+We can identify the organisation or general source associated with a piece of information, but in many cases we cannot clearly trace a **specific value, statement, statistic, price, date, count, or other extracted fact back to the exact location from which it was obtained**.
+
+I want you to improve the system so that the entire research/data pipeline has strong, auditable source provenance.
+
+### 1. Create a local source archive
+
+Identify **all source files that have been used in building the case study/research**, including but not limited to:
+
+* PDF files
+* Word/DOCX files
+* Excel/XLSX files
+* CSV files
+* HTML files
+* Web pages
+* Images
+* Scanned documents
+* Reports
+* Government documents
+* Circulars
+* Notifications
+* Research papers
+* Brochures
+* Maps
+* Other documents used as evidence or data sources
+
+Where legally and technically permissible, download and preserve the source files locally.
+
+Create a structured local directory for the source archive.
+
+For example:
+
+```text
+sources/
+    organisation/
+        year/
+            document/
+                original_file.pdf
+                metadata.json
+                source.html
+                extraction.txt
+```
+
+The exact folder structure can be improved if you have a better design, but the archive must be organised, deterministic, and easy to navigate.
+
+---
+
+### 2. Maintain a central Source Registry
+
+Create a master table/database called something like:
+
+`source_registry`
+
+It should register every source used by the project.
+
+At minimum, include:
+
+| Field             | Description                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| source_id         | Unique immutable source identifier                            |
+| organisation      | Organisation responsible for the source                       |
+| source_title      | Title/name of source                                          |
+| source_type       | PDF / DOCX / HTML / XLSX / CSV / image / etc.                 |
+| publication_date  | Date published, if available                                  |
+| retrieval_date    | Date downloaded                                               |
+| original_url      | Original URL from which the source was obtained               |
+| local_path        | Local archived path                                           |
+| local_filename    | Archived filename                                             |
+| file_hash         | Hash/checksum of downloaded file                              |
+| file_size         | File size                                                     |
+| version           | Source version, if applicable                                 |
+| language          | Source language                                               |
+| source_status     | Active / archived / unavailable / changed                     |
+| extraction_status | Processed / pending / failed                                  |
+| extraction_method | Text extraction / OCR / HTML parser / table extraction / etc. |
+| notes             | Additional information                                        |
+
+The `source_id` must remain stable even if the local filename or folder structure changes.
+
+---
+
+### 3. Preserve the original source information
+
+For every archived source, retain the **original URL**.
+
+Do not replace the original URL with only the local path.
+
+We need both:
+
+```text
+Original source:
+https://example.org/document.pdf
+
+Local archive:
+sources/example_org/2026/document_001.pdf
+```
+
+The system must therefore preserve the distinction between:
+
+**where the information originally came from**
+
+and
+
+**where our archived copy is stored locally.**
+
+---
+
+### 4. Implement value-level provenance
+
+This is the most important requirement.
+
+A general citation such as:
+
+> Source: GIDC
+
+is not sufficient.
+
+If we extract:
+
+> Allotment price = ₹6,070 per sq. metre
+
+the system should allow us to determine:
+
+```text
+Value
+↓
+Dataset/Table
+↓
+Record
+↓
+Source ID
+↓
+Original document
+↓
+Page number / section / table
+↓
+Original URL
+↓
+Local archived file
+```
+
+For example:
+
+```text
+value: ₹6,070
+field: allotment_price_per_sqm
+entity: Sanand-II (Bol)
+source_id: SRC-GIDC-2026-001
+document: GIDC Allotment Price FY 2026-27
+page: 12
+table: Allotment Price
+row: Sanand-II (Bol)
+original_url: https://...
+local_path: sources/gidc/2026/...
+```
+
+The exact implementation can differ, but the traceability must exist.
+
+---
+
+### 5. Capture the exact source location
+
+Where technically possible, record the most precise source location available:
+
+For PDFs:
+
+* Page number
+* Table number
+* Section heading
+* Paragraph
+* Figure number
+* Row/column
+
+For HTML:
+
+* URL
+* Page title
+* Heading/section
+* Relevant element or extracted text
+* Retrieval timestamp
+
+For spreadsheets:
+
+* Filename
+* Sheet name
+* Cell/range
+
+For Word documents:
+
+* Filename
+* Page/section
+* Heading
+* Paragraph or table
+
+For scanned documents:
+
+* Page number
+* OCR text
+* Bounding box/location if feasible
+
+The objective is that another researcher should be able to locate the original evidence without manually searching the entire document.
+
+---
+
+### 6. Create an Evidence/Provenance table
+
+In addition to the source registry, create a table such as:
+
+`data_provenance`
+
+Suggested fields:
+
+| Field             | Description                              |
+| ----------------- | ---------------------------------------- |
+| provenance_id     | Unique identifier                        |
+| entity_id         | Entity/record to which the value belongs |
+| field_name        | Database field                           |
+| extracted_value   | Exact value extracted                    |
+| normalized_value  | Normalized value, if different           |
+| source_id         | Link to source registry                  |
+| source_location   | Page/table/cell/section                  |
+| source_excerpt    | Short supporting text                    |
+| extraction_method | OCR/parser/manual/LLM/etc.               |
+| extraction_date   | Date extracted                           |
+| confidence        | High/Medium/Low                          |
+| verified          | Yes/No                                   |
+| verified_by       | If manually verified                     |
+| notes             | Additional information                   |
+
+Do not duplicate large amounts of copyrighted source material. Store only the minimum excerpt necessary to establish provenance.
+
+---
+
+### 7. Make source links clickable
+
+When displaying data in the application/interface, the source reference should be clickable.
+
+The user should be able to click a source reference and be taken to the **local archived source** where possible.
+
+For example:
+
+```text
+Sanand-II
+Allotment Price: ₹6,070/sq.m
+Source: [SRC-GIDC-2026-001]
+```
+
+Clicking `SRC-GIDC-2026-001` should open the locally archived document.
+
+The interface should also provide the original external URL separately:
+
+```text
+View archived source
+View original source
+```
+
+This distinction is important.
+
+---
+
+### 8. Handle unavailable or inaccessible sources
+
+Do not fabricate or silently omit a source.
+
+If a source cannot be downloaded because of:
+
+* robots restrictions
+* authentication
+* access restrictions
+* temporary server failure
+* deleted page
+* broken URL
+* dynamic website
+* technical failure
+* legal restrictions
+
+record the source in the registry anyway.
+
+For example:
+
+```text
+source_status: unavailable
+original_url: ...
+retrieval_date: ...
+failure_reason: HTTP 403
+```
+
+If possible, preserve:
+
+* metadata
+* URL
+* page title
+* retrieval timestamp
+* available text
+* screenshot/archive information
+
+without bypassing access restrictions.
+
+---
+
+### 9. Detect duplicate sources
+
+The same PDF or document may appear under multiple URLs.
+
+Use file hashes to detect duplicates.
+
+For example:
+
+```text
+URL A ──┐
+        ├── SHA256 → ABC123
+URL B ──┘
+```
+
+If both URLs point to the same document, maintain one canonical archived file while recording both original URLs.
+
+---
+
+### 10. Preserve historical versions
+
+This is particularly important for **industrial-park and land-price research**.
+
+If a source changes over time, do not overwrite the old version.
+
+For example:
+
+```text
+GIDC allotment price page
+
+2024 version
+2025 version
+2026 version
+```
+
+should remain separately traceable.
+
+The archive should therefore support:
+
+```text
+source_id
+version
+effective_date
+retrieval_date
+file_hash
+```
+
+This will allow us to reconstruct historical information rather than only seeing the current version of a webpage.
+
+---
+
+### 11. Source hierarchy and reliability
+
+Record the type and reliability of each source.
+
+For example:
+
+```text
+Official government document
+Official organisation website
+Government notification
+Government dataset
+Company document
+Research paper
+Industry association
+News source
+Commercial database
+Third-party website
+Search result
+```
+
+Do not convert this into an unsupported numerical "truth score."
+
+Instead, retain the factual provenance and allow the application to distinguish primary from secondary sources.
+
+---
+
+### 12. Research reproducibility
+
+The final system should allow another researcher to answer:
+
+> "Where did this number come from?"
+
+for **every important extracted value**.
+
+The desired chain is:
+
+```text
+Research claim
+      ↓
+Dataset record
+      ↓
+Specific field/value
+      ↓
+Provenance record
+      ↓
+Source ID
+      ↓
+Archived local file
+      ↓
+Exact page/table/cell/section
+      ↓
+Original URL
+```
+
+This should be treated as a core requirement of the data architecture, not merely as a bibliography feature.
+
+---
+
+### 13. Build an audit/provenance view
+
+Create a view/interface where we can inspect:
+
+```text
+Source ID
+Organisation
+Document
+Original URL
+Local file
+Publication date
+Retrieved date
+Values extracted
+Number of records derived
+Pages/sections used
+Extraction method
+Verification status
+```
+
+For example:
+
+```text
+SRC-GIDC-2026-001
+
+Organisation:
+Gujarat Industrial Development Corporation
+
+Document:
+Allotment Price FY 2026-27
+
+Original:
+https://...
+
+Local:
+sources/GIDC/2026/...
+
+Used for:
+42 estate-price records
+
+Pages:
+8, 9, 10, 11, 12
+
+Extraction:
+PDF table extraction
+
+Verification:
+Verified
+```
+
+---
+
+### 14. Important implementation principle
+
+Do not treat the source registry as a simple bibliography.
+
+This is a **data lineage system**.
+
+The system must establish relationships between:
+
+```text
+Source
+   ↓
+Document
+   ↓
+Extracted evidence
+   ↓
+Normalized value
+   ↓
+Database record
+   ↓
+Research claim
+```
+
+A source should therefore be reusable by multiple records, and a record may have multiple supporting sources.
+
+---
+
+### 15. Deliverables
+
+Implement the following:
+
+1. Local source archive
+2. Source registry
+3. Data-provenance/evidence table
+4. Original URL preservation
+5. Local source linking
+6. Page/table/cell/section-level source locations
+7. File hashing and duplicate detection
+8. Historical source-version management
+9. Failed/inaccessible-source tracking
+10. Clickable source references in the application
+11. Audit/provenance view
+12. Documentation explaining how provenance is maintained
+13. Migration/backfill of provenance for the sources already used in the current case study/research
+
+Most importantly, **do not only implement provenance for newly collected data**.
+
+Go back through the data that has already been collected and processed, identify the existing source files and URLs, archive them locally, and establish provenance for the existing records wherever the source evidence is available.
+
+The final objective is:
+
+> **No important number, fact, statistic, price, date, count, or research claim should exist in the system without a traceable source wherever source evidence is available.**
+
+This version also fits your **Gujarat industrial-park historical pricing work** particularly well: it lets you trace something like a 2004 GIDC allotment price not merely to “GIDC,” but to the **specific circular → page → table → estate → value**, while retaining the original URL and your locally archived copy.

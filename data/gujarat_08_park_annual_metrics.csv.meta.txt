@@ -1,0 +1,56 @@
+meta_file: gujarat_08_park_annual_metrics.csv.meta.txt
+file_name: gujarat_08_park_annual_metrics.csv
+original_name: 08_park_annual_metrics.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 18248
+modified_utc: 2026-10-03T07:34:23.892119+00:00
+
+--- TABLE / DATASET ---
+table_name: park_annual_metrics
+display_title: Park Annual Operational & Environmental Metrics
+module_order: Module 8 of 12 Core Schema Tables
+description: Multi-year panel tracking economic occupancy, built-up FSI utilization, CEPI environmental pollution scores, and PM2.5 levels.
+total_records_declared: 451 rows
+export_timestamp_utc: 2026-10-03T07:32:52.595019Z
+
+--- KEYS ---
+primary_key: metric_id
+foreign_keys: park_id -> industrial_parks(park_id)
+
+--- DATA PROFILE ---
+header: metric_id,park_id,assessment_year,occupancy_rate_pct,avg_fsi_utilized_pct,active_units_count,cepi_score,pm2_5_level
+n_columns: 8
+columns: metric_id, park_id, assessment_year, occupancy_rate_pct, avg_fsi_utilized_pct, active_units_count, cepi_score, pm2_5_level
+data_rows_observed: 451
+total_lines: 475
+comment_lines(#): 22
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * metric_id: Primary key identifier
+# * park_id: Foreign key reference to industrial_parks
+# * assessment_year: Fiscal audit observation year
+# * occupancy_rate_pct: Percentage of developed plots under active operation (%)
+# * avg_fsi_utilized_pct: Ratio of consumed Floor Space Index to permitted buildable FSI (%)
+# * active_units_count: Total operating factory sheds and registered MSME units
+# * cepi_score: Comprehensive Environmental Pollution Index (Scores >= 70 indicate critically polluted clusters)
+# * pm2_5_level: Average ambient particulate matter concentration (ug/m3)
+
+--- DATA SOURCE (preamble verbatim) ---
+Gujarat Pollution Control Board (GPCB) Comprehensive Environmental Pollution Index (CEPI) monitoring reports, GIDC annual physical audits, and Central Pollution Control Board (CPCB) air quality archives.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+No dedicated file in data/sources/ for this dataset (all 7 source files were read; none matches).
+Attribution rests on the CSV preamble DATA SOURCE + ZIP README manifest.
+Checked: sources/gujarat_property_price_scapper.txt is EMPTY (0 bytes) - no evidence there either.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 08_park_annual_metrics.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

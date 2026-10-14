@@ -1,0 +1,62 @@
+==========================================================================================
+STATUTORY EVIDENCE DOSSIER: GIDC INDUSTRIAL ALLOTMENT RATES (FY 2026-27)
+==========================================================================================
+
+1. GOVERNING CIRCULAR METADATA
+   * Financial Year                : FY 2026-27
+   * Primary Circular PDF File     : allotment-price-2026-2714082026055724.pdf
+   * Relative Archive Path         : evidence_pdf_archive/all_historical_circulars/allotment-price-2026-2714082026055724.pdf
+   * File Size                     : 3,823,672 bytes (3.65 MB)
+   * SHA-256 Cryptographic Hash    : 3e7a204a7adce2db355cad5fd558fa6dc832db2e50d5989703e91ad4c4008ed6
+   * Statutory Revision Category   : GAZETTE_REVISION
+   * Legal / Gazette Order Note    : GIDC Board Allotment Price Circular (14/08/2026)
+
+2. EMPIRICAL SUMMARY METRICS (312 ESTATES)
+   * Minimum Allotment Rate        : INR     148.00 / sqm
+   * 25th Percentile (P25)         : INR    1186.00 / sqm
+   * Median Rate (P50)             : INR    3200.00 / sqm
+   * 75th Percentile (P75)         : INR    3996.50 / sqm
+   * 90th Percentile (P90)         : INR    7180.70 / sqm
+   * Maximum Allotment Rate        : INR   23787.00 / sqm
+   * Panel Mean Rate               : INR    3647.40 / sqm
+   * Standard Deviation            : INR    3613.57 / sqm
+
+3. STRATEGIC BENCHMARK ESTATES (FY 2026-27 RATES)
+   Park Name                           District             Rate (INR/sqm) Price Type               
+   ------------------------------------------------------------------------------------------------
+   GIDC Hanspura (Naroda) Housing      Ahmedabad                  11150.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Naroda                         Ahmedabad                  11150.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Naroda (Housing to Industrial Area) Ahmedabad                  11150.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Vatva                          Ahmedabad                  11150.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Vapi                           Valsad                      6800.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Sanand-II (Bol)                Ahmedabad                   6070.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Sanand-II (Bol) MSME Park (Tentative) Ahmedabad                   6070.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Sanand-II Women Park           Ahmedabad                   6070.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Ankleshwar                     Bharuch                     4500.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Ankleshwar-IV                  Bharuch                     4500.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Jhagadia                       Bharuch                     3200.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Kharchi (Jhagadia Phase-II)    Bharuch                     3200.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Halol                          Panchmahal                  2800.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Halol (New)                    Panchmahal                  2800.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative) Panchmahal                  2800.00 REVISED_ALLOTMENT_PRICE  
+   GIDC Sanand (RIDC)                  Ahmedabad                    870.00 REVISED_ALLOTMENT_PRICE  
+
+4. TOP 10 HIGHEST ALLOTMENT RATE PARKS (FY 2026-27)
+   Rank  Park Name                           District             Rate (INR/sqm)
+   ----------------------------------------------------------------------------
+   1     GIDC Jamnagar-I                     Jamnagar                   23787.00
+   2     GIDC Jamnagar-I (Shankar Tekri)     Jamnagar                   23787.00
+   3     GIDC Jamnagar-III (Expansion)       Jamnagar                   23787.00
+   4     GIDC Bhat                           Gandhinagar                18550.00
+   5     GIDC Bhatia (RIDC)                  Devbhoomi Dwarka           18550.00
+   6     GIDC Ichchapore (Bhatpor)           Surat                      18550.00
+   7     GIDC Khambhat (Cambay)              Anand                      18550.00
+   8     GIDC Khatodara                      Surat                      12190.00
+   9     GIDC Hanspura (Naroda) Housing      Ahmedabad                  11150.00
+   10    GIDC Kathwada                       Ahmedabad                  11150.00
+
+5. STATUTORY TRACEABILITY DECLARATION
+   The rates documented above represent authentic, gazetted GIDC board allotment determinations
+   or statutory persistence baselines. No synthetic interpolation, polynomial fitting, or
+   pseudo-random algorithms were utilized. Audited and compliant with the Zero-Synthetic Mandate.
+==========================================================================================

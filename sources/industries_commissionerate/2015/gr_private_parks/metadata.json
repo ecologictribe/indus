@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GOV-2015-001",
+  "organisation": "Industries Commissionerate, Govt of Gujarat",
+  "source_title": "Govt. Resolution G.R. dated 21/04/2015 Scheme for Assistance to Private Industrial Parks",
+  "source_type": "Gazette Resolution",
+  "publication_date": "2015-04-21",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://industries.gujarat.gov.in/gr_private_parks_2015",
+  "version": "Official Gazette 2015",
+  "language": "English / Gujarati",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "Gazette text parser",
+  "reliability": "State Government Gazette Resolution",
+  "notes": "Statutory basis for non-GIDC private industrial park developer sanctions, capital subsidies, and zoning requirements.",
+  "local_path": "sources/industries_commissionerate/2015/gr_private_parks/Government_Resolution_GR_21_04_2015_Private_Parks.pdf",
+  "local_filename": "Government_Resolution_GR_21_04_2015_Private_Parks.pdf",
+  "file_hash": "807ba1e1cfebc63a4f0d0693be4aff35bd6f8f3d8134b0b2d48d4c601be9fa46",
+  "file_size": 218,
+  "archive_verified_utc": "2026-10-04T03:03:40.568723Z"
+}

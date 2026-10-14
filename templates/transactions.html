@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}Property Transactions Panel Explorer{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-secondary-subtle text-light border border-secondary-subtle px-3 py-1 mb-2">
+                    <i class="bi bi-database-check me-1"></i> Micro-Level Panel Observations
+                </span>
+                <h1 class="h2 fw-bold text-white mb-1">Property Transactions & DiD Panel</h1>
+                <p class="text-secondary mb-0">
+                    Tracked residential and commercial sale records, registered circle rates, distance buffers, and econometric designations.
+                </p>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a href="{{ url_for('econometrics_view', data_mode='synthetic') }}" class="btn btn-outline-warning" title="Estimate Difference-in-Differences model on this secondary transaction panel">
+                    <i class="bi bi-graph-up-arrow me-1"></i> Run Secondary Market DiD
+                </a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-download me-1"></i> Export Transactions
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Micro-Level Panel Exports</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_transactions_endpoint', format='csv', buffer_bin=selected_buffer, property_type=selected_type, year=selected_year, search=search_query) }}"><i class="bi bi-filetype-csv me-2 text-success"></i>Filtered Transactions (CSV)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_transactions_endpoint', format='json', buffer_bin=selected_buffer, property_type=selected_type, year=selected_year, search=search_query) }}"><i class="bi bi-filetype-json me-2 text-warning"></i>Complete Panel + Dictionary (JSON)</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTxModal">
+                    <i class="bi bi-plus-circle me-1"></i> Record Transaction
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- Filters Card -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-3">
+            <form method="GET" action="{{ url_for('transactions_view') }}" class="row g-2 align-items-center">
+                <div class="col-md-3">
+                    <label class="form-label small text-muted mb-1">Buffer / Group</label>
+                    <select name="buffer_bin" class="form-select form-select-sm" onchange="this.form.submit()">
+                        <option value="ALL">All Buffer Groups</option>
+                        <option value="3-8km" {% if selected_buffer == '3-8km' %}selected{% endif %}>3–8km Sweet Spot</option>
+                        <option value="<0.5km" {% if selected_buffer == '<0.5km' %}selected{% endif %}>&lt;0.5km Proximity Drag</option>
+                        <option value="0.5-1.5km" {% if selected_buffer == '0.5-1.5km' %}selected{% endif %}>0.5–1.5km Intermediate</option>
+                        <option value="Clean Commercial (<0.3km)" {% if selected_buffer == 'Clean Commercial (<0.3km)' %}selected{% endif %}>Clean Commercial</option>
+                        <option value="Control (>10km)" {% if selected_buffer == 'Control (>10km)' %}selected{% endif %}>Control (&gt;10km)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label small text-muted mb-1">Property Type</label>
+                    <select name="property_type" class="form-select form-select-sm" onchange="this.form.submit()">
+                        <option value="ALL">All Property Types</option>
+                        <option value="Residential Apartment" {% if selected_type == 'Residential Apartment' %}selected{% endif %}>Apartment</option>
+                        <option value="Single Family Detached" {% if selected_type == 'Single Family Detached' %}selected{% endif %}>Single Family</option>
+                        <option value="Plot" {% if selected_type == 'Plot' %}selected{% endif %}>Plot</option>
+                        <option value="Commercial Frontage" {% if selected_type == 'Commercial Frontage' %}selected{% endif %}>Commercial</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label small text-muted mb-1">Sale Year</label>
+                    <select name="year" class="form-select form-select-sm" onchange="this.form.submit()">
+                        <option value="ALL">All Years (2012–2025)</option>
+                        {% for y in range(2025, 2011, -1) %}
+                            <option value="{{ y }}" {% if selected_year == y|string %}selected{% endif %}>{{ y }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small text-muted mb-1">Search Neighborhood / Park</label>
+                    <input type="text" name="search" class="form-control form-control-sm" placeholder="Search by name..." value="{{ search_query or '' }}">
+                </div>
+
+                <div class="col-md-2 d-flex gap-2 align-items-end">
+                    <button type="submit" class="btn btn-primary btn-sm w-100 py-1">Filter</button>
+                    <a href="{{ url_for('transactions_view') }}" class="btn btn-outline-secondary btn-sm py-1">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <div class="dashboard-card">
+        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+            <span class="fw-bold">
+                <i class="bi bi-receipt text-primary me-2"></i> Transactions Panel Data
+            </span>
+            <span class="badge bg-secondary font-monospace">{{ "{:,}".format(data.total) }} Transactions Matched</span>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-custom table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tx ID</th>
+                            <th>Sale Date</th>
+                            <th>Estate / Neighborhood</th>
+                            <th>Property Type</th>
+                            <th>Area (sqm)</th>
+                            <th>Buffer Zone</th>
+                            <th>Park Dist</th>
+                            <th>Market Price</th>
+                            <th>Price / Sqm</th>
+                            <th>Circle Rate</th>
+                            <th>Jantar Ratio</th>
+                            <th>DiD Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tx in data.records %}
+                        <tr>
+                            <td class="font-monospace text-muted small">#{{ tx.transaction_id }}</td>
+                            <td>
+                                <strong>{{ tx.sale_date }}</strong>
+                                <div class="text-muted small">Q{{ tx.sale_quarter }} {{ tx.sale_year }}</div>
+                            </td>
+                            <td>
+                                <div class="fw-semibold text-dark">{{ tx.park_name }}</div>
+                                <div class="small text-muted">{{ tx.neighborhood_name }}</div>
+                            </td>
+                            <td>{{ tx.property_type }}</td>
+                            <td><span class="fw-bold">{{ tx.built_up_area_sqm }}</span> sqm</td>
+                            <td>
+                                {% if tx.distance_buffer_bin == '3-8km' %}
+                                    <span class="badge badge-buffer-sweet">{{ tx.distance_buffer_bin }}</span>
+                                {% elif tx.distance_buffer_bin == '<0.5km' %}
+                                    <span class="badge badge-buffer-drag">{{ tx.distance_buffer_bin }}</span>
+                                {% elif tx.distance_buffer_bin == '0.5-1.5km' %}
+                                    <span class="badge badge-buffer-mid">{{ tx.distance_buffer_bin }}</span>
+                                {% elif 'Clean' in tx.distance_buffer_bin %}
+                                    <span class="badge badge-buffer-clean">{{ tx.distance_buffer_bin }}</span>
+                                {% else %}
+                                    <span class="badge badge-buffer-control">{{ tx.distance_buffer_bin }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ tx.distance_to_park_km }} km</td>
+                            <td class="fw-bold">₹{{ "{:,.0f}".format(tx.market_transaction_price) }}</td>
+                            <td class="text-primary fw-bold">₹{{ "{:,.0f}".format(tx.price_per_sqm) }}</td>
+                            <td class="text-muted">₹{{ "{:,.0f}".format(tx.registered_circle_rate_sqm) }}</td>
+                            <td>
+                                <span class="badge bg-light text-dark border font-monospace">
+                                    {{ "{:.1f}%".format(tx.circle_to_market_ratio * 100) }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if tx.is_post_event %}
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle">Post-Anchor</span>
+                                {% else %}
+                                    <span class="badge bg-light text-muted border">Pre-Anchor</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Pagination Footer -->
+        {% if data.total_pages > 1 %}
+        <div class="card-footer bg-white d-flex justify-content-between align-items-center py-3">
+            <div class="text-muted small">
+                Showing page <strong>{{ data.page }}</strong> of <strong>{{ data.total_pages }}</strong> (Total {{ "{:,}".format(data.total) }} records)
+            </div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item {% if data.page <= 1 %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('transactions_view', page=data.page-1, buffer_bin=selected_buffer, property_type=selected_type, year=selected_year, search=search_query) }}">&laquo; Prev</a>
+                    </li>
+                    {% for p in range(max(1, data.page - 2), min(data.total_pages + 1, data.page + 3)) %}
+                    <li class="page-item {% if p == data.page %}active{% endif %}">
+                        <a class="page-link" href="{{ url_for('transactions_view', page=p, buffer_bin=selected_buffer, property_type=selected_type, year=selected_year, search=search_query) }}">{{ p }}</a>
+                    </li>
+                    {% endfor %}
+                    <li class="page-item {% if data.page >= data.total_pages %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('transactions_view', page=data.page+1, buffer_bin=selected_buffer, property_type=selected_type, year=selected_year, search=search_query) }}">Next &raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Modal: Record New Transaction -->
+<div class="modal fade" id="newTxModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{{ url_for('new_transaction_action') }}">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-plus-circle text-primary me-2"></i> Record New Property Transaction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Select Existing Parcel / Property ID</label>
+                        <select name="property_id" class="form-select" required>
+                            {% for p in sample_properties %}
+                            <option value="{{ p.property_id }}">
+                                Property #{{ p.property_id }} ({{ p.property_type }} &bull; {{ p.distance_buffer_bin }} &bull; {{ p.built_up_area_sqm }} sqm)
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Transaction Sale Date</label>
+                        <input type="date" name="sale_date" class="form-control" value="2025-06-15" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Market Transaction Price (INR)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" step="1000" name="market_price" class="form-control" value="4500000" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Registered Circle Rate (INR / sqm)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₹/sqm</span>
+                            <input type="number" step="500" name="circle_rate" class="form-control" value="24000" required>
+                        </div>
+                        <div class="form-text small">Official state Ready Reckoner / Jantar statutory valuation rate.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save to SQLite Panel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

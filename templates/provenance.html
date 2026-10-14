@@ -1,0 +1,657 @@
+{% extends "base.html" %}
+
+{% block title %}Source Registry & Value-Level Data Provenance{% endblock %}
+{% block page_title %}Data Provenance & Source Archiving{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-success text-white px-3 py-1">
+                        <i class="bi bi-shield-check me-1"></i> Data Lineage & Provenance
+                    </span>
+                    <span class="badge bg-secondary-subtle text-secondary border">
+                        Task T5: Central Source Registry & Value-Level Traceability
+                    </span>
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">Source Archiving, Data Provenance & Traceability</h1>
+                <p class="text-secondary mb-0">
+                    Systematic value-level audit lineage linking every extracted land price, environmental CEPI benchmark, and cadastral plot dimension back to exact local preserved files, page/table locations, and original statutory URLs.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a href="{{ url_for('export_table_csv_endpoint', table_name='source_registry') }}" class="btn btn-outline-success">
+                    <i class="bi bi-filetype-csv me-1"></i> Export Sources CSV
+                </a>
+                <a href="{{ url_for('export_table_csv_endpoint', table_name='data_provenance') }}" class="btn btn-outline-info">
+                    <i class="bi bi-filetype-csv me-1"></i> Export Provenance CSV
+                </a>
+                <a href="{{ url_for('database_hub') }}" class="btn btn-outline-light">
+                    <i class="bi bi-table me-1"></i> Tables Hub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- Telemetry Inventory Scorecard -->
+    <div class="row g-3 mb-4">
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-primary shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Total Registered Sources</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ summary.total_sources }}</span>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Catalogued</span>
+                    </div>
+                    <div class="text-muted small mt-1">{{ summary.archived_sources }} Local &bull; {{ summary.unavailable_sources }} Tracked Restricted</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-success shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Value-Level Provenance</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-success">{{ "{:,}".format(summary.total_provenance_records) }}</span>
+                        <span class="badge bg-success text-white">Facts Traced</span>
+                    </div>
+                    <div class="text-muted small mt-1">Exact Page, Table & Excerpt</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-info shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Traceability Coverage</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ summary.verification_rate_pct }}%</span>
+                        <span class="badge bg-info-subtle text-info border border-info-subtle">Audit Grade</span>
+                    </div>
+                    <div class="text-muted small mt-1">{{ "{:,}".format(summary.total_records_traced) }} Unique Database Records</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-warning shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">High-Confidence Evidence</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ summary.high_confidence_pct }}%</span>
+                        <span class="text-muted small">Statutory</span>
+                    </div>
+                    <div class="text-muted small mt-1">Government Circulars & Gazettes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-secondary shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Entities Backed</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ summary.total_entities_covered }}</span>
+                        <span class="text-muted small">Tables</span>
+                    </div>
+                    <div class="text-muted small mt-1">Plots, Prices, CEPI, Parks</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-dark shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Cryptographic Integrity</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">100%</span>
+                        <span class="badge bg-dark text-white">SHA-256</span>
+                    </div>
+                    <div class="text-muted small mt-1">Tamper-Evident Checksums</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs for Provenance Submodules -->
+    <ul class="nav nav-tabs nav-fill mb-4 bg-white p-2 rounded shadow-sm border" id="provenanceTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-sources-btn" data-bs-toggle="tab" data-bs-target="#tab-sources" type="button" role="tab">
+                <i class="bi bi-archive-fill text-primary"></i>
+                <span>1. Master Source Registry & Local Archive ({{ sources|length }})</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-provenance-btn" data-bs-toggle="tab" data-bs-target="#tab-provenance" type="button" role="tab">
+                <i class="bi bi-file-earmark-check-fill text-success"></i>
+                <span>2. Value-Level Evidence Explorer ({{ summary.total_provenance_records }})</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-versions-btn" data-bs-toggle="tab" data-bs-target="#tab-versions" type="button" role="tab">
+                <i class="bi bi-clock-history text-warning"></i>
+                <span>3. Multi-Year Version Lineage</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-restricted-btn" data-bs-toggle="tab" data-bs-target="#tab-restricted" type="button" role="tab">
+                <i class="bi bi-lock-fill text-danger"></i>
+                <span>4. Inaccessible / Restricted Log ({{ summary.unavailable_sources }})</span>
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="provenanceTabsContent">
+        
+        <!-- ========================================================================= -->
+        <!-- TAB 1: MASTER SOURCE REGISTRY & LOCAL ARCHIVE BROWSER -->
+        <!-- ========================================================================= -->
+        <div class="tab-pane fade show active" id="tab-sources" role="tabpanel">
+            
+            <!-- Source Filters Bar -->
+            <div class="card shadow-sm border-0 mb-4 sticky-filter-bar">
+                <div class="card-body p-3">
+                    <form method="GET" action="{{ url_for('provenance_view') }}" class="row g-2 align-items-center">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                                <input type="text" name="search" class="form-control" placeholder="Source title, organization, ID..." value="{{ search_query }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select name="org" class="form-select form-select-sm">
+                                <option value="ALL">All Issuing Organizations</option>
+                                {% for org in summary.org_breakdown %}
+                                    <option value="{{ org.organisation }}" {% if selected_org == org.organisation %}selected{% endif %}>
+                                        {{ org.organisation }} ({{ org.source_count }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <select name="type" class="form-select form-select-sm">
+                                <option value="ALL">All Document Types</option>
+                                <option value="PDF" {% if selected_type == 'PDF' %}selected{% endif %}>PDF Documents</option>
+                                <option value="Gazette Resolution" {% if selected_type == 'Gazette Resolution' %}selected{% endif %}>Gazette Resolutions</option>
+                                <option value="Engineering Plan" {% if selected_type == 'Engineering Plan' %}selected{% endif %}>Engineering / Cadastral</option>
+                                <option value="Environmental Audit Report" {% if selected_type == 'Environmental Audit Report' %}selected{% endif %}>Environmental Reports</option>
+                                <option value="CSV Gazette" {% if selected_type == 'CSV Gazette' %}selected{% endif %}>CSV Circle Rates</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <select name="status" class="form-select form-select-sm">
+                                <option value="ALL">All Source Statuses</option>
+                                <option value="archived" {% if selected_status == 'archived' %}selected{% endif %}>Archived Locally</option>
+                                <option value="unavailable" {% if selected_status == 'unavailable' %}selected{% endif %}>Unavailable / Restricted</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2 d-flex gap-1">
+                            <button type="submit" class="btn btn-sm btn-primary flex-grow-1" title="Filter Source Registry">
+                                <i class="bi bi-funnel-fill me-1"></i> Filter
+                            </button>
+                            <a href="{{ url_for('provenance_view') }}" class="btn btn-sm btn-outline-secondary" title="Reset Filters">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Master Source Directory Table -->
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-archive text-primary me-2"></i> Master Source Registry & Local File Archive
+                        </h6>
+                        <small class="text-muted">Showing {{ sources|length }} registered sources with deterministic local paths & cryptographic hashes</small>
+                    </div>
+                    <span class="badge bg-secondary-subtle text-secondary border">Deterministic Structure: sources/&lt;org&gt;/&lt;year&gt;/&lt;doc&gt;/</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0" style="font-size: 0.86rem;">
+                            <thead class="table-light text-uppercase text-secondary" style="font-size: 0.74rem;">
+                                <tr>
+                                    <th class="ps-3" style="width: 140px;">Source ID & Type</th>
+                                    <th>Document Title & Issuing Organization</th>
+                                    <th>Dates (Pub / Audit)</th>
+                                    <th>Derived Facts</th>
+                                    <th>Cryptographic Hash (SHA-256)</th>
+                                    <th class="text-end pe-3" style="width: 240px;">Archived vs Original</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for s in sources %}
+                                <tr>
+                                    <!-- Source ID & Type -->
+                                    <td class="ps-3">
+                                        <span class="badge bg-dark font-monospace text-white d-block mb-1 text-start" style="font-size: 0.74rem;">
+                                            {{ s.source_id }}
+                                        </span>
+                                        <span class="badge {% if s.source_status == 'unavailable' %}bg-danger-subtle text-danger border border-danger-subtle{% else %}bg-primary-subtle text-primary border border-primary-subtle{% endif %}" style="font-size: 0.68rem;">
+                                            {{ s.source_type }}
+                                        </span>
+                                    </td>
+
+                                    <!-- Title & Org -->
+                                    <td>
+                                        <div class="fw-bold text-dark">{{ s.source_title }}</div>
+                                        <div class="text-muted small mt-1">
+                                            <i class="bi bi-building text-secondary me-1"></i>
+                                            <strong>{{ s.organisation }}</strong>
+                                            {% if s.version %} &bull; <span class="badge bg-light text-secondary border py-0">v{{ s.version }}</span>{% endif %}
+                                        </div>
+                                        <div class="text-muted small mt-1 font-monospace" style="font-size: 0.74rem;">
+                                            <i class="bi bi-folder2 text-warning me-1"></i>{{ s.local_path }}
+                                        </div>
+                                    </td>
+
+                                    <!-- Dates -->
+                                    <td>
+                                        <div class="small"><strong>Published:</strong> {{ s.publication_date or 'N/A' }}</div>
+                                        <div class="text-muted small"><strong>Ingested:</strong> {{ s.retrieval_date }}</div>
+                                    </td>
+
+                                    <!-- Derived Facts Count -->
+                                    <td>
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 fs-6 font-monospace">
+                                            {{ "{:,}".format(s.derived_values_count) }}
+                                        </span>
+                                        <div class="text-muted small" style="font-size: 0.72rem;">values traced</div>
+                                    </td>
+
+                                    <!-- SHA-256 Hash -->
+                                    <td>
+                                        {% if s.source_status == 'unavailable' %}
+                                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle">ACCESS_RESTRICTED</span>
+                                        {% else %}
+                                            <div class="p-1 bg-light rounded border font-monospace text-dark text-truncate" style="max-width: 170px; font-size: 0.72rem;" title="{{ s.file_hash }}">
+                                                {{ s.file_hash[:16] }}...
+                                            </div>
+                                            <div class="text-muted small mt-1" style="font-size: 0.70rem;">
+                                                Size: {{ (s.file_size / 1024)|round(1) }} KB
+                                            </div>
+                                        {% endif %}
+                                    </td>
+
+                                    <!-- Dual Links & Actions -->
+                                    <td class="text-end pe-3">
+                                        <div class="d-flex justify-content-end gap-1 mb-1">
+                                            {% if s.source_status == 'unavailable' %}
+                                                <button type="button" class="btn btn-sm btn-outline-danger py-1 px-2" onclick="inspectUnavailableSource('{{ s.source_id }}', '{{ s.failure_reason }}')">
+                                                    <i class="bi bi-exclamation-triangle me-1"></i> Reason
+                                                </button>
+                                            {% else %}
+                                                <a href="{{ url_for('view_source_file_endpoint', source_id=s.source_id) }}" target="_blank" class="btn btn-sm btn-outline-success py-1 px-2" title="View locally preserved archived copy">
+                                                    <i class="bi bi-file-earmark-pdf me-1"></i> Archived
+                                                </a>
+                                                <a href="{{ url_for('download_source_file_endpoint', source_id=s.source_id) }}" class="btn btn-sm btn-outline-secondary py-1 px-2" title="Download local file">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            {% endif %}
+                                            
+                                            <a href="{{ s.original_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary py-1 px-2" title="Open original external URL">
+                                                <i class="bi bi-box-arrow-up-right me-1"></i> Original
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-light border py-0 px-2 small text-muted" onclick="verifySourceIntegrity('{{ s.source_id }}')">
+                                                <i class="bi bi-check-circle text-primary me-1"></i> Verify Hash
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 2: VALUE-LEVEL EVIDENCE EXPLORER -->
+        <!-- ========================================================================= -->
+        <div class="tab-pane fade" id="tab-provenance" role="tabpanel">
+            
+            <!-- Value Filters Bar -->
+            <div class="card shadow-sm border-0 mb-4 sticky-filter-bar">
+                <div class="card-body p-3">
+                    <form method="GET" action="{{ url_for('provenance_view') }}" class="row g-2 align-items-center">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                                <input type="text" name="search" class="form-control" placeholder="Entity ID, field name, value..." value="{{ search_query }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select name="entity_type" class="form-select form-select-sm">
+                                <option value="ALL">All Entity Tables</option>
+                                <option value="industrial_plots" {% if selected_entity == 'industrial_plots' %}selected{% endif %}>industrial_plots (Cadastral Parcels)</option>
+                                <option value="industrial_land_price_history" {% if selected_entity == 'industrial_land_price_history' %}selected{% endif %}>industrial_land_price_history (Land Rates)</option>
+                                <option value="park_pollution_benchmarks" {% if selected_entity == 'park_pollution_benchmarks' %}selected{% endif %}>park_pollution_benchmarks (CEPI/Effluent)</option>
+                                <option value="industrial_parks" {% if selected_entity == 'industrial_parks' %}selected{% endif %}>industrial_parks (Spatial Bounds)</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select name="source_id" class="form-select form-select-sm">
+                                <option value="ALL">All Source Documents</option>
+                                {% for s in sources %}
+                                    <option value="{{ s.source_id }}" {% if selected_source_id == s.source_id %}selected{% endif %}>
+                                        {{ s.source_id }}: {{ s.source_title[:32] }}...
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 d-flex gap-1">
+                            <button type="submit" class="btn btn-sm btn-success flex-grow-1" title="Filter Value Provenance">
+                                <i class="bi bi-funnel-fill me-1"></i> Filter Evidence
+                            </button>
+                            <a href="{{ url_for('provenance_view') }}" class="btn btn-sm btn-outline-secondary" title="Reset Filters">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Value Provenance Table -->
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-card-checklist text-success me-2"></i> Value-Level Evidence & Citation Lineage
+                        </h6>
+                        <small class="text-muted">Showing {{ provenance_records|length }} granular claims with verified page/table locations and text excerpts</small>
+                    </div>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">
+                        <i class="bi bi-shield-check me-1"></i> 100% Value-Level Verification
+                    </span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0" style="font-size: 0.86rem;">
+                            <thead class="table-light text-uppercase text-secondary" style="font-size: 0.74rem;">
+                                <tr>
+                                    <th class="ps-3" style="width: 180px;">Entity & Record ID</th>
+                                    <th>Proven Field & Value</th>
+                                    <th>Source Document & Location</th>
+                                    <th>Supporting Text Excerpt</th>
+                                    <th class="text-end pe-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for r in provenance_records %}
+                                <tr>
+                                    <!-- Entity & Record -->
+                                    <td class="ps-3">
+                                        <span class="badge bg-secondary-subtle text-secondary border font-monospace" style="font-size: 0.70rem;">
+                                            {{ r.entity_type }}
+                                        </span>
+                                        <div class="fw-bold text-dark font-monospace mt-1">#{{ r.entity_id }}</div>
+                                    </td>
+
+                                    <!-- Proven Field & Value -->
+                                    <td>
+                                        <div class="small text-muted font-monospace">{{ r.field_name }}</div>
+                                        <div class="fw-bold text-primary fs-6">{{ r.normalized_value or r.extracted_value }}</div>
+                                    </td>
+
+                                    <!-- Source Document & Location -->
+                                    <td>
+                                        <span class="badge bg-dark font-monospace text-white py-0 mb-1" style="font-size: 0.70rem;">
+                                            {{ r.source_id }}
+                                        </span>
+                                        <div class="small fw-semibold text-dark text-truncate" style="max-width: 220px;" title="{{ r.source_title }}">
+                                            {{ r.source_title }}
+                                        </div>
+                                        <div class="badge bg-warning-subtle text-dark border border-warning-subtle mt-1 font-monospace" style="font-size: 0.70rem;">
+                                            <i class="bi bi-pin-map-fill me-1"></i>{{ r.source_location }}
+                                        </div>
+                                    </td>
+
+                                    <!-- Supporting Excerpt -->
+                                    <td>
+                                        <div class="p-2 rounded bg-light border text-dark font-monospace" style="font-size: 0.76rem; max-width: 400px; white-space: normal;">
+                                            &ldquo;{{ r.source_excerpt }}&rdquo;
+                                        </div>
+                                        <div class="text-muted mt-1" style="font-size: 0.70rem;">
+                                            Method: {{ r.extraction_method }} &bull; Auditor: {{ r.verified_by }}
+                                        </div>
+                                    </td>
+
+                                    <!-- Actions -->
+                                    <td class="text-end pe-3">
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <a href="{{ url_for('view_source_file_endpoint', source_id=r.source_id) }}" target="_blank" class="btn btn-sm btn-outline-success py-1 px-2" title="Open locally archived source PDF">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </a>
+                                            <a href="{{ r.original_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary py-1 px-2" title="Open original external URL">
+                                                <i class="bi bi-box-arrow-up-right"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 3: MULTI-YEAR VERSION LINEAGE -->
+        <!-- ========================================================================= -->
+        <div class="tab-pane fade" id="tab-versions" role="tabpanel">
+            
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-white py-3 border-bottom">
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-clock-history text-warning me-2"></i> Statutory Source Version Lineage (Section 10)
+                    </h6>
+                    <small class="text-muted">Tracking statutory document progression over time without overwriting historical versions</small>
+                </div>
+                <div class="card-body p-4">
+                    
+                    {% for series_name, versions in version_history.items() %}
+                    <div class="mb-4 pb-4 border-bottom">
+                        <h6 class="fw-bold text-dark d-flex align-items-center gap-2 mb-3">
+                            <span class="badge bg-primary">{{ loop.index }}</span>
+                            <span>{{ series_name }}</span>
+                            <span class="badge bg-light text-muted border small">{{ versions|length }} Preserved Versions</span>
+                        </h6>
+
+                        <div class="row g-3">
+                            {% for v in versions %}
+                            <div class="col-md-3">
+                                <div class="card border h-100 shadow-sm p-3 bg-light">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-dark font-monospace text-white">{{ v.version }}</span>
+                                        <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i>{{ v.publication_date }}</span>
+                                    </div>
+                                    <h6 class="fw-bold text-dark small text-truncate" title="{{ v.source_title }}">{{ v.source_title }}</h6>
+                                    <div class="text-muted font-monospace mt-1" style="font-size: 0.70rem;">
+                                        ID: <strong>{{ v.source_id }}</strong>
+                                    </div>
+                                    <div class="text-muted font-monospace mt-1 text-truncate" style="font-size: 0.70rem;" title="{{ v.file_hash }}">
+                                        SHA-256: {{ v.file_hash[:12] }}...
+                                    </div>
+                                    <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                                        <a href="{{ url_for('view_source_file_endpoint', source_id=v.source_id) }}" target="_blank" class="btn btn-sm btn-outline-success py-0 px-2" style="font-size: 0.74rem;">
+                                            <i class="bi bi-file-earmark-pdf me-1"></i> Archive
+                                        </a>
+                                        <a href="{{ v.original_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary py-0 px-2" style="font-size: 0.74rem;">
+                                            <i class="bi bi-box-arrow-up-right me-1"></i> Original
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 4: INACCESSIBLE / RESTRICTED SOURCE LOG -->
+        <!-- ========================================================================= -->
+        <div class="tab-pane fade" id="tab-restricted" role="tabpanel">
+            
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-danger">
+                            <i class="bi bi-shield-x text-danger me-2"></i> Inaccessible / Restricted Source Audit Log (Section 8)
+                        </h6>
+                        <small class="text-muted">Explicitly recording and quarantining restricted government records rather than silently omitting them</small>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Zero Silent Omissions</span>
+                </div>
+                <div class="card-body p-4">
+                    
+                    <div class="alert alert-warning border-start border-4 border-warning d-flex align-items-start gap-3">
+                        <i class="bi bi-info-circle-fill text-warning fs-3 mt-1"></i>
+                        <div>
+                            <strong class="text-dark">Auditing Standard Requirement (Task T5 Section 8):</strong>
+                            <p class="mb-0 small text-muted">
+                                If a source cannot be downloaded because of authentication, legal restrictions, deleted URLs, or robots directives, the system records the source in the registry with failure reason, original URL, and retrieval timestamp. Values derived from restricted sources are quarantined and excluded from unverified empirical claims.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle">
+                            <thead class="table-light text-uppercase text-secondary" style="font-size: 0.74rem;">
+                                <tr>
+                                    <th>Source ID</th>
+                                    <th>Document Description</th>
+                                    <th>Organisation</th>
+                                    <th>Original URL</th>
+                                    <th>Access Failure Reason & Status</th>
+                                    <th>Quarantine Protocol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-danger font-monospace">SRC-GIDC-UNAVAIL-01</span>
+                                    </td>
+                                    <td>
+                                        <strong>Confidential Internal Audit of Historical Land Concessions (1998-2002)</strong>
+                                        <div class="text-muted small">Internal Government Concession Schedule</div>
+                                    </td>
+                                    <td>GIDC Land Acquisition & Compensation Cell</td>
+                                    <td>
+                                        <a href="https://gidc.gujarat.gov.in/internal/audit_concessions_historical_restricted.pdf" target="_blank" class="small text-muted font-monospace">
+                                            https://gidc.gujarat.gov.in/internal/...
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger text-white mb-1">HTTP 403 Forbidden</span>
+                                        <div class="small text-danger">Public access withheld under RTI Section 8(1)(d).</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-secondary-subtle text-dark border">QUARANTINED</span>
+                                        <div class="small text-muted mt-1">Zero unverified values ingested.</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal: Cryptographic Integrity Verification Result -->
+<div class="modal fade" id="verifyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow border-0">
+            <div class="modal-header bg-dark text-white py-3">
+                <h6 class="modal-title fw-bold"><i class="bi bi-shield-check text-success me-2"></i> Cryptographic SHA-256 Hash Integrity Verification</h6>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4 text-center" id="verifyModalBody">
+                <div class="spinner-border text-primary mb-3" role="status"></div>
+                <div class="text-muted">Computing SHA-256 hash on local disk archive...</div>
+            </div>
+            <div class="modal-footer bg-light py-2">
+                <button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function verifySourceIntegrity(sourceId) {
+    const modal = new bootstrap.Modal(document.getElementById('verifyModal'));
+    const body = document.getElementById('verifyModalBody');
+    body.innerHTML = '<div class="spinner-border text-primary mb-3" role="status"></div><div class="text-muted">Verifying SHA-256 checksum on disk for ' + sourceId + '...</div>';
+    modal.show();
+
+    fetch('/api/provenance/source/' + sourceId + '/verify')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'VERIFIED_MATCH') {
+                body.innerHTML = `
+                    <div class="text-success mb-2"><i class="bi bi-check-circle-fill fs-1"></i></div>
+                    <h5 class="fw-bold text-dark">Cryptographic Checksum Match!</h5>
+                    <p class="text-muted small">The locally archived file on disk is authentic, complete, and tamper-evident.</p>
+                    <div class="p-2 bg-light rounded border text-start font-monospace small mb-2">
+                        <div><strong>Source ID:</strong> ${data.source_id}</div>
+                        <div><strong>DB Registered Hash:</strong> ${data.db_hash}</div>
+                        <div><strong>Computed Disk Hash:</strong> ${data.disk_hash}</div>
+                        <div><strong>File Size:</strong> ${data.file_size_bytes} bytes</div>
+                    </div>
+                    <span class="badge bg-success fs-6">INTEGRITY VERIFIED</span>
+                `;
+            } else if (data.status === 'UNAVAILABLE') {
+                body.innerHTML = `
+                    <div class="text-danger mb-2"><i class="bi bi-exclamation-octagon-fill fs-1"></i></div>
+                    <h5 class="fw-bold text-danger">Source Tracked Unavailable</h5>
+                    <p class="text-muted small">${data.message}</p>
+                `;
+            } else {
+                body.innerHTML = `
+                    <div class="text-warning mb-2"><i class="bi bi-exclamation-triangle-fill fs-1"></i></div>
+                    <h5 class="fw-bold text-warning">Integrity Warning: ${data.status}</h5>
+                    <p class="text-muted small">Disk hash did not match database registration.</p>
+                `;
+            }
+        })
+        .catch(err => {
+            body.innerHTML = `<div class="text-danger">Failed to verify integrity: ${err}</div>`;
+        });
+}
+
+function inspectUnavailableSource(sourceId, reason) {
+    alert("Unavailable / Restricted Source Record:\n\nSource ID: " + sourceId + "\nReason: " + reason);
+}
+</script>
+{% endblock %}

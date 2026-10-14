@@ -1,0 +1,66 @@
+meta_file: gujarat_05_industrial_parks.csv.meta.txt
+file_name: gujarat_05_industrial_parks.csv
+original_name: 05_industrial_parks.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 98381
+modified_utc: 2026-10-03T07:31:58.004891+00:00
+
+--- TABLE / DATASET ---
+table_name: industrial_parks
+display_title: Industrial Parks & GIDC Estates (312 Estates)
+module_order: Module 5 of 12 Core Schema Tables
+description: Comprehensive catalog of all 312 GIDC government industrial estates and sanctioned private industrial parks/SEZs across Gujarat.
+total_records_declared: 312 rows
+export_timestamp_utc: 2026-10-03T07:31:54.543205Z
+
+--- KEYS ---
+primary_key: park_id
+foreign_keys: taluka_id -> subdistricts_talukas(taluka_id)
+
+--- DATA PROFILE ---
+header: park_id,taluka_id,park_name,authority_type,sector_category,total_area_acres,planning_type,notification_year,has_cetp,latitude,longitude,address,phone,email,notes,source
+n_columns: 16
+columns: park_id, taluka_id, park_name, authority_type, sector_category, total_area_acres, planning_type, notification_year, has_cetp, latitude, longitude, address, phone, email, notes, source
+data_rows_observed: 312
+total_lines: 344
+comment_lines(#): 30
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * park_id: Primary key identifier
+# * taluka_id: Foreign key reference to subdistricts_talukas
+# * park_name: Official estate or park title
+# * authority_type: GIDC (Government) vs Private SEZ/Park
+# * sector_category: Industry focus (Auto, Chemical/Petro, Textile, Electronics/Tech, General Engineering)
+# * total_area_acres: Total developed land area in acres
+# * planning_type: Modern Grade-A Regulated vs Legacy Heavy Industry
+# * notification_year: Year of official state gazette notification or approval
+# * has_cetp: Common Effluent Treatment Plant status (1 = Active Operational, 0 = None / Independent ETP)
+# * latitude: WGS84 centroid latitude coordinate
+# * longitude: WGS84 centroid longitude coordinate
+# * address: Postal address and location descriptor
+# * phone: Divisional office or estate contact phone number
+# * email: Administrative contact email address
+# * notes: State sanctioning notes, area in hectares, and approved sectors
+# * source: Primary documentary source attribution
+
+--- DATA SOURCE (preamble verbatim) ---
+GIDC Official Portal (gidc.gujarat.gov.in), Gujarat State Industrial Policy (2015/2020), Sanctioned Private Industrial Parks under Govt. Resolution (G.R. dated 21/04/2015), and OpenStreetMap spatial geocoding.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_Industail_Parks.txt (209 bytes, 1 lines)
+    mapping_rationale: Exact match to preamble DATA SOURCE (GIDC portal, Industrial Policy 2015/2020, GR 21/04/2015, OSM geocoding). Note source filename has typo 'Industail'.
+    content_verbatim:
+      | GIDC Official Portal (gidc.gujarat.gov.in), Gujarat State Industrial Policy (2015/2020), Sanctioned Private Industrial Parks under Govt. Resolution (G.R. dated 21/04/2015), and OpenStreetMap spatial geocoding.
+NOTE: source filename is misspelled 'gujarat_Industail_Parks.txt' (should be Industrial); quoted exactly to avoid confusion.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 05_industrial_parks.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

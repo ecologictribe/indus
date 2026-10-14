@@ -1,0 +1,61 @@
+meta_file: gujarat_07_park_lifecycle_events.csv.meta.txt
+file_name: gujarat_07_park_lifecycle_events.csv
+original_name: 07_park_lifecycle_events.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 170214
+modified_utc: 2026-10-03T07:47:05.334910+00:00
+
+--- TABLE / DATASET ---
+table_name: park_lifecycle_events
+display_title: Park Lifecycle Milestones (DiD Windows)
+module_order: Module 7 of 12 Core Schema Tables
+description: Chronological development milestones defining Pre/Post treatment event windows for econometric estimation.
+total_records_declared: 1447 rows
+export_timestamp_utc: 2026-10-03T07:32:05.917450Z
+
+--- KEYS ---
+primary_key: event_id
+foreign_keys: park_id -> industrial_parks(park_id)
+
+--- DATA PROFILE ---
+header: event_id,park_id,event_type,event_date,event_year,description
+n_columns: 6
+columns: event_id, park_id, event_type, event_date, event_year, description
+data_rows_observed: 1447
+total_lines: 1469
+comment_lines(#): 20
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * event_id: Primary key identifier
+# * park_id: Foreign key reference to industrial_parks
+# * event_type: Milestone type (Policy Announcement, Land Acquisition, Anchor Operational, Ancillary Active, CETP Upgrade)
+# * event_date: Official milestone calendar date
+# * event_year: Calendar year of milestone
+# * description: Institutional description of milestone achievement
+
+--- DATA SOURCE (preamble verbatim) ---
+State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_Park_lifecycle_events.txt (418 bytes, 7 lines)
+    mapping_rationale: Exact match to preamble DATA SOURCE (Gazette Notifications, GIDC awards, Factory permits, GPCB filings); source file body duplicates this attribution twice.
+    content_verbatim:
+      |
+      | Chronological development milestones defining Pre/Post treatment event windows for econometric estimation.
+      |
+      |  DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+      |
+      | DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+      |
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 07_park_lifecycle_events.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

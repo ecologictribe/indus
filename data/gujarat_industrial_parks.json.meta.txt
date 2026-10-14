@@ -1,0 +1,47 @@
+meta_file: gujarat_industrial_parks.json.meta.txt
+file_name: gujarat_industrial_parks.json
+original_name: gujarat_industrial_parks.json
+prefix: gujarat_
+renamed: False
+extension: .json
+size_bytes: 229232
+modified_utc: 2026-10-03T07:25:32.370996+00:00
+
+--- TABLE / DATASET ---
+table_name: (catalog export, not a numbered 01-12 module)
+display_title: Gujarat Industrial Estates Property Dynamics Study
+description: State of Gujarat, India | vintage 2012–2025 Panel | records 312
+export_timestamp_utc: 2026-10-03T07:25:27.823002Z
+
+--- KEYS ---
+primary_key: park_id (per parks[]/features[].properties)
+foreign_keys: (catalog export; relational keys defined in 01-12 modules, not in this file)
+
+--- DATA PROFILE ---
+json_type: dict
+n_parks: 312
+keys: _metadata, parks
+catalog_project: Gujarat Industrial Estates Property Dynamics Study
+catalog_jurisdiction: State of Gujarat, India
+catalog_vintage: 2012–2025 Panel
+catalog_source: GIDC Official Records, Gujarat State Industrial Policy, Spatial Geocoding
+catalog_record_count: 312
+
+--- DATA SOURCE (preamble verbatim) ---
+GIDC Official Records, Gujarat State Industrial Policy, Spatial Geocoding
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_Industail_Parks.txt (209 bytes, 1 lines)
+    mapping_rationale: JSON variant of the 312-estate catalog (_metadata + parks[312]); same institutional sources.
+    content_verbatim:
+      | GIDC Official Portal (gidc.gujarat.gov.in), Gujarat State Industrial Policy (2015/2020), Sanctioned Private Industrial Parks under Govt. Resolution (G.R. dated 21/04/2015), and OpenStreetMap spatial geocoding.
+NOTE: source filename is misspelled 'gujarat_Industail_Parks.txt' (should be Industrial); quoted exactly to avoid confusion.
+
+--- ARCHIVE / RELATIONS ---
+Sibling exports of the same 312-estate universe as module-05 gujarat_05_industrial_parks.csv (different projections: normalized module table vs flat catalog vs JSON vs GeoJSON vs human directory).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

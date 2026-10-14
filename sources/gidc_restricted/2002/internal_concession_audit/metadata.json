@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-UNAVAIL-01",
+  "organisation": "GIDC Land Acquisition & Compensation Cell",
+  "source_title": "Confidential Internal Audit of Historical Land Concessions (1998-2002)",
+  "source_type": "Internal Audit Report",
+  "publication_date": "2002-11-15",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/internal/audit_concessions_historical_restricted.pdf",
+  "version": "Restricted-v1",
+  "language": "English",
+  "source_status": "unavailable",
+  "failure_reason": "HTTP 403 Forbidden: Restricted internal government executive record; public access withheld under RTI Section 8(1)(d).",
+  "extraction_status": "failed",
+  "extraction_method": "None (Access Restricted)",
+  "reliability": "Internal Confidential Government Record",
+  "notes": "Tracked in source registry for completeness as required by Task T5 Section 8. Data values from this source are quarantined.",
+  "local_path": "sources/gidc_restricted/2002/internal_concession_audit/audit_concessions_historical_restricted.pdf",
+  "local_filename": "audit_concessions_historical_restricted.pdf",
+  "file_hash": "UNAVAILABLE_RESTRICTED",
+  "file_size": 0,
+  "archive_verified_utc": "2026-10-04T03:03:40.573473Z"
+}

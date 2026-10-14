@@ -1,0 +1,4 @@
+Multi-year micro-level sale observations tracking real open-market prices against registered statutory circle rates (Jantar) from 2012 to 2025.
+
+ DATA SOURCE: Inspector General of Registration (IGR Gujarat) stamped transaction registry, Ready Reckoner / Jantar annual rate sheets (2012–2025), and National Housing Bank (NHB) RESIDEX verification.
+Columns: transaction_id, property_id, sale_date, sale_year, sale_quarter, market_transaction_price, price_per_sqm, registered_circle_rate_sqm, circle_to_market_ratio, is_repeat_sale, is_arms_length

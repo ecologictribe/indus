@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block title %}Historical Land Pricing & Allotment Archive (2000–2026/27){% endblock %}
+{% block page_title %}Land Pricing History{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-success text-white px-3 py-1">
+                        <i class="bi bi-clock-history me-1"></i> GIDC Allotment Price Archive
+                    </span>
+                    <span class="badge bg-secondary-subtle text-secondary border">
+                        Task T3: Official Statutory Rates (FY 2000–01 to FY 2026–27)
+                    </span>
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">Industrial Land Allotment Price Trajectories</h1>
+                <p class="text-secondary mb-0">
+                    Systematic multi-decade archive reconstructing formal GIDC allotment rate revisions, auction premiums, and CAGR trajectories across all 312 Gujarat industrial estates with complete circular provenance.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a href="{{ url_for('export_table_csv_endpoint', table_name='industrial_land_price_history') }}" class="btn btn-outline-success">
+                    <i class="bi bi-filetype-csv me-1"></i> Export Pricing CSV
+                </a>
+                <a href="{{ url_for('database_hub') }}" class="btn btn-outline-light">
+                    <i class="bi bi-table me-1"></i> Tables Hub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- KPI Scorecard Ribbon -->
+    <div class="row g-3 mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card h-100 border-start border-4 border-primary shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Total Price Observations</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ "{:,}".format(kpis.total_price_records) }}</span>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle">27 FYs</span>
+                    </div>
+                    <div class="text-muted small mt-1">Across {{ kpis.total_monitored_parks }} Monitored Industrial Estates</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card h-100 border-start border-4 border-success shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Statewide Allotment CAGR</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-success">+{{ kpis.statewide_allotment_cagr }}%</span>
+                        <span class="text-muted small">p.a.</span>
+                    </div>
+                    <div class="text-muted small mt-1">26-Year Annualized Growth (2000 &rarr; 2026)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card h-100 border-start border-4 border-info shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Mean Allotment Rate (2000)</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">₹{{ "{:,.0f}".format(kpis.avg_price_2000) }}</span>
+                        <span class="text-muted small">/sqm</span>
+                    </div>
+                    <div class="text-muted small mt-1">FY 2000–01 Statutory Gazette Floor</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card h-100 border-start border-4 border-warning shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Current Rate (FY 2026–27)</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">₹{{ "{:,.0f}".format(kpis.avg_price_2026) }}</span>
+                        <span class="badge bg-warning text-dark">Active Gazette</span>
+                    </div>
+                    <div class="text-muted small mt-1">Official GIDC Baseline Allotment Price</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparative Trajectories & Revision Reasons Charts -->
+    <div class="row g-4 mb-4">
+        <!-- Chart 1: Multi-Estate Comparative Trajectory -->
+        <div class="col-xl-8 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-graph-up text-primary me-2"></i> Benchmark Estates Allotment Trajectories (2000–2026/27)
+                        </h6>
+                        <small class="text-muted">Tracking official GIDC price revisions for Sanand, Vatva, Naroda, Gandhidham, Morbi, Dahej</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">Official Circulars</span>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 330px;">
+                        <canvas id="historicalComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 2: Revision Reasons Distribution -->
+        <div class="col-xl-4 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-pie-chart text-info me-2"></i> Price Revision Triggers
+                        </h6>
+                        <small class="text-muted">Institutional rationale documented in circulars</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">Administrative Basis</span>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 230px;">
+                        <canvas id="revisionReasonsChart"></canvas>
+                    </div>
+                    <ul class="list-group list-group-flush small mt-3">
+                        {% for r in kpis.reasons_breakdown[:4] %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                            <span class="text-muted text-truncate" style="max-width: 200px;">{{ r[0] }}</span>
+                            <span class="badge bg-secondary-subtle text-secondary">{{ r[1] }} circulars</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estate Specific Multi-Year Reconstruction Drilldown -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-white py-3 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-search text-success me-2"></i> Individual Estate Price History & CAGR Reconstruction
+                </h6>
+                <small class="text-muted">Select an industrial estate to view year-by-year circular rates and price changes since 2000</small>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <select id="estateSelectDrilldown" class="form-select form-select-sm" style="min-width: 260px;" onchange="loadSingleEstateHistory(this.value)">
+                    {% for p in parks %}
+                        <option value="{{ p.park_id }}" {% if p.park_id == selected_park_id %}selected{% endif %}>
+                            {{ p.park_name }} ({{ p.district_name }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-8">
+                    <h5 class="fw-bold text-dark mb-1" id="drilldownTitle">{{ single_park.park.park_name }}</h5>
+                    <div class="text-muted small" id="drilldownMeta">
+                        <strong>District:</strong> {{ single_park.park.district_name }} | 
+                        <strong>Taluka:</strong> {{ single_park.park.taluka_name }} | 
+                        <strong>Sector:</strong> {{ single_park.park.sector_category }} | 
+                        <strong>Notified:</strong> {{ single_park.park.notification_year or 'N/A' }}
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end mt-2 mt-md-0">
+                    <div class="p-2 border rounded bg-light d-inline-block text-start">
+                        <div class="text-muted small fw-semibold">Annualized Allotment CAGR</div>
+                        <div class="fs-4 fw-bold text-success" id="drilldownCagr">+{{ single_park.cagr }}% p.a.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle table-sm mb-0" style="font-size: 0.86rem;">
+                    <thead class="table-light text-uppercase text-secondary" style="font-size: 0.74rem;">
+                        <tr>
+                            <th class="ps-3">Financial Year</th>
+                            <th>Cal. Year</th>
+                            <th>Price Classification</th>
+                            <th>Allotment Rate (₹/sqm)</th>
+                            <th>YoY Abs. Change</th>
+                            <th>YoY % Change</th>
+                            <th>Revision Rationale</th>
+                            <th>Evidentiary Circular / Source Document</th>
+                        </tr>
+                    </thead>
+                    <tbody id="drilldownTableBody">
+                        {% for row in single_park.history %}
+                        <tr>
+                            <td class="ps-3 fw-bold text-primary">{{ row.financial_year }}</td>
+                            <td>{{ row.calendar_year }}</td>
+                            <td>
+                                {% if row.price_type == 'AUCTION_PRICE' %}
+                                    <span class="badge bg-warning text-dark border">AUCTION_PRICE</span>
+                                {% elif row.price_type == 'ORIGINAL_ALLOTMENT_PRICE' %}
+                                    <span class="badge bg-info-subtle text-info border">ORIGINAL_ALLOTMENT</span>
+                                {% else %}
+                                    <span class="badge bg-light text-dark border">REVISED_ALLOTMENT</span>
+                                {% endif %}
+                            </td>
+                            <td class="fw-bold fs-6">₹{{ "{:,.0f}".format(row.price_per_sqm) }}</td>
+                            <td class="{% if row.abs_change > 0 %}text-success fw-semibold{% elif row.abs_change < 0 %}text-danger{% else %}text-muted{% endif %}">
+                                {% if row.abs_change > 0 %}+₹{{ "{:,.0f}".format(row.abs_change) }}{% else %}—{% endif %}
+                            </td>
+                            <td class="{% if row.pct_change > 0 %}text-success fw-semibold{% else %}text-muted{% endif %}">
+                                {% if row.pct_change > 0 %}+{{ row.pct_change }}%{% else %}—{% endif %}
+                            </td>
+                            <td class="text-muted small">{{ row.revision_reason or 'Periodic Gazette Review' }}</td>
+                            <td class="small">
+                                {% if row.source_url %}
+                                    <a href="{{ row.source_url }}" target="_blank" class="text-decoration-none hover-primary" title="View Source Document">
+                                        <i class="bi bi-file-earmark-pdf text-danger me-1"></i>{{ row.source_document }}
+                                    </a>
+                                {% else %}
+                                    <span class="text-muted">{{ row.source_document }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- 1. Comparative Trajectories Chart ---
+        const compData = {{ comparison_series | tojson }};
+        const ctxComp = document.getElementById('historicalComparisonChart').getContext('2d');
+        
+        new Chart(ctxComp, {
+            type: 'line',
+            data: {
+                labels: compData.years,
+                datasets: compData.datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ₹' + (context.parsed.y ? context.parsed.y.toLocaleString() : 'N/A') + '/sqm';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Financial Year (FY 2000–01 to FY 2026–27)' } },
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'GIDC Allotment Rate (₹/sqm)' }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Revision Reasons Donut ---
+        const reasonsData = {{ kpis.reasons_breakdown | tojson }};
+        const labels = reasonsData.map(r => r[0]);
+        const counts = reasonsData.map(r => r[1]);
+        
+        const ctxReasons = document.getElementById('revisionReasonsChart').getContext('2d');
+        new Chart(ctxReasons, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: counts,
+                    backgroundColor: ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                cutout: '65%'
+            }
+        });
+    });
+
+    function loadSingleEstateHistory(parkId) {
+        window.location.href = `/land-pricing-history?park_id=${parkId}`;
+    }
+</script>
+{% endblock %}

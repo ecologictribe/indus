@@ -1,0 +1,13 @@
+link_id,cited_url,referenced_document,http_status,audit_verdict
+1,https://gidc.gujarat.gov.in/allotment_archive_2000,GIDC Historical Gazette Order 2000-01,HTTP 404,FAIL - Fabricated endpoint
+2,https://gidc.gujarat.gov.in/allotment_archive_2001,GIDC Historical Gazette Order 2001-01,HTTP 404,FAIL - Fabricated endpoint
+3,https://gidc.gujarat.gov.in/allotment_archive_2002,GIDC Historical Gazette Order 2002-01,HTTP 404,FAIL - Fabricated endpoint
+4,https://gidc.gujarat.gov.in/allotment_archive_2003,GIDC Historical Gazette Order 2003-01,HTTP 404,FAIL - Fabricated endpoint
+5,https://gidc.gujarat.gov.in/auction_notices,GIDC Public Auction Notice FY 2024,HTTP 404,FAIL - Endpoint moved or nonexistent
+6,https://gidc.gujarat.gov.in/maps/sanand2_bol_cadastral,Sanand-II Bol Cadastral Map,HTTP 404,FAIL - Endpoint moved or nonexistent
+7,https://industries.gujarat.gov.in/gr_private_parks_2015,GR Private Industrial Park Scheme 2015,DNS 11001,FAIL - Host domain unreachable
+8,https://vibrantgujarat.com/mou_records,Vibrant Gujarat Global Summit DPR,HTTP 403,FAIL - Access forbidden/restricted
+9,https://gidc.gujarat.gov.in/allotmentprice,GIDC FY 2026-27 Rate Sheet,HTTP 200,SUCCESS - Active official portal page
+10,https://gidc.gujarat.gov.in/pdf/Circular/CIRCULAR-ALLOTMENT-PRICE.pdf,GIDC Price Circular 01/04/2016,HTTP 200,SUCCESS - Active official PDF (2.56 MB)
+11,https://gidc.gujarat.gov.in/pdf/June%202022%20GIDC%20Sanand%20Industrial%20Estate.pdf,Sanand Estate Circular 2022-23,HTTP 200,SUCCESS - Active official PDF
+12,https://gidc.gujarat.gov.in/pdf/allotment-price/allotment-price-2004-2005.pdf,GIDC Circular NO: GIDC/O&m/CIR/ACCTTS/REV/6,HTTP 200,SUCCESS - Active official PDF (2.46 MB)

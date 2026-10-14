@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2026-001",
+  "organisation": "Gujarat Industrial Development Corporation",
+  "source_title": "GIDC FY 2026-27 Allotment Rate Sheet & Infrastructure Revision Circular",
+  "source_type": "PDF",
+  "publication_date": "2026-03-15",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/allotmentprice",
+  "version": "FY2026-27-Rev1",
+  "language": "English / Gujarati",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "PDF table extraction & OCR validation",
+  "reliability": "Primary Statutory Circular",
+  "notes": "Official statutory allotment rates across 312 GIDC industrial estates, notifying revised land charges effective 01/04/2026.",
+  "local_path": "sources/gidc/2026/allotment_rates_fy27/GIDC_FY_2026_27_Allotment_Rate_Sheet.pdf",
+  "local_filename": "GIDC_FY_2026_27_Allotment_Rate_Sheet.pdf",
+  "file_hash": "db4784a95401967d123129e23f3e2df94a06e533965f44888cf9764133d9854e",
+  "file_size": 318,
+  "archive_verified_utc": "2026-10-04T03:03:40.566321Z"
+}

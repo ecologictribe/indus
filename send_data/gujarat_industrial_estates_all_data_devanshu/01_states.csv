@@ -1,0 +1,20 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: states (States Master)
+# Table Order: Module 1 of 17 Core Schema Tables
+# Total Records: 1 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.175488Z
+# DATA SOURCE: Census of India / Government of Gujarat official administrative division code registry.
+# Description: Spatial root entity representing the State jurisdiction.
+# Primary Key: state_id
+# Foreign Key Constraints: None (Root Entity)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * state_id: Primary key identifier
+#   * state_name: Full official name of state (Gujarat)
+#   * state_code: ISO/Census 2-letter state abbreviation code ('GJ')
+# ==============================================================================
+
+state_id,state_name,state_code
+1,Gujarat,GJ

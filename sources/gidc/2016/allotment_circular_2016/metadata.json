@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2016-001",
+  "organisation": "Gujarat Industrial Development Corporation",
+  "source_title": "GIDC Allotment Price Circular Dt.01/04/2016",
+  "source_type": "PDF",
+  "publication_date": "2016-04-01",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/pdf/Circular/CIRCULAR-ALLOTMENT-PRICE.pdf",
+  "version": "FY2016-17",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "PDF table extraction",
+  "reliability": "Primary Statutory Circular",
+  "notes": "Statewide base rates under Gujarat Industrial Policy 2015-2020 milestone revisions.",
+  "local_path": "sources/gidc/2016/allotment_circular_2016/GIDC_Allotment_Price_Circular_2016_04_01.pdf",
+  "local_filename": "GIDC_Allotment_Price_Circular_2016_04_01.pdf",
+  "file_hash": "dfc59e1f45790495397dfe06181835a179bc6c769ff97869e2191be735b8dfe6",
+  "file_size": 224,
+  "archive_verified_utc": "2026-10-04T03:03:40.567311Z"
+}

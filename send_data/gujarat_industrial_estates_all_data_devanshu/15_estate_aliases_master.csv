@@ -1,0 +1,350 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: estate_aliases_master (Estate Aliases & Canonical Resolution Master)
+# Table Order: Module 15 of 17 Core Schema Tables
+# Total Records: 324 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.358975Z
+"# DATA SOURCE: GIDC Land Allotment Regulations, Historical Gazette Orders, and Revenue Department Village Survey Indexes."
+"# Description: Cross-reference entity resolution mapping canonical estate names to historical designations, former phase titles, and GIDC regional administrative codes."
+# Primary Key: alias_id
+# Foreign Key Constraints: park_id -> industrial_parks(park_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * alias_id: Primary key identifier
+#   * park_id: Foreign key reference to industrial_parks
+#   * canonical_name: Standardized primary estate title
+#   * historical_name: Historical or alternate documentation title
+#   * district_name: District jurisdiction
+#   * taluka_name: Taluka / Tehsil jurisdiction
+"#   * phase: Specific development phase (Phase-I, Phase-II Bol, MSME Park, PCPIR Zone)"
+#   * parent_estate: Parent industrial estate
+#   * former_name: Previous historical name prior to expansion or renaming
+#   * gidc_code: Official GIDC internal administrative estate code
+# ==============================================================================
+
+alias_id,park_id,canonical_name,historical_name,district_name,taluka_name,phase,parent_estate,former_name,gidc_code
+1,1,GIDC Apparel Park (Ambica Mill),GIDC Apparel Park (Ambica Mill),Ahmedabad,Apparel Park,Phase-I,GIDC Apparel Park (Ambica Mill),GIDC Apparel Park (Ambica Mill),GIDC-AHM-001
+2,2,GIDC Behrampura,GIDC Behrampura,Ahmedabad,Behrampura,Phase-I,GIDC Behrampura,GIDC Behrampura,GIDC-AHM-002
+3,3,GIDC Bhagapura (Tentative),GIDC Bhagapura (Tentative),Ahmedabad,Bhagapura,Phase-I,GIDC Bhagapura (Tentative),GIDC Bhagapura (Tentative),GIDC-AHM-003
+4,4,GIDC Chharodi,GIDC Chharodi,Ahmedabad,Chharodi,Phase-I,GIDC Chharodi,GIDC Chharodi,GIDC-AHM-004
+5,5,GIDC Dhandhuka,GIDC Dhandhuka,Ahmedabad,Dhandhuka,Phase-I,GIDC Dhandhuka,GIDC Dhandhuka,GIDC-AHM-005
+6,6,GIDC Dholka,GIDC Dholka,Ahmedabad,Dholka,Phase-I,GIDC Dholka,GIDC Dholka,GIDC-AHM-006
+7,7,GIDC Kathwada,GIDC Kathwada,Ahmedabad,Kathwada,Phase-I,GIDC Kathwada,GIDC Kathwada,GIDC-AHM-007
+8,8,GIDC Kerala (Bavla),GIDC Kerala (Bavla),Ahmedabad,Kerala,Phase-I,GIDC Kerala (Bavla),GIDC Kerala (Bavla),GIDC-AHM-008
+9,9,GIDC Khoraj (Tentative),GIDC Khoraj (Tentative),Ahmedabad,Khoraj,Phase-I,GIDC Khoraj (Tentative),GIDC Khoraj (Tentative),GIDC-AHM-009
+10,10,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-I,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-I,Ahmedabad,Mandal Vitthalapur,Phase-I,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-I,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-I,GIDC-AHM-010
+11,11,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-II,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-II,Ahmedabad,Mandal Vitthalapur,Phase-I,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-II,GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-II,GIDC-AHM-011
+12,12,GIDC Naroda,GIDC Naroda,Ahmedabad,Naroda,Phase-I,GIDC Naroda,GIDC Naroda,GIDC-AHM-012
+13,13,GIDC Naroda (Housing to Industrial Area),GIDC Naroda (Housing to Industrial Area),Ahmedabad,Naroda,Phase-I,GIDC Naroda (Housing to Industrial Area),GIDC Naroda (Housing to Industrial Area),GIDC-AHM-013
+14,14,GIDC Odhav,GIDC Odhav,Ahmedabad,Odhav,Phase-I,GIDC Odhav,GIDC Odhav,GIDC-AHM-014
+15,15,GIDC Sanand (RIDC),GIDC Sanand (RIDC),Ahmedabad,Sanand,Phase-I,GIDC Sanand (RIDC),GIDC Sanand (RIDC),GIDC-AHM-015
+16,15,GIDC Sanand (RIDC),Sanand-II (Bol),Ahmedabad,Sanand,Phase-II (Bol),Sanand GIDC,Sanand RIDC,GIDC-AHM-015-B
+17,15,GIDC Sanand (RIDC),Sanand MSME Park,Ahmedabad,Sanand,MSME Phase,Sanand GIDC,Sanand Ancillary,GIDC-AHM-015-M
+18,16,GIDC Sanand-II (Bol),GIDC Sanand-II (Bol),Ahmedabad,Sanand,Phase-I,GIDC Sanand-II (Bol),GIDC Sanand-II (Bol),GIDC-AHM-016
+19,16,GIDC Sanand-II (Bol),Sanand-II (Bol),Ahmedabad,Sanand,Phase-II (Bol),Sanand GIDC,Sanand RIDC,GIDC-AHM-016-B
+20,16,GIDC Sanand-II (Bol),Sanand MSME Park,Ahmedabad,Sanand,MSME Phase,Sanand GIDC,Sanand Ancillary,GIDC-AHM-016-M
+21,17,GIDC Sanand-II (Bol) MSME Park (Tentative),GIDC Sanand-II (Bol) MSME Park (Tentative),Ahmedabad,Sanand,Phase-I,GIDC Sanand-II (Bol) MSME Park (Tentative),GIDC Sanand-II (Bol) MSME Park (Tentative),GIDC-AHM-017
+22,17,GIDC Sanand-II (Bol) MSME Park (Tentative),Sanand-II (Bol),Ahmedabad,Sanand,Phase-II (Bol),Sanand GIDC,Sanand RIDC,GIDC-AHM-017-B
+23,17,GIDC Sanand-II (Bol) MSME Park (Tentative),Sanand MSME Park,Ahmedabad,Sanand,MSME Phase,Sanand GIDC,Sanand Ancillary,GIDC-AHM-017-M
+24,18,GIDC Sanand-II Women Park,GIDC Sanand-II Women Park,Ahmedabad,Sanand Women Park,Phase-I,GIDC Sanand-II Women Park,GIDC Sanand-II Women Park,GIDC-AHM-018
+25,18,GIDC Sanand-II Women Park,Sanand-II (Bol),Ahmedabad,Sanand Women Park,Phase-II (Bol),Sanand GIDC,Sanand RIDC,GIDC-AHM-018-B
+26,18,GIDC Sanand-II Women Park,Sanand MSME Park,Ahmedabad,Sanand Women Park,MSME Phase,Sanand GIDC,Sanand Ancillary,GIDC-AHM-018-M
+27,19,GIDC Vatva,GIDC Vatva,Ahmedabad,Vatva,Phase-I,GIDC Vatva,GIDC Vatva,GIDC-AHM-019
+28,19,GIDC Vatva,Vatva Phase-IV Extension,Ahmedabad,Vatva,Phase-IV,Vatva,Old Vatva Chemical Zone,GIDC-AHM-019-EXT
+29,20,GIDC Viramgam,GIDC Viramgam,Ahmedabad,Viramgam,Phase-I,GIDC Viramgam,GIDC Viramgam,GIDC-AHM-020
+30,21,GIDC Bavla,GIDC Bavla,Ahmedabad,Bavla,Phase-I,GIDC Bavla,GIDC Bavla,GIDC-AHM-021
+31,22,GIDC Changodar,GIDC Changodar,Ahmedabad,Changodar,Phase-I,GIDC Changodar,GIDC Changodar,GIDC-AHM-022
+32,23,GIDC Hansalpur,GIDC Hansalpur,Ahmedabad,Hansalpur,Phase-I,GIDC Hansalpur,GIDC Hansalpur,GIDC-AHM-023
+33,24,GIDC Hanspura (Naroda) Housing,GIDC Hanspura (Naroda) Housing,Ahmedabad,Hanspura,Phase-I,GIDC Hanspura (Naroda) Housing,GIDC Hanspura (Naroda) Housing,GIDC-AHM-024
+34,25,GIDC Bhat,GIDC Bhat,Gandhinagar,Bhat,Phase-I,GIDC Bhat,GIDC Bhat,GIDC-GAN-025
+35,26,GIDC Dehgam,GIDC Dehgam,Gandhinagar,Dehgam,Phase-I,GIDC Dehgam,GIDC Dehgam,GIDC-GAN-026
+36,27,GIDC Gandhinagar (Electronics Estate),GIDC Gandhinagar (Electronics Estate),Gandhinagar,Gandhinagar,Phase-I,GIDC Gandhinagar (Electronics Estate),GIDC Gandhinagar (Electronics Estate),GIDC-GAN-027
+37,28,GIDC Gandhinagar (Engineering Estate),GIDC Gandhinagar (Engineering Estate),Gandhinagar,Gandhinagar,Phase-I,GIDC Gandhinagar (Engineering Estate),GIDC Gandhinagar (Engineering Estate),GIDC-GAN-028
+38,29,GIDC Gandhinagar (IT SEZ),GIDC Gandhinagar (IT SEZ),Gandhinagar,Gandhinagar,Phase-I,GIDC Gandhinagar (IT SEZ),GIDC Gandhinagar (IT SEZ),GIDC-GAN-029
+39,30,GIDC Gandhinagar (SEZ),GIDC Gandhinagar (SEZ),Gandhinagar,Gandhinagar,Phase-I,GIDC Gandhinagar (SEZ),GIDC Gandhinagar (SEZ),GIDC-GAN-030
+40,31,GIDC Mansa,GIDC Mansa,Gandhinagar,Mansa,Phase-I,GIDC Mansa,GIDC Mansa,GIDC-GAN-031
+41,32,"GIDC Mega IT Park, Gandhinagar","GIDC Mega IT Park, Gandhinagar",Gandhinagar,Mega It Park Gandhinagar,Phase-I,"GIDC Mega IT Park, Gandhinagar","GIDC Mega IT Park, Gandhinagar",GIDC-GAN-032
+42,33,GIDC Himatnagar,GIDC Himatnagar,Sabarkantha,Himatnagar,Phase-I,GIDC Himatnagar,GIDC Himatnagar,GIDC-SAB-033
+43,34,GIDC Idar,GIDC Idar,Sabarkantha,Idar,Phase-I,GIDC Idar,GIDC Idar,GIDC-SAB-034
+44,35,GIDC Khedbrahma,GIDC Khedbrahma,Sabarkantha,Khedbrahma,Phase-I,GIDC Khedbrahma,GIDC Khedbrahma,GIDC-SAB-035
+45,36,GIDC Talod,GIDC Talod,Sabarkantha,Talod,Phase-I,GIDC Talod,GIDC Talod,GIDC-SAB-036
+46,37,GIDC Vijaynagar,GIDC Vijaynagar,Sabarkantha,Vijaynagar,Phase-I,GIDC Vijaynagar,GIDC Vijaynagar,GIDC-SAB-037
+47,38,GIDC Bhiloda,GIDC Bhiloda,Aravalli,Bhiloda,Phase-I,GIDC Bhiloda,GIDC Bhiloda,GIDC-ARA-038
+48,39,GIDC Malpur (RIDC),GIDC Malpur (RIDC),Aravalli,Malpur,Phase-I,GIDC Malpur (RIDC),GIDC Malpur (RIDC),GIDC-ARA-039
+49,40,GIDC Modasa,GIDC Modasa,Aravalli,Modasa,Phase-I,GIDC Modasa,GIDC Modasa,GIDC-ARA-040
+50,41,GIDC Modasa-II,GIDC Modasa-II,Aravalli,Modasa,Phase-I,GIDC Modasa-II,GIDC Modasa-II,GIDC-ARA-041
+51,42,GIDC Shinavada MSME (Tentative),GIDC Shinavada MSME (Tentative),Aravalli,Shinavada Msme,Phase-I,GIDC Shinavada MSME (Tentative),GIDC Shinavada MSME (Tentative),GIDC-ARA-042
+52,43,GIDC Meghraj,GIDC Meghraj,Aravalli,Meghraj,Phase-I,GIDC Meghraj,GIDC Meghraj,GIDC-ARA-043
+53,44,GIDC Dhansura,GIDC Dhansura,Aravalli,Dhansura,Phase-I,GIDC Dhansura,GIDC Dhansura,GIDC-ARA-044
+54,45,GIDC Aithor MSME (Tentative),GIDC Aithor MSME (Tentative),Mehsana,Aithor Msme,Phase-I,GIDC Aithor MSME (Tentative),GIDC Aithor MSME (Tentative),GIDC-MEH-045
+55,46,GIDC Aithor Non-MSME (Tentative),GIDC Aithor Non-MSME (Tentative),Mehsana,Aithor Non Msme,Phase-I,GIDC Aithor Non-MSME (Tentative),GIDC Aithor Non-MSME (Tentative),GIDC-MEH-046
+56,47,GIDC Chanasma,GIDC Chanasma,Mehsana,Chanasma,Phase-I,GIDC Chanasma,GIDC Chanasma,GIDC-MEH-047
+57,48,GIDC Chhatral,GIDC Chhatral,Mehsana,Chhatral,Phase-I,GIDC Chhatral,GIDC Chhatral,GIDC-MEH-048
+58,49,GIDC Gozaria,GIDC Gozaria,Mehsana,Gozaria,Phase-I,GIDC Gozaria,GIDC Gozaria,GIDC-MEH-049
+59,50,GIDC IFFCO Estate (Kadi),GIDC IFFCO Estate (Kadi),Mehsana,Iffco Estate,Phase-I,GIDC IFFCO Estate (Kadi),GIDC IFFCO Estate (Kadi),GIDC-MEH-050
+60,51,GIDC Kadi,GIDC Kadi,Mehsana,Kadi,Phase-I,GIDC Kadi,GIDC Kadi,GIDC-MEH-051
+61,52,GIDC Kalol (N.G.),GIDC Kalol (N.G.),Mehsana,Kalol,Phase-I,GIDC Kalol (N.G.),GIDC Kalol (N.G.),GIDC-MEH-052
+62,53,GIDC Kheralu,GIDC Kheralu,Mehsana,Kheralu,Phase-I,GIDC Kheralu,GIDC Kheralu,GIDC-MEH-053
+63,54,GIDC Kukarwada,GIDC Kukarwada,Mehsana,Kukarwada,Phase-I,GIDC Kukarwada,GIDC Kukarwada,GIDC-MEH-054
+64,55,GIDC Lanva,GIDC Lanva,Mehsana,Lanva,Phase-I,GIDC Lanva,GIDC Lanva,GIDC-MEH-055
+65,56,GIDC Mehsana-I (Dediyasan),GIDC Mehsana-I (Dediyasan),Mehsana,Mehsana,Phase-I,GIDC Mehsana-I (Dediyasan),GIDC Mehsana-I (Dediyasan),GIDC-MEH-056
+66,57,GIDC Mehsana-II,GIDC Mehsana-II,Mehsana,Mehsana,Phase-I,GIDC Mehsana-II,GIDC Mehsana-II,GIDC-MEH-057
+67,58,GIDC Ranasan,GIDC Ranasan,Mehsana,Ranasan,Phase-I,GIDC Ranasan,GIDC Ranasan,GIDC-MEH-058
+68,59,GIDC Unjha,GIDC Unjha,Mehsana,Unjha,Phase-I,GIDC Unjha,GIDC Unjha,GIDC-MEH-059
+69,60,GIDC Visnagar,GIDC Visnagar,Mehsana,Visnagar,Phase-I,GIDC Visnagar,GIDC Visnagar,GIDC-MEH-060
+70,61,GIDC Balisana,GIDC Balisana,Patan,Balisana,Phase-I,GIDC Balisana,GIDC Balisana,GIDC-PAT-061
+71,62,GIDC Charup,GIDC Charup,Patan,Charup,Phase-I,GIDC Charup,GIDC Charup,GIDC-PAT-062
+72,63,GIDC Harij,GIDC Harij,Patan,Harij,Phase-I,GIDC Harij,GIDC Harij,GIDC-PAT-063
+73,64,GIDC Patan,GIDC Patan,Patan,Patan,Phase-I,GIDC Patan,GIDC Patan,GIDC-PAT-064
+74,65,GIDC Radhanpur,GIDC Radhanpur,Patan,Radhanpur,Phase-I,GIDC Radhanpur,GIDC Radhanpur,GIDC-PAT-065
+75,66,GIDC Sami,GIDC Sami,Patan,Sami,Phase-I,GIDC Sami,GIDC Sami,GIDC-PAT-066
+76,67,GIDC Sidhpur,GIDC Sidhpur,Patan,Sidhpur,Phase-I,GIDC Sidhpur,GIDC Sidhpur,GIDC-PAT-067
+77,68,GIDC Ambaji,GIDC Ambaji,Banaskantha,Ambaji,Phase-I,GIDC Ambaji,GIDC Ambaji,GIDC-BAN-068
+78,69,GIDC Amirgadh (as-is-where-is),GIDC Amirgadh (as-is-where-is),Banaskantha,Amirgadh,Phase-I,GIDC Amirgadh (as-is-where-is),GIDC Amirgadh (as-is-where-is),GIDC-BAN-069
+79,70,GIDC Chandisar,GIDC Chandisar,Banaskantha,Chandisar,Phase-I,GIDC Chandisar,GIDC Chandisar,GIDC-BAN-070
+80,71,GIDC Chhapi,GIDC Chhapi,Banaskantha,Chhapi,Phase-I,GIDC Chhapi,GIDC Chhapi,GIDC-BAN-071
+81,72,GIDC Deesa,GIDC Deesa,Banaskantha,Deesa,Phase-I,GIDC Deesa,GIDC Deesa,GIDC-BAN-072
+82,73,GIDC Deodar,GIDC Deodar,Banaskantha,Deodar,Phase-I,GIDC Deodar,GIDC Deodar,GIDC-BAN-073
+83,74,GIDC Mudetha Agro Food Park (Tentative),GIDC Mudetha Agro Food Park (Tentative),Banaskantha,Mudetha Agro Food Park,Phase-I,GIDC Mudetha Agro Food Park (Tentative),GIDC Mudetha Agro Food Park (Tentative),GIDC-BAN-074
+84,75,GIDC Palanpur,GIDC Palanpur,Banaskantha,Palanpur,Phase-I,GIDC Palanpur,GIDC Palanpur,GIDC-BAN-075
+85,76,GIDC Sihori (RIDC),GIDC Sihori (RIDC),Banaskantha,Sihori,Phase-I,GIDC Sihori (RIDC),GIDC Sihori (RIDC),GIDC-BAN-076
+86,77,GIDC Borsad,GIDC Borsad,Anand,Borsad,Phase-I,GIDC Borsad,GIDC Borsad,GIDC-ANA-077
+87,78,GIDC Indranaj MSME (Tentative),GIDC Indranaj MSME (Tentative),Anand,Indranaj Msme,Phase-I,GIDC Indranaj MSME (Tentative),GIDC Indranaj MSME (Tentative),GIDC-ANA-078
+88,79,GIDC Indranaj Non-MSME (Tentative),GIDC Indranaj Non-MSME (Tentative),Anand,Indranaj Non Msme,Phase-I,GIDC Indranaj Non-MSME (Tentative),GIDC Indranaj Non-MSME (Tentative),GIDC-ANA-079
+89,80,GIDC Khambhat (Cambay),GIDC Khambhat (Cambay),Anand,Khambhat,Phase-I,GIDC Khambhat (Cambay),GIDC Khambhat (Cambay),GIDC-ANA-080
+90,81,GIDC Ode,GIDC Ode,Anand,Ode,Phase-I,GIDC Ode,GIDC Ode,GIDC-ANA-081
+91,82,GIDC Petlad,GIDC Petlad,Anand,Petlad,Phase-I,GIDC Petlad,GIDC Petlad,GIDC-ANA-082
+92,83,GIDC Sojitra,GIDC Sojitra,Anand,Sojitra,Phase-I,GIDC Sojitra,GIDC Sojitra,GIDC-ANA-083
+93,84,GIDC Umreth,GIDC Umreth,Anand,Umreth,Phase-I,GIDC Umreth,GIDC Umreth,GIDC-ANA-084
+94,85,GIDC Vitthal Udyognagar (V.U. Nagar),GIDC Vitthal Udyognagar (V.U. Nagar),Anand,Vitthal Udyognagar,Phase-I,GIDC Vitthal Udyognagar (V.U. Nagar),GIDC Vitthal Udyognagar (V.U. Nagar),GIDC-ANA-085
+95,86,GIDC Kapadwanj,GIDC Kapadwanj,Kheda,Kapadwanj,Phase-I,GIDC Kapadwanj,GIDC Kapadwanj,GIDC-KHE-086
+96,87,GIDC Matar,GIDC Matar,Kheda,Matar,Phase-I,GIDC Matar,GIDC Matar,GIDC-KHE-087
+97,88,GIDC Nadiad (Bansaw Mill) (as-is-where-is),GIDC Nadiad (Bansaw Mill) (as-is-where-is),Kheda,Nadiad,Phase-I,GIDC Nadiad (Bansaw Mill) (as-is-where-is),GIDC Nadiad (Bansaw Mill) (as-is-where-is),GIDC-KHE-088
+98,89,GIDC Nadiad Phase-I,GIDC Nadiad Phase-I,Kheda,Nadiad,Phase-I,GIDC Nadiad Phase-I,GIDC Nadiad Phase-I,GIDC-KHE-089
+99,90,GIDC Nadiad Phase-II (Kamla),GIDC Nadiad Phase-II (Kamla),Kheda,Nadiad,Phase-I,GIDC Nadiad Phase-II (Kamla),GIDC Nadiad Phase-II (Kamla),GIDC-KHE-090
+100,91,GIDC Thasra,GIDC Thasra,Kheda,Thasra,Phase-I,GIDC Thasra,GIDC Thasra,GIDC-KHE-091
+101,92,GIDC Balasinor,GIDC Balasinor,Mahisagar,Balasinor,Phase-I,GIDC Balasinor,GIDC Balasinor,GIDC-MAH-092
+102,93,GIDC Dabhoi,GIDC Dabhoi,Vadodara,Dabhoi,Phase-I,GIDC Dabhoi,GIDC Dabhoi,GIDC-VAD-093
+103,94,GIDC Makarpura,GIDC Makarpura,Vadodara,Makarpura,Phase-I,GIDC Makarpura,GIDC Makarpura,GIDC-VAD-094
+104,95,GIDC Nandesari,GIDC Nandesari,Vadodara,Nandesari,Phase-I,GIDC Nandesari,GIDC Nandesari,GIDC-VAD-095
+105,96,GIDC PCC (Petro-Chemical Complex) Estate,GIDC PCC (Petro-Chemical Complex) Estate,Vadodara,Pcc,Phase-I,GIDC PCC (Petro-Chemical Complex) Estate,GIDC PCC (Petro-Chemical Complex) Estate,GIDC-VAD-096
+106,97,GIDC Por-Ramangamdi,GIDC Por-Ramangamdi,Vadodara,Por Ramangamdi,Phase-I,GIDC Por-Ramangamdi,GIDC Por-Ramangamdi,GIDC-VAD-097
+107,98,GIDC Ranoli (Autonagar),GIDC Ranoli (Autonagar),Vadodara,Ranoli,Phase-I,GIDC Ranoli (Autonagar),GIDC Ranoli (Autonagar),GIDC-VAD-098
+108,99,GIDC Savli (EPIP),GIDC Savli (EPIP),Vadodara,Savli,Phase-I,GIDC Savli (EPIP),GIDC Savli (EPIP),GIDC-VAD-099
+109,100,GIDC Savli (General),GIDC Savli (General),Vadodara,Savli,Phase-I,GIDC Savli (General),GIDC Savli (General),GIDC-VAD-100
+110,101,GIDC Savli Biotech Park (SEZ),GIDC Savli Biotech Park (SEZ),Vadodara,Savli Biotech Park,Phase-I,GIDC Savli Biotech Park (SEZ),GIDC Savli Biotech Park (SEZ),GIDC-VAD-101
+111,102,GIDC Vaghodia,GIDC Vaghodia,Vadodara,Vaghodia,Phase-I,GIDC Vaghodia,GIDC Vaghodia,GIDC-VAD-102
+112,103,GIDC Vadsar (Gujarat Tractor),GIDC Vadsar (Gujarat Tractor),Vadodara,Vadsar,Phase-I,GIDC Vadsar (Gujarat Tractor),GIDC Vadsar (Gujarat Tractor),GIDC-VAD-103
+113,104,GIDC Pavi Jetpur (RIDC),GIDC Pavi Jetpur (RIDC),Chhota Udepur,Pavi Jetpur,Phase-I,GIDC Pavi Jetpur (RIDC),GIDC Pavi Jetpur (RIDC),GIDC-CHH-104
+114,105,GIDC Sankheda,GIDC Sankheda,Chhota Udepur,Sankheda,Phase-I,GIDC Sankheda,GIDC Sankheda,GIDC-CHH-105
+115,106,GIDC Godhra,GIDC Godhra,Panchmahal,Godhra,Phase-I,GIDC Godhra,GIDC Godhra,GIDC-PAN-106
+116,107,GIDC Halol,GIDC Halol,Panchmahal,Halol,Phase-I,GIDC Halol,GIDC Halol,GIDC-PAN-107
+117,108,GIDC Halol (New),GIDC Halol (New),Panchmahal,Halol,Phase-I,GIDC Halol (New),GIDC Halol (New),GIDC-PAN-108
+118,109,GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative),GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative),Panchmahal,Halol Expansion Halol 2 Maswad Msme Park,Phase-I,GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative),GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative),GIDC-PAN-109
+119,110,GIDC Jambughoda (RIDC),GIDC Jambughoda (RIDC),Panchmahal,Jambughoda,Phase-I,GIDC Jambughoda (RIDC),GIDC Jambughoda (RIDC),GIDC-PAN-110
+120,111,GIDC Kalol (Panchmahal),GIDC Kalol (Panchmahal),Panchmahal,Kalol,Phase-I,GIDC Kalol (Panchmahal),GIDC Kalol (Panchmahal),GIDC-PAN-111
+121,112,GIDC Sehra,GIDC Sehra,Panchmahal,Sehra,Phase-I,GIDC Sehra,GIDC Sehra,GIDC-PAN-112
+122,113,GIDC Dahod-I,GIDC Dahod-I,Dahod,Dahod,Phase-I,GIDC Dahod-I,GIDC Dahod-I,GIDC-DAH-113
+123,114,GIDC Dahod-II,GIDC Dahod-II,Dahod,Dahod,Phase-I,GIDC Dahod-II,GIDC Dahod-II,GIDC-DAH-114
+124,115,GIDC Dahod-II (Kharedi) Expansion (Tentative),GIDC Dahod-II (Kharedi) Expansion (Tentative),Dahod,Dahod,Phase-I,GIDC Dahod-II (Kharedi) Expansion (Tentative),GIDC Dahod-II (Kharedi) Expansion (Tentative),GIDC-DAH-115
+125,116,GIDC Devgadhbariya (Asaydi),GIDC Devgadhbariya (Asaydi),Dahod,Devgadhbariya,Phase-I,GIDC Devgadhbariya (Asaydi),GIDC Devgadhbariya (Asaydi),GIDC-DAH-116
+126,117,GIDC Ankleshwar,GIDC Ankleshwar,Bharuch,Ankleshwar,Phase-I,GIDC Ankleshwar,GIDC Ankleshwar,GIDC-BHA-117
+127,118,GIDC Ankleshwar-IV,GIDC Ankleshwar-IV,Bharuch,Ankleshwar,Phase-I,GIDC Ankleshwar-IV,GIDC Ankleshwar-IV,GIDC-BHA-118
+128,119,GIDC Atali (Tentative),GIDC Atali (Tentative),Bharuch,Atali,Phase-I,GIDC Atali (Tentative),GIDC Atali (Tentative),GIDC-BHA-119
+129,120,GIDC Bharuch,GIDC Bharuch,Bharuch,Bharuch,Phase-I,GIDC Bharuch,GIDC Bharuch,GIDC-BHA-120
+130,121,GIDC Borkhadi,GIDC Borkhadi,Bharuch,Borkhadi,Phase-I,GIDC Borkhadi,GIDC Borkhadi,GIDC-BHA-121
+131,122,GIDC Dahej,GIDC Dahej,Bharuch,Dahej,Phase-I,GIDC Dahej,GIDC Dahej,GIDC-BHA-122
+132,122,GIDC Dahej,Dahej PCPIR Region,Bharuch,Dahej,SEZ Phase,Dahej Estate,Dahej Marine Industrial Zone,GIDC-BHA-122-PCP
+133,123,GIDC Dahej-II,GIDC Dahej-II,Bharuch,Dahej,Phase-I,GIDC Dahej-II,GIDC Dahej-II,GIDC-BHA-123
+134,123,GIDC Dahej-II,Dahej PCPIR Region,Bharuch,Dahej,SEZ Phase,Dahej Estate,Dahej Marine Industrial Zone,GIDC-BHA-123-PCP
+135,124,GIDC Dahej-III,GIDC Dahej-III,Bharuch,Dahej,Phase-I,GIDC Dahej-III,GIDC Dahej-III,GIDC-BHA-124
+136,124,GIDC Dahej-III,Dahej PCPIR Region,Bharuch,Dahej,SEZ Phase,Dahej Estate,Dahej Marine Industrial Zone,GIDC-BHA-124-PCP
+137,125,GIDC Dungari,GIDC Dungari,Bharuch,Dungari,Phase-I,GIDC Dungari,GIDC Dungari,GIDC-BHA-125
+138,126,GIDC Hansot,GIDC Hansot,Bharuch,Hansot,Phase-I,GIDC Hansot,GIDC Hansot,GIDC-BHA-126
+139,127,GIDC Jambusar (RIDC),GIDC Jambusar (RIDC),Bharuch,Jambusar,Phase-I,GIDC Jambusar (RIDC),GIDC Jambusar (RIDC),GIDC-BHA-127
+140,128,GIDC Jhagadia,GIDC Jhagadia,Bharuch,Jhagadia,Phase-I,GIDC Jhagadia,GIDC Jhagadia,GIDC-BHA-128
+141,129,GIDC Juned,GIDC Juned,Bharuch,Juned,Phase-I,GIDC Juned,GIDC Juned,GIDC-BHA-129
+142,130,GIDC Kanerao,GIDC Kanerao,Bharuch,Kanerao,Phase-I,GIDC Kanerao,GIDC Kanerao,GIDC-BHA-130
+143,131,GIDC Kharchi (Jhagadia Phase-II),GIDC Kharchi (Jhagadia Phase-II),Bharuch,Kharchi,Phase-I,GIDC Kharchi (Jhagadia Phase-II),GIDC Kharchi (Jhagadia Phase-II),GIDC-BHA-131
+144,132,GIDC Nabhipur,GIDC Nabhipur,Bharuch,Nabhipur,Phase-I,GIDC Nabhipur,GIDC Nabhipur,GIDC-BHA-132
+145,133,GIDC Palej,GIDC Palej,Bharuch,Palej,Phase-I,GIDC Palej,GIDC Palej,GIDC-BHA-133
+146,134,GIDC Panoli,GIDC Panoli,Bharuch,Panoli,Phase-I,GIDC Panoli,GIDC Panoli,GIDC-BHA-134
+147,135,GIDC Saykha,GIDC Saykha,Bharuch,Saykha,Phase-I,GIDC Saykha,GIDC Saykha,GIDC-BHA-135
+148,136,GIDC Saykha (Juned) MSME Park (Tentative),GIDC Saykha (Juned) MSME Park (Tentative),Bharuch,Saykha,Phase-I,GIDC Saykha (Juned) MSME Park (Tentative),GIDC Saykha (Juned) MSME Park (Tentative),GIDC-BHA-136
+149,137,GIDC Saykha Women Park (Tentative),GIDC Saykha Women Park (Tentative),Bharuch,Saykha Women Park,Phase-I,GIDC Saykha Women Park (Tentative),GIDC Saykha Women Park (Tentative),GIDC-BHA-137
+150,138,GIDC Tilakwada (as-is-where-is),GIDC Tilakwada (as-is-where-is),Bharuch,Tilakwada,Phase-I,GIDC Tilakwada (as-is-where-is),GIDC Tilakwada (as-is-where-is),GIDC-BHA-138
+151,139,GIDC Vagra (RIDC),GIDC Vagra (RIDC),Bharuch,Vagra,Phase-I,GIDC Vagra (RIDC),GIDC Vagra (RIDC),GIDC-BHA-139
+152,140,GIDC Valia (as-is-where-is),GIDC Valia (as-is-where-is),Bharuch,Valia,Phase-I,GIDC Valia (as-is-where-is),GIDC Valia (as-is-where-is),GIDC-BHA-140
+153,141,GIDC Vilayat,GIDC Vilayat,Bharuch,Vilayat,Phase-I,GIDC Vilayat,GIDC Vilayat,GIDC-BHA-141
+154,142,GIDC Dediyapada (RIDC),GIDC Dediyapada (RIDC),Narmada,Dediyapada,Phase-I,GIDC Dediyapada (RIDC),GIDC Dediyapada (RIDC),GIDC-NAR-142
+155,143,GIDC Rajpipla,GIDC Rajpipla,Narmada,Rajpipla,Phase-I,GIDC Rajpipla,GIDC Rajpipla,GIDC-NAR-143
+156,144,GIDC Sagbara (as-is-where-is),GIDC Sagbara (as-is-where-is),Narmada,Sagbara,Phase-I,GIDC Sagbara (as-is-where-is),GIDC Sagbara (as-is-where-is),GIDC-NAR-144
+157,145,GIDC Apparel Park - Sachin (SEZ),GIDC Apparel Park - Sachin (SEZ),Surat,Apparel Park Sachin,Phase-I,GIDC Apparel Park - Sachin (SEZ),GIDC Apparel Park - Sachin (SEZ),GIDC-SUR-145
+158,146,GIDC Hajira (as-is-where-is),GIDC Hajira (as-is-where-is),Surat,Hajira,Phase-I,GIDC Hajira (as-is-where-is),GIDC Hajira (as-is-where-is),GIDC-SUR-146
+159,147,GIDC Ichchapore (Bhatpor),GIDC Ichchapore (Bhatpor),Surat,Ichchapore,Phase-I,GIDC Ichchapore (Bhatpor),GIDC Ichchapore (Bhatpor),GIDC-SUR-147
+160,148,GIDC Katargam,GIDC Katargam,Surat,Katargam,Phase-I,GIDC Katargam,GIDC Katargam,GIDC-SUR-148
+161,149,GIDC Khatodara,GIDC Khatodara,Surat,Khatodara,Phase-I,GIDC Khatodara,GIDC Khatodara,GIDC-SUR-149
+162,150,GIDC Miyawadi (Tentative),GIDC Miyawadi (Tentative),Surat,Miyawadi,Phase-I,GIDC Miyawadi (Tentative),GIDC Miyawadi (Tentative),GIDC-SUR-150
+163,151,GIDC Miyawadi MSME / Women Development Park (Tentative),GIDC Miyawadi MSME / Women Development Park (Tentative),Surat,Miyawadi Msme Women Development Park,Phase-I,GIDC Miyawadi MSME / Women Development Park (Tentative),GIDC Miyawadi MSME / Women Development Park (Tentative),GIDC-SUR-151
+164,152,GIDC Olpad,GIDC Olpad,Surat,Olpad,Phase-I,GIDC Olpad,GIDC Olpad,GIDC-SUR-152
+165,153,GIDC Pandesara,GIDC Pandesara,Surat,Pandesara,Phase-I,GIDC Pandesara,GIDC Pandesara,GIDC-SUR-153
+166,154,GIDC Sachin,GIDC Sachin,Surat,Sachin,Phase-I,GIDC Sachin,GIDC Sachin,GIDC-SUR-154
+167,155,GIDC Gavier-Magdalla,GIDC Gavier-Magdalla,Surat,Gavier Magdalla,Phase-I,GIDC Gavier-Magdalla,GIDC Gavier-Magdalla,GIDC-SUR-155
+168,156,GIDC Kawas,GIDC Kawas,Surat,Kawas,Phase-I,GIDC Kawas,GIDC Kawas,GIDC-SUR-156
+169,157,GIDC Kawas-II,GIDC Kawas-II,Surat,Kawas,Phase-I,GIDC Kawas-II,GIDC Kawas-II,GIDC-SUR-157
+170,158,GIDC Bardoli,GIDC Bardoli,Tapi,Bardoli,Phase-I,GIDC Bardoli,GIDC Bardoli,GIDC-TAP-158
+171,159,GIDC Doswada (as-is-where-is),GIDC Doswada (as-is-where-is),Tapi,Doswada,Phase-I,GIDC Doswada (as-is-where-is),GIDC Doswada (as-is-where-is),GIDC-TAP-159
+172,160,GIDC Nizar (Tentative),GIDC Nizar (Tentative),Tapi,Nizar,Phase-I,GIDC Nizar (Tentative),GIDC Nizar (Tentative),GIDC-TAP-160
+173,161,GIDC Valod (as-is-where-is),GIDC Valod (as-is-where-is),Tapi,Valod,Phase-I,GIDC Valod (as-is-where-is),GIDC Valod (as-is-where-is),GIDC-TAP-161
+174,162,GIDC Bhilad,GIDC Bhilad,Valsad,Bhilad,Phase-I,GIDC Bhilad,GIDC Bhilad,GIDC-VAL-162
+175,163,GIDC Dharampur-II,GIDC Dharampur-II,Valsad,Dharampur,Phase-I,GIDC Dharampur-II,GIDC Dharampur-II,GIDC-VAL-163
+176,164,GIDC Dungra,GIDC Dungra,Valsad,Dungra,Phase-I,GIDC Dungra,GIDC Dungra,GIDC-VAL-164
+177,165,GIDC Pardi,GIDC Pardi,Valsad,Pardi,Phase-I,GIDC Pardi,GIDC Pardi,GIDC-VAL-165
+178,166,GIDC Sarigam,GIDC Sarigam,Valsad,Sarigam,Phase-I,GIDC Sarigam,GIDC Sarigam,GIDC-VAL-166
+179,167,GIDC Umargam,GIDC Umargam,Valsad,Umargam,Phase-I,GIDC Umargam,GIDC Umargam,GIDC-VAL-167
+180,168,GIDC Valsad (Bulsar),GIDC Valsad (Bulsar),Valsad,Valsad,Phase-I,GIDC Valsad (Bulsar),GIDC Valsad (Bulsar),GIDC-VAL-168
+181,169,GIDC Vapi,GIDC Vapi,Valsad,Vapi,Phase-I,GIDC Vapi,GIDC Vapi,GIDC-VAL-169
+182,170,GIDC Bilimora,GIDC Bilimora,Navsari,Bilimora,Phase-I,GIDC Bilimora,GIDC Bilimora,GIDC-NAV-170
+183,171,GIDC Navsari,GIDC Navsari,Navsari,Navsari,Phase-I,GIDC Navsari,GIDC Navsari,GIDC-NAV-171
+184,172,GIDC Unai,GIDC Unai,Navsari,Unai,Phase-I,GIDC Unai,GIDC Unai,GIDC-NAV-172
+185,173,GIDC Bamanbore,GIDC Bamanbore,Surendranagar,Bamanbore,Phase-I,GIDC Bamanbore,GIDC Bamanbore,GIDC-SUR-173
+186,174,GIDC Chotila (RIDC),GIDC Chotila (RIDC),Surendranagar,Chotila,Phase-I,GIDC Chotila (RIDC),GIDC Chotila (RIDC),GIDC-SUR-174
+187,175,GIDC Dhrangadhra,GIDC Dhrangadhra,Surendranagar,Dhrangadhra,Phase-I,GIDC Dhrangadhra,GIDC Dhrangadhra,GIDC-SUR-175
+188,176,GIDC Halvad,GIDC Halvad,Surendranagar,Halvad,Phase-I,GIDC Halvad,GIDC Halvad,GIDC-SUR-176
+189,177,GIDC Lakhtar,GIDC Lakhtar,Surendranagar,Lakhtar,Phase-I,GIDC Lakhtar,GIDC Lakhtar,GIDC-SUR-177
+190,178,GIDC Limbdi,GIDC Limbdi,Surendranagar,Limbdi,Phase-I,GIDC Limbdi,GIDC Limbdi,GIDC-SUR-178
+191,179,GIDC Sayla (RIDC),GIDC Sayla (RIDC),Surendranagar,Sayla,Phase-I,GIDC Sayla (RIDC),GIDC Sayla (RIDC),GIDC-SUR-179
+192,180,GIDC Surendranagar (Wadhwan),GIDC Surendranagar (Wadhwan),Surendranagar,Surendranagar,Phase-I,GIDC Surendranagar (Wadhwan),GIDC Surendranagar (Wadhwan),GIDC-SUR-180
+193,181,GIDC Thangadh,GIDC Thangadh,Surendranagar,Thangadh,Phase-I,GIDC Thangadh,GIDC Thangadh,GIDC-SUR-181
+194,182,GIDC Vanod,GIDC Vanod,Surendranagar,Vanod,Phase-I,GIDC Vanod,GIDC Vanod,GIDC-SUR-182
+195,183,GIDC Aji Estate,GIDC Aji Estate,Rajkot,Aji Estate,Phase-I,GIDC Aji Estate,GIDC Aji Estate,GIDC-RAJ-183
+196,184,GIDC Anandpar (Tentative),GIDC Anandpar (Tentative),Rajkot,Anandpar,Phase-I,GIDC Anandpar (Tentative),GIDC Anandpar (Tentative),GIDC-RAJ-184
+197,185,GIDC Bhaktinagar,GIDC Bhaktinagar,Rajkot,Bhaktinagar,Phase-I,GIDC Bhaktinagar,GIDC Bhaktinagar,GIDC-RAJ-185
+198,186,GIDC Chhapra Agro Food Park (upcoming),GIDC Chhapra Agro Food Park (upcoming),Rajkot,Chhapra Agro Food Park,Phase-I,GIDC Chhapra Agro Food Park (upcoming),GIDC Chhapra Agro Food Park (upcoming),GIDC-RAJ-186
+199,187,GIDC Dhoraji,GIDC Dhoraji,Rajkot,Dhoraji,Phase-I,GIDC Dhoraji,GIDC Dhoraji,GIDC-RAJ-187
+200,188,GIDC Gondal-I,GIDC Gondal-I,Rajkot,Gondal,Phase-I,GIDC Gondal-I,GIDC Gondal-I,GIDC-RAJ-188
+201,189,GIDC Gondal-II,GIDC Gondal-II,Rajkot,Gondal,Phase-I,GIDC Gondal-II,GIDC Gondal-II,GIDC-RAJ-189
+202,190,GIDC Hadamtala,GIDC Hadamtala,Rajkot,Hadamtala,Phase-I,GIDC Hadamtala,GIDC Hadamtala,GIDC-RAJ-190
+203,191,GIDC Jamvadi (Gondal),GIDC Jamvadi (Gondal),Rajkot,Jamvadi,Phase-I,GIDC Jamvadi (Gondal),GIDC Jamvadi (Gondal),GIDC-RAJ-191
+204,192,GIDC Jasdan,GIDC Jasdan,Rajkot,Jasdan,Phase-I,GIDC Jasdan,GIDC Jasdan,GIDC-RAJ-192
+205,193,GIDC Jetpur,GIDC Jetpur,Rajkot,Jetpur,Phase-I,GIDC Jetpur,GIDC Jetpur,GIDC-RAJ-193
+206,194,GIDC Khirasara MSME (Tentative),GIDC Khirasara MSME (Tentative),Rajkot,Khirasara Msme,Phase-I,GIDC Khirasara MSME (Tentative),GIDC Khirasara MSME (Tentative),GIDC-RAJ-194
+207,195,GIDC Khirasara Non-MSME (Tentative),GIDC Khirasara Non-MSME (Tentative),Rajkot,Khirasara Non Msme,Phase-I,GIDC Khirasara Non-MSME (Tentative),GIDC Khirasara Non-MSME (Tentative),GIDC-RAJ-195
+208,196,GIDC Khirasara-II (Tentative),GIDC Khirasara-II (Tentative),Rajkot,Khirasara,Phase-I,GIDC Khirasara-II (Tentative),GIDC Khirasara-II (Tentative),GIDC-RAJ-196
+209,197,GIDC Kuvadva,GIDC Kuvadva,Rajkot,Kuvadva,Phase-I,GIDC Kuvadva,GIDC Kuvadva,GIDC-RAJ-197
+210,198,GIDC Lodhika (Metoda),GIDC Lodhika (Metoda),Rajkot,Lodhika,Phase-I,GIDC Lodhika (Metoda),GIDC Lodhika (Metoda),GIDC-RAJ-198
+211,199,GIDC Padadhari (RIDC),GIDC Padadhari (RIDC),Rajkot,Padadhari,Phase-I,GIDC Padadhari (RIDC),GIDC Padadhari (RIDC),GIDC-RAJ-199
+212,200,GIDC Piparadi (Tentative),GIDC Piparadi (Tentative),Rajkot,Piparadi,Phase-I,GIDC Piparadi (Tentative),GIDC Piparadi (Tentative),GIDC-RAJ-200
+213,201,GIDC Shapar-Veraval,GIDC Shapar-Veraval,Rajkot,Shapar Veraval,Phase-I,GIDC Shapar-Veraval,GIDC Shapar-Veraval,GIDC-RAJ-201
+214,202,GIDC Upleta,GIDC Upleta,Rajkot,Upleta,Phase-I,GIDC Upleta,GIDC Upleta,GIDC-RAJ-202
+215,203,GIDC Vaghasiya,GIDC Vaghasiya,Rajkot,Vaghasiya,Phase-I,GIDC Vaghasiya,GIDC Vaghasiya,GIDC-RAJ-203
+216,204,GIDC Chhattar-Mitana MSME (Tentative),GIDC Chhattar-Mitana MSME (Tentative),Morbi,Chhattar Mitana Msme,Phase-I,GIDC Chhattar-Mitana MSME (Tentative),GIDC Chhattar-Mitana MSME (Tentative),GIDC-MOR-204
+217,205,GIDC Chhattar-Mitana Non-MSME (Tentative),GIDC Chhattar-Mitana Non-MSME (Tentative),Morbi,Chhattar Mitana Non Msme,Phase-I,GIDC Chhattar-Mitana Non-MSME (Tentative),GIDC Chhattar-Mitana Non-MSME (Tentative),GIDC-MOR-205
+218,206,GIDC Morbi,GIDC Morbi,Morbi,Morbi,Phase-I,GIDC Morbi,GIDC Morbi,GIDC-MOR-206
+219,207,GIDC Rafaleshwar,GIDC Rafaleshwar,Morbi,Rafaleshwar,Phase-I,GIDC Rafaleshwar,GIDC Rafaleshwar,GIDC-MOR-207
+220,208,GIDC Wankaner,GIDC Wankaner,Morbi,Wankaner,Phase-I,GIDC Wankaner,GIDC Wankaner,GIDC-MOR-208
+221,209,GIDC Dhrol (RIDC),GIDC Dhrol (RIDC),Jamnagar,Dhrol,Phase-I,GIDC Dhrol (RIDC),GIDC Dhrol (RIDC),GIDC-JAM-209
+222,210,GIDC Jamnagar-I,GIDC Jamnagar-I,Jamnagar,Jamnagar,Phase-I,GIDC Jamnagar-I,GIDC Jamnagar-I,GIDC-JAM-210
+223,211,GIDC Jamnagar-I (Shankar Tekri),GIDC Jamnagar-I (Shankar Tekri),Jamnagar,Jamnagar,Phase-I,GIDC Jamnagar-I (Shankar Tekri),GIDC Jamnagar-I (Shankar Tekri),GIDC-JAM-211
+224,212,GIDC Jamnagar-II,GIDC Jamnagar-II,Jamnagar,Jamnagar,Phase-I,GIDC Jamnagar-II,GIDC Jamnagar-II,GIDC-JAM-212
+225,213,GIDC Jamnagar-III (Expansion),GIDC Jamnagar-III (Expansion),Jamnagar,Jamnagar,Phase-I,GIDC Jamnagar-III (Expansion),GIDC Jamnagar-III (Expansion),GIDC-JAM-213
+226,214,GIDC Kalawad MSME (Tentative),GIDC Kalawad MSME (Tentative),Jamnagar,Kalawad Msme,Phase-I,GIDC Kalawad MSME (Tentative),GIDC Kalawad MSME (Tentative),GIDC-JAM-214
+227,215,GIDC Kalawad Non-MSME (Tentative),GIDC Kalawad Non-MSME (Tentative),Jamnagar,Kalawad Non Msme,Phase-I,GIDC Kalawad Non-MSME (Tentative),GIDC Kalawad Non-MSME (Tentative),GIDC-JAM-215
+228,216,GIDC Shekhpat (Tentative),GIDC Shekhpat (Tentative),Jamnagar,Shekhpat,Phase-I,GIDC Shekhpat (Tentative),GIDC Shekhpat (Tentative),GIDC-JAM-216
+229,217,GIDC Arambhada,GIDC Arambhada,Devbhoomi Dwarka,Arambhada,Phase-I,GIDC Arambhada,GIDC Arambhada,GIDC-DEV-217
+230,218,GIDC Bhanvad,GIDC Bhanvad,Devbhoomi Dwarka,Bhanvad,Phase-I,GIDC Bhanvad,GIDC Bhanvad,GIDC-DEV-218
+231,219,GIDC Bhatia (RIDC),GIDC Bhatia (RIDC),Devbhoomi Dwarka,Bhatia,Phase-I,GIDC Bhatia (RIDC),GIDC Bhatia (RIDC),GIDC-DEV-219
+232,220,GIDC Jamkhambhaliya,GIDC Jamkhambhaliya,Devbhoomi Dwarka,Jamkhambhaliya,Phase-I,GIDC Jamkhambhaliya,GIDC Jamkhambhaliya,GIDC-DEV-220
+233,221,GIDC Junagadh-I,GIDC Junagadh-I,Junagadh,Junagadh,Phase-I,GIDC Junagadh-I,GIDC Junagadh-I,GIDC-JUN-221
+234,222,GIDC Junagadh-II,GIDC Junagadh-II,Junagadh,Junagadh,Phase-I,GIDC Junagadh-II,GIDC Junagadh-II,GIDC-JUN-222
+235,223,GIDC Sheel (Shil),GIDC Sheel (Shil),Junagadh,Sheel,Phase-I,GIDC Sheel (Shil),GIDC Sheel (Shil),GIDC-JUN-223
+236,224,GIDC Sutrapada,GIDC Sutrapada,Junagadh,Sutrapada,Phase-I,GIDC Sutrapada,GIDC Sutrapada,GIDC-JUN-224
+237,225,GIDC Visavadar (RIDC),GIDC Visavadar (RIDC),Junagadh,Visavadar,Phase-I,GIDC Visavadar (RIDC),GIDC Visavadar (RIDC),GIDC-JUN-225
+238,226,GIDC Veraval,GIDC Veraval,Gir Somnath,Veraval,Phase-I,GIDC Veraval,GIDC Veraval,GIDC-GIR-226
+239,227,GIDC Dharampur,GIDC Dharampur,Porbandar,Dharampur,Phase-I,GIDC Dharampur,GIDC Dharampur,GIDC-POR-227
+240,228,GIDC Miyani (Tentative),GIDC Miyani (Tentative),Porbandar,Miyani,Phase-I,GIDC Miyani (Tentative),GIDC Miyani (Tentative),GIDC-POR-228
+241,229,GIDC Porbandar,GIDC Porbandar,Porbandar,Porbandar,Phase-I,GIDC Porbandar,GIDC Porbandar,GIDC-POR-229
+242,230,GIDC Vanana,GIDC Vanana,Porbandar,Vanana,Phase-I,GIDC Vanana,GIDC Vanana,GIDC-POR-230
+243,231,GIDC Chitra,GIDC Chitra,Bhavnagar,Chitra,Phase-I,GIDC Chitra,GIDC Chitra,GIDC-BHA-231
+244,232,GIDC Dhasa (RIDC),GIDC Dhasa (RIDC),Bhavnagar,Dhasa,Phase-I,GIDC Dhasa (RIDC),GIDC Dhasa (RIDC),GIDC-BHA-232
+245,233,GIDC Madhiya,GIDC Madhiya,Bhavnagar,Madhiya,Phase-I,GIDC Madhiya,GIDC Madhiya,GIDC-BHA-233
+246,234,GIDC Mahuva,GIDC Mahuva,Bhavnagar,Mahuva,Phase-I,GIDC Mahuva,GIDC Mahuva,GIDC-BHA-234
+247,235,GIDC Narigam MSME (Tentative),GIDC Narigam MSME (Tentative),Bhavnagar,Narigam Msme,Phase-I,GIDC Narigam MSME (Tentative),GIDC Narigam MSME (Tentative),GIDC-BHA-235
+248,236,GIDC Narigam Non-MSME (Tentative),GIDC Narigam Non-MSME (Tentative),Bhavnagar,Narigam Non Msme,Phase-I,GIDC Narigam Non-MSME (Tentative),GIDC Narigam Non-MSME (Tentative),GIDC-BHA-236
+249,237,GIDC Palitana,GIDC Palitana,Bhavnagar,Palitana,Phase-I,GIDC Palitana,GIDC Palitana,GIDC-BHA-237
+250,238,GIDC Sihor-I,GIDC Sihor-I,Bhavnagar,Sihor,Phase-I,GIDC Sihor-I,GIDC Sihor-I,GIDC-BHA-238
+251,239,GIDC Sihor-II,GIDC Sihor-II,Bhavnagar,Sihor,Phase-I,GIDC Sihor-II,GIDC Sihor-II,GIDC-BHA-239
+252,240,GIDC Vallabhipur (RIDC),GIDC Vallabhipur (RIDC),Bhavnagar,Vallabhipur,Phase-I,GIDC Vallabhipur (RIDC),GIDC Vallabhipur (RIDC),GIDC-BHA-240
+253,241,GIDC Vartej,GIDC Vartej,Bhavnagar,Vartej,Phase-I,GIDC Vartej,GIDC Vartej,GIDC-BHA-241
+254,242,GIDC Vithalwadi (Udyognagar),GIDC Vithalwadi (Udyognagar),Bhavnagar,Vithalwadi,Phase-I,GIDC Vithalwadi (Udyognagar),GIDC Vithalwadi (Udyognagar),GIDC-BHA-242
+255,243,GIDC Botad,GIDC Botad,Botad,Botad,Phase-I,GIDC Botad,GIDC Botad,GIDC-BOT-243
+256,244,GIDC Kaniyad,GIDC Kaniyad,Botad,Kaniyad,Phase-I,GIDC Kaniyad,GIDC Kaniyad,GIDC-BOT-244
+257,245,GIDC Amreli,GIDC Amreli,Amreli,Amreli,Phase-I,GIDC Amreli,GIDC Amreli,GIDC-AMR-245
+258,246,GIDC Babra,GIDC Babra,Amreli,Babra,Phase-I,GIDC Babra,GIDC Babra,GIDC-AMR-246
+259,247,GIDC Babra Phase-II (Diamond),GIDC Babra Phase-II (Diamond),Amreli,Babra,Phase-I,GIDC Babra Phase-II (Diamond),GIDC Babra Phase-II (Diamond),GIDC-AMR-247
+260,248,GIDC Damnagar,GIDC Damnagar,Amreli,Damnagar,Phase-I,GIDC Damnagar,GIDC Damnagar,GIDC-AMR-248
+261,249,GIDC Jafrabad (RIDC),GIDC Jafrabad (RIDC),Amreli,Jafrabad,Phase-I,GIDC Jafrabad (RIDC),GIDC Jafrabad (RIDC),GIDC-AMR-249
+262,250,GIDC Lathi,GIDC Lathi,Amreli,Lathi,Phase-I,GIDC Lathi,GIDC Lathi,GIDC-AMR-250
+263,251,GIDC Liliya (RIDC),GIDC Liliya (RIDC),Amreli,Liliya,Phase-I,GIDC Liliya (RIDC),GIDC Liliya (RIDC),GIDC-AMR-251
+264,252,GIDC Rajula,GIDC Rajula,Amreli,Rajula,Phase-I,GIDC Rajula,GIDC Rajula,GIDC-AMR-252
+265,253,GIDC Savarkundla,GIDC Savarkundla,Amreli,Savarkundla,Phase-I,GIDC Savarkundla,GIDC Savarkundla,GIDC-AMR-253
+266,254,GIDC Anjar (New),GIDC Anjar (New),Kutch,Anjar,Phase-I,GIDC Anjar (New),GIDC Anjar (New),GIDC-KUT-254
+267,255,GIDC Bhadreshwar (Tentative),GIDC Bhadreshwar (Tentative),Kutch,Bhadreshwar,Phase-I,GIDC Bhadreshwar (Tentative),GIDC Bhadreshwar (Tentative),GIDC-KUT-255
+268,256,GIDC Bhuj,GIDC Bhuj,Kutch,Bhuj,Phase-I,GIDC Bhuj,GIDC Bhuj,GIDC-KUT-256
+269,257,GIDC Bhuj-II,GIDC Bhuj-II,Kutch,Bhuj,Phase-I,GIDC Bhuj-II,GIDC Bhuj-II,GIDC-KUT-257
+270,258,GIDC Chitrod,GIDC Chitrod,Kutch,Chitrod,Phase-I,GIDC Chitrod,GIDC Chitrod,GIDC-KUT-258
+271,259,GIDC Dhrub,GIDC Dhrub,Kutch,Dhrub,Phase-I,GIDC Dhrub,GIDC Dhrub,GIDC-KUT-259
+272,260,GIDC Gandhidham,GIDC Gandhidham,Kutch,Gandhidham,Phase-I,GIDC Gandhidham,GIDC Gandhidham,GIDC-KUT-260
+273,261,GIDC Madhapur,GIDC Madhapur,Kutch,Madhapur,Phase-I,GIDC Madhapur,GIDC Madhapur,GIDC-KUT-261
+274,262,GIDC Makhel (Rapar),GIDC Makhel (Rapar),Kutch,Makhel,Phase-I,GIDC Makhel (Rapar),GIDC Makhel (Rapar),GIDC-KUT-262
+275,263,GIDC Mandvi,GIDC Mandvi,Kutch,Mandvi,Phase-I,GIDC Mandvi,GIDC Mandvi,GIDC-KUT-263
+276,264,GIDC Mandvi (New),GIDC Mandvi (New),Kutch,Mandvi,Phase-I,GIDC Mandvi (New),GIDC Mandvi (New),GIDC-KUT-264
+277,265,GIDC Mithi Rohar-I,GIDC Mithi Rohar-I,Kutch,Mithi Rohar,Phase-I,GIDC Mithi Rohar-I,GIDC Mithi Rohar-I,GIDC-KUT-265
+278,266,GIDC Mithi Rohar-II,GIDC Mithi Rohar-II,Kutch,Mithi Rohar,Phase-I,GIDC Mithi Rohar-II,GIDC Mithi Rohar-II,GIDC-KUT-266
+279,267,GIDC Motichirai,GIDC Motichirai,Kutch,Motichirai,Phase-I,GIDC Motichirai,GIDC Motichirai,GIDC-KUT-267
+280,268,GIDC Mundra (RIDC / Mini),GIDC Mundra (RIDC / Mini),Kutch,Mundra,Phase-I,GIDC Mundra (RIDC / Mini),GIDC Mundra (RIDC / Mini),GIDC-KUT-268
+281,269,GIDC Nagor (New Bhuj),GIDC Nagor (New Bhuj),Kutch,Nagor,Phase-I,GIDC Nagor (New Bhuj),GIDC Nagor (New Bhuj),GIDC-KUT-269
+282,270,GIDC Nakhatrana,GIDC Nakhatrana,Kutch,Nakhatrana,Phase-I,GIDC Nakhatrana,GIDC Nakhatrana,GIDC-KUT-270
+283,271,Romanovia Industrial Park Pvt Ltd,Romanovia Industrial Park Pvt Ltd,Surendranagar,Dasada,Phase-I,Romanovia Industrial Park Pvt Ltd,Romanovia Industrial Park Pvt Ltd,GIDC-SUR-271
+284,272,Pradip Overseas Limited Industrial Park (Speciality & Fine Chemicals),Pradip Overseas Limited Industrial Park (Speciality & Fine Chemicals),Ahmedabad,Bavla,Phase-I,Pradip Overseas Limited Industrial Park (Speciality & Fine Chemicals),Pradip Overseas Limited Industrial Park (Speciality & Fine Chemicals),GIDC-AHM-272
+285,273,Pradip Overseas Limited Industrial Park (Auto Component),Pradip Overseas Limited Industrial Park (Auto Component),Ahmedabad,Bavla,Phase-I,Pradip Overseas Limited Industrial Park (Auto Component),Pradip Overseas Limited Industrial Park (Auto Component),GIDC-AHM-273
+286,274,Mascot Infrastructure (Gujarat) LLP Industrial Park,Mascot Infrastructure (Gujarat) LLP Industrial Park,Mehsana,Kadi,Phase-I,Mascot Infrastructure (Gujarat) LLP Industrial Park,Mascot Infrastructure (Gujarat) LLP Industrial Park,GIDC-MEH-274
+287,275,Satyam Industrial Park (Anant Developers),Satyam Industrial Park (Anant Developers),Ahmedabad,Sanand,Phase-I,Satyam Industrial Park (Anant Developers),Satyam Industrial Park (Anant Developers),GIDC-AHM-275
+288,276,Industrial Cluster Pvt. Ltd,Industrial Cluster Pvt. Ltd,Surendranagar,Limbdi,Phase-I,Industrial Cluster Pvt. Ltd,Industrial Cluster Pvt. Ltd,GIDC-SUR-276
+289,277,Anuradha Realty Pvt. Ltd Industrial Park,Anuradha Realty Pvt. Ltd Industrial Park,Rajkot,Rajkot,Phase-I,Anuradha Realty Pvt. Ltd Industrial Park,Anuradha Realty Pvt. Ltd Industrial Park,GIDC-RAJ-277
+290,278,Welspun Anjar SEZ Limited,Welspun Anjar SEZ Limited,Kutch,Anjar,Phase-I,Welspun Anjar SEZ Limited,Welspun Anjar SEZ Limited,GIDC-KUT-278
+291,279,Maruti Associates LLP Industrial Park,Maruti Associates LLP Industrial Park,Ahmedabad,Bavla,Phase-I,Maruti Associates LLP Industrial Park,Maruti Associates LLP Industrial Park,GIDC-AHM-279
+292,280,Zandra Infrastructure LLP Industrial Park,Zandra Infrastructure LLP Industrial Park,Ahmedabad,Bavla,Phase-I,Zandra Infrastructure LLP Industrial Park,Zandra Infrastructure LLP Industrial Park,GIDC-AHM-280
+293,281,Universal Industrial Park LLP,Universal Industrial Park LLP,Ahmedabad,Mandal,Phase-I,Universal Industrial Park LLP,Universal Industrial Park LLP,GIDC-AHM-281
+294,282,Global Park Developer LLP (Global Industrial City),Global Park Developer LLP (Global Industrial City),Ahmedabad,Mandal,Phase-I,Global Park Developer LLP (Global Industrial City),Global Park Developer LLP (Global Industrial City),GIDC-AHM-282
+295,283,Amitara Green Hi-tech Textile Park Pvt Ltd,Amitara Green Hi-tech Textile Park Pvt Ltd,Kheda,Kheda,Phase-I,Amitara Green Hi-tech Textile Park Pvt Ltd,Amitara Green Hi-tech Textile Park Pvt Ltd,GIDC-KHE-283
+296,284,Hindva Builders Industrial Park,Hindva Builders Industrial Park,Surat,Kamrej,Phase-I,Hindva Builders Industrial Park,Hindva Builders Industrial Park,GIDC-SUR-284
+297,285,Kamla Amrut Estate Developers Industrial Park,Kamla Amrut Estate Developers Industrial Park,Mehsana,Kadi,Phase-I,Kamla Amrut Estate Developers Industrial Park,Kamla Amrut Estate Developers Industrial Park,GIDC-MEH-285
+298,286,Neptune Infratech Private Limited Industrial Park,Neptune Infratech Private Limited Industrial Park,Mehsana,Jotana,Phase-I,Neptune Infratech Private Limited Industrial Park,Neptune Infratech Private Limited Industrial Park,GIDC-MEH-286
+299,287,Contrans Logistic Private Limited,Contrans Logistic Private Limited,Vadodara,Karjan,Phase-I,Contrans Logistic Private Limited,Contrans Logistic Private Limited,GIDC-VAD-287
+300,288,Gokul Infratech Pvt Ltd Industrial Park,Gokul Infratech Pvt Ltd Industrial Park,Patan,Sidhpur,Phase-I,Gokul Infratech Pvt Ltd Industrial Park,Gokul Infratech Pvt Ltd Industrial Park,GIDC-PAT-288
+301,289,Kent Residential and Industrial Park LLP,Kent Residential and Industrial Park LLP,Ahmedabad,Mandal,Phase-I,Kent Residential and Industrial Park LLP,Kent Residential and Industrial Park LLP,GIDC-AHM-289
+302,290,CASME Industrial Park Development India Pvt Ltd,CASME Industrial Park Development India Pvt Ltd,Ahmedabad,Viramgam,Phase-I,CASME Industrial Park Development India Pvt Ltd,CASME Industrial Park Development India Pvt Ltd,GIDC-AHM-290
+303,291,Rajpath Tradelink Industrial Park,Rajpath Tradelink Industrial Park,Ahmedabad,Bavla,Phase-I,Rajpath Tradelink Industrial Park,Rajpath Tradelink Industrial Park,GIDC-AHM-291
+304,292,Shree Enterprise Industrial Park,Shree Enterprise Industrial Park,Ahmedabad,Bavla,Phase-I,Shree Enterprise Industrial Park,Shree Enterprise Industrial Park,GIDC-AHM-292
+305,293,Vardhman Infrastructure Industrial Park,Vardhman Infrastructure Industrial Park,Ahmedabad,Bavla,Phase-I,Vardhman Infrastructure Industrial Park,Vardhman Infrastructure Industrial Park,GIDC-AHM-293
+306,294,Vardhman Developers Industrial Park,Vardhman Developers Industrial Park,Ahmedabad,Bavla,Phase-I,Vardhman Developers Industrial Park,Vardhman Developers Industrial Park,GIDC-AHM-294
+307,295,Morai Industrial Park,Morai Industrial Park,Valsad,Vapi,Phase-I,Morai Industrial Park,Morai Industrial Park,GIDC-VAL-295
+308,296,Kataria Industrial Park,Kataria Industrial Park,Ahmedabad,Mandal,Phase-I,Kataria Industrial Park,Kataria Industrial Park,GIDC-AHM-296
+309,297,DKR Industrial Park,DKR Industrial Park,Ahmedabad,Viramgam,Phase-I,DKR Industrial Park,DKR Industrial Park,GIDC-AHM-297
+310,298,Vision Industrial Park,Vision Industrial Park,Jamnagar,Jamnagar,Phase-I,Vision Industrial Park,Vision Industrial Park,GIDC-JAM-298
+311,299,Center Point Industrial Park,Center Point Industrial Park,Mehsana,Visnagar,Phase-I,Center Point Industrial Park,Center Point Industrial Park,GIDC-MEH-299
+312,300,Hamraz Food Products Pvt Ltd (Food Park),Hamraz Food Products Pvt Ltd (Food Park),Vadodara,Savli,Phase-I,Hamraz Food Products Pvt Ltd (Food Park),Hamraz Food Products Pvt Ltd (Food Park),GIDC-VAD-300
+313,301,Tadkeshwar Infra Pvt Ltd Industrial Park,Tadkeshwar Infra Pvt Ltd Industrial Park,Surat,Mandvi,Phase-I,Tadkeshwar Infra Pvt Ltd Industrial Park,Tadkeshwar Infra Pvt Ltd Industrial Park,GIDC-SUR-301
+314,302,JBM Projects & Infrastructure Pvt. Ltd Industrial Park,JBM Projects & Infrastructure Pvt. Ltd Industrial Park,Ahmedabad,Mandal,Phase-I,JBM Projects & Infrastructure Pvt. Ltd Industrial Park,JBM Projects & Infrastructure Pvt. Ltd Industrial Park,GIDC-AHM-302
+315,303,Kushal Integrated Industrial Park,Kushal Integrated Industrial Park,Mehsana,Jotana,Phase-I,Kushal Integrated Industrial Park,Kushal Integrated Industrial Park,GIDC-MEH-303
+316,304,Corenex Industrial Park,Corenex Industrial Park,Ahmedabad,Viramgam,Phase-I,Corenex Industrial Park,Corenex Industrial Park,GIDC-AHM-304
+317,305,Shah Industrial Park,Shah Industrial Park,Vadodara,Vaghodia,Phase-I,Shah Industrial Park,Shah Industrial Park,GIDC-VAD-305
+318,306,Arham Industrial Park,Arham Industrial Park,Kutch,Mundra,Phase-I,Arham Industrial Park,Arham Industrial Park,GIDC-KUT-306
+319,307,Makson Infra Project (India) Pvt. Ltd Industrial Park (Mithapur),Makson Infra Project (India) Pvt. Ltd Industrial Park (Mithapur),Ahmedabad,Bavla,Phase-I,Makson Infra Project (India) Pvt. Ltd Industrial Park (Mithapur),Makson Infra Project (India) Pvt. Ltd Industrial Park (Mithapur),GIDC-AHM-307
+320,308,Makson Infra Project (India) Pvt. Ltd Industrial Park (Kaliveji),Makson Infra Project (India) Pvt. Ltd Industrial Park (Kaliveji),Ahmedabad,Bavla,Phase-I,Makson Infra Project (India) Pvt. Ltd Industrial Park (Kaliveji),Makson Infra Project (India) Pvt. Ltd Industrial Park (Kaliveji),GIDC-AHM-308
+321,309,Shapoorji Pallonji Industrial Park Pvt. Ltd,Shapoorji Pallonji Industrial Park Pvt. Ltd,Gir Somnath,Kodinar,Phase-I,Shapoorji Pallonji Industrial Park Pvt. Ltd,Shapoorji Pallonji Industrial Park Pvt. Ltd,GIDC-GIR-309
+322,310,Baghban Industrial Park,Baghban Industrial Park,Vadodara,Karjan,Phase-I,Baghban Industrial Park,Baghban Industrial Park,GIDC-VAD-310
+323,311,Aatmiya Brookfields Industrial Park (Balaji),Aatmiya Brookfields Industrial Park (Balaji),Vadodara,Vadodara,Phase-I,Aatmiya Brookfields Industrial Park (Balaji),Aatmiya Brookfields Industrial Park (Balaji),GIDC-VAD-311
+324,312,Aatmiya-2 Industrial Park (Snehdeep),Aatmiya-2 Industrial Park (Snehdeep),Vadodara,Karjan,Phase-I,Aatmiya-2 Industrial Park (Snehdeep),Aatmiya-2 Industrial Park (Snehdeep),GIDC-VAD-312

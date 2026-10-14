@@ -1,0 +1,54 @@
+meta_file: gujarat_04_neighborhoods_jurisdictions.csv.meta.txt
+file_name: gujarat_04_neighborhoods_jurisdictions.csv
+original_name: 04_neighborhoods_jurisdictions.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 4312
+modified_utc: 2026-10-03T07:31:54.780263+00:00
+
+--- TABLE / DATASET ---
+table_name: neighborhoods_jurisdictions
+display_title: Neighborhoods & Tax Jurisdictions
+module_order: Module 4 of 12 Core Schema Tables
+description: Local municipal zones, village panchayats, and tax jurisdictions surrounding industrial estates.
+total_records_declared: 60 rows
+export_timestamp_utc: 2026-10-03T07:31:51.243127Z
+
+--- KEYS ---
+primary_key: neighborhood_id
+foreign_keys: taluka_id -> subdistricts_talukas(taluka_id)
+
+--- DATA PROFILE ---
+header: neighborhood_id,taluka_id,neighborhood_name,tax_jurisdiction_code,is_gated_community
+n_columns: 5
+columns: neighborhood_id, taluka_id, neighborhood_name, tax_jurisdiction_code, is_gated_community
+data_rows_observed: 60
+total_lines: 81
+comment_lines(#): 19
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * neighborhood_id: Primary key identifier
+# * taluka_id: Foreign key reference to talukas table
+# * neighborhood_name: Neighborhood or jurisdiction label
+# * tax_jurisdiction_code: Local statutory property tax assessment code
+# * is_gated_community: Binary indicator (1 = Planned/Gated layout, 0 = Unplanned perimeter colony)
+
+--- DATA SOURCE (preamble verbatim) ---
+Urban Development Authorities (AUDA, VUDA, SUDA), Municipal Tax Records, and GIDC statutory notified zones.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_neighbourhood_scapper.txt (119 bytes, 1 lines)
+    mapping_rationale: Same institutional attribution: AUDA/VUDA/SUDA + Municipal Tax Records + GIDC notified zones; matches preamble DATA SOURCE verbatim.
+    content_verbatim:
+      | DATA SOURCE Urban Development Authorities (AUDA, VUDA, SUDA), Municipal Tax Records, and GIDC statutory notified zones.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 04_neighborhoods_jurisdictions.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

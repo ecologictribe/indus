@@ -1,0 +1,29 @@
+meta_file: gujarat_Park_lifecycle_events.txt.meta.txt
+file_name: sources/gujarat_Park_lifecycle_events.txt
+original_name: sources/Park_lifecycle_events.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 425
+modified_utc: 2026-10-03T07:40:13.313712+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 2 dataset(s).
+
+--- CONTENT VERBATIM ---
+  |
+  | Chronological development milestones defining Pre/Post treatment event windows for econometric estimation.
+  |
+  |  DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+  |
+  | DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+  |
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_07_park_lifecycle_events.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.004828+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

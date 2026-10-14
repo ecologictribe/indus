@@ -1,0 +1,26 @@
+meta_file: gujarat_Clean Commercial Benchmark Nodes.txt.meta.txt
+file_name: sources/gujarat_Clean Commercial Benchmark Nodes.txt
+original_name: sources/Clean Commercial Benchmark Nodes.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 360
+modified_utc: 2026-10-03T07:41:33.449180+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 2 dataset(s).
+
+--- CONTENT VERBATIM ---
+  | Clean Commercial Benchmark Nodes	
+  | IT parks, financial SEZs, and regional shopping nodes serving as the clean control group to disentangle industrial stigma from general commercial noise.
+  |
+  |  DATA SOURCE: GIFT City SEZ Authority, Commercial Real Estate Registry (RERA Gujarat), SG Highway High-Street Planning Audits, and Taylor et al. econometric methodology.
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_10_properties_spatial_attributes_gujrat.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.004308+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

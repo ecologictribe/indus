@@ -1,0 +1,425 @@
+{% extends "base.html" %}
+
+{% block title %}Executive Dashboard{% endblock %}
+{% block page_title %}Executive Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-primary text-white px-3 py-1">
+                        <i class="bi bi-mortarboard-fill me-1"></i> Empirical Econometric Analysis
+                    </span>
+                    <span class="badge bg-secondary-subtle text-secondary border">
+                        Spatial Difference-in-Differences Panel
+                    </span>
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">Industrial Park Property Dynamics</h1>
+                <p class="text-secondary mb-0">
+                    A systematic spatial study of land & residential price evolution across 312 GIDC estates & private industrial parks in Gujarat (2012–2025).
+                </p>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-download me-1"></i> Export Data
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Executive Summary & Meta</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_dashboard_endpoint', format='csv') }}"><i class="bi bi-filetype-csv me-2 text-success"></i>Summary Table (CSV)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_dashboard_endpoint', format='json') }}"><i class="bi bi-filetype-json me-2 text-warning"></i>KPIs + Metadata (JSON)</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">All 13 Database Tables (CSV + Meta)</h6></li>
+                        <li><a class="dropdown-item fw-bold text-success" href="{{ url_for('export_all_tables_zip_endpoint') }}"><i class="bi bi-file-earmark-zip me-2"></i>Download All 13 Tables (.ZIP)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('database_hub') }}"><i class="bi bi-table me-2 text-primary"></i>Browse Tables Hub (13 CSVs)</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_database_endpoint') }}"><i class="bi bi-database-down me-2 text-primary"></i>Complete SQLite DB (.db)</a></li>
+                    </ul>
+                </div>
+                <a href="{{ url_for('spatial_map_view') }}" class="btn btn-primary">
+                    <i class="bi bi-map-fill me-1"></i> Explore Map
+                </a>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-graph-up me-1"></i> DiD Studio
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" style="min-width: 280px;">
+                        <li><h6 class="dropdown-header text-uppercase small">Select Econometric Specification</h6></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between py-2" href="{{ url_for('econometrics_view', data_mode='empirical') }}">
+                                <div>
+                                    <div class="fw-bold text-success"><i class="bi bi-bank2 me-2"></i>Mode 1: Empirical GIDC Model</div>
+                                    <small class="text-muted">8,448 official annual rates (2000–2026)</small>
+                                </div>
+                                <span class="badge bg-success-subtle text-success ms-2">Default</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between py-2" href="{{ url_for('econometrics_view', data_mode='synthetic') }}">
+                                <div>
+                                    <div class="fw-bold text-warning"><i class="bi bi-houses-fill me-2"></i>Mode 2: Secondary Market Panel</div>
+                                    <small class="text-muted">4,000 arm's-length private transaction panel</small>
+                                </div>
+                                <span class="badge bg-secondary-subtle text-secondary ms-2">Mode 2</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- KPI Metric Cards -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-6 col-xl-3">
+            <div class="stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="stat-label">Industrial Parks</div>
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                        <i class="bi bi-buildings"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-dark">{{ kpis.total_parks }}</div>
+                <div class="stat-delta text-muted">
+                    <i class="bi bi-geo-alt text-primary"></i> Across {{ kpis.total_districts }} Gujarat Districts
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+            <div class="stat-card border-purple" style="border-left: 4px solid #8b5cf6;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="stat-label text-purple">Sweet Spot Premium</div>
+                    <div class="stat-icon" style="background: #ede9fe; color: #8b5cf6;">
+                        <i class="bi bi-arrow-up-right-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-purple">+{{ kpis.sweet_spot_pct }}%</div>
+                <div class="stat-delta text-success">
+                    <i class="bi bi-shield-check"></i> 3–8km Buffer (High Demand, No Stigma)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+            <div class="stat-card border-danger" style="border-left: 4px solid #ef4444;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="stat-label text-danger">Immediate Drag</div>
+                    <div class="stat-icon bg-danger-subtle text-danger">
+                        <i class="bi bi-arrow-down-right-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-danger">{{ kpis.drag_pct }}%</div>
+                <div class="stat-delta text-danger">
+                    <i class="bi bi-exclamation-triangle"></i> &lt;0.5km Buffer (Pollution / Heavy Traffic)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+            <div class="stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="stat-label">Clean Baseline Control</div>
+                    <div class="stat-icon bg-info-subtle text-info">
+                        <i class="bi bi-laptop"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-info">{{ kpis.clean_pct }}%</div>
+                <div class="stat-delta text-muted">
+                    <i class="bi bi-check2-circle text-info"></i> Isolates Stigma from Noise
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The 4 Lifecycle Phases Banner -->
+    <div class="dashboard-card mb-4">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-diagram-3-fill text-warning"></i>
+                <span>The 4-Stage Lifecycle Model: Policy Thrust &rarr; Anchor Plant &rarr; Ancillary Clustering &rarr; Maturation</span>
+            </div>
+            <a href="{{ url_for('methodology_view') }}" class="btn btn-sm btn-outline-light py-0">Read Docs</a>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light border-start border-4 border-primary h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">Phase 1</span>
+                            <small class="text-muted fw-bold">Years 0–2</small>
+                        </div>
+                        <h6 class="fw-bold mb-1">Policy & Announcement</h6>
+                        <p class="small text-muted mb-0">
+                            Government notifications (GIDC, SEZ). Circle rates revised to signal corridor. Market transactions experience speculative buzz but lag until trunk civil work begins.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light border-start border-4 border-info h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-info text-dark">Phase 2</span>
+                            <small class="text-muted fw-bold">Years 3–5</small>
+                        </div>
+                        <h6 class="fw-bold mb-1">Anchor Commissioning</h6>
+                        <p class="small text-muted mb-0">
+                            Major anchor entity (e.g. Tata Motors Sanand, Suzuki Mandal, L&T Hazira) starts commercial production. Trunk infrastructure (substations, expressways) becomes operational.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light border-start border-4 border-success h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">Phase 3</span>
+                            <small class="text-muted fw-bold">Years 6–9</small>
+                        </div>
+                        <h6 class="fw-bold mb-1">Ancillary Clustering</h6>
+                        <p class="small text-muted mb-0">
+                            Tier-1/2 component vendors, logistics warehouses, and workforce influx arrive. Housing and rental prices in the 3–8km sweet spot jump rapidly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light border-start border-4 border-danger h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-danger">Phase 4</span>
+                            <small class="text-muted fw-bold">Years 10+</small>
+                        </div>
+                        <h6 class="fw-bold mb-1">Maturation & Stigma</h6>
+                        <p class="small text-muted mb-0">
+                            Heavy chemical/effluent emissions and trailer freight cause sharp residential discounting in the immediate perimeter (&lt;0.5km), demanding CETP upgrades.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts & Spatial Buffer Summary -->
+    <div class="row g-4 mb-4">
+        <!-- Main Price Trajectory Chart -->
+        <div class="col-lg-8">
+            <div class="dashboard-card h-100">
+                <div class="card-header">
+                    <div>
+                        <i class="bi bi-graph-up text-primary me-2"></i>
+                        <span>Price Trajectory Across Spatial Buffer Groups (2012–2025)</span>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle">
+                        Anchor Event: 2018
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div style="height: 380px;">
+                        <canvas id="dashboardTrajectoryCanvas"></canvas>
+                    </div>
+                    <div class="mt-3 p-2 bg-light rounded text-center small text-muted">
+                        <i class="bi bi-info-circle me-1 text-primary"></i>
+                        <strong>Finding:</strong> Properties in the 3–8km Sweet Spot outperform the control corridor by <strong>+24.1%</strong> post-commissioning, while properties within &lt;0.5km experience a <strong>-6.1%</strong> discount.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Net DiD Impact & Distance Gradients -->
+        <div class="col-lg-4">
+            <div class="dashboard-card h-100">
+                <div class="card-header">
+                    <div>
+                        <i class="bi bi-bar-chart-fill text-success me-2"></i>
+                        <span>Net DiD Impact (%)</span>
+                    </div>
+                    <a href="{{ url_for('econometrics_view') }}" class="btn btn-sm btn-link text-decoration-none">Details &rarr;</a>
+                </div>
+                <div class="card-body">
+                    <div style="height: 240px;" class="mb-3">
+                        <canvas id="dashboardBarCanvas"></canvas>
+                    </div>
+                    
+                    <h6 class="fw-bold small text-uppercase text-secondary mb-2">Distance Gradient Logic</h6>
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                            <span><span class="badge badge-buffer-sweet me-1">3–8km</span> Sweet Spot</span>
+                            <span class="fw-bold text-success">+{{ kpis.sweet_spot_pct }}% Net</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                            <span><span class="badge badge-buffer-mid me-1">0.5–1.5km</span> Intermediate</span>
+                            <span class="fw-bold text-success">+9.3% Net</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                            <span><span class="badge badge-buffer-clean me-1">&lt;0.3km</span> Clean Commercial</span>
+                            <span class="fw-bold text-secondary">{{ kpis.clean_pct }}% (Noise)</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                            <span><span class="badge badge-buffer-drag me-1">&lt;0.5km</span> Industrial Drag</span>
+                            <span class="fw-bold text-danger">{{ kpis.drag_pct }}% Discount</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dual Pricing & Key Industrial Clusters -->
+    <div class="row g-4 mb-4">
+        <!-- Key Industrial Anchor Hubs -->
+        <div class="col-lg-6">
+            <div class="dashboard-card h-100">
+                <div class="card-header">
+                    <div>
+                        <i class="bi bi-trophy-fill text-warning me-2"></i>
+                        <span>Flagship Gujarat Anchor Hubs</span>
+                    </div>
+                    <a href="{{ url_for('parks_list') }}" class="btn btn-sm btn-outline-primary">View All 312</a>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-custom table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Industrial Park</th>
+                                    <th>Anchor Facility</th>
+                                    <th>Sector</th>
+                                    <th>Investment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for anchor in flagship_anchors %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ url_for('park_detail', park_id=anchor.park_id) }}" class="fw-semibold text-decoration-none">
+                                            {{ anchor.park_name }}
+                                        </a>
+                                        <div class="small text-muted">{{ anchor.district_name }}</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border">{{ anchor.company_name }}</span>
+                                    </td>
+                                    <td><small>{{ anchor.industry_type }}</small></td>
+                                    <td>
+                                        <span class="fw-bold text-primary">₹{{ "{:,.0f}".format(anchor.proposed_investment_inr) }} Cr</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Circle Rate vs Market Price Dynamics -->
+        <div class="col-lg-6">
+            <div class="dashboard-card h-100">
+                <div class="card-header">
+                    <div>
+                        <i class="bi bi-cash-stack text-success me-2"></i>
+                        <span>Circle Rate vs Market Rate Valuation Dynamics</span>
+                    </div>
+                    <span class="badge bg-secondary">Jantar Ratio</span>
+                </div>
+                <div class="card-body">
+                    <div style="height: 250px;">
+                        <canvas id="dashboardRatioCanvas"></canvas>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <p class="mb-1">
+                            <strong>Statutory Floor Lag:</strong> Official Ready Reckoner / Circle Rates (Jantar) systematically lag open-market prices by <strong>18 to 36 months</strong>.
+                        </p>
+                        <p class="mb-0">
+                            During initial speculative surges, the circle-to-market ratio drops to ~72%, and only recovers toward statutory compliance once official state gazette revisions catch up.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Panel Property Transactions -->
+    <div class="dashboard-card">
+        <div class="card-header">
+            <div>
+                <i class="bi bi-clock-history text-primary me-2"></i>
+                <span>Recent Empirical Property Transactions (Panel Sample)</span>
+            </div>
+            <a href="{{ url_for('transactions_view') }}" class="btn btn-sm btn-primary">Browse All Transactions</a>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-custom table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Date / Year</th>
+                            <th>Property Type</th>
+                            <th>Buffer Group</th>
+                            <th>Distance to Park</th>
+                            <th>Market Price</th>
+                            <th>Rate / Sqm</th>
+                            <th>Circle Rate</th>
+                            <th>Lifecycle Phase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tx in recent_transactions %}
+                        <tr>
+                            <td>
+                                <strong>{{ tx.sale_date }}</strong>
+                                <div class="text-muted small">Q{{ tx.sale_quarter }} {{ tx.sale_year }}</div>
+                            </td>
+                            <td>{{ tx.property_type }}</td>
+                            <td>
+                                {% if tx.distance_buffer_bin == '3-8km' %}
+                                    <span class="badge badge-buffer-sweet">{{ tx.distance_buffer_bin }}</span>
+                                {% elif tx.distance_buffer_bin == '<0.5km' %}
+                                    <span class="badge badge-buffer-drag">{{ tx.distance_buffer_bin }}</span>
+                                {% elif tx.distance_buffer_bin == '0.5-1.5km' %}
+                                    <span class="badge badge-buffer-mid">{{ tx.distance_buffer_bin }}</span>
+                                {% elif 'Clean' in tx.distance_buffer_bin %}
+                                    <span class="badge badge-buffer-clean">{{ tx.distance_buffer_bin }}</span>
+                                {% else %}
+                                    <span class="badge badge-buffer-control">{{ tx.distance_buffer_bin }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ tx.distance_to_park_km }} km</td>
+                            <td class="fw-bold">₹{{ "{:,.0f}".format(tx.market_transaction_price) }}</td>
+                            <td class="text-primary fw-bold">₹{{ "{:,.0f}".format(tx.price_per_sqm) }}</td>
+                            <td class="text-muted">₹{{ "{:,.0f}".format(tx.registered_circle_rate_sqm) }}</td>
+                            <td>
+                                <span class="badge bg-secondary-subtle text-secondary border">
+                                    {{ tx.lifecycle_phase_at_sale }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/did_charts.js') }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const trajectoriesData = {{ chart_trajectories | tojson }};
+        const barData = {{ chart_bar_data | tojson }};
+        const ratioData = {{ chart_ratio_data | tojson }};
+
+        initTrajectoryChart('dashboardTrajectoryCanvas', trajectoriesData, 2018);
+        initBarImpactChart('dashboardBarCanvas', barData);
+        initRatioChart('dashboardRatioCanvas', ratioData);
+    });
+</script>
+{% endblock %}

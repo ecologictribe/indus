@@ -1,0 +1,34 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: intelligence_sources (Intelligence Provenance Sources (Tier 1 to 8 Registry))
+# Table Order: Module 14 of 17 Core Schema Tables
+# Total Records: 8 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.358975Z
+"# DATA SOURCE: GIDC Head Office Circular Archives (Gandhinagar), Gujarat Government Gazette, Industries Commissionerate, and iNDEXTb."
+"# Description: Hierarchical multi-channel document and evidentiary provenance registry tracking official GIDC circulars, government gazettes, auction notices, layout maps, and corporate filings."
+# Primary Key: source_id
+# Foreign Key Constraints: None (Evidentiary Root Table)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * source_id: Primary key identifier
+"#   * source_type: Document typology (Official GIDC Circular, Gazette Resolution, Tender / Auction DPR, Layout Map, Corporate Plant Filings)"
+#   * tier_level: Evidentiary hierarchy tier (Tier 1: Official GIDC Archive -> Tier 8: News / Directories)
+#   * document_name: Official title or circular reference code
+#   * source_url: Direct portal URL or official PDF download link
+#   * publication_date: Original publication or gazette date
+#   * retrieval_date: Date ingested and verified by data intelligence pipeline
+"#   * authority: Statutory issuing authority (GIDC, Industries Commissionerate, MoEFCC)"
+"#   * reliability: Data confidence rating (HIGH, MEDIUM, LOW)"
+#   * checksum: SHA-256 cryptographic content digest
+# ==============================================================================
+
+source_id,source_type,tier_level,document_name,source_url,publication_date,retrieval_date,authority,reliability,checksum
+1,Official GIDC Allotment Circular,Tier 1: Official GIDC Archive,GIDC FY 2026-27 Allotment Rate Sheet,https://gidc.gujarat.gov.in/allotmentprice,2026-03-15,2026-10-03,GIDC,HIGH,sha256_gidc_fy27_allotment_official
+2,Official GIDC Allotment Circular,Tier 1: Official GIDC Archive,GIDC Allotment Price Circular Dt.01/04/2016,https://gidc.gujarat.gov.in/pdf/Circular/CIRCULAR-ALLOTMENT-PRICE.pdf,2016-04-01,2026-10-03,GIDC,HIGH,sha256_gidc_2016_circular_revised
+3,Official GIDC Allotment Circular,Tier 1: Official GIDC Archive,NO: GIDC/IO&m/CIR/ACCTS/REV/6 (Allotment Rates 2004-05),https://gidc.gujarat.gov.in/pdf/allotment-price/allotment-price-2004-2005.pdf,2004-04-01,2026-10-03,GIDC,HIGH,sha256_gidc_2004_infrastructure_rates
+4,GIDC Estate Specific Notification,Tier 1: Official GIDC Archive,Sanand Industrial Estate Charges & Allotment Circular 2022-23,https://gidc.gujarat.gov.in/pdf/June%202022%20GIDC%20Sanand%20Industrial%20Estate.pdf,2022-06-01,2026-10-03,GIDC,HIGH,sha256_gidc_sanand_2022_charges
+5,Government Gazette Resolution,Tier 2: Government Gazette,Govt. Resolution G.R. dated 21/04/2015 Private Industrial Park Scheme,https://industries.gujarat.gov.in/gr_private_parks_2015,2015-04-21,2026-10-03,Industries Commissionerate,HIGH,sha256_gr_private_parks_2015_approved
+6,Auction Notice & Tender DPR,Tier 3: Tender / Auction Notices,GIDC Public Auction Notice for Saturated Estates FY 2024,https://gidc.gujarat.gov.in/auction_notices,2024-01-10,2026-10-03,GIDC Disposals,HIGH,sha256_gidc_auction_saturated_2024
+7,Estate Layout & Plot Map,Tier 4: Layout & Engineering Maps,Sanand-II Bol Industrial Estate Master Plan & Cadastral Grid,https://gidc.gujarat.gov.in/maps/sanand2_bol_cadastral,2018-09-01,2026-10-03,GIDC Engineering,HIGH,sha256_sanand2_cadastral_layout
+8,Corporate Registration Filings,Tier 5: Corporate Plant Filings,Vibrant Gujarat Global Summit MoUs & Land Allotments DPR,https://vibrantgujarat.com/mou_records,2024-01-15,2026-10-03,iNDEXTb,MEDIUM,sha256_vg_mous_plant_records

@@ -1,0 +1,47 @@
+meta_file: gujarat_industrial_parks.csv.meta.txt
+file_name: gujarat_industrial_parks.csv
+original_name: gujarat_industrial_parks.csv
+prefix: gujarat_
+renamed: False
+extension: .csv
+size_bytes: 75378
+modified_utc: 2026-10-03T07:25:19.799745+00:00
+
+--- TABLE / DATASET ---
+table_name: catalog-312
+display_title: Gujarat Industrial Parks Catalog
+module_order: 
+description: 
+total_records_declared: 312 estates
+export_timestamp_utc: 2026-10-03T07:25:10.168315Z
+
+--- KEYS ---
+primary_key: (see preamble)
+
+--- DATA PROFILE ---
+header: Park_ID,Park_Name,District,Taluka,Authority_Type,Sector_Category,Total_Area_Acres,Notification_Year,CETP_Active,Latitude,Longitude,Phone,Email,Address,Anchors_Count
+n_columns: 15
+columns: Park_ID, Park_Name, District, Taluka, Authority_Type, Sector_Category, Total_Area_Acres, Notification_Year, CETP_Active, Latitude, Longitude, Phone, Email, Address, Anchors_Count
+data_rows_observed: 312
+total_lines: 317
+comment_lines(#): 3
+blank_or_separator_lines: 1
+
+--- DATA SOURCE (preamble verbatim) ---
+(no DATA SOURCE line in preamble; see SOURCES FOLDER EVIDENCE)
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_Industail_Parks.txt (209 bytes, 1 lines)
+    mapping_rationale: Same 312-estate universe as module-05 table: GIDC portal + Policy 2015/2020 + GR 21/04/2015 + OSM; flat catalog export variant (15 cols incl. Anchors_Count).
+    content_verbatim:
+      | GIDC Official Portal (gidc.gujarat.gov.in), Gujarat State Industrial Policy (2015/2020), Sanctioned Private Industrial Parks under Govt. Resolution (G.R. dated 21/04/2015), and OpenStreetMap spatial geocoding.
+NOTE: source filename is misspelled 'gujarat_Industail_Parks.txt' (should be Industrial); quoted exactly to avoid confusion.
+
+--- ARCHIVE / RELATIONS ---
+Sibling exports of the same 312-estate universe as module-05 gujarat_05_industrial_parks.csv (different projections: normalized module table vs flat catalog vs JSON vs GeoJSON vs human directory).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

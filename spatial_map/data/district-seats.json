@@ -1,0 +1,226 @@
+{
+ "Ahmedabad": {
+  "lat": 23.02579,
+  "lng": 72.58727,
+  "place": "Ahmedabad",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Amreli": {
+  "lat": 21.59983,
+  "lng": 71.21169,
+  "place": "Amreli",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Anand": {
+  "lat": 22.55251,
+  "lng": 72.9552,
+  "place": "Anand",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Aravalli": {
+  "lat": 23.46253,
+  "lng": 73.29857,
+  "place": "Modāsa",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Banaskantha": {
+  "lat": 24.25612,
+  "lng": 72.17928,
+  "place": "Deesa",
+  "source": "geonames",
+  "fcode": "PPLA3"
+ },
+ "Bharuch": {
+  "lat": 21.69482,
+  "lng": 72.9805,
+  "place": "Bharūch",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Bhavnagar": {
+  "lat": 21.76287,
+  "lng": 72.15331,
+  "place": "Bhavnagar",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Botad": {
+  "lat": 22.16917,
+  "lng": 71.66671,
+  "place": "Botad",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Chhota Udepur": {
+  "lat": 22.30401,
+  "lng": 74.0158,
+  "place": "Chhota Udepur",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Dahod": {
+  "lat": 22.9,
+  "lng": 74,
+  "place": "Dohad",
+  "source": "geonames",
+  "fcode": "ADM2"
+ },
+ "Devbhoomi Dwarka": {
+  "lat": 22.20685,
+  "lng": 69.65031,
+  "place": "Khambhāliya",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Gandhinagar": {
+  "lat": 23.21667,
+  "lng": 72.68333,
+  "place": "Gandhinagar",
+  "source": "geonames",
+  "fcode": "PPLA"
+ },
+ "Gir Somnath": {
+  "lat": 20.9077,
+  "lng": 70.36786,
+  "place": "Verāval",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Jamnagar": {
+  "lat": 22.47292,
+  "lng": 70.06673,
+  "place": "Jamnagar",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Junagadh": {
+  "lat": 21.51966,
+  "lng": 70.45981,
+  "place": "Jūnāgadh",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Kheda": {
+  "lat": 22.69385,
+  "lng": 72.86157,
+  "place": "Nadiād",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Kutch": {
+  "lat": 23.25397,
+  "lng": 69.66928,
+  "place": "Bhuj",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Mahisagar": {
+  "lat": 22.77547,
+  "lng": 73.61488,
+  "place": "Godhra",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Mehsana": {
+  "lat": 23.59864,
+  "lng": 72.38472,
+  "place": "Mahesāna",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Morbi": {
+  "lat": 22.81731,
+  "lng": 70.8377,
+  "place": "Morvi",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Narmada": {
+  "lat": 21.86667,
+  "lng": 73.5,
+  "place": "Rājpīpla",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Navsari": {
+  "lat": 20.94237,
+  "lng": 72.92467,
+  "place": "Navsari",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Panchmahal": {
+  "lat": 22.77547,
+  "lng": 73.61488,
+  "place": "Godhra",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Patan": {
+  "lat": 23.8507,
+  "lng": 72.12963,
+  "place": "Pātan",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Porbandar": {
+  "lat": 21.64219,
+  "lng": 69.60929,
+  "place": "Porbandar",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Rajkot": {
+  "lat": 22.29161,
+  "lng": 70.79322,
+  "place": "Rājkot",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Sabarkantha": {
+  "lat": 23.62974,
+  "lng": 73.00197,
+  "place": "Sabarkantha",
+  "source": "geonames",
+  "fcode": "ADM2"
+ },
+ "Surat": {
+  "lat": 21.19594,
+  "lng": 72.83023,
+  "place": "Surat",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ },
+ "Surendranagar": {
+  "lat": 22.72706,
+  "lng": 71.64856,
+  "place": "Surendranagar",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Tapi": {
+  "lat": 21.12,
+  "lng": 73.4,
+  "place": "Tapi",
+  "source": "geonames",
+  "fcode": "ADM2"
+ },
+ "Vadodara": {
+  "lat": 22.29941,
+  "lng": 73.20812,
+  "place": "Vadodara",
+  "source": "geonames",
+  "fcode": "PPL"
+ },
+ "Valsad": {
+  "lat": 20.61013,
+  "lng": 72.93428,
+  "place": "Valsād",
+  "source": "geonames",
+  "fcode": "PPLA2"
+ }
+}

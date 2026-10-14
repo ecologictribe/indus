@@ -1,0 +1,629 @@
+{
+ "Bhagapura, Ahmedabad, Gujarat, India": [],
+ "Kathwada, Ahmedabad, Gujarat, India": [
+  {
+   "lat": 23.03292,
+   "lon": 72.68306,
+   "name": "Kathwada GIDC",
+   "norm": "kathwada gidc",
+   "type": "industrial",
+   "importance": 0.08006633783474476,
+   "osm": "way/244328439",
+   "display": "Kathwada GIDC, Asarva Taluka, Ahmedabad, Gujarat, India"
+  },
+  {
+   "lat": 23.06371,
+   "lon": 72.69243,
+   "name": "AUDA park, Kathwada",
+   "norm": "auda park kathwada",
+   "type": "park",
+   "importance": 0.08006633783474476,
+   "osm": "way/1373280803",
+   "display": "AUDA park, Kathwada, Daskroi Taluka, Ahmedabad, Gujarat, India"
+  },
+  {
+   "lat": 23.03745,
+   "lon": 72.68668,
+   "name": "Kathwada Gidc rd no.02",
+   "norm": "kathwada gidc rd no 02",
+   "type": "tertiary",
+   "importance": 0.05339967116807809,
+   "osm": "way/442190672",
+   "display": "Kathwada Gidc rd no.02, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.03486,
+   "lon": 72.68611,
+   "name": "Kathwada Gidc rd no.08",
+   "norm": "kathwada gidc rd no 08",
+   "type": "tertiary",
+   "importance": 0.05339967116807809,
+   "osm": "way/442193480",
+   "display": "Kathwada Gidc rd no.08, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.033,
+   "lon": 72.68137,
+   "name": "Kathwada Gidc rd",
+   "norm": "kathwada gidc rd",
+   "type": "tertiary",
+   "importance": 0.05339967116807809,
+   "osm": "way/442192358",
+   "display": "Kathwada Gidc rd, Kathwada GIDC, Asarva Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.04103,
+   "lon": 72.68462,
+   "name": "Kathwada Gidc rd no.02",
+   "norm": "kathwada gidc rd no 02",
+   "type": "unclassified",
+   "importance": 0.05339967116807809,
+   "osm": "way/447168082",
+   "display": "Kathwada Gidc rd no.02, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.03881,
+   "lon": 72.68522,
+   "name": "Kathwada Gidc rd no.4 -A",
+   "norm": "kathwada gidc rd no 4 a",
+   "type": "unclassified",
+   "importance": 0.05339967116807809,
+   "osm": "way/442191723",
+   "display": "Kathwada Gidc rd no.4 -A, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.03948,
+   "lon": 72.68646,
+   "name": "Kathwada Gidc rd no.4",
+   "norm": "kathwada gidc rd no 4",
+   "type": "unclassified",
+   "importance": 0.05339967116807809,
+   "osm": "way/442191967",
+   "display": "Kathwada Gidc rd no.4, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.0419,
+   "lon": 72.68472,
+   "name": "Kathwada Gidc rd no.1",
+   "norm": "kathwada gidc rd no 1",
+   "type": "tertiary",
+   "importance": 0.05339967116807809,
+   "osm": "way/442195142",
+   "display": "Kathwada Gidc rd no.1, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.03667,
+   "lon": 72.68447,
+   "name": "Kathwada Gidc rd no.06",
+   "norm": "kathwada gidc rd no 06",
+   "type": "tertiary",
+   "importance": 0.05339967116807809,
+   "osm": "way/442193306",
+   "display": "Kathwada Gidc rd no.06, Kathwada GIDC, Daskroi Taluka, Ahmedabad, Gujarat, 380049, India"
+  }
+ ],
+ "Kerala, Ahmedabad, Gujarat, India": [
+  {
+   "lat": 22.77073,
+   "lon": 72.33248,
+   "name": "Kerala GIDC",
+   "norm": "kerala gidc",
+   "type": "industrial",
+   "importance": 0.08003173342488744,
+   "osm": "way/542943278",
+   "display": "Kerala GIDC, Bavla, Bavla Taluka, Ahmedabad, Gujarat, 382240, India"
+  },
+  {
+   "lat": 23.04037,
+   "lon": 72.52728,
+   "name": "Kerala Store",
+   "norm": "kerala store",
+   "type": "general",
+   "importance": 0.00006633783474474735,
+   "osm": "node/13120551561",
+   "display": "Kerala Store, Sargam Marg, Bodakdev, Ghatlodiya Taluka, Ahmedabad, Gujarat, 380054, India"
+  },
+  {
+   "lat": 22.77952,
+   "lon": 72.3285,
+   "name": "SubCentre, Kerala",
+   "norm": "subcentre kerala",
+   "type": "centre",
+   "importance": 0.0000317334248874192,
+   "osm": "node/8008318524",
+   "display": "SubCentre, Kerala, NH47, Bavla Taluka, Ahmedabad, Gujarat, 382240, India"
+  }
+ ],
+ "Khoraj, Ahmedabad, Gujarat, India": [],
+ "Odhav, Ahmedabad, Gujarat, India": [
+  {
+   "lat": 23.02558,
+   "lon": 72.66535,
+   "name": "Odhav Lake",
+   "norm": "odhav lake",
+   "type": "water",
+   "importance": 0.10673300450141143,
+   "osm": "way/172636934",
+   "display": "Odhav Lake, Ahmedabad, Vatva Taluka, Ahmedabad, Gujarat, 382415, India"
+  },
+  {
+   "lat": 23.0185,
+   "lon": 72.65776,
+   "name": "Odhav industrial estate",
+   "norm": "odhav industrial estate",
+   "type": "industrial",
+   "importance": 0.08006633783474476,
+   "osm": "way/321003780",
+   "display": "Odhav industrial estate, Vatva Taluka, Ahmedabad, Gujarat, India"
+  },
+  {
+   "lat": 23.02468,
+   "lon": 72.66632,
+   "name": "Odhav Road",
+   "norm": "odhav road",
+   "type": "primary",
+   "importance": 0.05339967116807809,
+   "osm": "way/173149082",
+   "display": "Odhav Road, Vatva Taluka, Ahmedabad, Gujarat, 382415, India"
+  },
+  {
+   "lat": 23.02933,
+   "lon": 72.67436,
+   "name": "Odhav Ring Road Flyover",
+   "norm": "odhav ring road flyover",
+   "type": "trunk",
+   "importance": 0.05339967116807809,
+   "osm": "way/1315278376",
+   "display": "Odhav Ring Road Flyover, Asarva Taluka, Ahmedabad, Gujarat, 380049, India"
+  },
+  {
+   "lat": 23.02059,
+   "lon": 72.6384,
+   "name": "Soni Ni Chawl Flyover",
+   "norm": "soni ni chawl flyover",
+   "type": "primary",
+   "importance": 0.05339967116807809,
+   "osm": "way/172628140",
+   "display": "Soni Ni Chawl Flyover, Shastri Nagar, Maninagar Taluka, Ahmedabad, Gujarat, 380023, India"
+  },
+  {
+   "lat": 23.021,
+   "lon": 72.64117,
+   "name": "Soni Ni Chawl Flyover",
+   "norm": "soni ni chawl flyover",
+   "type": "primary",
+   "importance": 0.05339967116807809,
+   "osm": "way/1314999646",
+   "display": "Soni Ni Chawl Flyover, Shastri Nagar, Maninagar Taluka, Ahmedabad, Gujarat, 382415, India"
+  }
+ ],
+ "Changodar, Ahmedabad, Gujarat, India": [
+  {
+   "lat": 22.94022,
+   "lon": 72.45671,
+   "name": "Changodar",
+   "norm": "changodar",
+   "type": "place_of_worship",
+   "importance": 0.00006633783474474735,
+   "osm": "node/4488285392",
+   "display": "Changodar, NH47, Daskroi Taluka, Ahmedabad, Gujarat, 382213, India"
+  }
+ ],
+ "Shinavada, Aravalli, Gujarat, India": [],
+ "Aithor, Mehsana, Gujarat, India": [],
+ "Aithor Non-MSME, Mehsana, Gujarat, India": [],
+ "Chhatral, Mehsana, Gujarat, India": [],
+ "IFFCO, Mehsana, Gujarat, India": [],
+ "Kukarwada, Mehsana, Gujarat, India": [],
+ "Lanva, Mehsana, Gujarat, India": [],
+ "Ranasan, Mehsana, Gujarat, India": [],
+ "Sihori, Banaskantha, Gujarat, India": [],
+ "Indranaj, Anand, Gujarat, India": [],
+ "Indranaj Non-MSME, Anand, Gujarat, India": [],
+ "Vitthal Udyognagar, Anand, Gujarat, India": [],
+ "Kapadwanj, Kheda, Gujarat, India": [
+  {
+   "lat": 23.02188,
+   "lon": 73.06797,
+   "name": "Annapurna Hospital - Kapadwanj",
+   "norm": "annapurna hospital kapadwanj",
+   "type": "hospital",
+   "importance": 0.000040000762951049326,
+   "osm": "node/6974889925",
+   "display": "Annapurna Hospital - Kapadwanj, NH848K, Kapadvanj, Kapadvanj Taluka, Kheda, Gujarat, 387620, India"
+  },
+  {
+   "lat": 23.02084,
+   "lon": 73.06708,
+   "name": "Janta Mobile Kapadwanj",
+   "norm": "janta mobile kapadwanj",
+   "type": "mobile_phone",
+   "importance": 0.000040000762951049326,
+   "osm": "node/12825958460",
+   "display": "Janta Mobile Kapadwanj, 11, NH848K, Kapadvanj, Kapadvanj Taluka, Kheda, Gujarat, 387620, India"
+  },
+  {
+   "lat": 23.02031,
+   "lon": 73.06769,
+   "name": "Haard Surgical Hospital - Kapadwanj",
+   "norm": "haard surgical hospital kapadwanj",
+   "type": "hospital",
+   "importance": 0.000040000762951049326,
+   "osm": "node/6981318222",
+   "display": "Haard Surgical Hospital - Kapadwanj, NH848K, Kapadvanj, Kapadvanj Taluka, Kheda, Gujarat, 387620, India"
+  },
+  {
+   "lat": 23.02262,
+   "lon": 73.07768,
+   "name": "Indian Red Cross Society Blood Bank, Kapadwanj",
+   "norm": "indian red cross society blood bank kapadwanj",
+   "type": "blood_bank",
+   "importance": 0.000040000762951049326,
+   "osm": "node/6888381779",
+   "display": "Indian Red Cross Society Blood Bank, Kapadwanj, NH848K, Kapadvanj, Kapadvanj Taluka, Kheda, Gujarat, 387620, India"
+  }
+ ],
+ "Makarpura, Vadodara, Gujarat, India": [
+  {
+   "lat": 22.23366,
+   "lon": 73.17593,
+   "name": "Makarpura",
+   "norm": "makarpura",
+   "type": "station",
+   "importance": 0.3479646975901272,
+   "osm": "node/318140382",
+   "display": "Makarpura, Makarpura Main Road, Vadodara Rural Taluka, Vadodara, Gujarat, 390013, India"
+  },
+  {
+   "lat": 22.16394,
+   "lon": 73.15069,
+   "name": "Makarpura",
+   "norm": "makarpura",
+   "type": "station",
+   "importance": 0.00006060807202253784,
+   "osm": "node/11392864510",
+   "display": "Makarpura, SH__, Vadodara, Vadodara Rural Taluka, Vadodara, Gujarat, 390001, India"
+  },
+  {
+   "lat": 22.26052,
+   "lon": 73.19959,
+   "name": "Indian Oil",
+   "norm": "indian oil",
+   "type": "fuel",
+   "importance": 0.00006060807202253784,
+   "osm": "node/7104222072",
+   "display": "Indian Oil, Makarpura, Susen Circle, Vadodara Rural Taluka, Vadodara, Gujarat, 390010, India"
+  }
+ ],
+ "Vadsar, Vadodara, Gujarat, India": [],
+ "Sehra, Panchmahal, Gujarat, India": [],
+ "Devgadhbariya, Dahod, Gujarat, India": [],
+ "Atali, Bharuch, Gujarat, India": [],
+ "Borkhadi, Bharuch, Gujarat, India": [],
+ "Dungari, Bharuch, Gujarat, India": [],
+ "Juned, Bharuch, Gujarat, India": [],
+ "Kanerao, Bharuch, Gujarat, India": [],
+ "Kharchi, Bharuch, Gujarat, India": [],
+ "Nabhipur, Bharuch, Gujarat, India": [],
+ "Saykha, Bharuch, Gujarat, India": [],
+ "Tilakwada, Bharuch, Gujarat, India": [],
+ "Vilayat, Bharuch, Gujarat, India": [],
+ "Dediyapada, Narmada, Gujarat, India": [],
+ "Hajira, Surat, Gujarat, India": [],
+ "Ichchapore, Surat, Gujarat, India": [],
+ "Katargam, Surat, Gujarat, India": [
+  {
+   "lat": 21.22882,
+   "lon": 72.82531,
+   "name": "Katargam Taluka",
+   "norm": "katargam taluka",
+   "type": "administrative",
+   "importance": 0.2400625841153582,
+   "osm": "relation/10753378",
+   "display": "Katargam Taluka, Surat, Gujarat, India"
+  },
+  {
+   "lat": 21.22507,
+   "lon": 72.83677,
+   "name": "Katargam Lake",
+   "norm": "katargam lake",
+   "type": "lake",
+   "importance": 0.13339591744869153,
+   "osm": "way/838958809",
+   "display": "Katargam Lake, Mini Bazar, Surat, Katargam Taluka, Surat, Gujarat, India"
+  }
+ ],
+ "Khatodara, Surat, Gujarat, India": [],
+ "Miyawadi, Surat, Gujarat, India": [],
+ "Pandesara, Surat, Gujarat, India": [
+  {
+   "lat": 21.14863,
+   "lon": 72.83148,
+   "name": "UHC, Pandesara",
+   "norm": "uhc pandesara",
+   "type": "centre",
+   "importance": 0.00006258411535816003,
+   "osm": "node/7590363973",
+   "display": "UHC, Pandesara, Bamroli-Althan Expressway, Udhana, Majura Taluka, Surat, Gujarat, 394220, India"
+  },
+  {
+   "lat": 21.13094,
+   "lon": 72.85274,
+   "name": "Indian Oil",
+   "norm": "indian oil",
+   "type": "fuel",
+   "importance": 0.00006258411535816003,
+   "osm": "node/7101020483",
+   "display": "Indian Oil, Pandesara, Udhna, SH6, GIDC, Majura Taluka, Surat, Gujarat, 395023, India"
+  }
+ ],
+ "Kawas, Surat, Gujarat, India": [
+  {
+   "lat": 21.16994,
+   "lon": 72.68694,
+   "name": "Kawas Thermal Power Station",
+   "norm": "kawas thermal power station",
+   "type": "industrial",
+   "importance": 0.2961343492019334,
+   "osm": "way/146235176",
+   "display": "Kawas Thermal Power Station, Chorasi Taluka, Surat, Gujarat, India"
+  },
+  {
+   "lat": 21.16938,
+   "lon": 72.68439,
+   "name": "Kawas solar farm",
+   "norm": "kawas solar farm",
+   "type": "industrial",
+   "importance": 0.08003750133516438,
+   "osm": "way/1261842169",
+   "display": "Kawas solar farm, Chorasi Taluka, Surat, Gujarat, India"
+  }
+ ],
+ "Kawas-II, Surat, Gujarat, India": [
+  {
+   "lat": 21.16994,
+   "lon": 72.68694,
+   "name": "Kawas Thermal Power Station",
+   "norm": "kawas thermal power station",
+   "type": "industrial",
+   "importance": 0.2961343492019334,
+   "osm": "way/146235176",
+   "display": "Kawas Thermal Power Station, Chorasi Taluka, Surat, Gujarat, India"
+  },
+  {
+   "lat": 21.16938,
+   "lon": 72.68439,
+   "name": "Kawas solar farm",
+   "norm": "kawas solar farm",
+   "type": "industrial",
+   "importance": 0.08003750133516438,
+   "osm": "way/1261842169",
+   "display": "Kawas solar farm, Chorasi Taluka, Surat, Gujarat, India"
+  }
+ ],
+ "Doswada, Tapi, Gujarat, India": [],
+ "Dungra, Valsad, Gujarat, India": [],
+ "Unai, Navsari, Gujarat, India": [
+  {
+   "lat": 20.85242,
+   "lon": 73.33936,
+   "name": "Unai",
+   "norm": "unai",
+   "type": "train_station",
+   "importance": 0.00000999999999995449,
+   "osm": "way/986804566",
+   "display": "Unai, NH56, Vansda Taluka, Navsari, Gujarat, 396590, India"
+  }
+ ],
+ "Bhaktinagar, Rajkot, Gujarat, India": [
+  {
+   "lat": 22.28177,
+   "lon": 70.7931,
+   "name": "Bhaktinagar",
+   "norm": "bhaktinagar",
+   "type": "station",
+   "importance": 0.3511138876399894,
+   "osm": "node/5734380272",
+   "display": "Bhaktinagar, Gondal Road, Rajkot, Rajkot East Taluka, Rajkot, Gujarat, 360001, India"
+  }
+ ],
+ "Chhapra, Rajkot, Gujarat, India": [],
+ "Hadamtala, Rajkot, Gujarat, India": [],
+ "Jamvadi, Rajkot, Gujarat, India": [],
+ "Khirasara, Rajkot, Gujarat, India": [],
+ "Khirasara Non-MSME, Rajkot, Gujarat, India": [],
+ "Khirasara-II, Rajkot, Gujarat, India": [],
+ "Kuvadva, Rajkot, Gujarat, India": [
+  {
+   "lat": 22.31419,
+   "lon": 70.83531,
+   "name": "kuvadva road police staion",
+   "norm": "kuvadva road police staion",
+   "type": "police",
+   "importance": 0.00005939040207518147,
+   "osm": "node/4326820496",
+   "display": "kuvadva road police staion, Rajkot Bypass, Rajkot, Rajkot East Taluka, Rajkot, Gujarat, 360001, India"
+  }
+ ],
+ "Padadhari, Rajkot, Gujarat, India": [],
+ "Piparadi, Rajkot, Gujarat, India": [],
+ "Shapar-Veraval, Rajkot, Gujarat, India": [
+  {
+   "lat": 22.15876,
+   "lon": 70.798,
+   "name": "Shapar Veraval",
+   "norm": "shapar veraval",
+   "type": "apartment",
+   "importance": 0.00005939040207518147,
+   "osm": "node/5255161622",
+   "display": "Shapar Veraval, NH27, Kotda Sangani Taluka, Rajkot, Gujarat, 360024, India"
+  }
+ ],
+ "Vaghasiya, Rajkot, Gujarat, India": [],
+ "Rafaleshwar, Morbi, Gujarat, India": [
+  {
+   "lat": 22.76989,
+   "lon": 70.89992,
+   "name": "Rafaleshwar",
+   "norm": "rafaleshwar",
+   "type": "halt",
+   "importance": 0.00004632867933160933,
+   "osm": "node/6770068038",
+   "display": "Rafaleshwar, NH27, Juna Makansar, Makansar, Lalpar લાલપર, Morbi Taluka, Morbi, Gujarat, India"
+  }
+ ],
+ "Kalawad, Jamnagar, Gujarat, India": [],
+ "Kalawad Non-MSME, Jamnagar, Gujarat, India": [],
+ "Shekhpat, Jamnagar, Gujarat, India": [],
+ "Bhatia, Devbhoomi Dwarka, Gujarat, India": [],
+ "Jamkhambhaliya, Devbhoomi Dwarka, Gujarat, India": [],
+ "Sheel, Junagadh, Gujarat, India": [],
+ "Dharampur, Porbandar, Gujarat, India": [],
+ "Miyani, Porbandar, Gujarat, India": [
+  {
+   "lat": 21.83974,
+   "lon": 69.38339,
+   "name": "Miyani",
+   "norm": "miyani",
+   "type": "village",
+   "importance": 0.14670416800183103,
+   "osm": "node/824517504",
+   "display": "Miyani, Porbandar Taluka, Porbandar, Gujarat, India"
+  }
+ ],
+ "Vanana, Porbandar, Gujarat, India": [],
+ "Chitra, Bhavnagar, Gujarat, India": [],
+ "Madhiya, Bhavnagar, Gujarat, India": [
+  {
+   "lat": 21.04627,
+   "lon": 71.67953,
+   "name": "Madhiya",
+   "norm": "madhiya",
+   "type": "village",
+   "importance": 0.14667666666666662,
+   "osm": "way/1303025831",
+   "display": "Madhiya, Mahuva Taluka, Bhavnagar, Gujarat, India"
+  }
+ ],
+ "Narigam, Bhavnagar, Gujarat, India": [],
+ "Narigam Non-MSME, Bhavnagar, Gujarat, India": [],
+ "Vithalwadi, Bhavnagar, Gujarat, India": [],
+ "Kaniyad, Botad, Gujarat, India": [],
+ "Chitrod, Kutch, Gujarat, India": [
+  {
+   "lat": 23.41222,
+   "lon": 70.67564,
+   "name": "Chitrod",
+   "norm": "chitrod",
+   "type": "village",
+   "importance": 0.14670416800183103,
+   "osm": "way/679838083",
+   "display": "Chitrod, Rapar Taluka, Kachchh, Gujarat, India"
+  },
+  {
+   "lat": 23.41029,
+   "lon": 70.67716,
+   "name": "Chitrod",
+   "norm": "chitrod",
+   "type": "village",
+   "importance": 0.14670416800183103,
+   "osm": "node/7006600861",
+   "display": "Chitrod, Rapar Taluka, Kachchh, Gujarat, 370145, India"
+  },
+  {
+   "lat": 23.43712,
+   "lon": 70.66629,
+   "name": "Chitrod",
+   "norm": "chitrod",
+   "type": "station",
+   "importance": 0.00003750133516437045,
+   "osm": "node/7105222170",
+   "display": "Chitrod, NH927C, Chitrod, Rapar Taluka, Kachchh, Gujarat, India"
+  }
+ ],
+ "Dhrub, Kutch, Gujarat, India": [
+  {
+   "lat": 22.79683,
+   "lon": 69.67237,
+   "name": "Dhrub",
+   "norm": "dhrub",
+   "type": "station",
+   "importance": 0.00003919050888833475,
+   "osm": "node/7105222107",
+   "display": "Dhrub, Mundra Port, Mundra Taluka, Kachchh, Gujarat, India"
+  }
+ ],
+ "Madhapur, Kutch, Gujarat, India": [],
+ "Makhel, Kutch, Gujarat, India": [
+  {
+   "lat": 23.50256,
+   "lon": 70.95907,
+   "name": "Makhel",
+   "norm": "makhel",
+   "type": "village",
+   "importance": 0.14670416800183103,
+   "osm": "node/7011895518",
+   "display": "Makhel, Rapar Taluka, Kachchh, Gujarat, 370155, India"
+  }
+ ],
+ "Mithi Rohar-I, Kutch, Gujarat, India": [
+  {
+   "lat": 23.102,
+   "lon": 70.15251,
+   "name": "Mithi Rohar",
+   "norm": "mithi rohar",
+   "type": "village",
+   "importance": 1e-10,
+   "osm": "node/6855752841",
+   "display": "Mithi Rohar, Gandhidham Taluka, Kachchh, Gujarat, 370240, India"
+  }
+ ],
+ "Mithi Rohar-II, Kutch, Gujarat, India": [
+  {
+   "lat": 23.102,
+   "lon": 70.15251,
+   "name": "Mithi Rohar",
+   "norm": "mithi rohar",
+   "type": "village",
+   "importance": 1e-10,
+   "osm": "node/6855752841",
+   "display": "Mithi Rohar, Gandhidham Taluka, Kachchh, Gujarat, 370240, India"
+  }
+ ],
+ "Motichirai, Kutch, Gujarat, India": [],
+ "Nagor, Kutch, Gujarat, India": [
+  {
+   "lat": 23.16689,
+   "lon": 69.00059,
+   "name": "Nagor (Abdasa)",
+   "norm": "nagor abdasa",
+   "type": "village",
+   "importance": 0.14670416800183103,
+   "osm": "node/6985920486",
+   "display": "Nagor (Abdasa), Abdasa Taluka, Kachchh, Gujarat, 370645, India"
+  },
+  {
+   "lat": 23.32186,
+   "lon": 69.73083,
+   "name": "Nagor",
+   "norm": "nagor",
+   "type": "village",
+   "importance": 0.14389741120638372,
+   "osm": "node/6852408281",
+   "display": "Nagor, Bhuj Taluka, Kachchh, Gujarat, 370001, India"
+  }
+ ],
+ "Taluka: Kodinar, Gir Somnath, Gujarat, India": [
+  {
+   "lat": 20.84206,
+   "lon": 70.73794,
+   "name": "Kodinar Taluka",
+   "norm": "kodinar taluka",
+   "type": "administrative",
+   "importance": 0.24003708476386662,
+   "osm": "relation/9657505",
+   "display": "Kodinar Taluka, Gir Somnath, Gujarat, India"
+  }
+ ],
+ "Shapoorji Pallonji Pvt. Ltd, Gir Somnath, Gujarat, India": []
+}

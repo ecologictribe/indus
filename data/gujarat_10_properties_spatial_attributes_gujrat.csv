@@ -1,0 +1,831 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: properties (Properties & Parcel Spatial Attributes)
+# Table Order: Module 10 of 12 Core Schema Tables
+# Total Records: 800 rows
+# Export Timestamp (UTC): 2026-10-03T07:43:14.352080Z
+"# DATA SOURCE: Sub-Registrar Offices (Revenue Department), Gujarat Real Estate Regulatory Authority (GUJRERA) project filings, and GIS Hedonic buffer radial calculations."
+"# Description: Tracked residential and commercial land parcels, apartments, and houses across discrete spatial distance buffers."
+# Primary Key: property_id
+"# Foreign Key Constraints: neighborhood_id -> neighborhoods_jurisdictions, nearest_park_id -> industrial_parks, nearest_clean_commercial_id -> clean_commercial_nodes"
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * property_id: Primary key identifier
+#   * neighborhood_id: Foreign key reference to neighborhood jurisdiction
+#   * nearest_park_id: Foreign key reference to nearest industrial park
+#   * nearest_clean_commercial_id: Foreign key reference to nearest clean commercial benchmark
+"#   * property_type: Parcel typology (Residential Apartment, Single Family Detached, Plot, Commercial Frontage)"
+#   * lot_size_sqm: Plot footprint size in square meters
+#   * built_up_area_sqm: Covered usable built-up area in square meters
+#   * bedrooms: Number of bedrooms
+#   * bathrooms: Number of bathrooms
+#   * age_at_sale_years: Structure age in years at point of transaction
+#   * distance_to_park_km: Euclidean spatial distance to industrial park boundary (km)
+"#   * distance_buffer_bin: Distance gradient (<0.5km = Proximity Drag, 0.5-1.5km = Intermediate, 3-8km = Sweet Spot, Control >10km, Clean Commercial <0.3km)"
+#   * distance_to_clean_commercial_km: Distance to clean commercial benchmark node (km)
+#   * distance_to_highway_km: Distance to nearest National/State Highway (km)
+#   * distance_to_urban_center_km: Distance to district urban center / municipal core (km)
+# ==============================================================================
+
+property_id,neighborhood_id,nearest_park_id,nearest_clean_commercial_id,property_type,lot_size_sqm,built_up_area_sqm,bedrooms,bathrooms,age_at_sale_years,distance_to_park_km,distance_buffer_bin,distance_to_clean_commercial_km,distance_to_highway_km,distance_to_urban_center_km
+1,1,96,1,Plot,,159.8,3,2,7,12.36,Control (>10km),3.3,2.84,17.12
+2,1,96,1,Plot,,137.5,3,2,10,11.67,Control (>10km),9.77,5.4,19.2
+3,1,96,1,Single Family Detached,,169.9,4,3,12,11.82,Control (>10km),13.53,3.93,16.65
+4,1,96,1,Single Family Detached,,173.9,4,3,10,11.27,Control (>10km),14.26,2.22,15.21
+5,1,96,1,Single Family Detached,,83.5,2,1,1,13.01,Control (>10km),8.61,1.16,19.18
+6,1,96,1,Residential Apartment,,204.8,4,3,3,11.51,Control (>10km),14.22,2.42,19.35
+7,1,96,1,Commercial Frontage,,214.5,4,3,1,11.91,Control (>10km),5.97,0.73,15.06
+8,1,96,1,Plot,,110.7,3,2,12,10.65,Control (>10km),3.11,3.85,12.96
+9,1,96,1,Plot,,77.2,2,1,16,13.62,Control (>10km),3.56,1.2,17.67
+10,1,96,1,Commercial Frontage,,127.9,3,2,1,11.72,Control (>10km),4.69,4.01,15.36
+11,1,96,1,Plot,,118.0,3,2,17,12.19,Control (>10km),14.46,0.6,19.27
+12,1,96,1,Plot,,153.8,3,2,10,11.48,Control (>10km),3.45,5.47,16.44
+13,1,96,1,Commercial Frontage,,213.8,4,3,16,11.3,Control (>10km),7.92,5.37,17.02
+14,1,96,1,Commercial Frontage,,92.6,2,1,17,12.85,Control (>10km),8.09,5.08,17.34
+15,1,96,1,Commercial Frontage,,83.3,2,1,17,12.67,Control (>10km),2.37,1.06,19.2
+16,1,96,1,Single Family Detached,,130.0,3,2,16,10.51,Control (>10km),4.36,3.95,14.58
+17,1,96,1,Plot,,75.5,2,1,7,11.78,Control (>10km),12.98,4.22,18.28
+18,1,96,1,Residential Apartment,,96.0,2,1,9,11.65,Control (>10km),8.82,0.76,16.11
+19,1,96,1,Commercial Frontage,,194.6,4,3,12,10.73,Control (>10km),14.13,2.63,18.68
+20,1,96,1,Single Family Detached,,80.0,2,1,8,11.13,Control (>10km),3.52,3.86,18.77
+21,1,96,1,Single Family Detached,,107.8,3,2,5,11.6,Control (>10km),14.47,5.01,15.66
+22,1,96,1,Plot,,137.8,3,2,11,12.45,Control (>10km),13.87,0.49,15.94
+23,1,96,1,Residential Apartment,,104.7,3,2,8,12.92,Control (>10km),12.4,0.89,15.99
+24,1,96,1,Residential Apartment,,73.4,2,1,14,11.98,Control (>10km),11.08,4.53,16.4
+25,1,96,1,Residential Apartment,,142.6,3,2,4,12.87,Control (>10km),4.11,3.38,19.92
+26,1,96,1,Residential Apartment,,155.2,3,2,7,12.31,Control (>10km),11.07,0.49,16.09
+27,1,96,1,Single Family Detached,,169.2,4,3,13,12.96,Control (>10km),13.52,3.87,18.66
+28,1,96,1,Residential Apartment,,212.5,4,3,5,11.13,Control (>10km),7.43,0.81,18.4
+29,1,96,1,Commercial Frontage,,199.3,4,3,9,11.72,Control (>10km),14.11,2.18,18.13
+30,1,96,1,Plot,,104.3,3,2,7,11.93,Control (>10km),12.63,1.22,18.92
+31,1,96,1,Plot,,174.1,4,3,2,10.42,Control (>10km),4.99,4.71,13.21
+32,1,96,1,Residential Apartment,,167.7,4,3,2,10.93,Control (>10km),6.03,4.85,15.66
+33,1,96,1,Plot,,137.8,3,2,3,11.61,Control (>10km),4.13,0.53,16.24
+34,1,96,1,Single Family Detached,,74.4,2,1,2,12.69,Control (>10km),13.35,3.07,20.09
+35,1,96,1,Residential Apartment,,137.4,3,2,8,10.59,Control (>10km),11.19,3.82,13.59
+36,1,96,1,Residential Apartment,,175.7,4,3,10,12.29,Control (>10km),4.11,4.48,15.42
+37,1,96,1,Single Family Detached,,117.7,3,2,1,11.29,Control (>10km),13.32,2.62,17.98
+38,1,96,1,Residential Apartment,,199.5,4,3,16,13.1,Control (>10km),13.89,5.13,19.98
+39,1,96,1,Residential Apartment,,214.4,4,3,4,12.12,Control (>10km),12.6,0.8,16.36
+40,1,96,1,Residential Apartment,,159.2,3,2,2,10.89,Control (>10km),9.76,1.86,16.95
+41,1,96,1,Residential Apartment,,154.3,3,2,4,12.27,Control (>10km),10.25,5.78,18.8
+42,1,96,1,Plot,,101.3,3,2,15,10.85,Control (>10km),9.02,2.56,16.62
+43,1,96,1,Residential Apartment,,72.7,2,1,2,12.52,Control (>10km),3.98,4.01,14.89
+44,1,96,1,Residential Apartment,,90.1,2,1,6,11.16,Control (>10km),11.88,1.78,13.98
+45,1,96,1,Residential Apartment,,205.3,4,3,11,12.49,Control (>10km),7.02,3.12,17.19
+46,1,96,1,Residential Apartment,,162.3,4,3,14,11.1,Control (>10km),14.48,0.69,15.97
+47,1,96,1,Plot,,179.3,4,3,7,12.2,Control (>10km),2.7,1.33,16.12
+48,1,96,1,Residential Apartment,,115.8,3,2,5,10.96,Control (>10km),7.01,1.01,16.82
+49,1,96,1,Residential Apartment,,193.8,4,3,16,12.28,Control (>10km),3.59,2.43,18.69
+50,1,96,1,Residential Apartment,,78.6,2,1,14,12.07,Control (>10km),3.76,3.78,18.58
+51,1,96,1,Commercial Frontage,,104.1,3,2,11,12.34,Control (>10km),11.2,0.69,17.6
+52,1,96,1,Residential Apartment,,207.3,4,3,8,12.86,Control (>10km),7.82,3.27,18.21
+53,1,96,1,Plot,,81.9,2,1,5,13.86,Control (>10km),6.38,5.85,17.64
+54,1,96,1,Commercial Frontage,,104.9,3,2,9,13.04,Control (>10km),10.64,4.79,16.6
+55,1,96,1,Residential Apartment,,201.6,4,3,2,12.47,Control (>10km),9.71,4.11,19.82
+56,1,96,1,Single Family Detached,,181.5,4,3,1,11.87,Control (>10km),7.29,1.83,19.22
+57,1,96,1,Residential Apartment,,137.6,3,2,14,12.05,Control (>10km),7.07,1.24,18.43
+58,1,96,1,Single Family Detached,,145.3,3,2,9,11.35,Control (>10km),13.36,3.79,17.69
+59,1,96,1,Residential Apartment,,71.0,2,1,15,12.16,Control (>10km),7.33,0.71,16.03
+60,1,96,1,Residential Apartment,,161.0,4,3,17,11.15,Control (>10km),6.43,2.5,16.4
+61,1,96,1,Residential Apartment,,129.3,3,2,5,10.69,Control (>10km),9.06,3.01,14.06
+62,1,96,1,Plot,,217.1,4,3,15,11.48,Control (>10km),9.46,4.66,19.22
+63,1,96,1,Plot,,106.3,3,2,6,12.57,Control (>10km),2.95,0.59,16.99
+64,1,96,1,Residential Apartment,,187.5,4,3,6,11.37,Control (>10km),9.58,5.41,16.17
+65,1,96,1,Commercial Frontage,,145.1,3,2,9,11.9,Control (>10km),3.44,3.01,17.71
+66,1,96,1,Single Family Detached,,214.5,4,3,6,11.94,Control (>10km),7.91,4.65,15.54
+67,1,96,1,Residential Apartment,,142.6,3,2,15,11.87,Control (>10km),10.73,0.64,17.36
+68,1,96,1,Single Family Detached,,154.1,3,2,6,11.06,Control (>10km),4.72,2.84,13.36
+69,1,96,1,Plot,,116.5,3,2,1,12.76,Control (>10km),12.16,2.91,20.52
+70,1,96,1,Single Family Detached,,123.8,3,2,4,11.51,Control (>10km),13.73,5.13,18.77
+71,1,96,1,Residential Apartment,,119.7,3,2,7,12.29,Control (>10km),10.27,0.49,16.48
+72,1,96,1,Plot,,192.7,4,3,16,11.3,Control (>10km),4.36,4.96,15.53
+73,1,96,1,Plot,,174.6,4,3,7,12.44,Control (>10km),13.97,2.93,18.61
+74,1,96,1,Residential Apartment,,214.2,4,3,3,11.87,Control (>10km),4.95,5.73,19.15
+75,1,96,1,Residential Apartment,,130.5,3,2,5,12.06,Control (>10km),9.57,1.38,15.29
+76,1,96,1,Single Family Detached,,127.8,3,2,7,13.03,Control (>10km),7.85,1.74,20.78
+77,1,96,1,Single Family Detached,,181.4,4,3,14,10.99,Control (>10km),12.02,1.96,15.55
+78,1,96,1,Single Family Detached,,109.0,3,2,6,11.64,Control (>10km),8.71,0.94,18.36
+79,1,96,1,Residential Apartment,,178.3,4,3,15,11.74,Control (>10km),7.58,3.09,18.18
+80,1,96,1,Plot,,100.6,3,2,2,11.39,Control (>10km),13.32,2.65,17.18
+81,1,96,1,Residential Apartment,,188.7,4,3,14,11.96,Control (>10km),12.67,3.21,16.39
+82,1,96,1,Plot,,190.5,4,3,17,13.01,Control (>10km),4.69,0.38,19.29
+83,1,96,1,Commercial Frontage,,134.7,3,2,6,11.22,Control (>10km),10.28,3.34,17.71
+84,1,96,1,Plot,,205.5,4,3,10,12.2,Control (>10km),8.06,0.33,17.63
+85,1,96,1,Single Family Detached,,140.4,3,2,12,13.0,Control (>10km),13.19,3.12,17.77
+86,1,96,1,Residential Apartment,,72.9,2,1,16,12.27,Control (>10km),4.23,0.44,16.99
+87,1,96,1,Plot,,113.0,3,2,9,11.88,Control (>10km),2.39,5.98,19.26
+88,1,96,1,Residential Apartment,,141.8,3,2,10,12.61,Control (>10km),3.87,3.18,18.35
+89,1,96,1,Residential Apartment,,119.2,3,2,4,13.23,Control (>10km),8.68,2.67,20.65
+90,1,96,1,Plot,,189.4,4,3,9,11.83,Control (>10km),8.76,1.74,16.96
+91,1,96,1,Residential Apartment,,176.2,4,3,13,12.98,Control (>10km),11.92,4.14,15.25
+92,1,96,1,Residential Apartment,,214.2,4,3,8,11.49,Control (>10km),5.45,5.62,17.16
+93,1,96,1,Single Family Detached,,205.7,4,3,5,9.85,Control (>10km),14.24,0.95,16.56
+94,1,96,1,Commercial Frontage,,82.4,2,1,11,11.82,Control (>10km),3.36,4.87,17.28
+95,1,96,1,Residential Apartment,,191.3,4,3,13,11.95,Control (>10km),5.94,2.92,19.55
+96,1,96,1,Residential Apartment,,145.4,3,2,11,11.79,Control (>10km),6.07,1.8,18.81
+97,1,96,1,Residential Apartment,,101.6,3,2,6,11.23,Control (>10km),3.72,2.81,15.52
+98,1,96,1,Residential Apartment,,156.1,3,2,3,12.53,Control (>10km),9.58,0.46,14.6
+99,1,96,1,Single Family Detached,,102.4,3,2,5,12.27,Control (>10km),4.0,4.63,15.17
+100,1,96,1,Residential Apartment,,199.8,4,3,12,12.48,Control (>10km),5.74,0.65,15.04
+101,1,96,1,Single Family Detached,,178.6,4,3,2,13.1,Control (>10km),14.55,4.08,15.4
+102,1,96,1,Residential Apartment,,118.4,3,2,14,12.46,Control (>10km),9.02,0.37,19.57
+103,1,96,1,Single Family Detached,,124.7,3,2,3,12.2,Control (>10km),3.55,4.1,17.64
+104,1,96,1,Residential Apartment,,175.3,4,3,14,12.93,Control (>10km),14.24,2.22,18.11
+105,1,96,1,Residential Apartment,,162.1,4,3,6,12.0,Control (>10km),7.39,2.9,18.38
+106,1,96,1,Single Family Detached,,190.3,4,3,5,11.29,Control (>10km),14.94,2.71,13.35
+107,1,96,1,Residential Apartment,,163.8,4,3,9,13.64,Control (>10km),12.65,0.42,20.59
+108,1,96,1,Single Family Detached,,138.1,3,2,17,10.59,Control (>10km),4.21,0.74,13.35
+109,1,96,1,Commercial Frontage,,179.5,4,3,9,12.31,Control (>10km),11.62,3.9,17.98
+110,1,96,1,Residential Apartment,,80.4,2,1,15,11.56,Control (>10km),6.61,0.44,18.24
+111,1,96,1,Residential Apartment,,95.8,2,1,9,11.48,Control (>10km),7.04,3.75,18.66
+112,1,96,1,Commercial Frontage,,129.0,3,2,17,12.55,Control (>10km),14.55,1.34,17.12
+113,1,96,1,Single Family Detached,,105.3,3,2,8,11.4,Control (>10km),5.76,5.27,18.1
+114,1,96,1,Plot,,105.0,3,2,15,11.85,Control (>10km),14.25,1.72,15.64
+115,1,96,1,Commercial Frontage,,121.8,3,2,9,13.19,Control (>10km),8.22,3.55,20.36
+116,1,96,1,Plot,,110.1,3,2,14,12.18,Control (>10km),6.24,5.19,19.9
+117,1,96,1,Residential Apartment,,113.3,3,2,14,11.88,Control (>10km),11.81,5.73,16.55
+118,1,96,1,Plot,,193.9,4,3,11,13.12,Control (>10km),6.35,0.69,17.0
+119,1,96,1,Residential Apartment,,197.3,4,3,9,12.15,Control (>10km),3.45,2.25,17.57
+120,1,96,1,Residential Apartment,,206.4,4,3,17,11.93,Control (>10km),7.6,2.01,15.8
+121,1,96,1,Commercial Frontage,,134.1,3,2,17,13.2,Control (>10km),8.83,5.42,19.44
+122,1,96,1,Single Family Detached,,99.5,2,1,17,11.82,Control (>10km),11.72,3.25,18.84
+123,1,96,1,Single Family Detached,,99.6,2,1,16,10.52,Control (>10km),3.1,1.36,15.14
+124,1,96,1,Residential Apartment,,75.5,2,1,8,12.09,Control (>10km),3.53,5.05,14.36
+125,1,96,1,Single Family Detached,,84.9,2,1,11,11.7,Control (>10km),8.93,4.54,18.86
+126,1,96,1,Commercial Frontage,,121.3,3,2,4,11.71,Control (>10km),12.51,5.08,15.62
+127,1,96,1,Single Family Detached,,111.1,3,2,14,12.96,Control (>10km),9.91,2.54,17.63
+128,1,96,1,Single Family Detached,,127.9,3,2,4,11.91,Control (>10km),10.96,4.61,19.09
+129,1,96,1,Residential Apartment,,75.9,2,1,9,11.3,Control (>10km),2.25,0.57,14.43
+130,1,96,1,Residential Apartment,,135.9,3,2,6,11.55,Control (>10km),2.97,0.66,14.24
+131,1,96,1,Residential Apartment,,127.7,3,2,15,12.93,Control (>10km),5.12,0.46,15.12
+132,1,96,1,Plot,,71.0,2,1,12,11.57,Control (>10km),12.13,3.23,16.7
+133,1,96,1,Residential Apartment,,110.2,3,2,8,10.48,Control (>10km),11.71,0.82,12.56
+134,1,96,1,Residential Apartment,,143.8,3,2,2,11.53,Control (>10km),3.62,5.6,17.44
+135,1,96,1,Single Family Detached,,81.3,2,1,13,13.47,Control (>10km),5.35,0.58,16.28
+136,1,96,1,Single Family Detached,,187.6,4,3,10,12.19,Control (>10km),7.17,1.87,19.78
+137,1,96,1,Residential Apartment,,158.2,3,2,8,11.65,Control (>10km),8.83,1.01,14.31
+138,1,96,1,Residential Apartment,,213.7,4,3,13,12.65,Control (>10km),4.16,3.6,18.92
+139,1,96,1,Single Family Detached,,147.0,3,2,5,12.6,Control (>10km),3.69,1.11,18.46
+140,1,96,1,Residential Apartment,,81.7,2,1,5,11.72,Control (>10km),14.17,4.64,19.36
+141,1,96,1,Residential Apartment,,80.5,2,1,9,13.31,Control (>10km),11.46,4.05,20.03
+142,1,96,1,Single Family Detached,,99.9,2,1,7,11.3,Control (>10km),3.89,4.55,18.57
+143,1,96,1,Single Family Detached,,92.4,2,1,13,12.42,Control (>10km),4.36,2.91,16.23
+144,1,96,1,Residential Apartment,,71.1,2,1,6,11.94,Control (>10km),7.3,5.19,19.82
+145,1,96,1,Commercial Frontage,,92.2,2,1,11,12.44,Control (>10km),9.38,1.34,16.7
+146,1,96,1,Single Family Detached,,192.3,4,3,12,12.12,Control (>10km),2.01,1.99,19.9
+147,1,96,1,Plot,,194.8,4,3,9,12.01,Control (>10km),8.4,2.2,17.45
+148,1,96,1,Residential Apartment,,207.2,4,3,9,11.92,Control (>10km),14.86,4.06,15.51
+149,1,96,1,Commercial Frontage,,96.2,2,1,12,12.16,Control (>10km),2.65,3.38,14.54
+150,1,96,1,Residential Apartment,,204.1,4,3,11,12.09,Control (>10km),3.18,4.01,19.78
+151,1,96,1,Plot,,183.5,4,3,9,12.07,Control (>10km),12.37,1.25,18.39
+152,1,96,1,Residential Apartment,,127.6,3,2,8,12.03,Control (>10km),3.33,1.11,17.24
+153,1,96,1,Residential Apartment,,148.6,3,2,16,12.81,Control (>10km),6.45,2.1,15.98
+154,1,96,1,Commercial Frontage,,171.0,4,3,4,12.09,Control (>10km),13.78,5.14,17.34
+155,1,96,1,Residential Apartment,,136.1,3,2,10,11.99,Control (>10km),9.13,2.81,18.77
+156,1,96,1,Plot,,154.3,3,2,5,10.88,Control (>10km),14.41,2.46,18.13
+157,1,96,1,Plot,,208.7,4,3,5,12.86,Control (>10km),9.02,3.85,19.36
+158,1,96,1,Single Family Detached,,104.9,3,2,13,12.28,Control (>10km),4.72,4.56,17.5
+159,1,96,1,Commercial Frontage,,153.8,3,2,7,12.8,Control (>10km),11.05,5.88,18.83
+160,1,96,1,Residential Apartment,,96.6,2,1,3,11.29,Control (>10km),13.11,2.49,17.78
+161,1,96,1,Plot,,152.4,3,2,13,0.24,Clean Commercial (<0.3km),0.2,3.29,6.08
+162,1,96,1,Residential Apartment,,167.0,4,3,4,0.27,Clean Commercial (<0.3km),0.2,1.7,2.65
+163,1,96,1,Residential Apartment,,120.6,3,2,1,0.28,Clean Commercial (<0.3km),0.2,5.19,5.12
+164,1,96,1,Residential Apartment,,215.9,4,3,14,0.25,Clean Commercial (<0.3km),0.2,3.26,5.91
+165,1,96,1,Residential Apartment,,78.2,2,1,11,0.23,Clean Commercial (<0.3km),0.2,4.83,5.09
+166,1,96,1,Single Family Detached,,119.6,3,2,10,0.26,Clean Commercial (<0.3km),0.2,2.07,5.31
+167,1,96,1,Commercial Frontage,,85.9,2,1,17,0.25,Clean Commercial (<0.3km),0.2,1.15,5.31
+168,1,96,1,Residential Apartment,,206.6,4,3,8,0.24,Clean Commercial (<0.3km),0.2,0.86,7.11
+169,1,96,1,Commercial Frontage,,210.0,4,3,14,0.22,Clean Commercial (<0.3km),0.2,5.45,7.32
+170,1,96,1,Residential Apartment,,121.9,3,2,15,0.27,Clean Commercial (<0.3km),0.2,0.3,3.72
+171,1,96,1,Single Family Detached,,203.2,4,3,2,0.22,Clean Commercial (<0.3km),0.2,1.71,7.62
+172,1,96,1,Residential Apartment,,82.9,2,1,9,0.25,Clean Commercial (<0.3km),0.2,5.56,6.39
+173,1,96,1,Residential Apartment,,193.1,4,3,15,0.23,Clean Commercial (<0.3km),0.2,4.99,5.34
+174,1,96,1,Residential Apartment,,184.0,4,3,7,0.25,Clean Commercial (<0.3km),0.2,2.9,3.27
+175,1,96,1,Residential Apartment,,152.9,3,2,4,0.26,Clean Commercial (<0.3km),0.2,5.9,8.16
+176,1,96,1,Residential Apartment,,207.1,4,3,3,0.23,Clean Commercial (<0.3km),0.2,4.37,5.11
+177,1,96,1,Single Family Detached,,72.0,2,1,16,0.25,Clean Commercial (<0.3km),0.2,3.4,3.26
+178,1,96,1,Single Family Detached,,162.8,4,3,1,0.27,Clean Commercial (<0.3km),0.2,5.4,2.42
+179,1,96,1,Residential Apartment,,89.1,2,1,4,0.25,Clean Commercial (<0.3km),0.2,2.87,6.77
+180,1,96,1,Single Family Detached,,198.1,4,3,10,0.25,Clean Commercial (<0.3km),0.2,3.4,2.3
+181,1,96,1,Commercial Frontage,,195.5,4,3,13,0.26,Clean Commercial (<0.3km),0.2,0.43,2.94
+182,1,96,1,Single Family Detached,,139.7,3,2,5,0.25,Clean Commercial (<0.3km),0.2,2.86,3.38
+183,1,96,1,Single Family Detached,,132.6,3,2,1,0.25,Clean Commercial (<0.3km),0.2,0.72,3.4
+184,1,96,1,Single Family Detached,,93.6,2,1,3,0.26,Clean Commercial (<0.3km),0.2,2.28,6.35
+185,1,96,1,Plot,,93.5,2,1,7,0.25,Clean Commercial (<0.3km),0.2,4.44,7.3
+186,1,96,1,Residential Apartment,,202.4,4,3,11,0.23,Clean Commercial (<0.3km),0.2,5.64,6.3
+187,1,96,1,Residential Apartment,,171.1,4,3,9,0.26,Clean Commercial (<0.3km),0.2,2.84,2.54
+188,1,96,1,Single Family Detached,,113.2,3,2,12,0.26,Clean Commercial (<0.3km),0.2,0.37,7.93
+189,1,96,1,Plot,,209.4,4,3,11,0.26,Clean Commercial (<0.3km),0.2,2.21,5.62
+190,1,96,1,Residential Apartment,,121.9,3,2,9,0.27,Clean Commercial (<0.3km),0.2,0.35,7.31
+191,1,96,1,Residential Apartment,,132.3,3,2,3,0.25,Clean Commercial (<0.3km),0.2,3.59,3.58
+192,1,96,1,Commercial Frontage,,94.6,2,1,17,0.24,Clean Commercial (<0.3km),0.2,5.45,8.05
+193,1,96,1,Plot,,114.7,3,2,8,0.22,Clean Commercial (<0.3km),0.2,5.08,6.15
+194,1,96,1,Residential Apartment,,130.9,3,2,5,0.24,Clean Commercial (<0.3km),0.2,0.36,6.9
+195,1,96,1,Residential Apartment,,132.2,3,2,2,0.24,Clean Commercial (<0.3km),0.2,4.21,7.24
+196,1,96,1,Single Family Detached,,172.7,4,3,16,0.23,Clean Commercial (<0.3km),0.2,4.78,2.34
+197,1,96,1,Plot,,85.5,2,1,16,0.26,Clean Commercial (<0.3km),0.2,0.9,6.5
+198,1,96,1,Residential Apartment,,201.0,4,3,17,0.24,Clean Commercial (<0.3km),0.2,4.26,2.96
+199,1,96,1,Residential Apartment,,70.7,2,1,7,0.24,Clean Commercial (<0.3km),0.2,4.84,5.78
+200,1,96,1,Residential Apartment,,80.4,2,1,10,0.23,Clean Commercial (<0.3km),0.2,5.35,6.13
+201,1,96,1,Residential Apartment,,95.8,2,1,7,0.25,Clean Commercial (<0.3km),0.2,1.35,4.3
+202,1,96,1,Single Family Detached,,99.6,2,1,6,0.26,Clean Commercial (<0.3km),0.2,2.28,7.61
+203,1,96,1,Residential Apartment,,140.6,3,2,14,0.27,Clean Commercial (<0.3km),0.2,3.75,2.81
+204,1,96,1,Residential Apartment,,219.6,4,3,3,0.25,Clean Commercial (<0.3km),0.2,2.88,3.05
+205,1,96,1,Commercial Frontage,,206.8,4,3,15,0.26,Clean Commercial (<0.3km),0.2,3.96,4.55
+206,1,96,1,Residential Apartment,,90.9,2,1,1,0.24,Clean Commercial (<0.3km),0.2,2.1,4.79
+207,1,96,1,Residential Apartment,,198.9,4,3,8,0.27,Clean Commercial (<0.3km),0.2,2.57,5.35
+208,1,96,1,Plot,,202.8,4,3,17,0.25,Clean Commercial (<0.3km),0.2,4.89,3.08
+209,1,96,1,Commercial Frontage,,85.9,2,1,14,0.26,Clean Commercial (<0.3km),0.2,5.72,8.01
+210,1,96,1,Residential Apartment,,157.6,3,2,2,0.26,Clean Commercial (<0.3km),0.2,2.81,5.13
+211,1,96,1,Single Family Detached,,132.5,3,2,5,0.25,Clean Commercial (<0.3km),0.2,3.76,5.39
+212,1,96,1,Single Family Detached,,117.0,3,2,2,0.23,Clean Commercial (<0.3km),0.2,1.55,4.56
+213,1,96,1,Plot,,132.6,3,2,7,0.24,Clean Commercial (<0.3km),0.2,0.41,6.27
+214,1,96,1,Plot,,112.3,3,2,14,0.25,Clean Commercial (<0.3km),0.2,4.68,2.49
+215,1,96,1,Single Family Detached,,74.3,2,1,9,0.28,Clean Commercial (<0.3km),0.2,5.55,4.92
+216,1,96,1,Plot,,173.1,4,3,12,0.25,Clean Commercial (<0.3km),0.2,3.46,8.17
+217,1,96,1,Plot,,109.9,3,2,5,0.24,Clean Commercial (<0.3km),0.2,5.61,3.71
+218,1,96,1,Single Family Detached,,125.9,3,2,13,0.24,Clean Commercial (<0.3km),0.2,4.6,6.13
+219,1,96,1,Single Family Detached,,189.2,4,3,4,0.23,Clean Commercial (<0.3km),0.2,2.04,5.34
+220,1,96,1,Commercial Frontage,,209.1,4,3,16,0.23,Clean Commercial (<0.3km),0.2,3.42,2.47
+221,1,96,1,Residential Apartment,,217.0,4,3,10,0.24,Clean Commercial (<0.3km),0.2,4.3,5.32
+222,1,96,1,Plot,,212.6,4,3,17,0.24,Clean Commercial (<0.3km),0.2,3.35,6.38
+223,1,96,1,Plot,,198.1,4,3,11,0.26,Clean Commercial (<0.3km),0.2,2.29,3.05
+224,1,96,1,Residential Apartment,,94.3,2,1,3,0.25,Clean Commercial (<0.3km),0.2,4.22,7.0
+225,1,96,1,Residential Apartment,,72.8,2,1,11,0.28,Clean Commercial (<0.3km),0.2,2.23,3.04
+226,1,96,1,Plot,,192.4,4,3,16,0.25,Clean Commercial (<0.3km),0.2,5.12,6.64
+227,1,96,1,Commercial Frontage,,123.4,3,2,16,0.28,Clean Commercial (<0.3km),0.2,3.81,4.85
+228,1,96,1,Single Family Detached,,104.3,3,2,1,0.26,Clean Commercial (<0.3km),0.2,1.98,6.49
+229,1,96,1,Residential Apartment,,80.6,2,1,5,0.26,Clean Commercial (<0.3km),0.2,4.4,2.83
+230,1,96,1,Residential Apartment,,196.6,4,3,2,0.26,Clean Commercial (<0.3km),0.2,1.86,7.81
+231,1,96,1,Single Family Detached,,202.6,4,3,6,0.24,Clean Commercial (<0.3km),0.2,3.69,6.11
+232,1,96,1,Residential Apartment,,174.7,4,3,17,0.24,Clean Commercial (<0.3km),0.2,1.55,3.7
+233,1,96,1,Residential Apartment,,145.7,3,2,5,0.27,Clean Commercial (<0.3km),0.2,4.78,7.56
+234,1,96,1,Residential Apartment,,180.8,4,3,17,0.23,Clean Commercial (<0.3km),0.2,4.33,3.15
+235,1,96,1,Residential Apartment,,105.0,3,2,4,0.27,Clean Commercial (<0.3km),0.2,2.5,3.22
+236,1,96,1,Commercial Frontage,,207.6,4,3,3,0.25,Clean Commercial (<0.3km),0.2,4.96,5.61
+237,1,96,1,Single Family Detached,,170.8,4,3,14,0.24,Clean Commercial (<0.3km),0.2,1.28,2.26
+238,1,96,1,Single Family Detached,,163.3,4,3,3,0.26,Clean Commercial (<0.3km),0.2,3.94,2.32
+239,1,96,1,Residential Apartment,,174.3,4,3,13,0.23,Clean Commercial (<0.3km),0.2,0.6,2.8
+240,1,96,1,Residential Apartment,,165.5,4,3,10,0.22,Clean Commercial (<0.3km),0.2,5.22,5.07
+241,1,96,1,Residential Apartment,,156.1,3,2,15,0.25,Clean Commercial (<0.3km),0.2,5.71,7.47
+242,1,96,1,Residential Apartment,,177.7,4,3,9,0.26,Clean Commercial (<0.3km),0.2,1.56,7.43
+243,1,96,1,Plot,,210.8,4,3,13,0.25,Clean Commercial (<0.3km),0.2,1.95,3.77
+244,1,96,1,Residential Apartment,,114.0,3,2,14,0.25,Clean Commercial (<0.3km),0.2,0.75,5.75
+245,1,96,1,Plot,,210.5,4,3,8,0.22,Clean Commercial (<0.3km),0.2,0.37,2.43
+246,1,96,1,Plot,,137.9,3,2,16,0.25,Clean Commercial (<0.3km),0.2,4.18,6.76
+247,1,96,1,Residential Apartment,,215.8,4,3,2,0.24,Clean Commercial (<0.3km),0.2,3.09,4.69
+248,1,96,1,Plot,,171.8,4,3,7,0.29,Clean Commercial (<0.3km),0.2,0.48,5.11
+249,1,96,1,Residential Apartment,,104.1,3,2,13,0.25,Clean Commercial (<0.3km),0.2,1.68,3.36
+250,1,96,1,Commercial Frontage,,187.6,4,3,6,0.24,Clean Commercial (<0.3km),0.2,3.16,3.24
+251,1,96,1,Residential Apartment,,147.2,3,2,13,0.24,Clean Commercial (<0.3km),0.2,5.67,7.18
+252,1,96,1,Residential Apartment,,213.3,4,3,14,0.26,Clean Commercial (<0.3km),0.2,1.12,5.39
+253,1,96,1,Residential Apartment,,132.6,3,2,6,0.24,Clean Commercial (<0.3km),0.2,4.52,8.05
+254,1,96,1,Residential Apartment,,147.0,3,2,12,0.25,Clean Commercial (<0.3km),0.2,0.58,7.38
+255,1,96,1,Residential Apartment,,96.5,2,1,9,0.25,Clean Commercial (<0.3km),0.2,4.82,6.96
+256,1,96,1,Residential Apartment,,125.5,3,2,9,0.25,Clean Commercial (<0.3km),0.2,1.26,4.8
+257,1,96,1,Residential Apartment,,132.2,3,2,5,0.26,Clean Commercial (<0.3km),0.2,0.58,7.35
+258,1,96,1,Residential Apartment,,156.1,3,2,8,0.27,Clean Commercial (<0.3km),0.2,5.73,2.59
+259,1,96,1,Residential Apartment,,107.7,3,2,14,0.25,Clean Commercial (<0.3km),0.2,2.92,3.4
+260,1,96,1,Single Family Detached,,200.7,4,3,15,0.23,Clean Commercial (<0.3km),0.2,2.05,6.23
+261,1,96,1,Residential Apartment,,210.2,4,3,15,0.25,Clean Commercial (<0.3km),0.2,3.37,4.93
+262,1,96,1,Plot,,118.9,3,2,3,0.25,Clean Commercial (<0.3km),0.2,4.07,2.95
+263,1,96,1,Single Family Detached,,72.3,2,1,10,0.25,Clean Commercial (<0.3km),0.2,3.76,5.6
+264,1,96,1,Plot,,89.6,2,1,10,0.24,Clean Commercial (<0.3km),0.2,2.24,4.69
+265,1,96,1,Residential Apartment,,108.3,3,2,14,0.24,Clean Commercial (<0.3km),0.2,4.84,2.5
+266,1,96,1,Single Family Detached,,157.8,3,2,12,0.26,Clean Commercial (<0.3km),0.2,4.54,6.7
+267,1,96,1,Single Family Detached,,200.9,4,3,3,0.24,Clean Commercial (<0.3km),0.2,1.49,6.89
+268,1,96,1,Commercial Frontage,,107.0,3,2,4,0.26,Clean Commercial (<0.3km),0.2,4.52,4.95
+269,1,96,1,Residential Apartment,,151.7,3,2,10,0.25,Clean Commercial (<0.3km),0.2,3.96,7.51
+270,1,96,1,Single Family Detached,,199.9,4,3,16,0.26,Clean Commercial (<0.3km),0.2,5.93,4.34
+271,1,96,1,Single Family Detached,,212.9,4,3,9,0.22,Clean Commercial (<0.3km),0.2,4.49,5.04
+272,1,96,1,Plot,,186.3,4,3,11,0.23,Clean Commercial (<0.3km),0.2,2.15,6.3
+273,1,96,1,Plot,,177.7,4,3,12,0.24,Clean Commercial (<0.3km),0.2,4.25,7.88
+274,1,96,1,Commercial Frontage,,71.2,2,1,6,0.26,Clean Commercial (<0.3km),0.2,4.73,3.63
+275,1,96,1,Single Family Detached,,215.6,4,3,9,0.25,Clean Commercial (<0.3km),0.2,5.41,7.66
+276,1,96,1,Residential Apartment,,73.5,2,1,10,0.25,Clean Commercial (<0.3km),0.2,5.69,8.18
+277,1,96,1,Plot,,159.5,3,2,5,0.25,Clean Commercial (<0.3km),0.2,2.54,2.28
+278,1,96,1,Residential Apartment,,71.6,2,1,12,0.25,Clean Commercial (<0.3km),0.2,2.08,8.19
+279,1,96,1,Plot,,124.8,3,2,1,0.25,Clean Commercial (<0.3km),0.2,3.66,6.36
+280,1,96,1,Plot,,110.1,3,2,7,0.26,Clean Commercial (<0.3km),0.2,3.28,4.84
+281,1,96,1,Residential Apartment,,188.0,4,3,10,0.25,Clean Commercial (<0.3km),0.2,2.28,8.04
+282,1,96,1,Residential Apartment,,107.9,3,2,15,0.24,Clean Commercial (<0.3km),0.2,5.79,3.44
+283,1,96,1,Plot,,191.3,4,3,7,0.22,Clean Commercial (<0.3km),0.2,4.43,4.42
+284,1,96,1,Commercial Frontage,,73.8,2,1,7,0.24,Clean Commercial (<0.3km),0.2,2.13,2.46
+285,1,96,1,Commercial Frontage,,102.4,3,2,6,0.25,Clean Commercial (<0.3km),0.2,3.57,7.25
+286,1,96,1,Residential Apartment,,130.4,3,2,2,0.24,Clean Commercial (<0.3km),0.2,4.26,3.76
+287,1,96,1,Plot,,119.9,3,2,15,0.26,Clean Commercial (<0.3km),0.2,5.49,5.32
+288,1,96,1,Plot,,156.8,3,2,12,0.27,Clean Commercial (<0.3km),0.2,2.71,7.35
+289,1,96,1,Residential Apartment,,190.9,4,3,15,0.26,Clean Commercial (<0.3km),0.2,2.24,7.88
+290,1,96,1,Single Family Detached,,188.9,4,3,1,0.24,Clean Commercial (<0.3km),0.2,0.38,7.09
+291,1,96,1,Plot,,141.7,3,2,5,0.24,Clean Commercial (<0.3km),0.2,0.88,4.73
+292,1,96,1,Plot,,207.4,4,3,12,0.29,Clean Commercial (<0.3km),0.2,1.03,3.73
+293,1,96,1,Residential Apartment,,172.7,4,3,15,0.25,Clean Commercial (<0.3km),0.2,5.77,2.48
+294,1,96,1,Single Family Detached,,120.8,3,2,1,0.22,Clean Commercial (<0.3km),0.2,5.76,3.52
+295,1,96,1,Residential Apartment,,92.4,2,1,9,0.24,Clean Commercial (<0.3km),0.2,2.6,7.49
+296,1,96,1,Residential Apartment,,193.0,4,3,13,0.25,Clean Commercial (<0.3km),0.2,2.27,6.77
+297,1,96,1,Commercial Frontage,,80.9,2,1,8,0.24,Clean Commercial (<0.3km),0.2,1.98,2.32
+298,1,96,1,Single Family Detached,,135.6,3,2,3,0.25,Clean Commercial (<0.3km),0.2,4.37,6.47
+299,1,96,1,Single Family Detached,,199.3,4,3,10,0.26,Clean Commercial (<0.3km),0.2,2.82,5.21
+300,1,96,1,Residential Apartment,,154.2,3,2,12,0.25,Clean Commercial (<0.3km),0.2,5.94,6.05
+301,1,96,1,Residential Apartment,,140.3,3,2,12,0.23,Clean Commercial (<0.3km),0.2,1.86,5.26
+302,1,96,1,Single Family Detached,,191.8,4,3,5,0.27,Clean Commercial (<0.3km),0.2,0.67,3.43
+303,1,96,1,Residential Apartment,,182.2,4,3,15,0.26,Clean Commercial (<0.3km),0.2,3.09,5.0
+304,1,96,1,Single Family Detached,,171.9,4,3,1,0.23,Clean Commercial (<0.3km),0.2,2.82,5.57
+305,1,96,1,Plot,,218.5,4,3,3,0.24,Clean Commercial (<0.3km),0.2,1.99,3.71
+306,1,96,1,Residential Apartment,,199.6,4,3,5,0.25,Clean Commercial (<0.3km),0.2,1.2,5.35
+307,1,96,1,Residential Apartment,,180.0,4,3,9,0.25,Clean Commercial (<0.3km),0.2,3.29,2.94
+308,1,96,1,Residential Apartment,,143.4,3,2,7,0.28,Clean Commercial (<0.3km),0.2,4.26,4.91
+309,1,96,1,Single Family Detached,,178.4,4,3,4,0.26,Clean Commercial (<0.3km),0.2,2.07,3.7
+310,1,96,1,Residential Apartment,,177.8,4,3,7,0.23,Clean Commercial (<0.3km),0.2,4.11,6.16
+311,1,96,1,Plot,,210.4,4,3,16,0.23,Clean Commercial (<0.3km),0.2,1.78,6.76
+312,1,96,1,Plot,,125.1,3,2,14,0.25,Clean Commercial (<0.3km),0.2,1.72,2.8
+313,1,96,1,Plot,,90.4,2,1,4,0.28,Clean Commercial (<0.3km),0.2,0.4,4.62
+314,1,96,1,Plot,,86.3,2,1,6,0.26,Clean Commercial (<0.3km),0.2,4.58,5.93
+315,1,96,1,Plot,,163.7,4,3,17,0.26,Clean Commercial (<0.3km),0.2,1.54,4.27
+316,1,96,1,Commercial Frontage,,126.3,3,2,1,0.23,Clean Commercial (<0.3km),0.2,5.28,7.55
+317,1,96,1,Residential Apartment,,116.5,3,2,2,0.23,Clean Commercial (<0.3km),0.2,1.53,7.54
+318,1,96,1,Plot,,191.8,4,3,16,0.25,Clean Commercial (<0.3km),0.2,4.97,5.96
+319,1,96,1,Commercial Frontage,,125.1,3,2,8,0.28,Clean Commercial (<0.3km),0.2,2.73,6.15
+320,1,96,1,Single Family Detached,,175.3,4,3,16,0.24,Clean Commercial (<0.3km),0.2,4.99,4.39
+321,1,96,1,Single Family Detached,,131.8,3,2,1,0.33,<0.5km,14.19,5.97,2.36
+322,1,96,1,Commercial Frontage,,78.8,2,1,10,0.33,<0.5km,8.92,4.25,4.94
+323,1,96,1,Residential Apartment,,169.8,4,3,2,0.35,<0.5km,11.05,4.64,3.78
+324,1,96,1,Residential Apartment,,160.2,4,3,3,0.34,<0.5km,9.01,2.11,6.49
+325,1,96,1,Single Family Detached,,209.1,4,3,11,0.38,<0.5km,3.83,0.41,6.45
+326,1,96,1,Residential Apartment,,145.3,3,2,2,0.3,<0.5km,13.28,1.79,6.17
+327,1,96,1,Single Family Detached,,185.6,4,3,8,0.37,<0.5km,2.09,0.56,8.3
+328,1,96,1,Residential Apartment,,100.7,3,2,14,0.38,<0.5km,3.4,2.17,7.99
+329,1,96,1,Residential Apartment,,159.4,3,2,7,0.34,<0.5km,8.55,2.51,3.48
+330,1,96,1,Commercial Frontage,,173.1,4,3,7,0.39,<0.5km,8.43,3.68,8.06
+331,1,96,1,Residential Apartment,,129.5,3,2,14,0.39,<0.5km,9.23,3.73,4.82
+332,1,96,1,Plot,,156.9,3,2,2,0.36,<0.5km,13.51,2.06,4.15
+333,1,96,1,Single Family Detached,,169.2,4,3,16,0.35,<0.5km,9.97,2.86,6.48
+334,1,96,1,Residential Apartment,,197.9,4,3,7,0.4,<0.5km,9.92,1.72,6.53
+335,1,96,1,Residential Apartment,,183.4,4,3,11,0.34,<0.5km,11.64,4.36,5.34
+336,1,96,1,Plot,,152.4,3,2,13,0.34,<0.5km,3.23,4.03,4.25
+337,1,96,1,Residential Apartment,,106.0,3,2,11,0.37,<0.5km,7.27,5.64,5.78
+338,1,96,1,Single Family Detached,,133.6,3,2,9,0.3,<0.5km,5.31,3.66,3.85
+339,1,96,1,Residential Apartment,,115.9,3,2,8,0.31,<0.5km,12.38,4.12,3.85
+340,1,96,1,Single Family Detached,,88.4,2,1,15,0.36,<0.5km,3.27,1.21,5.49
+341,1,96,1,Commercial Frontage,,180.2,4,3,12,0.32,<0.5km,9.69,5.04,4.47
+342,1,96,1,Plot,,204.4,4,3,9,0.35,<0.5km,7.13,4.01,6.0
+343,1,96,1,Residential Apartment,,137.4,3,2,10,0.35,<0.5km,10.15,1.17,2.79
+344,1,96,1,Single Family Detached,,70.0,2,1,17,0.35,<0.5km,9.71,3.9,3.07
+345,1,96,1,Residential Apartment,,194.4,4,3,4,0.37,<0.5km,14.2,0.9,2.64
+346,1,96,1,Single Family Detached,,169.0,4,3,15,0.37,<0.5km,4.04,1.1,6.21
+347,1,96,1,Residential Apartment,,79.2,2,1,4,0.37,<0.5km,3.28,4.94,2.79
+348,1,96,1,Single Family Detached,,150.9,3,2,3,0.32,<0.5km,10.95,4.23,6.55
+349,1,96,1,Plot,,193.2,4,3,1,0.35,<0.5km,4.65,1.4,3.47
+350,1,96,1,Residential Apartment,,167.5,4,3,16,0.36,<0.5km,8.48,2.77,7.72
+351,1,96,1,Single Family Detached,,75.6,2,1,8,0.35,<0.5km,6.22,2.91,3.45
+352,1,96,1,Plot,,171.0,4,3,5,0.36,<0.5km,14.16,0.5,5.88
+353,1,96,1,Residential Apartment,,185.4,4,3,6,0.36,<0.5km,3.15,3.42,8.34
+354,1,96,1,Residential Apartment,,101.9,3,2,17,0.37,<0.5km,2.18,3.5,4.84
+355,1,96,1,Single Family Detached,,139.8,3,2,11,0.3,<0.5km,8.81,2.88,8.19
+356,1,96,1,Residential Apartment,,120.3,3,2,8,0.37,<0.5km,4.14,1.26,3.15
+357,1,96,1,Residential Apartment,,127.2,3,2,8,0.37,<0.5km,6.07,5.42,5.9
+358,1,96,1,Single Family Detached,,102.6,3,2,12,0.33,<0.5km,12.26,5.1,4.31
+359,1,96,1,Single Family Detached,,151.6,3,2,17,0.34,<0.5km,12.5,2.58,8.14
+360,1,96,1,Single Family Detached,,85.8,2,1,8,0.35,<0.5km,7.33,3.68,5.3
+361,1,96,1,Residential Apartment,,211.4,4,3,13,0.33,<0.5km,3.14,3.37,7.89
+362,1,96,1,Plot,,102.9,3,2,4,0.34,<0.5km,2.02,2.21,4.19
+363,1,96,1,Plot,,182.4,4,3,9,0.38,<0.5km,8.53,5.39,6.25
+364,1,96,1,Residential Apartment,,80.4,2,1,4,0.33,<0.5km,10.47,1.38,2.51
+365,1,96,1,Residential Apartment,,209.0,4,3,3,0.33,<0.5km,12.05,5.68,7.36
+366,1,96,1,Plot,,183.3,4,3,8,0.34,<0.5km,2.55,1.23,5.69
+367,1,96,1,Commercial Frontage,,185.4,4,3,4,0.37,<0.5km,8.09,5.91,7.57
+368,1,96,1,Residential Apartment,,74.8,2,1,16,0.4,<0.5km,5.07,4.12,5.03
+369,1,96,1,Plot,,80.5,2,1,4,0.37,<0.5km,7.8,3.48,2.79
+370,1,96,1,Plot,,213.2,4,3,12,0.36,<0.5km,7.59,3.09,4.8
+371,1,96,1,Residential Apartment,,143.2,3,2,13,0.4,<0.5km,14.94,3.81,3.47
+372,1,96,1,Plot,,206.8,4,3,15,0.35,<0.5km,4.46,1.19,7.2
+373,1,96,1,Commercial Frontage,,137.4,3,2,14,0.33,<0.5km,11.05,4.53,7.67
+374,1,96,1,Residential Apartment,,202.7,4,3,17,0.33,<0.5km,10.38,3.45,3.34
+375,1,96,1,Commercial Frontage,,193.9,4,3,17,0.35,<0.5km,7.87,5.21,2.37
+376,1,96,1,Plot,,96.6,2,1,6,0.36,<0.5km,11.72,2.07,5.7
+377,1,96,1,Plot,,182.6,4,3,1,0.37,<0.5km,12.87,4.52,2.7
+378,1,96,1,Residential Apartment,,81.0,2,1,3,0.35,<0.5km,10.62,5.65,7.42
+379,1,96,1,Residential Apartment,,95.3,2,1,13,0.37,<0.5km,14.2,4.67,4.93
+380,1,96,1,Residential Apartment,,71.9,2,1,12,0.28,<0.5km,9.93,4.04,6.53
+381,1,96,1,Residential Apartment,,149.7,3,2,4,0.31,<0.5km,8.37,5.58,7.36
+382,1,96,1,Single Family Detached,,78.3,2,1,9,0.34,<0.5km,12.65,1.43,7.81
+383,1,96,1,Residential Apartment,,185.1,4,3,14,0.33,<0.5km,2.66,5.56,5.21
+384,1,96,1,Single Family Detached,,214.4,4,3,9,0.33,<0.5km,10.65,5.07,3.93
+385,1,96,1,Residential Apartment,,178.2,4,3,9,0.33,<0.5km,6.35,1.73,4.38
+386,1,96,1,Plot,,114.9,3,2,1,0.35,<0.5km,10.95,1.7,7.7
+387,1,96,1,Residential Apartment,,71.4,2,1,9,0.39,<0.5km,13.51,3.88,7.17
+388,1,96,1,Residential Apartment,,90.2,2,1,1,0.35,<0.5km,6.94,5.85,5.75
+389,1,96,1,Residential Apartment,,79.9,2,1,17,0.35,<0.5km,13.31,4.05,7.7
+390,1,96,1,Plot,,163.3,4,3,13,0.32,<0.5km,8.36,5.82,6.5
+391,1,96,1,Plot,,121.3,3,2,1,0.37,<0.5km,11.43,0.59,2.51
+392,1,96,1,Plot,,166.8,4,3,15,0.35,<0.5km,9.41,0.96,3.36
+393,1,96,1,Commercial Frontage,,86.9,2,1,13,0.33,<0.5km,6.52,2.65,5.0
+394,1,96,1,Single Family Detached,,77.6,2,1,8,0.32,<0.5km,14.25,5.15,8.3
+395,1,96,1,Plot,,217.1,4,3,5,0.33,<0.5km,6.68,5.2,4.28
+396,1,96,1,Residential Apartment,,159.7,3,2,10,0.36,<0.5km,6.7,4.48,6.52
+397,1,96,1,Plot,,176.1,4,3,6,0.36,<0.5km,4.55,2.13,7.24
+398,1,96,1,Residential Apartment,,114.2,3,2,1,0.33,<0.5km,3.33,5.58,5.94
+399,1,96,1,Residential Apartment,,170.8,4,3,9,0.34,<0.5km,9.67,3.94,3.16
+400,1,96,1,Plot,,107.0,3,2,1,0.33,<0.5km,7.77,3.71,5.91
+401,1,96,1,Residential Apartment,,155.1,3,2,6,0.33,<0.5km,4.33,4.95,2.82
+402,1,96,1,Single Family Detached,,142.1,3,2,8,0.37,<0.5km,7.8,1.67,3.11
+403,1,96,1,Plot,,149.1,3,2,9,0.36,<0.5km,3.48,3.29,3.14
+404,1,96,1,Residential Apartment,,76.5,2,1,17,0.34,<0.5km,14.37,3.95,8.23
+405,1,96,1,Residential Apartment,,123.0,3,2,16,0.34,<0.5km,6.21,1.34,2.64
+406,1,96,1,Plot,,144.0,3,2,17,0.32,<0.5km,13.19,3.7,3.61
+407,1,96,1,Single Family Detached,,163.2,4,3,14,0.35,<0.5km,8.67,4.78,7.23
+408,1,96,1,Single Family Detached,,99.3,2,1,15,0.37,<0.5km,8.41,2.17,7.87
+409,1,96,1,Commercial Frontage,,188.5,4,3,15,0.37,<0.5km,12.86,0.73,5.0
+410,1,96,1,Residential Apartment,,117.2,3,2,11,0.36,<0.5km,11.15,2.37,3.43
+411,1,96,1,Residential Apartment,,188.3,4,3,2,0.35,<0.5km,3.03,3.21,5.87
+412,1,96,1,Residential Apartment,,128.0,3,2,5,0.33,<0.5km,7.61,1.83,4.6
+413,1,96,1,Single Family Detached,,197.1,4,3,13,0.39,<0.5km,4.04,1.93,5.08
+414,1,96,1,Single Family Detached,,193.0,4,3,14,0.36,<0.5km,6.54,0.75,8.11
+415,1,96,1,Single Family Detached,,158.7,3,2,1,0.34,<0.5km,13.62,2.86,7.53
+416,1,96,1,Residential Apartment,,147.4,3,2,12,0.36,<0.5km,12.82,2.03,7.07
+417,1,96,1,Residential Apartment,,156.7,3,2,14,0.39,<0.5km,2.01,1.75,2.79
+418,1,96,1,Residential Apartment,,75.8,2,1,13,0.34,<0.5km,6.58,3.91,2.8
+419,1,96,1,Plot,,185.5,4,3,7,0.33,<0.5km,14.85,1.69,8.04
+420,1,96,1,Single Family Detached,,174.5,4,3,7,0.37,<0.5km,7.55,0.7,2.61
+421,1,96,1,Plot,,132.8,3,2,12,0.35,<0.5km,8.81,0.86,5.44
+422,1,96,1,Residential Apartment,,72.4,2,1,13,0.35,<0.5km,7.26,1.53,7.01
+423,1,96,1,Residential Apartment,,124.2,3,2,15,0.32,<0.5km,11.3,5.78,6.82
+424,1,96,1,Single Family Detached,,151.5,3,2,12,0.37,<0.5km,11.08,1.14,3.24
+425,1,96,1,Plot,,76.4,2,1,10,0.36,<0.5km,13.93,1.59,3.51
+426,1,96,1,Commercial Frontage,,175.6,4,3,2,0.32,<0.5km,12.07,4.65,6.35
+427,1,96,1,Plot,,92.0,2,1,16,0.33,<0.5km,3.82,0.91,5.41
+428,1,96,1,Residential Apartment,,208.3,4,3,4,0.3,<0.5km,8.69,1.81,5.18
+429,1,96,1,Residential Apartment,,165.1,4,3,16,0.36,<0.5km,8.41,2.62,6.52
+430,1,96,1,Residential Apartment,,201.8,4,3,9,0.35,<0.5km,10.85,4.9,7.78
+431,1,96,1,Commercial Frontage,,157.0,3,2,3,0.37,<0.5km,6.7,0.56,6.91
+432,1,96,1,Residential Apartment,,109.4,3,2,2,0.36,<0.5km,2.6,1.12,7.62
+433,1,96,1,Residential Apartment,,142.9,3,2,3,0.37,<0.5km,12.05,3.19,6.6
+434,1,96,1,Residential Apartment,,119.0,3,2,11,0.33,<0.5km,3.24,1.79,3.15
+435,1,96,1,Commercial Frontage,,98.6,2,1,14,0.35,<0.5km,11.21,4.95,7.32
+436,1,96,1,Residential Apartment,,164.7,4,3,14,0.36,<0.5km,10.52,3.1,5.83
+437,1,96,1,Residential Apartment,,152.2,3,2,15,0.39,<0.5km,13.1,3.94,8.38
+438,1,96,1,Single Family Detached,,177.4,4,3,11,0.36,<0.5km,6.38,0.8,4.75
+439,1,96,1,Residential Apartment,,131.1,3,2,17,0.31,<0.5km,3.75,5.95,8.1
+440,1,96,1,Single Family Detached,,182.7,4,3,8,0.32,<0.5km,8.0,4.86,3.21
+441,1,96,1,Single Family Detached,,203.4,4,3,11,0.36,<0.5km,8.19,0.65,3.98
+442,1,96,1,Residential Apartment,,79.2,2,1,8,0.37,<0.5km,6.33,0.78,8.04
+443,1,96,1,Residential Apartment,,171.7,4,3,9,0.32,<0.5km,12.73,5.5,5.02
+444,1,96,1,Single Family Detached,,219.2,4,3,5,0.33,<0.5km,8.44,4.42,4.92
+445,1,96,1,Single Family Detached,,214.6,4,3,13,0.35,<0.5km,4.64,3.54,4.11
+446,1,96,1,Single Family Detached,,178.2,4,3,17,0.35,<0.5km,5.67,4.78,3.45
+447,1,96,1,Residential Apartment,,177.9,4,3,7,0.37,<0.5km,7.53,5.96,3.43
+448,1,96,1,Residential Apartment,,150.2,3,2,10,0.32,<0.5km,8.23,4.45,4.04
+449,1,96,1,Commercial Frontage,,87.9,2,1,14,0.34,<0.5km,12.37,2.01,6.38
+450,1,96,1,Residential Apartment,,186.4,4,3,5,0.39,<0.5km,6.06,3.15,7.92
+451,1,96,1,Single Family Detached,,103.0,3,2,17,0.35,<0.5km,14.23,1.06,6.85
+452,1,96,1,Residential Apartment,,205.8,4,3,15,0.35,<0.5km,6.74,5.85,6.12
+453,1,96,1,Residential Apartment,,192.6,4,3,7,0.35,<0.5km,4.79,5.2,4.78
+454,1,96,1,Commercial Frontage,,99.3,2,1,12,0.34,<0.5km,14.82,4.96,4.03
+455,1,96,1,Residential Apartment,,145.3,3,2,3,0.34,<0.5km,3.76,2.92,4.23
+456,1,96,1,Residential Apartment,,103.0,3,2,15,0.35,<0.5km,2.58,4.25,5.26
+457,1,96,1,Commercial Frontage,,98.7,2,1,2,0.36,<0.5km,3.6,3.31,5.6
+458,1,96,1,Residential Apartment,,175.3,4,3,3,0.37,<0.5km,6.46,2.5,7.27
+459,1,96,1,Single Family Detached,,111.6,3,2,5,0.35,<0.5km,8.54,2.51,4.32
+460,1,96,1,Residential Apartment,,194.5,4,3,8,0.34,<0.5km,3.16,5.24,7.28
+461,1,96,1,Plot,,171.6,4,3,14,0.34,<0.5km,12.77,4.32,7.61
+462,1,96,1,Single Family Detached,,78.8,2,1,9,0.31,<0.5km,4.42,4.55,3.72
+463,1,96,1,Residential Apartment,,212.3,4,3,4,0.33,<0.5km,5.21,4.95,4.91
+464,1,96,1,Residential Apartment,,166.0,4,3,11,0.33,<0.5km,8.51,3.61,8.16
+465,1,96,1,Single Family Detached,,197.5,4,3,6,0.35,<0.5km,5.37,1.6,4.67
+466,1,96,1,Residential Apartment,,119.2,3,2,4,0.36,<0.5km,6.72,4.53,3.71
+467,1,96,1,Residential Apartment,,194.3,4,3,5,0.38,<0.5km,11.17,3.32,7.46
+468,1,96,1,Residential Apartment,,164.0,4,3,11,0.36,<0.5km,8.79,3.25,5.96
+469,1,96,1,Residential Apartment,,161.3,4,3,8,0.35,<0.5km,12.56,4.73,5.79
+470,1,96,1,Commercial Frontage,,172.5,4,3,7,0.31,<0.5km,14.36,5.13,6.28
+471,1,96,1,Residential Apartment,,201.1,4,3,15,0.36,<0.5km,14.96,4.53,7.18
+472,1,96,1,Single Family Detached,,215.7,4,3,5,0.37,<0.5km,3.74,2.47,4.96
+473,1,96,1,Commercial Frontage,,151.8,3,2,1,0.35,<0.5km,14.35,0.59,6.57
+474,1,96,1,Residential Apartment,,138.3,3,2,10,0.34,<0.5km,13.35,2.37,3.36
+475,1,96,1,Commercial Frontage,,187.4,4,3,11,0.35,<0.5km,3.61,2.23,6.22
+476,1,96,1,Single Family Detached,,196.8,4,3,17,0.39,<0.5km,10.65,1.56,7.76
+477,1,96,1,Plot,,120.7,3,2,15,0.34,<0.5km,13.58,3.81,7.33
+478,1,96,1,Single Family Detached,,93.3,2,1,7,0.37,<0.5km,4.66,4.25,2.72
+479,1,96,1,Commercial Frontage,,138.4,3,2,12,0.35,<0.5km,9.65,2.62,3.51
+480,1,96,1,Residential Apartment,,76.0,2,1,10,0.33,<0.5km,8.12,5.26,8.17
+481,1,96,1,Residential Apartment,,162.9,4,3,5,1.16,0.5-1.5km,4.36,2.54,6.77
+482,1,96,1,Plot,,119.3,3,2,10,1.04,0.5-1.5km,2.69,1.02,7.65
+483,1,96,1,Single Family Detached,,203.4,4,3,2,0.99,0.5-1.5km,11.22,5.42,8.82
+484,1,96,1,Residential Apartment,,72.6,2,1,17,1.0,0.5-1.5km,9.24,1.37,6.89
+485,1,96,1,Single Family Detached,,109.2,3,2,4,0.89,0.5-1.5km,12.75,4.17,4.52
+486,1,96,1,Residential Apartment,,176.6,4,3,6,1.07,0.5-1.5km,2.82,3.11,8.75
+487,1,96,1,Commercial Frontage,,120.8,3,2,1,1.06,0.5-1.5km,2.73,2.51,8.58
+488,1,96,1,Single Family Detached,,139.5,3,2,16,1.05,0.5-1.5km,11.13,2.81,3.86
+489,1,96,1,Residential Apartment,,183.7,4,3,9,1.07,0.5-1.5km,14.33,4.45,5.62
+490,1,96,1,Residential Apartment,,105.0,3,2,8,1.07,0.5-1.5km,3.46,4.78,7.42
+491,1,96,1,Residential Apartment,,117.7,3,2,14,1.14,0.5-1.5km,5.81,2.73,6.98
+492,1,96,1,Single Family Detached,,202.7,4,3,4,1.25,0.5-1.5km,7.96,4.02,8.85
+493,1,96,1,Residential Apartment,,165.2,4,3,15,1.16,0.5-1.5km,13.61,0.96,7.0
+494,1,96,1,Residential Apartment,,103.4,3,2,13,1.0,0.5-1.5km,8.89,4.5,3.16
+495,1,96,1,Single Family Detached,,97.8,2,1,9,1.09,0.5-1.5km,11.59,5.94,5.05
+496,1,96,1,Plot,,159.0,3,2,10,0.96,0.5-1.5km,3.85,2.8,8.09
+497,1,96,1,Plot,,118.5,3,2,15,1.11,0.5-1.5km,14.34,1.89,5.27
+498,1,96,1,Residential Apartment,,137.8,3,2,5,1.0,0.5-1.5km,14.87,2.15,3.8
+499,1,96,1,Plot,,123.9,3,2,11,1.01,0.5-1.5km,6.71,1.08,5.79
+500,1,96,1,Single Family Detached,,163.4,4,3,5,1.12,0.5-1.5km,7.75,2.5,6.26
+501,1,96,1,Residential Apartment,,74.4,2,1,9,1.02,0.5-1.5km,14.93,4.05,6.93
+502,1,96,1,Residential Apartment,,91.0,2,1,10,1.06,0.5-1.5km,13.77,1.98,5.71
+503,1,96,1,Plot,,94.2,2,1,16,1.01,0.5-1.5km,10.77,5.56,4.18
+504,1,96,1,Plot,,160.1,4,3,13,1.14,0.5-1.5km,14.63,2.53,5.25
+505,1,96,1,Residential Apartment,,148.5,3,2,4,0.94,0.5-1.5km,12.79,2.1,6.21
+506,1,96,1,Residential Apartment,,150.1,3,2,9,0.93,0.5-1.5km,5.79,3.28,4.86
+507,1,96,1,Residential Apartment,,217.6,4,3,8,1.08,0.5-1.5km,2.11,3.31,3.81
+508,1,96,1,Commercial Frontage,,167.1,4,3,16,1.01,0.5-1.5km,3.29,4.8,4.24
+509,1,96,1,Commercial Frontage,,170.0,4,3,15,1.13,0.5-1.5km,4.97,4.2,9.12
+510,1,96,1,Residential Apartment,,152.2,3,2,16,1.0,0.5-1.5km,12.26,1.97,8.31
+511,1,96,1,Plot,,169.9,4,3,14,1.13,0.5-1.5km,14.91,1.85,4.23
+512,1,96,1,Single Family Detached,,148.2,3,2,13,1.01,0.5-1.5km,3.96,2.9,7.95
+513,1,96,1,Plot,,155.9,3,2,11,1.2,0.5-1.5km,13.0,3.45,5.12
+514,1,96,1,Single Family Detached,,173.0,4,3,14,1.1,0.5-1.5km,9.59,2.69,3.5
+515,1,96,1,Single Family Detached,,137.5,3,2,8,1.07,0.5-1.5km,14.67,4.71,4.7
+516,1,96,1,Single Family Detached,,196.0,4,3,2,1.07,0.5-1.5km,10.28,5.47,5.7
+517,1,96,1,Plot,,161.6,4,3,9,1.14,0.5-1.5km,14.48,1.49,5.88
+518,1,96,1,Residential Apartment,,176.9,4,3,13,1.2,0.5-1.5km,11.1,0.98,7.42
+519,1,96,1,Commercial Frontage,,161.6,4,3,3,1.17,0.5-1.5km,12.34,4.33,7.77
+520,1,96,1,Plot,,160.3,4,3,16,1.02,0.5-1.5km,5.66,1.3,4.26
+521,1,96,1,Residential Apartment,,134.8,3,2,7,1.1,0.5-1.5km,11.5,3.33,3.67
+522,1,96,1,Single Family Detached,,176.9,4,3,4,1.15,0.5-1.5km,4.47,2.07,6.0
+523,1,96,1,Plot,,212.8,4,3,13,1.17,0.5-1.5km,7.57,1.63,8.51
+524,1,96,1,Residential Apartment,,146.1,3,2,7,1.13,0.5-1.5km,9.29,4.15,5.26
+525,1,96,1,Commercial Frontage,,80.7,2,1,2,1.03,0.5-1.5km,3.73,3.51,3.14
+526,1,96,1,Plot,,207.3,4,3,5,1.04,0.5-1.5km,12.31,5.21,4.93
+527,1,96,1,Single Family Detached,,163.4,4,3,16,1.02,0.5-1.5km,11.86,1.55,3.54
+528,1,96,1,Plot,,182.8,4,3,12,1.08,0.5-1.5km,8.05,2.05,8.27
+529,1,96,1,Single Family Detached,,181.2,4,3,7,1.08,0.5-1.5km,2.63,1.79,6.44
+530,1,96,1,Commercial Frontage,,150.9,3,2,2,1.15,0.5-1.5km,10.09,3.65,4.68
+531,1,96,1,Plot,,188.8,4,3,5,1.14,0.5-1.5km,7.47,5.17,7.15
+532,1,96,1,Commercial Frontage,,133.9,3,2,3,1.1,0.5-1.5km,8.71,0.49,6.67
+533,1,96,1,Residential Apartment,,173.5,4,3,4,1.13,0.5-1.5km,3.8,0.75,5.36
+534,1,96,1,Commercial Frontage,,218.1,4,3,13,1.14,0.5-1.5km,10.13,0.86,5.67
+535,1,96,1,Commercial Frontage,,138.8,3,2,4,1.14,0.5-1.5km,11.17,5.89,6.58
+536,1,96,1,Residential Apartment,,94.4,2,1,11,1.21,0.5-1.5km,2.99,5.38,8.02
+537,1,96,1,Single Family Detached,,137.0,3,2,1,1.02,0.5-1.5km,8.16,1.22,8.55
+538,1,96,1,Plot,,195.6,4,3,14,1.11,0.5-1.5km,4.65,2.94,3.25
+539,1,96,1,Plot,,142.8,3,2,1,1.1,0.5-1.5km,12.25,2.17,8.45
+540,1,96,1,Residential Apartment,,148.8,3,2,15,1.13,0.5-1.5km,6.69,2.68,4.23
+541,1,96,1,Commercial Frontage,,172.1,4,3,14,0.99,0.5-1.5km,7.88,4.46,4.86
+542,1,96,1,Residential Apartment,,147.1,3,2,7,1.11,0.5-1.5km,7.4,0.33,5.73
+543,1,96,1,Plot,,208.1,4,3,16,1.16,0.5-1.5km,8.28,0.72,6.06
+544,1,96,1,Plot,,112.4,3,2,13,1.23,0.5-1.5km,4.79,2.77,5.81
+545,1,96,1,Residential Apartment,,155.3,3,2,9,1.2,0.5-1.5km,14.7,4.27,7.7
+546,1,96,1,Single Family Detached,,89.6,2,1,8,1.06,0.5-1.5km,10.45,4.11,8.71
+547,1,96,1,Single Family Detached,,86.1,2,1,13,1.15,0.5-1.5km,2.89,4.85,4.41
+548,1,96,1,Plot,,168.2,4,3,12,1.09,0.5-1.5km,6.56,2.53,5.68
+549,1,96,1,Plot,,118.8,3,2,7,1.02,0.5-1.5km,7.51,1.86,7.1
+550,1,96,1,Residential Apartment,,75.7,2,1,10,1.12,0.5-1.5km,14.81,4.95,8.74
+551,1,96,1,Plot,,172.4,4,3,4,1.08,0.5-1.5km,11.96,4.97,3.99
+552,1,96,1,Residential Apartment,,157.0,3,2,15,1.04,0.5-1.5km,9.24,2.48,5.24
+553,1,96,1,Single Family Detached,,71.0,2,1,15,1.11,0.5-1.5km,7.66,3.4,5.82
+554,1,96,1,Residential Apartment,,189.5,4,3,4,0.98,0.5-1.5km,3.23,1.23,5.82
+555,1,96,1,Residential Apartment,,121.9,3,2,16,1.05,0.5-1.5km,12.08,2.34,6.96
+556,1,96,1,Plot,,161.9,4,3,11,1.06,0.5-1.5km,3.42,3.07,8.36
+557,1,96,1,Residential Apartment,,129.8,3,2,3,1.03,0.5-1.5km,12.37,1.05,3.74
+558,1,96,1,Commercial Frontage,,80.8,2,1,3,1.18,0.5-1.5km,7.22,0.63,8.1
+559,1,96,1,Plot,,214.8,4,3,1,1.19,0.5-1.5km,12.95,4.32,6.43
+560,1,96,1,Single Family Detached,,162.3,4,3,11,1.2,0.5-1.5km,3.22,2.89,4.89
+561,1,96,1,Residential Apartment,,208.6,4,3,5,1.21,0.5-1.5km,12.91,5.4,4.73
+562,1,96,1,Commercial Frontage,,117.4,3,2,12,1.03,0.5-1.5km,14.07,0.7,5.1
+563,1,96,1,Residential Apartment,,122.9,3,2,10,1.05,0.5-1.5km,3.06,3.78,6.88
+564,1,96,1,Residential Apartment,,138.7,3,2,3,1.12,0.5-1.5km,7.46,3.56,3.47
+565,1,96,1,Commercial Frontage,,106.1,3,2,3,1.12,0.5-1.5km,9.29,1.27,6.64
+566,1,96,1,Residential Apartment,,173.5,4,3,17,1.02,0.5-1.5km,12.62,0.87,7.8
+567,1,96,1,Plot,,109.6,3,2,8,1.12,0.5-1.5km,12.27,2.65,7.05
+568,1,96,1,Residential Apartment,,133.4,3,2,10,1.13,0.5-1.5km,13.6,4.89,3.44
+569,1,96,1,Residential Apartment,,80.5,2,1,14,1.23,0.5-1.5km,10.31,2.88,8.49
+570,1,96,1,Plot,,80.1,2,1,6,1.22,0.5-1.5km,11.01,5.85,6.59
+571,1,96,1,Commercial Frontage,,217.4,4,3,9,1.15,0.5-1.5km,9.78,0.69,8.93
+572,1,96,1,Commercial Frontage,,146.9,3,2,6,0.99,0.5-1.5km,11.07,3.33,5.03
+573,1,96,1,Residential Apartment,,195.1,4,3,5,1.08,0.5-1.5km,4.49,1.68,3.93
+574,1,96,1,Plot,,144.7,3,2,4,1.22,0.5-1.5km,14.66,3.41,7.39
+575,1,96,1,Residential Apartment,,84.6,2,1,13,1.06,0.5-1.5km,5.35,1.33,8.39
+576,1,96,1,Commercial Frontage,,146.0,3,2,8,1.08,0.5-1.5km,8.54,4.34,6.51
+577,1,96,1,Plot,,188.2,4,3,16,1.13,0.5-1.5km,4.14,3.34,5.71
+578,1,96,1,Plot,,202.6,4,3,5,1.13,0.5-1.5km,9.79,4.67,6.14
+579,1,96,1,Residential Apartment,,127.8,3,2,4,1.22,0.5-1.5km,9.39,4.43,5.27
+580,1,96,1,Single Family Detached,,218.2,4,3,9,1.0,0.5-1.5km,4.6,3.01,4.94
+581,1,96,1,Single Family Detached,,116.2,3,2,17,1.2,0.5-1.5km,7.56,2.84,6.96
+582,1,96,1,Single Family Detached,,99.1,2,1,2,1.18,0.5-1.5km,9.92,0.53,6.83
+583,1,96,1,Single Family Detached,,213.1,4,3,8,1.02,0.5-1.5km,14.51,1.48,8.76
+584,1,96,1,Residential Apartment,,164.5,4,3,10,1.1,0.5-1.5km,5.36,1.3,7.59
+585,1,96,1,Single Family Detached,,70.3,2,1,6,1.05,0.5-1.5km,13.68,1.54,4.87
+586,1,96,1,Plot,,104.3,3,2,1,1.11,0.5-1.5km,9.52,2.19,3.7
+587,1,96,1,Single Family Detached,,136.9,3,2,9,0.96,0.5-1.5km,3.01,1.32,7.98
+588,1,96,1,Residential Apartment,,74.1,2,1,9,1.18,0.5-1.5km,4.85,1.18,8.08
+589,1,96,1,Residential Apartment,,98.5,2,1,2,1.1,0.5-1.5km,2.32,2.81,4.08
+590,1,96,1,Single Family Detached,,86.9,2,1,16,1.06,0.5-1.5km,4.79,3.32,3.63
+591,1,96,1,Residential Apartment,,136.7,3,2,5,1.06,0.5-1.5km,12.29,3.93,4.78
+592,1,96,1,Residential Apartment,,74.1,2,1,9,1.08,0.5-1.5km,14.2,3.96,8.97
+593,1,96,1,Residential Apartment,,138.2,3,2,9,1.18,0.5-1.5km,3.3,1.39,5.77
+594,1,96,1,Plot,,157.5,3,2,15,0.95,0.5-1.5km,9.37,1.87,5.63
+595,1,96,1,Residential Apartment,,173.8,4,3,9,1.07,0.5-1.5km,10.68,5.39,8.26
+596,1,96,1,Commercial Frontage,,73.1,2,1,4,1.17,0.5-1.5km,3.99,1.83,7.78
+597,1,96,1,Residential Apartment,,195.9,4,3,14,1.09,0.5-1.5km,11.7,3.16,6.06
+598,1,96,1,Residential Apartment,,84.7,2,1,3,1.02,0.5-1.5km,4.41,3.14,5.82
+599,1,96,1,Single Family Detached,,100.2,3,2,16,1.18,0.5-1.5km,5.38,5.14,4.35
+600,1,96,1,Residential Apartment,,215.3,4,3,5,1.1,0.5-1.5km,14.12,2.61,3.35
+601,1,96,1,Plot,,131.1,3,2,17,1.04,0.5-1.5km,5.87,5.8,4.53
+602,1,96,1,Single Family Detached,,210.2,4,3,10,1.16,0.5-1.5km,9.56,4.53,6.08
+603,1,96,1,Residential Apartment,,125.1,3,2,4,1.16,0.5-1.5km,5.66,0.32,8.64
+604,1,96,1,Single Family Detached,,81.4,2,1,3,1.07,0.5-1.5km,3.88,4.01,6.64
+605,1,96,1,Plot,,187.2,4,3,6,1.09,0.5-1.5km,2.96,1.27,3.81
+606,1,96,1,Residential Apartment,,169.4,4,3,14,1.05,0.5-1.5km,9.77,2.99,7.33
+607,1,96,1,Residential Apartment,,100.3,3,2,5,1.11,0.5-1.5km,14.1,4.26,6.22
+608,1,96,1,Commercial Frontage,,125.2,3,2,16,1.07,0.5-1.5km,14.5,3.93,8.93
+609,1,96,1,Commercial Frontage,,160.3,4,3,12,1.09,0.5-1.5km,14.37,3.91,3.57
+610,1,96,1,Residential Apartment,,84.7,2,1,14,1.11,0.5-1.5km,10.68,3.5,3.79
+611,1,96,1,Residential Apartment,,96.5,2,1,8,1.11,0.5-1.5km,8.09,4.91,7.45
+612,1,96,1,Single Family Detached,,165.8,4,3,14,1.08,0.5-1.5km,5.28,0.34,6.88
+613,1,96,1,Residential Apartment,,123.1,3,2,14,1.15,0.5-1.5km,9.78,0.58,6.32
+614,1,96,1,Residential Apartment,,162.4,4,3,5,1.15,0.5-1.5km,5.82,3.86,4.1
+615,1,96,1,Residential Apartment,,191.3,4,3,11,1.05,0.5-1.5km,10.87,3.76,4.09
+616,1,96,1,Residential Apartment,,74.7,2,1,5,0.99,0.5-1.5km,13.46,2.53,3.96
+617,1,96,1,Residential Apartment,,94.9,2,1,2,1.07,0.5-1.5km,12.62,2.66,5.4
+618,1,96,1,Commercial Frontage,,125.0,3,2,15,0.8,0.5-1.5km,2.46,1.74,7.82
+619,1,96,1,Plot,,170.5,4,3,17,1.13,0.5-1.5km,2.78,1.23,4.83
+620,1,96,1,Single Family Detached,,168.2,4,3,11,1.2,0.5-1.5km,4.74,1.19,4.76
+621,1,96,1,Residential Apartment,,217.0,4,3,13,1.11,0.5-1.5km,9.26,4.62,4.48
+622,1,96,1,Single Family Detached,,188.5,4,3,11,1.07,0.5-1.5km,3.26,2.59,6.58
+623,1,96,1,Single Family Detached,,140.0,3,2,2,1.04,0.5-1.5km,2.41,3.35,7.16
+624,1,96,1,Residential Apartment,,188.1,4,3,4,1.07,0.5-1.5km,5.08,0.31,3.35
+625,1,96,1,Plot,,173.8,4,3,10,1.08,0.5-1.5km,13.67,1.47,4.39
+626,1,96,1,Residential Apartment,,122.1,3,2,14,1.07,0.5-1.5km,4.61,2.07,7.92
+627,1,96,1,Residential Apartment,,196.6,4,3,4,1.22,0.5-1.5km,12.39,5.82,8.94
+628,1,96,1,Residential Apartment,,219.7,4,3,6,1.08,0.5-1.5km,2.09,3.5,8.97
+629,1,96,1,Residential Apartment,,140.4,3,2,3,1.1,0.5-1.5km,5.04,5.48,3.69
+630,1,96,1,Residential Apartment,,121.1,3,2,12,1.06,0.5-1.5km,13.8,3.91,5.39
+631,1,96,1,Single Family Detached,,141.8,3,2,15,1.06,0.5-1.5km,8.24,5.7,3.55
+632,1,96,1,Plot,,186.9,4,3,8,1.06,0.5-1.5km,6.28,0.82,5.39
+633,1,96,1,Residential Apartment,,134.1,3,2,5,1.03,0.5-1.5km,6.31,1.92,3.76
+634,1,96,1,Plot,,159.8,3,2,1,1.15,0.5-1.5km,12.61,2.51,4.49
+635,1,96,1,Commercial Frontage,,172.8,4,3,11,1.12,0.5-1.5km,7.56,0.71,8.61
+636,1,96,1,Residential Apartment,,147.0,3,2,10,1.11,0.5-1.5km,11.46,5.03,4.01
+637,1,96,1,Commercial Frontage,,168.3,4,3,14,1.11,0.5-1.5km,8.17,5.6,6.89
+638,1,96,1,Residential Apartment,,128.5,3,2,10,1.1,0.5-1.5km,13.64,1.9,5.09
+639,1,96,1,Residential Apartment,,176.0,4,3,4,1.02,0.5-1.5km,7.48,5.21,5.05
+640,1,96,1,Single Family Detached,,129.6,3,2,16,1.2,0.5-1.5km,3.03,5.0,5.16
+641,1,96,1,Single Family Detached,,74.0,2,1,12,5.29,3-8km,7.14,0.49,7.92
+642,1,96,1,Residential Apartment,,147.8,3,2,2,5.4,3-8km,5.36,2.29,8.73
+643,1,96,1,Residential Apartment,,178.9,4,3,7,4.0,3-8km,11.47,2.51,8.46
+644,1,96,1,Commercial Frontage,,113.5,3,2,1,4.98,3-8km,12.21,4.04,11.18
+645,1,96,1,Residential Apartment,,145.1,3,2,4,4.74,3-8km,3.68,3.42,6.96
+646,1,96,1,Single Family Detached,,138.5,3,2,12,5.12,3-8km,10.11,2.0,11.48
+647,1,96,1,Residential Apartment,,201.5,4,3,5,5.09,3-8km,3.99,5.94,10.69
+648,1,96,1,Residential Apartment,,70.1,2,1,9,5.04,3-8km,2.25,1.59,9.55
+649,1,96,1,Commercial Frontage,,162.8,4,3,14,5.15,3-8km,10.49,0.43,12.97
+650,1,96,1,Plot,,111.1,3,2,13,4.49,3-8km,9.75,2.73,11.23
+651,1,96,1,Single Family Detached,,208.9,4,3,1,5.15,3-8km,12.33,5.91,8.93
+652,1,96,1,Single Family Detached,,89.6,2,1,13,5.28,3-8km,13.56,0.5,8.26
+653,1,96,1,Residential Apartment,,191.4,4,3,2,5.11,3-8km,4.48,4.98,8.74
+654,1,96,1,Residential Apartment,,164.1,4,3,16,5.17,3-8km,6.58,1.44,11.74
+655,1,96,1,Plot,,80.0,2,1,14,4.46,3-8km,14.28,1.17,7.0
+656,1,96,1,Plot,,205.7,4,3,6,5.04,3-8km,2.48,2.32,12.34
+657,1,96,1,Single Family Detached,,79.0,2,1,9,5.06,3-8km,14.76,5.57,10.46
+658,1,96,1,Plot,,104.9,3,2,6,4.67,3-8km,11.31,5.47,8.37
+659,1,96,1,Plot,,215.8,4,3,16,4.67,3-8km,10.64,2.55,8.5
+660,1,96,1,Residential Apartment,,175.8,4,3,3,4.9,3-8km,5.03,1.87,8.72
+661,1,96,1,Residential Apartment,,85.7,2,1,16,4.28,3-8km,6.73,3.73,7.31
+662,1,96,1,Plot,,83.1,2,1,15,5.08,3-8km,14.4,3.95,9.88
+663,1,96,1,Commercial Frontage,,161.9,4,3,17,4.66,3-8km,11.42,1.12,6.91
+664,1,96,1,Residential Apartment,,102.5,3,2,17,4.88,3-8km,7.48,0.99,7.4
+665,1,96,1,Plot,,111.3,3,2,1,4.82,3-8km,2.38,4.77,11.51
+666,1,96,1,Plot,,100.3,3,2,11,5.07,3-8km,4.76,5.78,7.54
+667,1,96,1,Residential Apartment,,109.6,3,2,12,5.1,3-8km,7.35,4.97,9.19
+668,1,96,1,Residential Apartment,,79.6,2,1,13,4.84,3-8km,8.02,2.46,11.15
+669,1,96,1,Plot,,148.5,3,2,13,4.9,3-8km,14.09,3.83,12.21
+670,1,96,1,Single Family Detached,,177.3,4,3,16,4.49,3-8km,11.72,2.88,8.3
+671,1,96,1,Single Family Detached,,199.0,4,3,7,4.79,3-8km,4.53,2.41,12.4
+672,1,96,1,Commercial Frontage,,192.9,4,3,13,4.62,3-8km,5.68,1.73,11.59
+673,1,96,1,Single Family Detached,,99.9,2,1,15,5.18,3-8km,14.08,4.94,8.38
+674,1,96,1,Commercial Frontage,,110.5,3,2,9,4.67,3-8km,8.08,0.64,7.02
+675,1,96,1,Single Family Detached,,167.3,4,3,2,4.74,3-8km,5.51,1.2,9.42
+676,1,96,1,Plot,,91.8,2,1,13,4.52,3-8km,3.41,5.6,9.63
+677,1,96,1,Single Family Detached,,202.5,4,3,2,4.4,3-8km,2.85,2.44,10.83
+678,1,96,1,Residential Apartment,,160.5,4,3,8,5.09,3-8km,13.85,4.92,7.53
+679,1,96,1,Plot,,155.0,3,2,12,5.03,3-8km,7.47,3.06,11.37
+680,1,96,1,Residential Apartment,,192.2,4,3,14,4.99,3-8km,6.29,5.63,8.02
+681,1,96,1,Residential Apartment,,157.0,3,2,7,4.76,3-8km,4.94,0.33,7.92
+682,1,96,1,Residential Apartment,,155.3,3,2,4,5.18,3-8km,7.37,1.07,7.71
+683,1,96,1,Plot,,204.4,4,3,17,4.9,3-8km,6.26,3.6,8.83
+684,1,96,1,Commercial Frontage,,196.2,4,3,17,4.9,3-8km,5.86,0.38,11.19
+685,1,96,1,Single Family Detached,,87.1,2,1,6,4.41,3-8km,11.77,2.9,10.68
+686,1,96,1,Commercial Frontage,,217.8,4,3,12,4.61,3-8km,12.73,0.86,11.65
+687,1,96,1,Residential Apartment,,195.7,4,3,1,4.76,3-8km,5.6,3.7,11.16
+688,1,96,1,Residential Apartment,,161.0,4,3,4,5.29,3-8km,12.08,5.56,8.68
+689,1,96,1,Plot,,100.6,3,2,4,4.39,3-8km,8.64,5.82,8.08
+690,1,96,1,Residential Apartment,,200.5,4,3,1,5.08,3-8km,7.93,1.85,8.86
+691,1,96,1,Plot,,208.2,4,3,6,4.91,3-8km,9.53,3.65,10.35
+692,1,96,1,Residential Apartment,,198.3,4,3,5,4.6,3-8km,9.67,1.58,7.52
+693,1,96,1,Plot,,152.6,3,2,3,4.98,3-8km,9.46,1.14,9.18
+694,1,96,1,Commercial Frontage,,159.3,3,2,5,5.0,3-8km,10.38,2.96,8.84
+695,1,96,1,Single Family Detached,,212.5,4,3,5,4.85,3-8km,12.88,1.07,11.35
+696,1,96,1,Single Family Detached,,92.8,2,1,17,4.49,3-8km,4.37,4.95,10.87
+697,1,96,1,Plot,,123.3,3,2,4,4.96,3-8km,11.17,1.0,12.79
+698,1,96,1,Residential Apartment,,83.1,2,1,11,4.94,3-8km,6.93,0.62,10.42
+699,1,96,1,Residential Apartment,,213.4,4,3,17,4.62,3-8km,5.25,2.74,10.91
+700,1,96,1,Residential Apartment,,177.8,4,3,11,4.53,3-8km,5.04,5.51,10.0
+701,1,96,1,Residential Apartment,,129.7,3,2,11,4.51,3-8km,2.74,5.87,9.07
+702,1,96,1,Plot,,99.5,2,1,7,4.73,3-8km,10.32,4.57,9.23
+703,1,96,1,Residential Apartment,,92.9,2,1,1,4.96,3-8km,4.81,4.99,11.01
+704,1,96,1,Plot,,200.0,4,3,16,5.16,3-8km,3.75,3.63,10.28
+705,1,96,1,Plot,,218.8,4,3,12,4.75,3-8km,6.28,3.12,9.11
+706,1,96,1,Single Family Detached,,166.7,4,3,15,4.68,3-8km,13.26,5.2,8.6
+707,1,96,1,Single Family Detached,,200.0,4,3,14,4.81,3-8km,13.16,5.07,7.11
+708,1,96,1,Residential Apartment,,214.1,4,3,8,4.59,3-8km,14.05,1.17,9.72
+709,1,96,1,Residential Apartment,,204.6,4,3,8,4.45,3-8km,2.61,2.82,9.56
+710,1,96,1,Plot,,131.9,3,2,9,4.93,3-8km,12.28,0.94,7.09
+711,1,96,1,Plot,,156.7,3,2,11,5.04,3-8km,8.25,2.53,9.71
+712,1,96,1,Single Family Detached,,167.3,4,3,13,4.68,3-8km,10.35,2.38,6.85
+713,1,96,1,Residential Apartment,,170.2,4,3,16,5.28,3-8km,10.5,0.63,11.72
+714,1,96,1,Residential Apartment,,146.5,3,2,3,4.91,3-8km,8.91,5.88,10.0
+715,1,96,1,Plot,,82.3,2,1,12,4.67,3-8km,5.37,1.88,10.74
+716,1,96,1,Commercial Frontage,,107.0,3,2,1,4.54,3-8km,12.99,2.74,10.91
+717,1,96,1,Single Family Detached,,140.7,3,2,17,4.79,3-8km,6.03,0.75,10.83
+718,1,96,1,Residential Apartment,,111.6,3,2,8,4.55,3-8km,5.89,2.02,9.9
+719,1,96,1,Residential Apartment,,100.7,3,2,10,4.63,3-8km,8.11,4.61,10.94
+720,1,96,1,Single Family Detached,,198.8,4,3,5,4.7,3-8km,4.0,1.91,8.42
+721,1,96,1,Single Family Detached,,103.8,3,2,8,4.61,3-8km,9.32,1.74,10.11
+722,1,96,1,Plot,,168.9,4,3,5,5.09,3-8km,9.82,1.08,10.2
+723,1,96,1,Residential Apartment,,209.3,4,3,5,4.92,3-8km,10.64,3.97,10.88
+724,1,96,1,Single Family Detached,,204.8,4,3,10,4.96,3-8km,8.68,4.87,12.73
+725,1,96,1,Plot,,131.8,3,2,17,4.19,3-8km,7.51,2.63,10.19
+726,1,96,1,Plot,,186.1,4,3,8,4.49,3-8km,11.55,0.35,12.49
+727,1,96,1,Single Family Detached,,138.9,3,2,1,4.84,3-8km,5.58,3.56,10.01
+728,1,96,1,Residential Apartment,,113.6,3,2,17,5.37,3-8km,12.69,5.81,9.96
+729,1,96,1,Single Family Detached,,90.1,2,1,1,5.23,3-8km,7.19,1.74,12.87
+730,1,96,1,Residential Apartment,,194.1,4,3,13,4.84,3-8km,13.89,3.62,9.03
+731,1,96,1,Residential Apartment,,182.0,4,3,8,4.52,3-8km,14.19,3.13,11.93
+732,1,96,1,Residential Apartment,,110.8,3,2,8,4.39,3-8km,4.25,0.87,8.48
+733,1,96,1,Plot,,122.4,3,2,6,4.41,3-8km,8.17,1.75,7.85
+734,1,96,1,Residential Apartment,,189.9,4,3,15,5.28,3-8km,5.31,5.13,7.35
+735,1,96,1,Commercial Frontage,,149.0,3,2,13,4.91,3-8km,3.97,1.95,10.75
+736,1,96,1,Residential Apartment,,112.3,3,2,6,4.82,3-8km,4.86,1.31,8.71
+737,1,96,1,Plot,,138.9,3,2,17,4.65,3-8km,9.26,5.38,12.19
+738,1,96,1,Single Family Detached,,140.6,3,2,13,4.72,3-8km,12.26,1.52,9.3
+739,1,96,1,Residential Apartment,,73.3,2,1,1,4.62,3-8km,14.16,4.66,6.94
+740,1,96,1,Single Family Detached,,190.3,4,3,1,4.97,3-8km,6.8,5.76,7.31
+741,1,96,1,Residential Apartment,,182.3,4,3,16,5.25,3-8km,13.05,4.5,12.77
+742,1,96,1,Single Family Detached,,218.9,4,3,16,4.74,3-8km,2.09,4.62,9.72
+743,1,96,1,Single Family Detached,,183.2,4,3,12,5.05,3-8km,8.44,4.88,11.38
+744,1,96,1,Residential Apartment,,202.6,4,3,9,4.9,3-8km,8.66,3.28,10.52
+745,1,96,1,Plot,,80.8,2,1,11,4.9,3-8km,8.51,4.25,11.15
+746,1,96,1,Residential Apartment,,164.1,4,3,8,4.89,3-8km,12.14,3.31,8.37
+747,1,96,1,Single Family Detached,,207.0,4,3,3,4.7,3-8km,6.22,0.42,9.09
+748,1,96,1,Residential Apartment,,200.3,4,3,12,4.39,3-8km,11.3,3.74,11.82
+749,1,96,1,Residential Apartment,,121.4,3,2,7,5.0,3-8km,9.07,1.4,8.31
+750,1,96,1,Residential Apartment,,204.1,4,3,6,4.81,3-8km,12.1,3.78,10.12
+751,1,96,1,Residential Apartment,,168.6,4,3,11,4.55,3-8km,14.9,3.26,8.86
+752,1,96,1,Single Family Detached,,138.6,3,2,1,4.84,3-8km,5.42,0.83,7.58
+753,1,96,1,Single Family Detached,,178.3,4,3,14,5.35,3-8km,2.82,5.4,12.4
+754,1,96,1,Single Family Detached,,126.3,3,2,3,4.69,3-8km,9.22,4.79,11.04
+755,1,96,1,Single Family Detached,,195.2,4,3,8,4.79,3-8km,7.19,4.69,11.8
+756,1,96,1,Residential Apartment,,79.9,2,1,6,4.87,3-8km,14.09,2.87,12.15
+757,1,96,1,Residential Apartment,,160.4,4,3,12,4.7,3-8km,12.22,3.89,11.5
+758,1,96,1,Commercial Frontage,,120.4,3,2,2,4.82,3-8km,5.06,1.18,9.37
+759,1,96,1,Residential Apartment,,74.0,2,1,6,4.87,3-8km,4.15,0.47,10.63
+760,1,96,1,Single Family Detached,,92.4,2,1,10,5.03,3-8km,8.37,0.46,12.74
+761,1,96,1,Residential Apartment,,183.5,4,3,16,4.85,3-8km,12.83,0.9,11.43
+762,1,96,1,Single Family Detached,,117.9,3,2,16,4.51,3-8km,10.51,0.36,10.63
+763,1,96,1,Residential Apartment,,105.8,3,2,7,4.59,3-8km,14.53,2.81,10.35
+764,1,96,1,Residential Apartment,,197.6,4,3,10,4.14,3-8km,13.21,2.63,8.28
+765,1,96,1,Single Family Detached,,160.3,4,3,17,4.68,3-8km,12.61,5.84,11.37
+766,1,96,1,Residential Apartment,,216.1,4,3,14,5.14,3-8km,10.93,3.29,11.87
+767,1,96,1,Single Family Detached,,203.4,4,3,3,4.94,3-8km,6.89,2.62,10.94
+768,1,96,1,Residential Apartment,,79.1,2,1,14,4.9,3-8km,4.24,4.04,7.55
+769,1,96,1,Single Family Detached,,158.5,3,2,1,4.53,3-8km,3.33,1.45,9.66
+770,1,96,1,Residential Apartment,,117.5,3,2,11,4.66,3-8km,7.86,4.36,9.8
+771,1,96,1,Residential Apartment,,174.9,4,3,9,4.88,3-8km,2.65,3.88,12.81
+772,1,96,1,Residential Apartment,,218.3,4,3,15,4.98,3-8km,10.93,3.24,7.99
+773,1,96,1,Commercial Frontage,,204.1,4,3,4,4.54,3-8km,6.83,2.15,9.43
+774,1,96,1,Single Family Detached,,168.1,4,3,2,4.74,3-8km,8.82,1.44,9.42
+775,1,96,1,Single Family Detached,,76.9,2,1,1,4.64,3-8km,8.06,4.6,11.19
+776,1,96,1,Residential Apartment,,164.0,4,3,11,4.88,3-8km,12.68,5.94,10.0
+777,1,96,1,Single Family Detached,,140.6,3,2,14,5.09,3-8km,5.29,0.6,12.14
+778,1,96,1,Residential Apartment,,135.2,3,2,9,5.32,3-8km,2.33,5.23,8.5
+779,1,96,1,Plot,,192.9,4,3,16,5.13,3-8km,12.55,4.19,11.0
+780,1,96,1,Residential Apartment,,207.0,4,3,7,4.54,3-8km,3.2,1.78,9.9
+781,1,96,1,Residential Apartment,,101.4,3,2,6,4.73,3-8km,5.29,3.15,11.28
+782,1,96,1,Residential Apartment,,103.2,3,2,5,5.07,3-8km,12.93,0.4,12.84
+783,1,96,1,Single Family Detached,,77.9,2,1,4,5.05,3-8km,11.15,0.93,11.14
+784,1,96,1,Commercial Frontage,,172.5,4,3,7,4.67,3-8km,6.0,5.8,11.01
+785,1,96,1,Plot,,205.3,4,3,8,5.08,3-8km,5.33,5.81,7.93
+786,1,96,1,Single Family Detached,,181.2,4,3,3,4.95,3-8km,9.57,4.36,9.03
+787,1,96,1,Plot,,164.9,4,3,17,4.84,3-8km,10.45,4.96,11.91
+788,1,96,1,Commercial Frontage,,109.1,3,2,7,4.57,3-8km,14.4,5.84,7.93
+789,1,96,1,Residential Apartment,,157.0,3,2,12,4.67,3-8km,12.02,0.46,9.88
+790,1,96,1,Residential Apartment,,166.1,4,3,17,4.69,3-8km,5.97,0.65,12.15
+791,1,96,1,Plot,,197.9,4,3,2,4.96,3-8km,2.78,5.84,12.1
+792,1,96,1,Residential Apartment,,129.7,3,2,11,4.73,3-8km,4.23,1.06,11.91
+793,1,96,1,Plot,,138.9,3,2,1,5.1,3-8km,3.05,5.3,11.9
+794,1,96,1,Residential Apartment,,128.8,3,2,15,4.45,3-8km,7.65,1.15,12.05
+795,1,96,1,Residential Apartment,,217.8,4,3,5,4.6,3-8km,13.32,2.55,6.76
+796,1,96,1,Single Family Detached,,135.0,3,2,7,5.16,3-8km,14.73,1.16,12.57
+797,1,96,1,Residential Apartment,,142.0,3,2,1,4.46,3-8km,6.83,2.0,6.93
+798,1,96,1,Single Family Detached,,149.5,3,2,4,4.89,3-8km,2.48,2.14,8.27
+799,1,96,1,Residential Apartment,,137.2,3,2,4,5.34,3-8km,4.77,3.03,11.3
+800,1,96,1,Single Family Detached,,200.8,4,3,13,4.84,3-8km,13.05,4.81,9.6

@@ -1,0 +1,71 @@
+meta_file: gujarat_full_package_sources_data_meta.zip.meta.txt
+file_name: gujarat_full_package_sources_data_meta.zip
+original_name: gujarat_full_package_sources_data_meta.zip
+prefix: gujarat_
+renamed: False
+extension: .zip
+size_bytes: 341599
+modified_utc: 2026-10-03T08:00:09.928223+00:00
+
+--- PACKAGE ---
+description: Full distributable bundle: 14 datasets + 16 root metas + index (csv+json) + 2 index metas + 7 source-notes + 7 source metas = 46 files.
+n_files_inside: 46
+layout: flat gujarat_* data + meta at top level; sources/gujarat_* notes + metas under sources/.
+excludes: data/.quarantine/ helper scripts; this package meta itself (lives alongside, not inside, to avoid self-reference).
+
+--- CONTENTS ---
+  - gujarat_01_states.csv (1037 bytes)
+  - gujarat_01_states.csv.meta.txt (1848 bytes)
+  - gujarat_02_districts.csv (1692 bytes)
+  - gujarat_02_districts.csv.meta.txt (2040 bytes)
+  - gujarat_03_subdistricts_talukas.csv (5273 bytes)
+  - gujarat_03_subdistricts_talukas.csv.meta.txt (2020 bytes)
+  - gujarat_04_neighborhoods_jurisdictions.csv (4312 bytes)
+  - gujarat_04_neighborhoods_jurisdictions.csv.meta.txt (2568 bytes)
+  - gujarat_05_industrial_parks.csv (98381 bytes)
+  - gujarat_05_industrial_parks.csv.meta.txt (3752 bytes)
+  - gujarat_06_anchor_facilities.csv (2610 bytes)
+  - gujarat_06_anchor_facilities.csv.meta.txt (2733 bytes)
+  - gujarat_07_park_lifecycle_events.csv (170214 bytes)
+  - gujarat_07_park_lifecycle_events.csv.meta.txt (2954 bytes)
+  - gujarat_08_park_annual_metrics.csv (18248 bytes)
+  - gujarat_08_park_annual_metrics.csv.meta.txt (2865 bytes)
+  - gujarat_10_properties_spatial_attributes_gujrat.csv (64076 bytes)
+  - gujarat_10_properties_spatial_attributes_gujrat.csv.meta.txt (6322 bytes)
+  - gujarat_index.csv (12889 bytes)
+  - gujarat_index.csv.meta.txt (957 bytes)
+  - gujarat_index.json (25768 bytes)
+  - gujarat_index.json.meta.txt (961 bytes)
+  - gujarat_industrial_estates_all_12_tables_csv.zip (194787 bytes)
+  - gujarat_industrial_estates_all_12_tables_csv.zip.meta.txt (6977 bytes)
+  - gujarat_industrial_parks.csv (75378 bytes)
+  - gujarat_industrial_parks.csv.meta.txt (2387 bytes)
+  - gujarat_industrial_parks.geojson (201324 bytes)
+  - gujarat_industrial_parks.geojson.meta.txt (2431 bytes)
+  - gujarat_industrial_parks.json (229232 bytes)
+  - gujarat_industrial_parks.json.meta.txt (2377 bytes)
+  - gujarat_Industrial_Parks_and_GIDC_Estates.csv (117977 bytes)
+  - gujarat_Industrial_Parks_and_GIDC_Estates.csv.meta.txt (2391 bytes)
+  - sources/gujarat_Clean Commercial Benchmark Nodes.txt (360 bytes)
+  - sources/gujarat_Clean Commercial Benchmark Nodes.txt.meta.txt (1166 bytes)
+  - sources/gujarat_Industail_Parks.txt (209 bytes)
+  - sources/gujarat_Industail_Parks.txt.meta.txt (1170 bytes)
+  - sources/gujarat_neighbourhood_scapper.txt (119 bytes)
+  - sources/gujarat_neighbourhood_scapper.txt.meta.txt (872 bytes)
+  - sources/gujarat_Park_lifecycle_events.txt (425 bytes)
+  - sources/gujarat_Park_lifecycle_events.txt.meta.txt (1190 bytes)
+  - sources/gujarat_Properties & Parcel Spatial Attributes.txt (339 bytes)
+  - sources/gujarat_Properties & Parcel Spatial Attributes.txt.meta.txt (1167 bytes)
+  - sources/gujarat_property_price_scapper.txt (0 bytes)
+  - sources/gujarat_property_price_scapper.txt.meta.txt (787 bytes)
+  - sources/gujarat_Property_Tracker_Transcation.txt (549 bytes)
+  - sources/gujarat_Property_Tracker_Transcation.txt.meta.txt (1425 bytes)
+
+--- READING ---
+CSVs carry a commented preamble (lines starting with #); load with pandas read_csv(..., comment='#').
+Each dataset has a <file>.meta.txt sidecar with table/PK/FK/source evidence; gujarat_index.csv/.json catalogues all 21 (14 data + 7 source-notes).
+sources/ notes retain legacy spellings (Industail, Transcation) quoted exactly; gujarat_property_price_scapper.txt is EMPTY (0 bytes).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T08:00:35.697611+00:00
+generator: manual zip step after data/.quarantine/enrich_meta.py

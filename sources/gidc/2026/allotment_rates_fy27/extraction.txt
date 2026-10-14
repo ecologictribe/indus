@@ -1,0 +1,16 @@
+--- GIDC FY 2026-27 ALLOTMENT RATE SHEET EXTRACTION ---
+Issuing Authority: GIDC Head Office Gandhinagar
+Notification Ref: GIDC/CIR/REV/2026/01 dated 15/03/2026
+
+[TABLE 1: AHMEDABAD REGION]
+Row 1: Sanand-II (Bol) | Rate: Rs. 6,070 / sqm | Road: 24m | Category: Engineering
+Row 2: Vatva Industrial Estate | Rate: Rs. 8,450 / sqm | Road: 18m | Category: Chemical/General
+Row 3: Naroda Industrial Park | Rate: Rs. 8,120 / sqm | Road: 18m | Category: General
+
+[TABLE 2: SURAT & SOUTH GUJARAT]
+Row 1: Hazira Industrial Area | Rate: Rs. 9,450 / sqm | Category: Heavy Eng/Port
+Row 2: Ankleshwar Chemical Zone | Rate: Rs. 4,890 / sqm | Category: Chemical
+
+[TABLE 3: KUTCH & SAURASHTRA]
+Row 1: Gandhidham GIDC | Rate: Rs. 10,320 / sqm | Category: Logistics/Port
+Row 2: Morbi Ceramic Park | Rate: Rs. 2,990 / sqm | Category: Ceramic/Clay

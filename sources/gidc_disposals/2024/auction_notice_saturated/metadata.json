@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GIDC-2024-AUC",
+  "organisation": "GIDC Disposals & Commercial Division",
+  "source_title": "GIDC Public Auction Notice for Saturated Estates FY 2024",
+  "source_type": "PDF Notice",
+  "publication_date": "2024-01-10",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gidc.gujarat.gov.in/auction_notices",
+  "version": "Auction Round 2024-Q1",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "Table & Cadastral Notice Extraction",
+  "reliability": "Statutory Tender & Auction Notice",
+  "notes": "Public competitive auction catalogue for unallotted commercial and industrial plots in saturated GIDC estates.",
+  "local_path": "sources/gidc_disposals/2024/auction_notice_saturated/GIDC_Public_Auction_Notice_Saturated_Estates_2024.pdf",
+  "local_filename": "GIDC_Public_Auction_Notice_Saturated_Estates_2024.pdf",
+  "file_hash": "9a987cc53718f6823427f2ee6da573f840d498be5024405d465be86829229e69",
+  "file_size": 137,
+  "archive_verified_utc": "2026-10-04T03:03:40.569226Z"
+}

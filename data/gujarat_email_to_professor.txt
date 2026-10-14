@@ -1,0 +1,46 @@
+Subject: Gujarat Industrial Estates dataset - full package (data + sources + metadata)
+
+ Dear Professor,
+
+Please find attached the full Gujarat Industrial Estates data package:
+
+  gujarat_full_package_sources_data_meta.zip (~0.33 MB, 46 files)
+
+Contents (all files prefixed gujarat_):
+- 14 datasets: 9 numbered module tables (01-08, 10), 312-estate catalog
+  in 4 projections (flat csv, directory csv, json, geojson), and the
+  canonical 12-table archive zip (which additionally holds tables 09/11/12
+  that have no standalone file: 09_clean_commercial_nodes,
+  11_property_transactions, 12_did_panel_designations).
+- 7 provenance notes under sources/ (gujarat_-prefixed, legacy spellings
+  Industail/Transcation preserved exactly), each with a .meta.txt sidecar.
+- A .meta.txt sidecar per dataset (table, PK/FK, row/col counts, preamble
+  + sources/ evidence verbatim) plus gujarat_index.csv / .json catalogue
+  (21 rows: 14 data + 7 source-notes).
+
+Scale: 312 parks, 32 districts, 250 talukas, 60 tax jurisdictions,
+10 anchor plants, 1447 lifecycle events, 451 annual metrics, 800 parcels
+with hedonic distance buffers. Window 2012-2025.
+
+Provenance: GIDC portal / Industrial Policy 2015-2020 / GR 21-04-2015 / OSM
+(parks); IGR stamped registry + Jantar/Ready Reckoner + NHB RESIDEX
+(transactions); GPCB CEPI + CPCB (environment); AUDA/VUDA/SUDA + municipal
+tax records (jurisdictions); Gazette / land-award / factory-permit filings
+(lifecycle). Full per-table attribution is in each .meta.txt and the index.
+
+Reading: CSVs carry a '#' preamble - e.g.
+  import pandas as pd
+  df = pd.read_csv('gujarat_05_industrial_parks.csv', comment='#')
+
+Disclosures: (1) this bundle's standalone file for module-10 carries a
+legacy inner misspelling '..._gujrat.csv' (ZIP twin is correctly named
+10_properties.csv); (2) sources/gujarat_property_price_scapper.txt is an
+empty (0-byte) placeholder; (3) the bundle zip itself is not listed in the
+index to avoid self-reference - see
+gujarat_full_package_sources_data_meta.zip.meta.txt for its manifest.
+
+Please let me know if you would like the SQLite build, the DiD panel, or
+any table in another format.
+
+With regards,
+Devanshu

@@ -1,0 +1,34 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: anchor_facilities (Anchor Facilities & Mega Plants)
+# Table Order: Module 6 of 12 Core Schema Tables
+# Total Records: 10 rows
+# Export Timestamp (UTC): 2026-10-03T07:31:57.234479Z
+"# DATA SOURCE: Vibrant Gujarat Global Summit MoUs, Comptroller and Auditor General (CAG) audit reports on industrial development, Environmental Clearance DPR filings, and corporate press releases."
+"# Description: Major anchor manufacturing facilities, OEM plants, and tier-0 industrial enterprises."
+# Primary Key: anchor_id
+# Foreign Key Constraints: park_id -> industrial_parks(park_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * anchor_id: Primary key identifier
+#   * park_id: Foreign key reference to industrial_parks
+"#   * company_name: Name of anchor corporate enterprise (e.g. Tata Motors, Suzuki, Micron, Reliance, L&T)"
+#   * industry_type: Manufacturing industry classification
+#   * proposed_investment_inr: Proposed capital investment in INR Crores
+#   * actual_investment_inr: Audited actual capital expenditure in INR Crores
+#   * commencement_date: Commercial production start date
+#   * estimated_employment: Direct workforce headcount created
+# ==============================================================================
+
+anchor_id,park_id,company_name,industry_type,proposed_investment_inr,actual_investment_inr,commencement_date,estimated_employment
+1,15,Tata Motors Passenger Vehicles,Automobile Assembly,2200.0,2400.0,2010-06-02,4500
+2,15,Micron Technology India,Semiconductor Assembly & Test,22500.0,18000.0,2024-03-15,5000
+3,10,Suzuki Motor Gujarat (SMG),Automotive Manufacturing,18000.0,18500.0,2017-02-01,9000
+4,117,UPL Agrochemicals Ltd,Agrochemicals & Fine Chemicals,1500.0,1600.0,2018-04-10,2200
+5,122,ONGC Petro additions Ltd (OPaL),Mega Petrochemical Complex,30000.0,31200.0,2017-03-07,3500
+6,122,Reliance Industries Limited,Polyester & Intermediate Chemicals,12000.0,12500.0,2015-11-20,4000
+7,1,Larsen & Toubro Heavy Engineering,Nuclear & Defence Fabrication,8500.0,8900.0,2008-09-12,6500
+8,1,AM/NS India Hazira Steel,Hot-Rolled & Flat Steel Products,45000.0,48000.0,2012-01-15,12000
+9,107,MG Motor India Ltd,Electric & Passenger Vehicles,4000.0,4200.0,2018-10-01,3200
+10,169,Aarti Industries Limited,Specialty Chemical Intermediates,950.0,1020.0,2014-05-18,1800

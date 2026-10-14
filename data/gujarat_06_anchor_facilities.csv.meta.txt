@@ -1,0 +1,56 @@
+meta_file: gujarat_06_anchor_facilities.csv.meta.txt
+file_name: gujarat_06_anchor_facilities.csv
+original_name: 06_anchor_facilities.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 2610
+modified_utc: 2026-10-03T07:32:01.281190+00:00
+
+--- TABLE / DATASET ---
+table_name: anchor_facilities
+display_title: Anchor Facilities & Mega Plants
+module_order: Module 6 of 12 Core Schema Tables
+description: Major anchor manufacturing facilities, OEM plants, and tier-0 industrial enterprises.
+total_records_declared: 10 rows
+export_timestamp_utc: 2026-10-03T07:31:57.234479Z
+
+--- KEYS ---
+primary_key: anchor_id
+foreign_keys: park_id -> industrial_parks(park_id)
+
+--- DATA PROFILE ---
+header: anchor_id,park_id,company_name,industry_type,proposed_investment_inr,actual_investment_inr,commencement_date,estimated_employment
+n_columns: 8
+columns: anchor_id, park_id, company_name, industry_type, proposed_investment_inr, actual_investment_inr, commencement_date, estimated_employment
+data_rows_observed: 10
+total_lines: 34
+comment_lines(#): 22
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * anchor_id: Primary key identifier
+# * park_id: Foreign key reference to industrial_parks
+# * company_name: Name of anchor corporate enterprise (e.g. Tata Motors, Suzuki, Micron, Reliance, L&T)
+# * industry_type: Manufacturing industry classification
+# * proposed_investment_inr: Proposed capital investment in INR Crores
+# * actual_investment_inr: Audited actual capital expenditure in INR Crores
+# * commencement_date: Commercial production start date
+# * estimated_employment: Direct workforce headcount created
+
+--- DATA SOURCE (preamble verbatim) ---
+Vibrant Gujarat Global Summit MoUs, Comptroller and Auditor General (CAG) audit reports on industrial development, Environmental Clearance DPR filings, and corporate press releases.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+No dedicated file in data/sources/ for this dataset (all 7 source files were read; none matches).
+Attribution rests on the CSV preamble DATA SOURCE + ZIP README manifest.
+Checked: sources/gujarat_property_price_scapper.txt is EMPTY (0 bytes) - no evidence there either.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 06_anchor_facilities.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

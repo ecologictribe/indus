@@ -1,0 +1,842 @@
+{% extends "base.html" %}
+
+{% block title %}Methodology & Econometric Framework - Academic Replication Suite{% endblock %}
+{% block page_title %}Methodology & Schema{% endblock %}
+
+{% block extra_head %}
+<!-- KaTeX Mathematical Typography -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<!-- Mermaid.js for Vector ERD Diagram -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+
+<style>
+    /* Sticky Sidebar Outline */
+    .sticky-outline {
+        position: sticky;
+        top: 85px;
+        z-index: 10;
+    }
+    .outline-link {
+        color: #475569;
+        text-decoration: none;
+        padding: 4px 8px;
+        display: block;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        transition: all 0.15s ease;
+    }
+    .outline-link:hover, .outline-link.active {
+        color: #1e3a8a;
+        background-color: #e2e8f0;
+        font-weight: 600;
+    }
+    
+    /* Horizontal Phase Step Diagram */
+    .phase-step-card {
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        background: #ffffff;
+        padding: 1.25rem;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .phase-step-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .phase-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    /* Terminology Tooltip styling */
+    .term-tooltip {
+        text-decoration: underline dotted #0284c7;
+        cursor: help;
+        color: #0369a1;
+        font-weight: 500;
+    }
+
+    /* KaTeX equation display box */
+    .equation-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        overflow-x: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 mb-2">
+                    <i class="bi bi-mortarboard-fill me-1"></i> Academic Working Paper & Replication Suite
+                </span>
+                <h1 class="h2 fw-bold text-white mb-1">Empirical Framework & Database Design</h1>
+                <p class="text-secondary mb-0">
+                    A spatial Difference-in-Differences study of property price dynamics across the lifecycle of 312 industrial estates in Gujarat.
+                </p>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#citationModal">
+                    <i class="bi bi-quote me-1"></i> Cite Framework (BibTeX)
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-box-arrow-down me-1"></i> Replication Package
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Statistical Replication Scripts</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_replication_stata') }}"><i class="bi bi-file-code me-2 text-primary"></i>Stata Replication Script (.do)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_replication_python') }}"><i class="bi bi-filetype-py me-2 text-warning"></i>Python / Pandas Script (.py)</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Data & Schema Bundles</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_all_tables_zip_endpoint') }}"><i class="bi bi-file-earmark-zip me-2 text-success"></i>All 19 Tables CSVs (.ZIP)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('export_database_endpoint') }}"><i class="bi bi-database-down me-2 text-info"></i>Raw SQLite Database (.db)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+    <div class="row g-4">
+        
+        <!-- Left Column: Sticky Table of Contents Outline -->
+        <div class="col-lg-2 d-none d-lg-block">
+            <div class="sticky-outline p-3 bg-white rounded border shadow-sm">
+                <h6 class="fw-bold small text-uppercase text-secondary mb-3">
+                    <i class="bi bi-list-nested me-1"></i> On This Page
+                </h6>
+                <nav class="nav flex-column gap-1">
+                    <a class="outline-link" href="#sec-overview">1. Research Overview</a>
+                    <a class="outline-link" href="#sec-lifecycle">2. 4-Stage Lifecycle</a>
+                    <a class="outline-link" href="#sec-equation">3. Mathematical DiD</a>
+                    <a class="outline-link" href="#sec-variable-legend">4. Variable Legend</a>
+                    <a class="outline-link" href="#sec-clean-commercial">5. Clean Commercial Control</a>
+                    <a class="outline-link" href="#sec-dual-pricing">6. Dual Pricing (Jantar)</a>
+                    <a class="outline-link" href="#sec-replication">7. Replication Suite</a>
+                    <a class="outline-link" href="#sec-schema">8. Relational Schema & ERD</a>
+                </nav>
+
+                <hr class="my-3">
+
+                <div class="small text-muted">
+                    <span class="d-block fw-bold text-dark mb-1">Author Attribution:</span>
+                    Devanshu Arora &copy; 2026<br>
+                    State Industrial Estates Study
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Column: Main Research Content -->
+        <div class="col-lg-10">
+
+            <!-- Section 1: Overview -->
+            <div id="sec-overview" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-file-earmark-text text-primary me-2"></i> 1. Research Motivation & Core Question
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <p class="lead fs-6">
+                        Conducting a systematic study of property price dynamics across the lifecycle of an industrial park is essential. Relying solely on popular sentiment or early announcements leads to speculative mispricing, because land values do not appreciate automatically upon policy declaration.
+                    </p>
+                    <p class="text-muted">
+                        Instead, property prices evolve through distinct phases dictated by physical infrastructure milestones, operational occupancy, workforce demographics, and spatial distance. Real-world industrial corridors develop through the institutional sequence of:
+                        <strong class="text-dark">"Policy Thrust &rarr; Anchor Factory &rarr; Ancillary Clustering &rarr; Maturation & Stigma"</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 2: Visual 4-Stage Lifecycle Timeline -->
+            <div id="sec-lifecycle" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-diagram-3 text-info me-2"></i> 2. The 4-Stage Property Capitalization Lifecycle
+                    </h5>
+                    <span class="badge bg-secondary font-monospace">Empirical Capitalization Curve</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <!-- Phase 1 -->
+                        <div class="col-md-3">
+                            <div class="phase-step-card border-top border-4 border-primary h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="phase-number bg-primary text-white">1</div>
+                                    <span class="badge bg-light text-muted border">Yrs 0–2</span>
+                                </div>
+                                <h6 class="fw-bold text-dark mb-1">Policy & Announcement</h6>
+                                <div class="mb-2">
+                                    <span class="badge bg-info-subtle text-info border">Speculative Buzz</span>
+                                </div>
+                                <p class="small text-muted mb-0">
+                                    Government gazette notifications (GIDC estates, SEZs). <span class="term-tooltip" data-bs-toggle="tooltip" title="Official government valuation floor (Ready Reckoner) used for stamp duty assessment.">Jantar circle rates</span> are revised upward, but actual market transaction rates lag until physical land acquisition and trunk utility work begin.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="col-md-3">
+                            <div class="phase-step-card border-top border-4 border-info h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="phase-number bg-info text-white">2</div>
+                                    <span class="badge bg-light text-muted border">Yrs 3–5</span>
+                                </div>
+                                <h6 class="fw-bold text-dark mb-1">Anchor Commissioning</h6>
+                                <div class="mb-2">
+                                    <span class="badge bg-primary-subtle text-primary border">Trunk Infrastructure</span>
+                                </div>
+                                <p class="small text-muted mb-0">
+                                    A major anchor facility (e.g., Tata Motors at Sanand, Suzuki at Mandal-Becharaji, L&T at Hazira) breaks ground. 4-lane access expressways, dedicated water supply, and power substations become operational.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div class="col-md-3">
+                            <div class="phase-step-card border-top border-4 border-success h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="phase-number bg-success text-white">3</div>
+                                    <span class="badge bg-light text-muted border">Yrs 6–9</span>
+                                </div>
+                                <h6 class="fw-bold text-dark mb-1">Ancillary Clustering</h6>
+                                <div class="mb-2">
+                                    <span class="badge bg-success text-white">+24.1% Sweet Spot</span>
+                                </div>
+                                <p class="small text-muted mb-0">
+                                    Tier-1/2 component suppliers, logistics hubs, and workforce influx arrive. Sustainable residential housing and rental demand surge in the insulated <strong class="text-success">3–8km buffer</strong>, generating the empirical sweet spot premium.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Phase 4 -->
+                        <div class="col-md-3">
+                            <div class="phase-step-card border-top border-4 border-danger h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="phase-number bg-danger text-white">4</div>
+                                    <span class="badge bg-light text-muted border">Yrs 10+</span>
+                                </div>
+                                <h6 class="fw-bold text-dark mb-1">Maturation & Stigma</h6>
+                                <div class="mb-2">
+                                    <span class="badge bg-danger text-white">-6.1% Proximity Drag</span>
+                                </div>
+                                <p class="small text-muted mb-0">
+                                    Peak industrial operations produce severe negative externalities: chemical effluents, 24/7 trailer freight, and air emissions. Immediate perimeter (<0.5km) incurs a sharp discount, requiring <span class="term-tooltip" data-bs-toggle="tooltip" title="Common Effluent Treatment Plant with Zero Liquid Discharge compliance.">CETP remediation</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Mathematical DiD Equation (KaTeX Rendered) -->
+            <div id="sec-equation" class="dashboard-card mb-4">
+                <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-calculator text-warning me-2"></i> 3. Spatial Difference-in-Differences Econometric Specification
+                    </h5>
+                    <span class="badge bg-primary">KaTeX Math Typography</span>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted small">
+                        To estimate the causal capitalization of industrial hubs without confounding general macroeconomic appreciation, we estimate the following spatial <span class="term-tooltip" data-bs-toggle="tooltip" title="Estimator comparing changes over time between treatment buffers and far control corridors.">Difference-in-Differences (DiD)</span> model on micro-level parcel transactions:
+                    </p>
+
+                    <!-- Mathematical Formula Box -->
+                    <div class="equation-box mb-4">
+                        <div class="fs-4 text-dark py-2">
+                            $$\ln(P_{it}) = \beta_0 + \sum_{b \in \mathcal{B}} \gamma_b \cdot \text{Buffer}_{ib} + \sum_{b \in \mathcal{B}} \delta_b \cdot (\text{Buffer}_{ib} \times \text{Post}_t) + \theta_1 \text{Age}_{it} + \theta_2 \text{HighwayDist}_i + \tau_t + \varepsilon_{it}$$
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Interactive Variable Legend -->
+                    <div id="sec-variable-legend" class="mt-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold text-dark mb-0">
+                                <i class="bi bi-key-fill text-primary me-1"></i> Interactive Variable Legend & Symbols Key
+                            </h6>
+                            <small class="text-muted">Click headers to inspect econometric role</small>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm small align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 140px;">Symbol / Term</th>
+                                        <th style="width: 180px;">Econometric Name</th>
+                                        <th>Definition & Institutional Context in Study</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>$$\ln(P_{it})$$</td>
+                                        <td><strong>Dependent Variable</strong></td>
+                                        <td>Natural logarithm of the market transaction price per square meter (INR/sqm) for property parcel $i$ sold in year $t$.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\beta_0$$</td>
+                                        <td><strong>Baseline Intercept</strong></td>
+                                        <td>Log price of the reference control group (far corridor properties $>10\text{km}$ away) in the pre-event base period.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\text{Buffer}_{ib}$$</td>
+                                        <td><strong>Spatial Fixed Effects</strong></td>
+                                        <td>Dummy indicator for distance buffer bin $b \in \{<0.5\text{km},\, 0.5\text{--}1.5\text{km},\, 3\text{--}8\text{km},\, \text{Clean Commercial } <0.3\text{km}\}$. Captures time-invariant distance amenities.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\text{Post}_t$$</td>
+                                        <td><strong>Post-Event Indicator</strong></td>
+                                        <td>Binary indicator taking value $1$ if the transaction sale year $t \ge 2018$ (the anchor commissioning year), and $0$ otherwise.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\delta_b$$</td>
+                                        <td><strong>Core DiD Estimator ($\hat{\beta}$)</strong></td>
+                                        <td>Identifies the causal percentage price impact: $(\exp(\delta_b) - 1) \times 100\%$. Measures whether buffer $b$ diverged from the control group after anchor commissioning.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\text{Age}_{it}, \text{HighwayDist}_i$$</td>
+                                        <td><strong>Hedonic Controls</strong></td>
+                                        <td>Property structural age at sale date (depreciation control) and continuous distance to nearest state/national highway corridor.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\tau_t$$</td>
+                                        <td><strong>Year Fixed Effects</strong></td>
+                                        <td>Annual macroeconomic time dummies absorbing state-level inflation, interest rate shifts, and demonetization/GST macro shocks.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$$\varepsilon_{it}$$</td>
+                                        <td><strong>Clustered Error Term</strong></td>
+                                        <td>Idiosyncratic disturbance term with standard errors clustered at the Taluka / Subdistrict level to handle spatial autocorrelation.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Clean Commercial Benchmark Control -->
+            <div id="sec-clean-commercial" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-shield-check text-success me-2"></i> 5. Disentangling Industrial Stigma from Commercial Noise
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <p>
+                        A major methodological contribution of this framework, derived from <em>Taylor et al.</em>, is incorporating <strong>Clean Commercial Benchmark Nodes</strong> (IT parks, commercial shopping complexes, GIFT City).
+                    </p>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border h-100">
+                                <h6 class="fw-bold text-primary mb-1">Clean Commercial (<0.3km): -1.7%</h6>
+                                <p class="small text-muted mb-0">
+                                    Properties immediately adjacent to IT parks and commercial centers exhibit only a mild <strong>-1.7%</strong> friction due to parking congestion and foot-traffic noise, but no health or environmental drag.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border border-danger-subtle h-100">
+                                <h6 class="fw-bold text-danger mb-1">Industrial Estate (<0.5km): -6.1%</h6>
+                                <p class="small text-muted mb-0">
+                                    In stark contrast, residential properties adjacent to chemical/heavy GIDC estates incur a statistically significant <strong>-6.1%</strong> discount. This proves the proximity penalty is caused by <em>industrial environmental stigma</em> rather than general commercial activity.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Dual Pricing & Jantar Lag -->
+            <div id="sec-dual-pricing" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-cash-coin text-warning me-2"></i> 6. Dual-Pricing Dynamics: Statutory Jantar Circle Rates vs Market Prices
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted">
+                        Official government circle rates (<span class="term-tooltip" data-bs-toggle="tooltip" title="Guideline value fixed by the Revenue Department for registering property deeds in Gujarat.">Jantar</span>) act as legal price floors, but empirical data reveals a systematic <strong>18 to 36 month administrative lag</strong> behind actual market transaction prices.
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-custom table-bordered small mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Registered Circle Rate (Jantar)</th>
+                                    <th>Market Clearing Price</th>
+                                    <th>Empirical Ratio Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">Phase 1 (Announcement)</td>
+                                    <td>Revision enacted to signal growth corridor</td>
+                                    <td>Speculative prices rise ahead of delivery</td>
+                                    <td>Circle/Market ratio drops to ~72%</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Phase 2 (Anchor Plant)</td>
+                                    <td>Sticky; held constant pending audit</td>
+                                    <td>Rapid institutional land purchases</td>
+                                    <td>Ratio remains depressed (~75%)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Phase 3 (Ancillaries)</td>
+                                    <td>State gazette revision catches up</td>
+                                    <td>Stabilizes around secondary housing demand</td>
+                                    <td>Ratio recovers toward compliance (~84%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Academic Replication Suite -->
+            <div id="sec-replication" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-box-seam-fill text-primary me-2"></i> 7. Open Science Replication Suite
+                    </h5>
+                    <span class="badge bg-success">Stata &bull; Python &bull; SQLite</span>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted small">
+                        To support open science, external peer review, and academic reproduction, the complete econometric replication package is provided in multiple statistical software formats:
+                    </p>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="card border p-3 h-100 text-center">
+                                <i class="bi bi-file-code fs-1 text-primary mb-2"></i>
+                                <h6 class="fw-bold mb-1">Stata Replication</h6>
+                                <p class="small text-muted mb-3">Pre-formatted <code>.do</code> file estimating DiD with clustered standard errors.</p>
+                                <a href="{{ url_for('export_replication_stata') }}" class="btn btn-outline-primary btn-sm mt-auto">
+                                    <i class="bi bi-download me-1"></i> Download .do Script
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card border p-3 h-100 text-center">
+                                <i class="bi bi-filetype-py fs-1 text-warning mb-2"></i>
+                                <h6 class="fw-bold mb-1">Python Replication</h6>
+                                <p class="small text-muted mb-3">Standalone script / Jupyter notebook code reproducing OLS tables and trends.</p>
+                                <a href="{{ url_for('export_replication_python') }}" class="btn btn-outline-warning btn-sm mt-auto text-dark">
+                                    <i class="bi bi-download me-1"></i> Download .py Script
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card border p-3 h-100 text-center">
+                                <i class="bi bi-file-earmark-zip fs-1 text-success mb-2"></i>
+                                <h6 class="fw-bold mb-1">All 19 Tables (.ZIP)</h6>
+                                <p class="small text-muted mb-3">All 19 relational CSVs with metadata headers + README manifest.</p>
+                                <a href="{{ url_for('export_all_tables_zip_endpoint') }}" class="btn btn-outline-success btn-sm mt-auto">
+                                    <i class="bi bi-download me-1"></i> Download All Tables (.ZIP)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Interactive Relational Schema & Visual ERD -->
+            <div id="sec-schema" class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="bi bi-diagram-2-fill text-primary me-2"></i>
+                        <span class="fw-bold">8. Interactive Relational Database Schema & Visual ERD</span>
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-outline-secondary active" id="btnShowErd" onclick="toggleSchemaView('erd')">
+                            <i class="bi bi-diagram-3 me-1"></i> Visual ERD Node Map
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id="btnShowList" onclick="toggleSchemaView('list')">
+                            <i class="bi bi-table me-1"></i> Table Inspector List
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    
+                    <!-- View Mode 1: Visual Vector ERD (Mermaid.js) -->
+                    <div id="erdContainer">
+                        <h6 class="fw-bold text-dark mb-2">Entity-Relationship Diagram (19 Core Relational Modules)</h6>
+                        <p class="small text-muted mb-3">Vector diagram displaying foreign key cardinality from administrative root down to DiD panel transactions & value-level provenance:</p>
+                        
+                        <div class="p-3 bg-light rounded border text-center overflow-auto">
+                            <div class="mermaid">
+erDiagram
+    states ||--o{ districts : "contains"
+    districts ||--o{ subdistricts_talukas : "contains"
+    subdistricts_talukas ||--o{ neighborhoods_jurisdictions : "contains"
+    subdistricts_talukas ||--o{ industrial_parks : "hosts"
+    subdistricts_talukas ||--o{ clean_commercial_nodes : "hosts"
+    industrial_parks ||--o{ anchor_facilities : "anchors"
+    industrial_parks ||--o{ park_lifecycle_events : "logs"
+    industrial_parks ||--o{ properties : "spatial_buffer"
+    industrial_parks ||--o{ park_pollution_benchmarks : "monitors"
+    industrial_parks ||--o{ industrial_land_price_history : "tracks_prices"
+    industrial_parks ||--o{ industrial_plots : "contains_plots"
+    intelligence_sources ||--o{ industrial_land_price_history : "proves"
+    intelligence_sources ||--o{ industrial_plots : "verifies"
+    source_registry ||--o{ data_provenance : "documents"
+    clean_commercial_nodes ||--o{ properties : "clean_baseline"
+    neighborhoods_jurisdictions ||--o{ properties : "locates"
+    properties ||--o{ property_transactions : "trades"
+    property_transactions ||--|| did_panel_designations : "evaluates"
+
+    states {
+        INTEGER state_id PK
+        TEXT state_name
+        TEXT state_code
+    }
+    districts {
+        INTEGER district_id PK
+        INTEGER state_id FK
+        TEXT district_name
+    }
+    industrial_parks {
+        INTEGER park_id PK
+        INTEGER taluka_id FK
+        TEXT park_name
+        TEXT authority_type
+        REAL current_cepi_score
+        TEXT cpcb_status
+        TEXT inferred_lifecycle_stage
+        INTEGER is_zld_compliant
+    }
+    properties {
+        INTEGER property_id PK
+        INTEGER nearest_park_id FK
+        TEXT distance_buffer_bin
+        REAL distance_to_park_km
+    }
+    property_transactions {
+        INTEGER transaction_id PK
+        INTEGER property_id FK
+        DATE sale_date
+        REAL market_transaction_price
+        REAL registered_circle_rate_sqm
+    }
+    did_panel_designations {
+        INTEGER designation_id PK
+        INTEGER transaction_id FK
+        INTEGER is_treated
+        INTEGER is_post_event
+        INTEGER did_interaction_term
+    }
+    park_pollution_benchmarks {
+        INTEGER benchmark_id PK
+        INTEGER park_id FK
+        INTEGER assessment_year
+        REAL cepi_score
+        TEXT cpcb_status
+        REAL pm2_5
+        REAL outlet_cod_mg_l
+        INTEGER is_zld_compliant
+        REAL pct_red_units
+        TEXT inferred_lifecycle_stage
+    }
+    industrial_land_price_history {
+        INTEGER price_history_id PK
+        INTEGER park_id FK
+        TEXT financial_year
+        TEXT price_type
+        REAL price_per_sqm
+        TEXT revision_reason
+        TEXT source_document
+    }
+    industrial_plots {
+        TEXT plot_id PK
+        INTEGER park_id FK
+        REAL plot_area_sqm
+        TEXT category
+        TEXT status
+        REAL allotment_price_sqm
+        TEXT company_name
+    }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View Mode 2: Clickable Table Schema Inspector List -->
+                    <div id="listContainer" style="display: none;">
+                        <h6 class="fw-bold text-dark mb-2">Click Any Table to Inspect Columns, Constraints & Live Sample:</h6>
+                        <div class="row g-2 mb-3">
+                            {% for tbl_name in ['states', 'districts', 'subdistricts_talukas', 'neighborhoods_jurisdictions', 'industrial_parks', 'anchor_facilities', 'park_lifecycle_events', 'park_annual_metrics', 'clean_commercial_nodes', 'properties', 'property_transactions', 'did_panel_designations', 'park_pollution_benchmarks', 'intelligence_sources', 'estate_aliases_master', 'industrial_land_price_history', 'industrial_plots', 'source_registry', 'data_provenance'] %}
+                            <div class="col-md-4">
+                                <button onclick="openTableInspector('{{ tbl_name }}')" class="btn btn-light border text-start w-100 py-2 px-3 d-flex justify-content-between align-items-center">
+                                    <span class="font-monospace fw-bold text-primary">{{ tbl_name }}</span>
+                                    <span class="badge bg-secondary"><i class="bi bi-search"></i> Inspect</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1: Academic Citation Generator -->
+<div class="modal fade" id="citationModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold"><i class="bi bi-quote text-primary me-2"></i> Cite this Paper / Econometric Framework</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs mb-3" id="citationTabs" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabBibtex">BibTeX</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabApa">APA (7th ed.)</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabChicago">Chicago (17th ed.)</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="citationTabContent">
+                    <div class="tab-pane fade show active" id="tabBibtex">
+                        <div class="position-relative">
+                            <pre class="bg-light p-3 rounded font-monospace small" id="textBibtex">@article{arora2026industrial,
+  title = {Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat},
+  author = {Arora, Devanshu and Contributors},
+  journal = {Urban Economics & Regional Science Working Papers},
+  year = {2026},
+  volume = {14},
+  number = {2},
+  pages = {101--134},
+  doi = {10.5281/zenodo.gujarat.industrial.2026},
+  publisher = {State Industrial Estates Research Initiative},
+  address = {Ahmedabad, Gujarat, India}
+}</pre>
+                            <button onclick="copyToClipboard('textBibtex')" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-2">
+                                <i class="bi bi-clipboard me-1"></i> Copy BibTeX
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tabApa">
+                        <div class="position-relative">
+                            <div class="bg-light p-3 rounded small" id="textApa">
+                                Arora, D. (2026). Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat. <em>Urban Economics & Regional Science Working Papers</em>, 14(2), 101–134. https://doi.org/10.5281/zenodo.gujarat.industrial.2026
+                            </div>
+                            <button onclick="copyToClipboard('textApa')" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-2">
+                                <i class="bi bi-clipboard me-1"></i> Copy APA
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tabChicago">
+                        <div class="position-relative">
+                            <div class="bg-light p-3 rounded small" id="textChicago">
+                                Arora, Devanshu. 2026. "Spatial Difference-in-Differences Analysis of Property Price Dynamics across Industrial Park Lifecycle Phases: Evidence from 312 Estates in Gujarat." <em>Urban Economics & Regional Science Working Papers</em> 14, no. 2: 101–134.
+                            </div>
+                            <button onclick="copyToClipboard('textChicago')" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-2">
+                                <i class="bi bi-clipboard me-1"></i> Copy Chicago
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: Interactive Table Schema Inspector & Live 5-Row Preview -->
+<div class="modal fade" id="schemaInspectorModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title fw-bold" id="inspectorModalTitle">
+                    <i class="bi bi-table text-info me-2"></i> Table Schema Inspector
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4" id="inspectorModalBody">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <div class="mt-2 text-muted">Loading live table schema and sample data...</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="inspectorDownloadCsvBtn" class="btn btn-success">
+                    <i class="bi bi-filetype-csv me-1"></i> Download Table CSV + Meta
+                </a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialize KaTeX auto-rendering
+        if (typeof renderMathInElement === "function") {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ],
+                throwOnError: false
+            });
+        }
+
+        // Initialize Bootstrap tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+
+    function toggleSchemaView(mode) {
+        const erdContainer = document.getElementById('erdContainer');
+        const listContainer = document.getElementById('listContainer');
+        const btnErd = document.getElementById('btnShowErd');
+        const btnList = document.getElementById('btnShowList');
+
+        if (mode === 'erd') {
+            erdContainer.style.display = 'block';
+            listContainer.style.display = 'none';
+            btnErd.classList.add('active');
+            btnList.classList.remove('active');
+        } else {
+            erdContainer.style.display = 'none';
+            listContainer.style.display = 'block';
+            btnList.classList.add('active');
+            btnErd.classList.remove('active');
+        }
+    }
+
+    function copyToClipboard(elementId) {
+        const el = document.getElementById(elementId);
+        const text = el.innerText || el.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Citation copied to clipboard!");
+        });
+    }
+
+    function openTableInspector(tableName) {
+        const modal = new bootstrap.Modal(document.getElementById('schemaInspectorModal'));
+        modal.show();
+
+        const titleEl = document.getElementById('inspectorModalTitle');
+        const bodyEl = document.getElementById('inspectorModalBody');
+        const downloadBtn = document.getElementById('inspectorDownloadCsvBtn');
+
+        titleEl.innerHTML = `<i class="bi bi-table text-info me-2"></i> Table Inspector: <code>${tableName}</code>`;
+        downloadBtn.href = `/export/table/${tableName}`;
+
+        fetch(`/api/table-schema/${tableName}`)
+            .then(res => res.json())
+            .then(data => {
+                let columnsHtml = '';
+                data.columns.forEach(c => {
+                    columnsHtml += `
+                        <tr>
+                            <td><code>${c.name}</code></td>
+                            <td><span class="badge bg-secondary font-monospace">${c.type}</span></td>
+                            <td>${c.is_pk ? '<span class="badge bg-primary">PRIMARY KEY</span>' : '-'}</td>
+                            <td>${c.not_null ? '<span class="badge bg-danger">NOT NULL</span>' : 'Nullable'}</td>
+                            <td><small class="text-muted">${c.description}</small></td>
+                        </tr>
+                    `;
+                });
+
+                let sampleHeaders = '';
+                data.columns.forEach(c => {
+                    sampleHeaders += `<th>${c.name}</th>`;
+                });
+
+                let sampleRows = '';
+                data.sample_preview.forEach(row => {
+                    sampleRows += '<tr>';
+                    data.columns.forEach(c => {
+                        const val = row[c.name];
+                        sampleRows += `<td class="text-truncate" style="max-width: 180px;">${val !== null ? val : '<span class="text-muted">NULL</span>'}</td>`;
+                    });
+                    sampleRows += '</tr>';
+                });
+
+                bodyEl.innerHTML = `
+                    <div class="mb-3 p-3 bg-light rounded border">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h5 class="fw-bold text-dark mb-0">${data.display_name}</h5>
+                            <span class="badge bg-primary fs-6">${data.total_records.toLocaleString()} Total Records</span>
+                        </div>
+                        <p class="text-muted small mb-2">${data.description}</p>
+                        <div class="small p-2 bg-white rounded border-start border-3 border-info">
+                            <strong class="text-primary"><i class="bi bi-building-check me-1"></i> DATA SOURCE:</strong>
+                            <span class="text-dark">${data.data_source}</span>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-list-check me-1"></i> Column Schema & Constraints:</h6>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-sm table-bordered small">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Column Name</th>
+                                    <th>Data Type</th>
+                                    <th>Primary Key</th>
+                                    <th>Nullability</th>
+                                    <th>Empirical Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>${columnsHtml}</tbody>
+                        </table>
+                    </div>
+
+                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-eye me-1"></i> Live 5-Row Sample Preview:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped table-bordered small font-monospace">
+                            <thead class="table-dark">
+                                <tr>${sampleHeaders}</tr>
+                            </thead>
+                            <tbody>${sampleRows}</tbody>
+                        </table>
+                    </div>
+                `;
+            })
+            .catch(err => {
+                bodyEl.innerHTML = `<div class="alert alert-danger">Error loading table schema: ${err}</div>`;
+            });
+    }
+</script>
+{% endblock %}

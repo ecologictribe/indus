@@ -1,0 +1,1469 @@
+# ==============================================================================,,,,,
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS  ,,,,,
+# ------------------------------------------------------------------------------,,,,,
+# Table Name: park_lifecycle_events (Park Lifecycle Milestones (DiD Windows)),,,,,
+# Table Order: Module 7 of 12 Core Schema Tables,,,,,
+# Total Records: 1447 rows,,,,,
+# Export Timestamp (UTC): 2026-10-03T07:32:05.917450Z,,,,,
+"# DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.",,,,,
+# Description: Chronological development milestones defining Pre/Post treatment event windows for econometric estimation.,,,,,
+# Primary Key: event_id,,,,,
+# Foreign Key Constraints: park_id -> industrial_parks(park_id),,,,,
+# ------------------------------------------------------------------------------,,,,,
+# COLUMN DEFINITIONS:,,,,,
+#   * event_id: Primary key identifier,,,,,
+#   * park_id: Foreign key reference to industrial_parks,,,,,
+"#   * event_type: Milestone type (Policy Announcement, Land Acquisition, Anchor Operational, Ancillary Active, CETP Upgrade)",,,,,
+#   * event_date: Official milestone calendar date,,,,,
+#   * event_year: Calendar year of milestone,,,,,
+#   * description: Institutional description of milestone achievement,,,,,
+# ==============================================================================,,,,,
+,,,,,
+event_id,park_id,event_type,event_date,event_year,description
+1,1,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Apparel Park (Ambica Mill)
+2,1,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+3,1,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+4,1,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+5,1,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+6,2,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Behrampura
+7,2,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+8,2,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+9,2,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+10,2,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+11,3,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Bhagapura (Tentative)
+12,3,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+13,3,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+14,3,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+15,4,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Chharodi
+16,4,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+17,4,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+18,4,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+19,5,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dhandhuka
+20,5,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+21,5,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+22,5,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+23,5,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+24,6,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Dholka
+25,6,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+26,6,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+27,6,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+28,7,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Kathwada
+29,7,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+30,7,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+31,7,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+32,7,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+33,8,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Kerala (Bavla)
+34,8,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+35,8,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+36,8,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+37,8,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+38,9,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Khoraj (Tentative)
+39,9,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+40,9,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+41,9,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+42,9,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+43,10,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-I
+44,10,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+45,10,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+46,10,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+47,11,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Mandal-Vitthalapur (Japanese Industrial Zone) Phase-II
+48,11,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+49,11,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+50,11,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+51,11,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+52,12,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Naroda
+53,12,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+54,12,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+55,12,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+56,13,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Naroda (Housing to Industrial Area)
+57,13,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+58,13,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+59,13,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+60,13,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+61,14,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Odhav
+62,14,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+63,14,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+64,14,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+65,14,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+66,15,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Sanand (RIDC)
+67,15,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+68,15,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+69,15,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+70,15,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+71,16,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Sanand-II (Bol)
+72,16,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+73,16,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+74,16,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+75,16,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+76,17,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Sanand-II (Bol) MSME Park (Tentative)
+77,17,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+78,17,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+79,17,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+80,17,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+81,18,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Sanand-II Women Park
+82,18,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+83,18,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+84,18,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+85,18,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+86,19,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Vatva
+87,19,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+88,19,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+89,19,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+90,19,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+91,20,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Viramgam
+92,20,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+93,20,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+94,20,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+95,20,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+96,21,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Bavla
+97,21,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+98,21,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+99,21,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+100,21,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+101,22,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Changodar
+102,22,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+103,22,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+104,22,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+105,22,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+106,23,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Hansalpur
+107,23,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+108,23,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+109,23,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+110,24,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Hanspura (Naroda) Housing
+111,24,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+112,24,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+113,24,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+114,25,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Bhat
+115,25,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+116,25,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+117,25,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+118,25,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+119,26,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Dehgam
+120,26,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+121,26,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+122,26,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+123,26,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+124,27,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Gandhinagar (Electronics Estate)
+125,27,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+126,27,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+127,27,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+128,27,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+129,28,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Gandhinagar (Engineering Estate)
+130,28,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+131,28,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+132,28,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+133,28,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+134,29,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Gandhinagar (IT SEZ)
+135,29,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+136,29,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+137,29,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+138,29,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+139,30,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Gandhinagar (SEZ)
+140,30,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+141,30,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+142,30,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+143,30,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+144,31,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Mansa
+145,31,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+146,31,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+147,31,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+148,31,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+149,32,Policy Announcement,15-03-2018,2018,"State Government G.R. notifying GIDC Mega IT Park, Gandhinagar"
+150,32,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+151,32,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+152,32,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+153,33,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Himatnagar
+154,33,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+155,33,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+156,33,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+157,33,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+158,34,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Idar
+159,34,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+160,34,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+161,34,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+162,34,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+163,35,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Khedbrahma
+164,35,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+165,35,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+166,35,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+167,36,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Talod
+168,36,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+169,36,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+170,36,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+171,37,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Vijaynagar
+172,37,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+173,37,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+174,37,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+175,38,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Bhiloda
+176,38,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+177,38,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+178,38,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+179,38,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+180,39,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Malpur (RIDC)
+181,39,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+182,39,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+183,39,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+184,39,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+185,40,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Modasa
+186,40,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+187,40,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+188,40,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+189,40,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+190,41,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Modasa-II
+191,41,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+192,41,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+193,41,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+194,41,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+195,42,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Shinavada MSME (Tentative)
+196,42,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+197,42,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+198,42,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+199,43,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Meghraj
+200,43,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+201,43,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+202,43,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+203,43,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+204,44,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Dhansura
+205,44,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+206,44,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+207,44,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+208,44,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+209,45,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Aithor MSME (Tentative)
+210,45,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+211,45,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+212,45,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+213,45,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+214,46,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Aithor Non-MSME (Tentative)
+215,46,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+216,46,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+217,46,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+218,46,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+219,47,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Chanasma
+220,47,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+221,47,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+222,47,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+223,48,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Chhatral
+224,48,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+225,48,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+226,48,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+227,48,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+228,49,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Gozaria
+229,49,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+230,49,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+231,49,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+232,49,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+233,50,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC IFFCO Estate (Kadi)
+234,50,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+235,50,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+236,50,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+237,50,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+238,51,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Kadi
+239,51,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+240,51,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+241,51,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+242,51,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+243,52,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Kalol (N.G.)
+244,52,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+245,52,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+246,52,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+247,53,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Kheralu
+248,53,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+249,53,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+250,53,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+251,53,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+252,54,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Kukarwada
+253,54,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+254,54,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+255,54,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+256,54,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+257,55,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Lanva
+258,55,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+259,55,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+260,55,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+261,56,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Mehsana-I (Dediyasan)
+262,56,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+263,56,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+264,56,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+265,57,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Mehsana-II
+266,57,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+267,57,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+268,57,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+269,58,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Ranasan
+270,58,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+271,58,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+272,58,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+273,59,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Unjha
+274,59,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+275,59,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+276,59,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+277,60,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Visnagar
+278,60,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+279,60,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+280,60,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+281,61,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Balisana
+282,61,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+283,61,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+284,61,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+285,62,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Charup
+286,62,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+287,62,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+288,62,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+289,62,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+290,63,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Harij
+291,63,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+292,63,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+293,63,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+294,64,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Patan
+295,64,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+296,64,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+297,64,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+298,65,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Radhanpur
+299,65,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+300,65,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+301,65,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+302,65,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+303,66,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Sami
+304,66,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+305,66,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+306,66,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+307,66,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+308,67,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Sidhpur
+309,67,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+310,67,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+311,67,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+312,67,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+313,68,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Ambaji
+314,68,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+315,68,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+316,68,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+317,69,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Amirgadh (as-is-where-is)
+318,69,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+319,69,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+320,69,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+321,69,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+322,70,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Chandisar
+323,70,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+324,70,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+325,70,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+326,71,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Chhapi
+327,71,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+328,71,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+329,71,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+330,72,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Deesa
+331,72,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+332,72,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+333,72,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+334,72,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+335,73,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Deodar
+336,73,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+337,73,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+338,73,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+339,73,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+340,74,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Mudetha Agro Food Park (Tentative)
+341,74,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+342,74,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+343,74,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+344,74,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+345,75,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Palanpur
+346,75,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+347,75,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+348,75,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+349,75,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+350,76,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Sihori (RIDC)
+351,76,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+352,76,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+353,76,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+354,76,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+355,77,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Borsad
+356,77,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+357,77,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+358,77,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+359,77,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+360,78,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Indranaj MSME (Tentative)
+361,78,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+362,78,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+363,78,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+364,78,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+365,79,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Indranaj Non-MSME (Tentative)
+366,79,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+367,79,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+368,79,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+369,79,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+370,80,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Khambhat (Cambay)
+371,80,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+372,80,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+373,80,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+374,80,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+375,81,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Ode
+376,81,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+377,81,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+378,81,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+379,81,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+380,82,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Petlad
+381,82,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+382,82,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+383,82,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+384,83,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Sojitra
+385,83,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+386,83,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+387,83,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+388,83,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+389,84,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Umreth
+390,84,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+391,84,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+392,84,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+393,84,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+394,85,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Vitthal Udyognagar (V.U. Nagar)
+395,85,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+396,85,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+397,85,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+398,85,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+399,86,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Kapadwanj
+400,86,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+401,86,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+402,86,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+403,86,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+404,87,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Matar
+405,87,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+406,87,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+407,87,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+408,87,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+409,88,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Nadiad (Bansaw Mill) (as-is-where-is)
+410,88,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+411,88,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+412,88,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+413,88,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+414,89,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Nadiad Phase-I
+415,89,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+416,89,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+417,89,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+418,89,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+419,90,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Nadiad Phase-II (Kamla)
+420,90,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+421,90,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+422,90,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+423,90,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+424,91,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Thasra
+425,91,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+426,91,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+427,91,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+428,91,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+429,92,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Balasinor
+430,92,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+431,92,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+432,92,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+433,92,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+434,93,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Dabhoi
+435,93,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+436,93,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+437,93,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+438,93,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+439,94,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Makarpura
+440,94,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+441,94,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+442,94,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+443,94,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+444,95,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Nandesari
+445,95,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+446,95,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+447,95,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+448,95,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+449,96,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC PCC (Petro-Chemical Complex) Estate
+450,96,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+451,96,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+452,96,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+453,97,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Por-Ramangamdi
+454,97,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+455,97,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+456,97,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+457,97,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+458,98,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Ranoli (Autonagar)
+459,98,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+460,98,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+461,98,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+462,98,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+463,99,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Savli (EPIP)
+464,99,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+465,99,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+466,99,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+467,99,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+468,100,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Savli (General)
+469,100,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+470,100,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+471,100,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+472,100,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+473,101,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Savli Biotech Park (SEZ)
+474,101,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+475,101,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+476,101,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+477,101,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+478,102,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Vaghodia
+479,102,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+480,102,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+481,102,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+482,102,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+483,103,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Vadsar (Gujarat Tractor)
+484,103,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+485,103,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+486,103,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+487,103,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+488,104,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Pavi Jetpur (RIDC)
+489,104,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+490,104,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+491,104,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+492,105,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Sankheda
+493,105,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+494,105,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+495,105,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+496,106,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Godhra
+497,106,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+498,106,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+499,106,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+500,107,Policy Announcement,15-03-2008,2008,State Government G.R. notifying GIDC Halol
+501,107,Land Acquisition & Trunk Infra,20-08-2009,2009,"Trunk infrastructure, power substations, and wide access road layout completed"
+502,107,Anchor Plant Operational,05-11-2011,2011,Major anchor tenant commissioned production operations
+503,107,Ancillary Cluster Active,12-06-2014,2014,Vendor supply chain and tier-1/2 component suppliers fully active
+504,107,Remediation & CETP Upgrade,10-04-2017,2017,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+505,108,Policy Announcement,15-03-2008,2008,State Government G.R. notifying GIDC Halol (New)
+506,108,Land Acquisition & Trunk Infra,20-08-2009,2009,"Trunk infrastructure, power substations, and wide access road layout completed"
+507,108,Anchor Plant Operational,05-11-2011,2011,Major anchor tenant commissioned production operations
+508,108,Ancillary Cluster Active,12-06-2014,2014,Vendor supply chain and tier-1/2 component suppliers fully active
+509,108,Remediation & CETP Upgrade,10-04-2017,2017,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+510,109,Policy Announcement,15-03-2008,2008,State Government G.R. notifying GIDC Halol Expansion - Halol-2 Maswad MSME Park (Tentative)
+511,109,Land Acquisition & Trunk Infra,20-08-2009,2009,"Trunk infrastructure, power substations, and wide access road layout completed"
+512,109,Anchor Plant Operational,05-11-2011,2011,Major anchor tenant commissioned production operations
+513,109,Ancillary Cluster Active,12-06-2014,2014,Vendor supply chain and tier-1/2 component suppliers fully active
+514,109,Remediation & CETP Upgrade,10-04-2017,2017,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+515,110,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Jambughoda (RIDC)
+516,110,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+517,110,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+518,110,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+519,110,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+520,111,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Kalol (Panchmahal)
+521,111,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+522,111,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+523,111,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+524,112,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Sehra
+525,112,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+526,112,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+527,112,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+528,113,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Dahod-I
+529,113,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+530,113,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+531,113,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+532,113,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+533,114,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Dahod-II
+534,114,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+535,114,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+536,114,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+537,114,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+538,115,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Dahod-II (Kharedi) Expansion (Tentative)
+539,115,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+540,115,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+541,115,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+542,115,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+543,116,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Devgadhbariya (Asaydi)
+544,116,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+545,116,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+546,116,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+547,117,Policy Announcement,15-03-1995,1995,State Government G.R. notifying GIDC Ankleshwar
+548,117,Land Acquisition & Trunk Infra,20-08-1996,1996,"Trunk infrastructure, power substations, and wide access road layout completed"
+549,117,Anchor Plant Operational,05-11-1998,1998,Major anchor tenant commissioned production operations
+550,117,Ancillary Cluster Active,12-06-2001,2001,Vendor supply chain and tier-1/2 component suppliers fully active
+551,117,Remediation & CETP Upgrade,10-04-2004,2004,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+552,118,Policy Announcement,15-03-1995,1995,State Government G.R. notifying GIDC Ankleshwar-IV
+553,118,Land Acquisition & Trunk Infra,20-08-1996,1996,"Trunk infrastructure, power substations, and wide access road layout completed"
+554,118,Anchor Plant Operational,05-11-1998,1998,Major anchor tenant commissioned production operations
+555,118,Ancillary Cluster Active,12-06-2001,2001,Vendor supply chain and tier-1/2 component suppliers fully active
+556,118,Remediation & CETP Upgrade,10-04-2004,2004,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+557,119,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Atali (Tentative)
+558,119,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+559,119,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+560,119,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+561,119,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+562,120,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Bharuch
+563,120,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+564,120,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+565,120,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+566,120,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+567,121,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Borkhadi
+568,121,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+569,121,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+570,121,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+571,121,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+572,122,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dahej
+573,122,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+574,122,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+575,122,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+576,122,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+577,123,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dahej-II
+578,123,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+579,123,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+580,123,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+581,123,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+582,124,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dahej-III
+583,124,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+584,124,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+585,124,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+586,124,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+587,125,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dungari
+588,125,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+589,125,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+590,125,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+591,125,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+592,126,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Hansot
+593,126,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+594,126,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+595,126,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+596,126,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+597,127,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Jambusar (RIDC)
+598,127,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+599,127,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+600,127,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+601,127,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+602,128,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Jhagadia
+603,128,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+604,128,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+605,128,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+606,128,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+607,129,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Juned
+608,129,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+609,129,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+610,129,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+611,130,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Kanerao
+612,130,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+613,130,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+614,130,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+615,130,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+616,131,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Kharchi (Jhagadia Phase-II)
+617,131,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+618,131,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+619,131,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+620,131,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+621,132,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Nabhipur
+622,132,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+623,132,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+624,132,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+625,133,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Palej
+626,133,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+627,133,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+628,133,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+629,133,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+630,134,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Panoli
+631,134,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+632,134,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+633,134,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+634,135,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Saykha
+635,135,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+636,135,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+637,135,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+638,136,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Saykha (Juned) MSME Park (Tentative)
+639,136,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+640,136,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+641,136,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+642,136,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+643,137,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Saykha Women Park (Tentative)
+644,137,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+645,137,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+646,137,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+647,137,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+648,138,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Tilakwada (as-is-where-is)
+649,138,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+650,138,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+651,138,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+652,138,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+653,139,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Vagra (RIDC)
+654,139,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+655,139,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+656,139,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+657,139,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+658,140,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Valia (as-is-where-is)
+659,140,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+660,140,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+661,140,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+662,140,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+663,141,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Vilayat
+664,141,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+665,141,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+666,141,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+667,141,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+668,142,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Dediyapada (RIDC)
+669,142,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+670,142,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+671,142,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+672,142,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+673,143,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Rajpipla
+674,143,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+675,143,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+676,143,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+677,143,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+678,144,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Sagbara (as-is-where-is)
+679,144,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+680,144,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+681,144,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+682,145,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Apparel Park - Sachin (SEZ)
+683,145,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+684,145,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+685,145,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+686,145,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+687,146,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Hajira (as-is-where-is)
+688,146,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+689,146,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+690,146,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+691,147,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Ichchapore (Bhatpor)
+692,147,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+693,147,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+694,147,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+695,147,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+696,148,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Katargam
+697,148,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+698,148,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+699,148,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+700,149,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Khatodara
+701,149,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+702,149,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+703,149,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+704,150,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Miyawadi (Tentative)
+705,150,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+706,150,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+707,150,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+708,150,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+709,151,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Miyawadi MSME / Women Development Park (Tentative)
+710,151,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+711,151,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+712,151,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+713,151,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+714,152,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Olpad
+715,152,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+716,152,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+717,152,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+718,152,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+719,153,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Pandesara
+720,153,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+721,153,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+722,153,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+723,154,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Sachin
+724,154,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+725,154,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+726,154,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+727,154,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+728,155,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Gavier-Magdalla
+729,155,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+730,155,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+731,155,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+732,155,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+733,156,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Kawas
+734,156,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+735,156,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+736,156,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+737,156,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+738,157,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Kawas-II
+739,157,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+740,157,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+741,157,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+742,157,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+743,158,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Bardoli
+744,158,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+745,158,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+746,158,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+747,159,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Doswada (as-is-where-is)
+748,159,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+749,159,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+750,159,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+751,159,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+752,160,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Nizar (Tentative)
+753,160,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+754,160,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+755,160,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+756,161,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Valod (as-is-where-is)
+757,161,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+758,161,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+759,161,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+760,161,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+761,162,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Bhilad
+762,162,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+763,162,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+764,162,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+765,162,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+766,163,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Dharampur-II
+767,163,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+768,163,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+769,163,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+770,164,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dungra
+771,164,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+772,164,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+773,164,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+774,164,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+775,165,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Pardi
+776,165,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+777,165,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+778,165,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+779,165,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+780,166,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Sarigam
+781,166,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+782,166,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+783,166,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+784,166,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+785,167,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Umargam
+786,167,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+787,167,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+788,167,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+789,167,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+790,168,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Valsad (Bulsar)
+791,168,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+792,168,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+793,168,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+794,168,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+795,169,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Vapi
+796,169,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+797,169,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+798,169,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+799,169,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+800,170,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Bilimora
+801,170,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+802,170,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+803,170,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+804,170,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+805,171,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Navsari
+806,171,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+807,171,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+808,171,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+809,171,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+810,172,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Unai
+811,172,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+812,172,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+813,172,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+814,172,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+815,173,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Bamanbore
+816,173,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+817,173,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+818,173,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+819,173,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+820,174,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Chotila (RIDC)
+821,174,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+822,174,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+823,174,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+824,174,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+825,175,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Dhrangadhra
+826,175,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+827,175,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+828,175,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+829,175,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+830,176,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Halvad
+831,176,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+832,176,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+833,176,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+834,176,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+835,177,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Lakhtar
+836,177,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+837,177,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+838,177,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+839,177,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+840,178,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Limbdi
+841,178,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+842,178,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+843,178,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+844,178,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+845,179,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Sayla (RIDC)
+846,179,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+847,179,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+848,179,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+849,179,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+850,180,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Surendranagar (Wadhwan)
+851,180,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+852,180,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+853,180,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+854,181,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Thangadh
+855,181,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+856,181,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+857,181,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+858,181,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+859,182,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Vanod
+860,182,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+861,182,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+862,182,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+863,182,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+864,183,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Aji Estate
+865,183,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+866,183,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+867,183,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+868,183,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+869,184,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Anandpar (Tentative)
+870,184,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+871,184,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+872,184,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+873,185,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Bhaktinagar
+874,185,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+875,185,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+876,185,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+877,185,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+878,186,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Chhapra Agro Food Park (upcoming)
+879,186,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+880,186,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+881,186,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+882,187,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Dhoraji
+883,187,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+884,187,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+885,187,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+886,188,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Gondal-I
+887,188,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+888,188,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+889,188,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+890,188,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+891,189,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Gondal-II
+892,189,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+893,189,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+894,189,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+895,190,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Hadamtala
+896,190,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+897,190,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+898,190,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+899,190,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+900,191,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Jamvadi (Gondal)
+901,191,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+902,191,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+903,191,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+904,191,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+905,192,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Jasdan
+906,192,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+907,192,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+908,192,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+909,192,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+910,193,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Jetpur
+911,193,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+912,193,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+913,193,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+914,193,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+915,194,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Khirasara MSME (Tentative)
+916,194,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+917,194,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+918,194,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+919,194,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+920,195,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Khirasara Non-MSME (Tentative)
+921,195,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+922,195,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+923,195,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+924,195,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+925,196,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Khirasara-II (Tentative)
+926,196,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+927,196,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+928,196,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+929,196,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+930,197,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Kuvadva
+931,197,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+932,197,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+933,197,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+934,198,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Lodhika (Metoda)
+935,198,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+936,198,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+937,198,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+938,198,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+939,199,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Padadhari (RIDC)
+940,199,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+941,199,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+942,199,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+943,199,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+944,200,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Piparadi (Tentative)
+945,200,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+946,200,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+947,200,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+948,200,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+949,201,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Shapar-Veraval
+950,201,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+951,201,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+952,201,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+953,201,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+954,202,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Upleta
+955,202,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+956,202,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+957,202,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+958,202,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+959,203,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Vaghasiya
+960,203,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+961,203,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+962,203,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+963,203,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+964,204,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Chhattar-Mitana MSME (Tentative)
+965,204,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+966,204,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+967,204,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+968,204,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+969,205,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Chhattar-Mitana Non-MSME (Tentative)
+970,205,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+971,205,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+972,205,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+973,205,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+974,206,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Morbi
+975,206,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+976,206,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+977,206,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+978,207,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Rafaleshwar
+979,207,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+980,207,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+981,207,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+982,207,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+983,208,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Wankaner
+984,208,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+985,208,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+986,208,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+987,208,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+988,209,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Dhrol (RIDC)
+989,209,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+990,209,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+991,209,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+992,209,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+993,210,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Jamnagar-I
+994,210,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+995,210,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+996,210,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+997,211,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Jamnagar-I (Shankar Tekri)
+998,211,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+999,211,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1000,211,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1001,212,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Jamnagar-II
+1002,212,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+1003,212,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+1004,212,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+1005,212,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1006,213,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Jamnagar-III (Expansion)
+1007,213,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1008,213,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1009,213,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1010,213,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1011,214,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Kalawad MSME (Tentative)
+1012,214,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1013,214,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1014,214,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1015,214,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1016,215,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Kalawad Non-MSME (Tentative)
+1017,215,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1018,215,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1019,215,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1020,216,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Shekhpat (Tentative)
+1021,216,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1022,216,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1023,216,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1024,216,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1025,217,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Arambhada
+1026,217,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1027,217,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1028,217,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1029,218,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Bhanvad
+1030,218,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1031,218,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1032,218,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1033,218,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1034,219,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Bhatia (RIDC)
+1035,219,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1036,219,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1037,219,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1038,219,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1039,220,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Jamkhambhaliya
+1040,220,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1041,220,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1042,220,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1043,220,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1044,221,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Junagadh-I
+1045,221,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1046,221,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1047,221,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1048,221,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1049,222,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Junagadh-II
+1050,222,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1051,222,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1052,222,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1053,222,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1054,223,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Sheel (Shil)
+1055,223,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1056,223,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1057,223,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1058,224,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Sutrapada
+1059,224,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1060,224,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1061,224,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1062,224,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1063,225,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Visavadar (RIDC)
+1064,225,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1065,225,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1066,225,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1067,225,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1068,226,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Veraval
+1069,226,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1070,226,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1071,226,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1072,227,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Dharampur
+1073,227,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+1074,227,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+1075,227,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+1076,227,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1077,228,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Miyani (Tentative)
+1078,228,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1079,228,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1080,228,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1081,229,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Porbandar
+1082,229,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1083,229,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1084,229,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1085,230,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Vanana
+1086,230,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1087,230,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1088,230,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1089,230,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1090,231,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Chitra
+1091,231,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1092,231,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1093,231,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1094,231,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1095,232,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Dhasa (RIDC)
+1096,232,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1097,232,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1098,232,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1099,232,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1100,233,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Madhiya
+1101,233,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1102,233,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1103,233,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1104,233,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1105,234,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Mahuva
+1106,234,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1107,234,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1108,234,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1109,234,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1110,235,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Narigam MSME (Tentative)
+1111,235,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1112,235,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1113,235,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1114,236,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Narigam Non-MSME (Tentative)
+1115,236,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1116,236,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1117,236,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1118,236,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1119,237,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Palitana
+1120,237,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1121,237,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1122,237,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1123,237,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1124,238,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Sihor-I
+1125,238,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1126,238,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1127,238,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1128,239,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Sihor-II
+1129,239,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1130,239,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1131,239,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1132,239,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1133,240,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Vallabhipur (RIDC)
+1134,240,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1135,240,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1136,240,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1137,240,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1138,241,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Vartej
+1139,241,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1140,241,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1141,241,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1142,242,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Vithalwadi (Udyognagar)
+1143,242,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+1144,242,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+1145,242,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+1146,242,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1147,243,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Botad
+1148,243,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1149,243,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1150,243,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1151,244,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Kaniyad
+1152,244,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1153,244,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1154,244,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1155,245,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Amreli
+1156,245,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1157,245,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1158,245,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1159,245,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1160,246,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Babra
+1161,246,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1162,246,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1163,246,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1164,246,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1165,247,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Babra Phase-II (Diamond)
+1166,247,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1167,247,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1168,247,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1169,247,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1170,248,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Damnagar
+1171,248,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1172,248,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1173,248,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1174,249,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Jafrabad (RIDC)
+1175,249,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1176,249,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1177,249,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1178,249,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1179,250,Policy Announcement,15-03-2010,2010,State Government G.R. notifying GIDC Lathi
+1180,250,Land Acquisition & Trunk Infra,20-08-2011,2011,"Trunk infrastructure, power substations, and wide access road layout completed"
+1181,250,Anchor Plant Operational,05-11-2013,2013,Major anchor tenant commissioned production operations
+1182,250,Ancillary Cluster Active,12-06-2016,2016,Vendor supply chain and tier-1/2 component suppliers fully active
+1183,250,Remediation & CETP Upgrade,10-04-2019,2019,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1184,251,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Liliya (RIDC)
+1185,251,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1186,251,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1187,251,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1188,252,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Rajula
+1189,252,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1190,252,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1191,252,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1192,252,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1193,253,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Savarkundla
+1194,253,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1195,253,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1196,253,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1197,253,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1198,254,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Anjar (New)
+1199,254,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1200,254,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1201,254,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1202,254,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1203,255,Policy Announcement,15-03-2015,2015,State Government G.R. notifying GIDC Bhadreshwar (Tentative)
+1204,255,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1205,255,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1206,255,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1207,256,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Bhuj
+1208,256,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1209,256,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1210,256,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1211,256,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1212,257,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Bhuj-II
+1213,257,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1214,257,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1215,257,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1216,257,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1217,258,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Chitrod
+1218,258,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1219,258,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1220,258,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1221,258,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1222,259,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Dhrub
+1223,259,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1224,259,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1225,259,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1226,259,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1227,260,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Gandhidham
+1228,260,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1229,260,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1230,260,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1231,260,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1232,261,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Madhapur
+1233,261,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1234,261,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1235,261,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1236,262,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Makhel (Rapar)
+1237,262,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1238,262,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1239,262,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1240,262,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1241,263,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Mandvi
+1242,263,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1243,263,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1244,263,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1245,263,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1246,264,Policy Announcement,15-03-2018,2018,State Government G.R. notifying GIDC Mandvi (New)
+1247,264,Land Acquisition & Trunk Infra,20-08-2019,2019,"Trunk infrastructure, power substations, and wide access road layout completed"
+1248,264,Anchor Plant Operational,05-11-2021,2021,Major anchor tenant commissioned production operations
+1249,264,Ancillary Cluster Active,12-06-2024,2024,Vendor supply chain and tier-1/2 component suppliers fully active
+1250,265,Policy Announcement,15-03-1998,1998,State Government G.R. notifying GIDC Mithi Rohar-I
+1251,265,Land Acquisition & Trunk Infra,20-08-1999,1999,"Trunk infrastructure, power substations, and wide access road layout completed"
+1252,265,Anchor Plant Operational,05-11-2001,2001,Major anchor tenant commissioned production operations
+1253,265,Ancillary Cluster Active,12-06-2004,2004,Vendor supply chain and tier-1/2 component suppliers fully active
+1254,265,Remediation & CETP Upgrade,10-04-2007,2007,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1255,266,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Mithi Rohar-II
+1256,266,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+1257,266,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+1258,266,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+1259,266,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1260,267,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Motichirai
+1261,267,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1262,267,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1263,267,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1264,267,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1265,268,Policy Announcement,15-03-2005,2005,State Government G.R. notifying GIDC Mundra (RIDC / Mini)
+1266,268,Land Acquisition & Trunk Infra,20-08-2006,2006,"Trunk infrastructure, power substations, and wide access road layout completed"
+1267,268,Anchor Plant Operational,05-11-2008,2008,Major anchor tenant commissioned production operations
+1268,268,Ancillary Cluster Active,12-06-2011,2011,Vendor supply chain and tier-1/2 component suppliers fully active
+1269,268,Remediation & CETP Upgrade,10-04-2014,2014,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1270,269,Policy Announcement,15-03-1990,1990,State Government G.R. notifying GIDC Nagor (New Bhuj)
+1271,269,Land Acquisition & Trunk Infra,20-08-1991,1991,"Trunk infrastructure, power substations, and wide access road layout completed"
+1272,269,Anchor Plant Operational,05-11-1993,1993,Major anchor tenant commissioned production operations
+1273,269,Ancillary Cluster Active,12-06-1996,1996,Vendor supply chain and tier-1/2 component suppliers fully active
+1274,269,Remediation & CETP Upgrade,10-04-1999,1999,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1275,270,Policy Announcement,15-03-2012,2012,State Government G.R. notifying GIDC Nakhatrana
+1276,270,Land Acquisition & Trunk Infra,20-08-2013,2013,"Trunk infrastructure, power substations, and wide access road layout completed"
+1277,270,Anchor Plant Operational,05-11-2015,2015,Major anchor tenant commissioned production operations
+1278,270,Ancillary Cluster Active,12-06-2018,2018,Vendor supply chain and tier-1/2 component suppliers fully active
+1279,270,Remediation & CETP Upgrade,10-04-2021,2021,Common Effluent Treatment Plant upgraded with zero-liquid-discharge (ZLD) norms
+1280,271,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Romanovia Industrial Park Pvt Ltd
+1281,271,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1282,271,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1283,271,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1284,272,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Pradip Overseas Limited Industrial Park (Speciality & Fine Chemicals)
+1285,272,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1286,272,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1287,272,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1288,273,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Pradip Overseas Limited Industrial Park (Auto Component)
+1289,273,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1290,273,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1291,273,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1292,274,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Mascot Infrastructure (Gujarat) LLP Industrial Park
+1293,274,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1294,274,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1295,274,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1296,275,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Satyam Industrial Park (Anant Developers)
+1297,275,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1298,275,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1299,275,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1300,276,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Industrial Cluster Pvt. Ltd
+1301,276,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1302,276,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1303,276,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1304,277,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Anuradha Realty Pvt. Ltd Industrial Park
+1305,277,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1306,277,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1307,277,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1308,278,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Welspun Anjar SEZ Limited
+1309,278,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1310,278,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1311,278,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1312,279,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Maruti Associates LLP Industrial Park
+1313,279,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1314,279,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1315,279,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1316,280,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Zandra Infrastructure LLP Industrial Park
+1317,280,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1318,280,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1319,280,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1320,281,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Universal Industrial Park LLP
+1321,281,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1322,281,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1323,281,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1324,282,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Global Park Developer LLP (Global Industrial City)
+1325,282,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1326,282,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1327,282,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1328,283,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Amitara Green Hi-tech Textile Park Pvt Ltd
+1329,283,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1330,283,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1331,283,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1332,284,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Hindva Builders Industrial Park
+1333,284,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1334,284,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1335,284,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1336,285,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Kamla Amrut Estate Developers Industrial Park
+1337,285,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1338,285,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1339,285,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1340,286,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Neptune Infratech Private Limited Industrial Park
+1341,286,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1342,286,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1343,286,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1344,287,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Contrans Logistic Private Limited
+1345,287,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1346,287,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1347,287,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1348,288,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Gokul Infratech Pvt Ltd Industrial Park
+1349,288,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1350,288,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1351,288,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1352,289,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Kent Residential and Industrial Park LLP
+1353,289,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1354,289,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1355,289,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1356,290,Policy Announcement,15-03-2015,2015,State Government G.R. notifying CASME Industrial Park Development India Pvt Ltd
+1357,290,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1358,290,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1359,290,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1360,291,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Rajpath Tradelink Industrial Park
+1361,291,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1362,291,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1363,291,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1364,292,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Shree Enterprise Industrial Park
+1365,292,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1366,292,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1367,292,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1368,293,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Vardhman Infrastructure Industrial Park
+1369,293,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1370,293,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1371,293,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1372,294,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Vardhman Developers Industrial Park
+1373,294,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1374,294,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1375,294,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1376,295,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Morai Industrial Park
+1377,295,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1378,295,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1379,295,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1380,296,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Kataria Industrial Park
+1381,296,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1382,296,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1383,296,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1384,297,Policy Announcement,15-03-2015,2015,State Government G.R. notifying DKR Industrial Park
+1385,297,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1386,297,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1387,297,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1388,298,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Vision Industrial Park
+1389,298,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1390,298,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1391,298,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1392,299,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Center Point Industrial Park
+1393,299,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1394,299,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1395,299,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1396,300,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Hamraz Food Products Pvt Ltd (Food Park)
+1397,300,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1398,300,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1399,300,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1400,301,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Tadkeshwar Infra Pvt Ltd Industrial Park
+1401,301,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1402,301,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1403,301,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1404,302,Policy Announcement,15-03-2015,2015,State Government G.R. notifying JBM Projects & Infrastructure Pvt. Ltd Industrial Park
+1405,302,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1406,302,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1407,302,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1408,303,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Kushal Integrated Industrial Park
+1409,303,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1410,303,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1411,303,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1412,304,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Corenex Industrial Park
+1413,304,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1414,304,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1415,304,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1416,305,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Shah Industrial Park
+1417,305,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1418,305,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1419,305,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1420,306,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Arham Industrial Park
+1421,306,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1422,306,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1423,306,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1424,307,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Makson Infra Project (India) Pvt. Ltd Industrial Park (Mithapur)
+1425,307,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1426,307,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1427,307,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1428,308,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Makson Infra Project (India) Pvt. Ltd Industrial Park (Kaliveji)
+1429,308,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1430,308,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1431,308,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1432,309,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Shapoorji Pallonji Industrial Park Pvt. Ltd
+1433,309,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1434,309,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1435,309,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1436,310,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Baghban Industrial Park
+1437,310,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1438,310,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1439,310,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1440,311,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Aatmiya Brookfields Industrial Park (Balaji)
+1441,311,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1442,311,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1443,311,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active
+1444,312,Policy Announcement,15-03-2015,2015,State Government G.R. notifying Aatmiya-2 Industrial Park (Snehdeep)
+1445,312,Land Acquisition & Trunk Infra,20-08-2016,2016,"Trunk infrastructure, power substations, and wide access road layout completed"
+1446,312,Anchor Plant Operational,05-11-2018,2018,Major anchor tenant commissioned production operations
+1447,312,Ancillary Cluster Active,12-06-2021,2021,Vendor supply chain and tier-1/2 component suppliers fully active

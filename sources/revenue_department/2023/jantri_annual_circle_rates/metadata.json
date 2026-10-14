@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-REV-2023-001",
+  "organisation": "Revenue Department, Government of Gujarat",
+  "source_title": "Gujarat Jantri Annual Statement of Rates (Circle Rates) 2023",
+  "source_type": "CSV Gazette",
+  "publication_date": "2023-04-15",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://revenuedepartment.gujarat.gov.in/jantri-rates-2023",
+  "version": "Jantri-2023-Final",
+  "language": "English / Gujarati",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "CSV Circle Rate Ingestion",
+  "reliability": "Statutory Minimum Land Value Benchmark",
+  "notes": "Official Jantri circle rates determining minimum registered stamp duty valuations across all survey numbers in Gujarat.",
+  "local_path": "sources/revenue_department/2023/jantri_annual_circle_rates/Revenue_Dept_Gujarat_Jantri_Annual_Statement_Rates_2023.csv",
+  "local_filename": "Revenue_Dept_Gujarat_Jantri_Annual_Statement_Rates_2023.csv",
+  "file_hash": "2d183acacea18718755cdbb7c444920846bf8922e32d9a02bfabf238a36c232c",
+  "file_size": 322,
+  "archive_verified_utc": "2026-10-04T03:03:40.572360Z"
+}

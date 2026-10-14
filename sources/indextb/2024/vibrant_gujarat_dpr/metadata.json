@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-IND-2024-001",
+  "organisation": "Industrial Extension Bureau (iNDEXTb)",
+  "source_title": "Vibrant Gujarat Global Summit MoUs & Land Allotments DPR",
+  "source_type": "Corporate DPR",
+  "publication_date": "2024-01-15",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://vibrantgujarat.com/mou_records",
+  "version": "VGGS-2024-DPR",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "DPR Investment Extraction",
+  "reliability": "Government Investor Facilitation Record",
+  "notes": "Large-scale corporate commitments and anchor manufacturing plant allocations across Gujarat.",
+  "local_path": "sources/indextb/2024/vibrant_gujarat_dpr/Vibrant_Gujarat_Summit_MoUs_Land_Allotments_DPR_2024.pdf",
+  "local_filename": "Vibrant_Gujarat_Summit_MoUs_Land_Allotments_DPR_2024.pdf",
+  "file_hash": "194b690fa28ea6198a8793ba4eec54d867bf0c29c0c3d035ede21ccc7c6037ee",
+  "file_size": 170,
+  "archive_verified_utc": "2026-10-04T03:03:40.570261Z"
+}

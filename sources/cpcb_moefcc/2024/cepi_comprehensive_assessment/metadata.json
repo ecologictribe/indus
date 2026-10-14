@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-CPCB-2024-001",
+  "organisation": "Central Pollution Control Board (CPCB) & MoEFCC",
+  "source_title": "Comprehensive Environmental Assessment of Industrial Clusters (CEPI-2024 Audit Report)",
+  "source_type": "Environmental Audit Report",
+  "publication_date": "2024-06-20",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://cpcb.nic.in/cepi_reports/gujarat_industrial_clusters_2024.pdf",
+  "version": "CEPI-2024-Audit",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "PDF Environmental Metric Extraction",
+  "reliability": "Statutory National Regulatory Audit",
+  "notes": "Statutory ambient air, water quality, and CEPI index metrics across Ankleshwar, Vapi, Vatva, and Dahej.",
+  "local_path": "sources/cpcb_moefcc/2024/cepi_comprehensive_assessment/CPCB_Comprehensive_Environmental_Assessment_Industrial_Clusters_2024.pdf",
+  "local_filename": "CPCB_Comprehensive_Environmental_Assessment_Industrial_Clusters_2024.pdf",
+  "file_hash": "0f4e9a669e8a3e6e034f55e1f6ded71fbe9f4c65a213d23495395b36dae0bb90",
+  "file_size": 234,
+  "archive_verified_utc": "2026-10-04T03:03:40.570824Z"
+}

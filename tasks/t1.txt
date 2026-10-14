@@ -1,0 +1,28 @@
+### Data Export & Interoperability
+
+* **Multi-Format Geo Export:** Add an **Export** dropdown button next to the *Visible Parks (312/312)* counter allowing users to download the filtered dataset in **GeoJSON**, **CSV / Excel** (with `latitude`, `longitude`, `district`, `sector`, and `authority` columns), **KML**, or **Shapefile (SHP)** formats.
+* **Map Visual Capture:** Include a "Download Map Image" option (PNG/PDF) that captures the current map extent along with scale bar, attribution, and selected filters for academic paper inclusion.
+* **Spatial Selection Export:** Add a bounding-box or polygon tool so users can draw a custom boundary directly on the map and export coordinates for only that sub-region.
+
+---
+
+### Basemap & Visual Fixes
+
+* **Resolve Tile API Key Error:** The current Carto basemap displays explicit `API KEY REQUIRED` watermarks across the canvas. Provide a valid Carto API key or switch to open-access tiles (such as standard OpenStreetMap, Carto Positron without key requirement, or MapLibre GL).
+* **Basemap Layer Switcher:** Add a layer toggle control in the top-right corner to switch between **Light Canvas** (for data visualization), **Satellite / Aerial Imagery** (for inspecting physical plot boundaries), and **Topographic / Infrastructure**.
+
+---
+
+### GIS & Spatial Analysis Controls
+
+* **Interactive Distance Buffers:** The sidebar lists distance buffers (<0.5km, 0.5–1.5km, 3–8km), but there are no controls to trigger them. Add checkbox toggles to enable dynamic spatial buffer rings around selected parks or point click events.
+* **Marker Clustering & Heatmap Toggle:** South and Central Gujarat have dense clusters of overlapping markers. Implement **Marker Clustering** (e.g., `Leaflet.markercluster`) with dynamic point counts that break apart upon zooming, or add a **Density Heatmap** view mode.
+* **Coordinates Display & Mouse Hover:** Display real-time mouse cursor coordinates (`Lat: XX.XXXX°, Lng: YY.YYYY°`) and map zoom level in a bottom-corner bar.
+
+---
+
+### Filter & Layout UX
+
+* **Filter Management:** Add a clear **"Reset All Filters"** button next to the search bar so users don't have to manually reset every dropdown back to default.
+* **Collapsible Sidebar:** Allow the right sidebar (Map Legend & Key Industrial Hubs) to slide/collapse to give full viewport width to the interactive map.
+* **Rich Popup Cards:** Clicking an industrial park dot should open a rich popup card with quick spatial stats (Latitude/Longitude, Area in Hectares, District, Top Sectors, and a direct link to view its panel data in the *DiD Econometrics Studio*).

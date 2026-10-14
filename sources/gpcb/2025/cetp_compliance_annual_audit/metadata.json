@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-GPCB-2025-001",
+  "organisation": "Gujarat Pollution Control Board (GPCB)",
+  "source_title": "GPCB Annual CETP Effluent Quality & ZLD Compliance Audit FY 2024-25",
+  "source_type": "Regulatory Compliance Audit",
+  "publication_date": "2025-05-15",
+  "retrieval_date": "2026-10-03",
+  "original_url": "https://gpcb.gujarat.gov.in/audits/cetp_compliance_annual_2025.pdf",
+  "version": "GPCB-CETP-2025",
+  "language": "English",
+  "source_status": "archived",
+  "failure_reason": null,
+  "extraction_status": "processed",
+  "extraction_method": "Water Quality Lab Report Parser",
+  "reliability": "State Regulatory Monitoring Audit",
+  "notes": "Composite outlet COD, BOD, and Zero Liquid Discharge (ZLD) operational metrics across 28 CETP facilities.",
+  "local_path": "sources/gpcb/2025/cetp_compliance_annual_audit/GPCB_Annual_CETP_Water_Quality_Audit_2025.pdf",
+  "local_filename": "GPCB_Annual_CETP_Water_Quality_Audit_2025.pdf",
+  "file_hash": "a5f1262defc6e3eba0e635864633241c79d046f08c9246e2d88a0f2408a2dcc3",
+  "file_size": 126,
+  "archive_verified_utc": "2026-10-04T03:03:40.571849Z"
+}

@@ -1,0 +1,51 @@
+meta_file: gujarat_02_districts.csv.meta.txt
+file_name: gujarat_02_districts.csv
+original_name: 02_districts.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 1692
+modified_utc: 2026-10-03T07:31:47.164484+00:00
+
+--- TABLE / DATASET ---
+table_name: districts
+display_title: Districts Master (32 Districts)
+module_order: Module 2 of 12 Core Schema Tables
+description: Second-tier administrative division encompassing all industrial districts in Gujarat.
+total_records_declared: 32 rows
+export_timestamp_utc: 2026-10-03T07:31:42.876319Z
+
+--- KEYS ---
+primary_key: district_id
+foreign_keys: state_id -> states(state_id)
+
+--- DATA PROFILE ---
+header: district_id,state_id,district_name,census_code
+n_columns: 4
+columns: district_id, state_id, district_name, census_code
+data_rows_observed: 32
+total_lines: 52
+comment_lines(#): 18
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * district_id: Primary key identifier
+# * state_id: Foreign key reference to states table
+# * district_name: Official district name (e.g., Ahmedabad, Bharuch, Surat, Vadodara)
+# * census_code: Census of India district identifier code
+
+--- DATA SOURCE (preamble verbatim) ---
+Revenue Department, Government of Gujarat & GIDC Divisional Office geographical hierarchy.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+No dedicated file in data/sources/ for this dataset (all 7 source files were read; none matches).
+Attribution rests on the CSV preamble DATA SOURCE + ZIP README manifest.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 02_districts.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

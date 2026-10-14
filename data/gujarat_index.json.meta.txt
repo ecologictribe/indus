@@ -1,0 +1,12 @@
+meta_file: gujarat_index.json.meta.txt
+file_name: gujarat_index.json
+original_name: gujarat_index.json
+prefix: gujarat_
+renamed: False
+extension: .json
+size_bytes: 25768
+modified_utc: 2026-10-03T07:59:47.006377+00:00
+description: Enriched master index joining preamble + sources/ evidence for all 21 files (14 data + 7 source-notes).
+enrichment: file_role/table_name/display_title/description/primary_key/preamble_source/sources_files/sources_note/export_timestamp per row; verbatim sources/ excerpts live in per-file metas.
+sources_folder: 7 prefixed files studied (gujarat_Clean Commercial Benchmark Nodes.txt, gujarat_Industail_Parks.txt, gujarat_Park_lifecycle_events.txt, gujarat_Properties & Parcel Spatial Attributes.txt, gujarat_Property_Tracker_Transcation.txt, gujarat_neighbourhood_scapper.txt, gujarat_property_price_scapper.txt); gujarat_property_price_scapper.txt is EMPTY (0 bytes).
+meta_created_utc: 2026-10-03T07:59:47.006376+00:00

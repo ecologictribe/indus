@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gujarat Industrial Parks and GIDC Estates Atlas</title>
+<meta name="description" content="Geographic browser for 312 GIDC industrial estates and government-sanctioned private industrial parks across 32 Gujarat districts." />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip" href="#results">Skip to results</a>
+
+<header class="topbar">
+  <div class="topbar__id">
+    <h1 class="topbar__title">Gujarat Industrial Estates Atlas</h1>
+    <p class="topbar__sub" id="datasetLine">Loading dataset&hellip;</p>
+  </div>
+
+  <div class="topbar__actions">
+    <div class="segmented" role="group" aria-label="View mode">
+      <button type="button" class="segmented__btn is-active" data-view="map" aria-pressed="true">Map</button>
+      <button type="button" class="segmented__btn" data-view="table" aria-pressed="false">Table</button>
+    </div>
+    <button type="button" class="btn" id="fitBtn" title="Zoom the map to the current result set">Fit to results</button>
+    <button type="button" class="btn" id="exportBtn" title="Download the current result set as CSV">Export CSV</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <aside class="panel" aria-label="Search and filters">
+
+    <section class="panel__block">
+      <h2 class="panel__heading">Dataset</h2>
+      <dl class="stats" id="stats"></dl>
+    </section>
+
+    <section class="panel__block">
+      <h2 class="panel__heading">Filters</h2>
+
+      <div class="field">
+        <label class="field__label" for="search">Search</label>
+        <input id="search" class="field__input" type="search" autocomplete="off"
+               placeholder="Park, taluka, industry, contact&hellip;"
+               aria-describedby="searchHint" />
+        <p class="field__hint" id="searchHint">Matches name, location, district, industry, contact and email.</p>
+      </div>
+
+      <div class="field">
+        <span class="field__label" id="catLabel">Category</span>
+        <div class="segmented segmented--full" role="group" aria-labelledby="catLabel">
+          <button type="button" class="segmented__btn is-active" data-cat="all" aria-pressed="true">All</button>
+          <button type="button" class="segmented__btn" data-cat="GIDC" aria-pressed="false">GIDC</button>
+          <button type="button" class="segmented__btn" data-cat="Private" aria-pressed="false">Private</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="conf">Coordinate precision</label>
+        <select id="conf" class="field__input">
+          <option value="all">All placements</option>
+          <option value="high">Exact place &mdash; 205</option>
+          <option value="medium">Near match &mdash; 34</option>
+          <option value="approximate">District anchor &mdash; 73</option>
+        </select>
+        <p class="field__hint">The source file carries no coordinates. Placement is derived; see the legend.</p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="sort">Sort results</label>
+        <select id="sort" class="field__input">
+          <option value="name:1">Name (A&ndash;Z)</option>
+          <option value="district:1">District (A&ndash;Z)</option>
+          <option value="ha:-1">Sanctioned area (large first)</option>
+          <option value="confidence:-1">Coordinate precision (best first)</option>
+        </select>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="tentOnly" />
+        <span>Show tentative proposals only</span>
+        <span class="check__count" id="tentCount"></span>
+      </label>
+    </section>
+
+    <section class="panel__block panel__block--grow">
+      <div class="panel__headingRow">
+        <h2 class="panel__heading" id="resultsHeading">Districts</h2>
+        <button type="button" class="linkbtn" id="clearDistricts">Clear</button>
+      </div>
+      <p class="panel__meta" id="resultCount" role="status" aria-live="polite"></p>
+      <ul class="districts" id="districts"></ul>
+    </section>
+
+  </aside>
+
+  <section class="stage">
+    <div class="stage__map" id="mapPane">
+      <div id="map" role="application" aria-label="Map of industrial parks in Gujarat"></div>
+
+      <div class="legend" id="legend">
+        <p class="legend__title">Legend</p>
+        <ul class="legend__list">
+          <li><span class="swatch swatch--gidc"></span> GIDC estate</li>
+          <li><span class="swatch swatch--private"></span> Private sanctioned park</li>
+          <li><span class="swatch swatch--cluster"></span> Cluster (count)</li>
+        </ul>
+        <p class="legend__title legend__title--gap">Placement confidence</p>
+        <ul class="legend__list legend__list--conf">
+          <li><span class="dot dot--high"></span> Exact taluka or village</li>
+          <li><span class="dot dot--medium"></span> Weak or single-source match</li>
+          <li><span class="dot dot--approx"></span> District headquarters anchor</li>
+        </ul>
+        <button type="button" class="linkbtn" id="aboutBtn">How placement was derived</button>
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="loader__bar"></div>
+        <p class="loader__text">Rendering map&hellip;</p>
+      </div>
+
+      <div class="mapError" id="mapError" hidden>
+        <h2>Map library unavailable</h2>
+        <p>The basemap is fetched from a CDN and could not be loaded. The table view and CSV export still work offline.</p>
+      </div>
+    </div>
+
+    <div class="stage__table" id="tablePane" hidden>
+      <div class="tableWrap">
+        <table class="dataTable">
+          <caption class="visually-hidden">Filtered industrial park records</caption>
+          <thead id="thead"></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <p class="emptyNote" id="tableNote" hidden>No records match the current filters.</p>
+    </div>
+
+    <aside class="detail" id="detail" hidden aria-live="polite">
+      <div class="detail__head">
+        <div>
+          <p class="detail__eyebrow" id="detailEyebrow"></p>
+          <h2 class="detail__title" id="detailTitle"></h2>
+        </div>
+        <button type="button" class="iconbtn" id="detailClose" aria-label="Close record">&times;</button>
+      </div>
+      <div class="detail__body" id="detailBody"></div>
+    </aside>
+  </section>
+
+</main>
+
+<div class="modal" id="aboutModal" hidden>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <div class="modal__head">
+      <h2 id="aboutTitle">How map placement was derived</h2>
+      <button type="button" class="iconbtn" id="aboutClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body" id="aboutBody"></div>
+  </div>
+</div>
+
+<noscript>
+  <p style="padding:2rem;font:16px system-ui">This atlas needs JavaScript to render the map.</p>
+</noscript>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data/parks.js"></script>
+<script src="data/districts.js"></script>
+<script src="data/meta.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

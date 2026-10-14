@@ -1,0 +1,5 @@
+Properties
+Properties & Parcel Spatial Attributes	
+Tracked residential and commercial land parcels, apartments, and houses across discrete spatial distance buffers.
+
+ DATA SOURCE: Sub-Registrar Offices (Revenue Department), Gujarat Real Estate Regulatory Authority (GUJRERA) project filings, and GIS Hedonic buffer radial calculations.

@@ -1,0 +1,957 @@
+{% extends "base.html" %}
+
+{% block title %}Industrial Pollution Benchmarks & Lifecycle Stages{% endblock %}
+{% block page_title %}Pollution & Lifecycle Benchmarks{% endblock %}
+
+{% block extra_head %}
+<style>
+    .cepi-badge-cpa {
+        background-color: #fee2e2;
+        color: #b91c1c;
+        border: 1px solid #f87171;
+    }
+    .cepi-badge-spa {
+        background-color: #ffedd5;
+        color: #c2410c;
+        border: 1px solid #fb923c;
+    }
+    .cepi-badge-normal {
+        background-color: #dcfce7;
+        color: #15803d;
+        border: 1px solid #86efac;
+    }
+    .pulse-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #ef4444;
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+        animation: pulse-ring 1.8s infinite;
+    }
+    @keyframes pulse-ring {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .progress-cpcb {
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #e2e8f0;
+    }
+    .lifecycle-stage-card {
+        border-radius: 8px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lifecycle-stage-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+    .metric-subval {
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+    .sticky-filter-bar {
+        position: sticky;
+        top: 60px;
+        z-index: 99;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1">
+                        <i class="bi bi-radioactive me-1"></i> Environmental Econometrics Panel
+                    </span>
+                    <span class="badge bg-secondary-subtle text-secondary border">
+                        Statutory CPCB / GPCB / MoEFCC Metrics
+                    </span>
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">Industrial Pollution Benchmarks & Lifecycle Dynamics</h1>
+                <p class="text-secondary mb-0">
+                    Comprehensive multi-dimensional environmental assessment across 312 Gujarat industrial estates: CEPI Index, Ambient Air Quality (PM<sub>2.5</sub>, PM<sub>10</sub>, SO<sub>2</sub>), CETP Effluent Quality, and CPCB Industrial Typology correlated with perimeter real estate proximity drag.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a href="{{ url_for('export_table_csv_endpoint', table_name='park_pollution_benchmarks') }}" class="btn btn-outline-success">
+                    <i class="bi bi-filetype-csv me-1"></i> Export Pollution CSV
+                </a>
+                <a href="{{ url_for('database_hub') }}" class="btn btn-outline-light">
+                    <i class="bi bi-table me-1"></i> View Tables Hub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- KPI Summary Scorecard -->
+    <div class="row g-3 mb-4">
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-warning shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Mean State CEPI Score</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ kpis.avg_cepi_score }}</span>
+                        <span class="badge {% if kpis.avg_cepi_score >= 70 %}bg-danger{% elif kpis.avg_cepi_score >= 60 %}bg-warning text-dark{% else %}bg-success{% endif %}">
+                            {% if kpis.avg_cepi_score >= 70 %}CPA{% elif kpis.avg_cepi_score >= 60 %}SPA{% else %}Moderate{% endif %}
+                        </span>
+                    </div>
+                    <div class="metric-subval mt-1">Scale 0–100 (CPCB Benchmark)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-danger shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Critically Polluted (CPA)</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-danger">{{ kpis.total_cpa_clusters }}</span>
+                        <span class="text-muted small">/ {{ kpis.total_parks_monitored }} parks</span>
+                    </div>
+                    <div class="metric-subval mt-1">
+                        <span class="pulse-dot me-1"></span> CEPI &ge; 70 (Under Moratorium)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-success shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">ZLD Compliant Parks</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-success">{{ kpis.total_zld_compliant }}</span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle">
+                            {{ "%.1f"|format(kpis.total_zld_compliant / kpis.total_parks_monitored * 100) }}%
+                        </span>
+                    </div>
+                    <div class="metric-subval mt-1">Zero Liquid Discharge Operating</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-info shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Avg Red Factory Share</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ kpis.avg_red_pct }}%</span>
+                        <span class="text-muted small">Heavy units</span>
+                    </div>
+                    <div class="metric-subval mt-1">CPCB Pollution Score &ge; 60</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-primary shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Mean Ambient PM<sub>2.5</sub></div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ kpis.avg_pm25 }}</span>
+                        <span class="badge bg-warning text-dark">&mu;g/m&sup3;</span>
+                    </div>
+                    <div class="metric-subval mt-1">NAAQS Benchmark: 60 &mu;g/m&sup3;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="card stat-card h-100 border-start border-4 border-secondary shadow-sm">
+                <div class="card-body">
+                    <div class="text-muted small fw-semibold text-uppercase">Mean Outlet COD</div>
+                    <div class="d-flex align-items-baseline gap-2 mt-2">
+                        <span class="fs-2 fw-bold text-dark">{{ kpis.avg_outlet_cod }}</span>
+                        <span class="text-muted small">mg/L</span>
+                    </div>
+                    <div class="metric-subval mt-1">GPCB Standard: &le; 250 mg/L</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4-Stage Lifecycle & Pollution Benchmark Matrix -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-diagram-3-fill text-primary me-2"></i> 4-Stage Industrial Lifecycle & Environmental Fingerprint
+                </h5>
+                <small class="text-muted">How pollution figures evolve through industrial maturation and induce perimeter land proximity drag</small>
+            </div>
+            <span class="badge bg-primary px-3 py-1">Empirical Theoretical Framework</span>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-3">
+                <!-- Phase 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-top border-4 border-primary lifecycle-stage-card bg-light">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary text-white">Phase 1 (0–5 yrs)</span>
+                                <small class="text-muted fw-bold">Greenfield / Setup</small>
+                            </div>
+                            <h6 class="fw-bold text-dark">Announcement & Inception</h6>
+                            <ul class="list-unstyled small text-secondary mt-3 mb-3">
+                                <li class="mb-2"><i class="bi bi-shield-check text-success me-1"></i> <strong>CEPI Score:</strong> &lt; 38.0 (Normal)</li>
+                                <li class="mb-2"><i class="bi bi-pie-chart text-primary me-1"></i> <strong>Red Category:</strong> &lt; 15% (Clean/Civil)</li>
+                                <li class="mb-2"><i class="bi bi-wind text-info me-1"></i> <strong>PM<sub>2.5</sub>:</strong> 42–55 &mu;g/m&sup3; (Ambient background)</li>
+                                <li class="mb-2"><i class="bi bi-droplet text-secondary me-1"></i> <strong>Effluent:</strong> Minimal domestic load; CETP unneeded</li>
+                            </ul>
+                            <div class="p-2 rounded bg-white border border-primary-subtle small">
+                                <strong class="text-primary"><i class="bi bi-graph-up me-1"></i> Real Estate Drag:</strong>
+                                <span class="text-muted">No negative proximity discount; speculative anticipation.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-top border-4 border-info lifecycle-stage-card bg-light">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-info text-dark">Phase 2 (5–12 yrs)</span>
+                                <small class="text-muted fw-bold">Anchor Operations</small>
+                            </div>
+                            <h6 class="fw-bold text-dark">Anchor Growth & Point Sources</h6>
+                            <ul class="list-unstyled small text-secondary mt-3 mb-3">
+                                <li class="mb-2"><i class="bi bi-shield-check text-success me-1"></i> <strong>CEPI Score:</strong> 40.0–55.0 (Moderate)</li>
+                                <li class="mb-2"><i class="bi bi-pie-chart text-info me-1"></i> <strong>Red Category:</strong> 20–35% (Assembly/Auto)</li>
+                                <li class="mb-2"><i class="bi bi-wind text-info me-1"></i> <strong>PM<sub>2.5</sub>:</strong> 60–72 &mu;g/m&sup3; (Stack emissions)</li>
+                                <li class="mb-2"><i class="bi bi-droplet text-primary me-1"></i> <strong>Effluent:</strong> Internal primary ETP operational</li>
+                            </ul>
+                            <div class="p-2 rounded bg-white border border-info-subtle small">
+                                <strong class="text-info"><i class="bi bi-arrow-up-right-circle me-1"></i> Sweet-Spot Surge:</strong>
+                                <span class="text-muted">+14.8% price appreciation in 3–8km residential commuter belt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-top border-4 border-warning lifecycle-stage-card bg-light">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">Phase 3 (12–25 yrs)</span>
+                                <small class="text-muted fw-bold">Ancillary Density</small>
+                            </div>
+                            <h6 class="fw-bold text-dark">Ancillary Saturation & Strain</h6>
+                            <ul class="list-unstyled small text-secondary mt-3 mb-3">
+                                <li class="mb-2"><i class="bi bi-shield-exclamation text-warning me-1"></i> <strong>CEPI Score:</strong> 60.0–75.0 (SPA / CPA)</li>
+                                <li class="mb-2"><i class="bi bi-pie-chart text-warning me-1"></i> <strong>Red Category:</strong> 40–65% (Dyeing/Forging)</li>
+                                <li class="mb-2"><i class="bi bi-wind text-warning me-1"></i> <strong>PM<sub>2.5</sub>:</strong> 80–98 &mu;g/m&sup3; (High particulate)</li>
+                                <li class="mb-2"><i class="bi bi-droplet-half text-danger me-1"></i> <strong>Effluent:</strong> CETP near hydraulic saturation</li>
+                            </ul>
+                            <div class="p-2 rounded bg-white border border-warning-subtle small">
+                                <strong class="text-warning"><i class="bi bi-arrow-down-right-circle me-1"></i> Proximity Drag Emerges:</strong>
+                                <span class="text-muted">-3.2% discount at &lt;0.5km; peak divergence with +24.1% 3–8km belt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-top border-4 border-danger lifecycle-stage-card bg-light">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger text-white">Phase 4 (&gt;25 yrs)</span>
+                                <small class="text-muted fw-bold">Remediation / Moratorium</small>
+                            </div>
+                            <h6 class="fw-bold text-dark">Mature Saturation / Remediation</h6>
+                            <ul class="list-unstyled small text-secondary mt-3 mb-3">
+                                <li class="mb-2"><i class="bi bi-shield-slash text-danger me-1"></i> <strong>CEPI Score:</strong> &ge; 70.0 (CPA) or &lt; 60 (ZLD)</li>
+                                <li class="mb-2"><i class="bi bi-pie-chart text-danger me-1"></i> <strong>Red Category:</strong> &gt; 65% (Heavy Chemical)</li>
+                                <li class="mb-2"><i class="bi bi-wind text-danger me-1"></i> <strong>PM<sub>2.5</sub>:</strong> 95–130 &mu;g/m&sup3; (Chronic haze)</li>
+                                <li class="mb-2"><i class="bi bi-droplet-fill text-danger me-1"></i> <strong>Effluent:</strong> ZLD retrofit mandated by NGT</li>
+                            </ul>
+                            <div class="p-2 rounded bg-white border border-danger-subtle small">
+                                <strong class="text-danger"><i class="bi bi-slash-circle me-1"></i> Acute Proximity Drag:</strong>
+                                <span class="text-muted">-6.1% to -9.4% drag at &lt;0.5km; mitigated only by complete ZLD upgrade.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Visualizations Row -->
+    <div class="row g-4 mb-4">
+        <!-- Chart 1: Lifecycle Stage Environmental Fingerprint -->
+        <div class="col-xl-6 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-bar-chart-fill text-primary me-2"></i> Environmental Fingerprint by Lifecycle Phase</h6>
+                        <small class="text-muted">Mean CEPI, PM<sub>2.5</sub>, Outlet COD, and % Red Units across phases</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">Statewide Panel</span>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 320px;">
+                        <canvas id="lifecycleFingerprintChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 2: CEPI vs Proximity Real Estate Drag -->
+        <div class="col-xl-6 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-scatter text-danger me-2"></i> CEPI Score vs Real Estate Proximity Drag (&lt;0.5km)</h6>
+                        <small class="text-muted">Correlation between statutory pollution index and residential perimeter price discount (%)</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">Hedonic Coupling</span>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 320px;">
+                        <canvas id="cepiDragScatterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 3: CPCB Enterprise Categorization Split -->
+        <div class="col-xl-6 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-pie-chart-fill text-warning me-2"></i> CPCB Industrial Factory Categorization Split</h6>
+                        <small class="text-muted">Aggregate Red (Heavy), Orange (Moderate), Green (Mild), and White (Clean) breakdown</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">CPCB 2016 Classification</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <div style="height: 250px;">
+                                <canvas id="cpcbDonutChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <ul class="list-group list-group-flush small">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span><i class="bi bi-circle-fill text-danger me-2"></i>Red Category (Score &ge;60)</span>
+                                    <span class="fw-bold">{{ kpis.avg_red_pct }}%</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span><i class="bi bi-circle-fill text-warning me-2"></i>Orange Category (41–59)</span>
+                                    <span class="fw-bold">28.4%</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span><i class="bi bi-circle-fill text-success me-2"></i>Green Category (21–40)</span>
+                                    <span class="fw-bold">20.2%</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span><i class="bi bi-circle-fill text-secondary me-2"></i>White Category (&le;20)</span>
+                                    <span class="fw-bold">11.6%</span>
+                                </li>
+                            </ul>
+                            <div class="mt-3 p-2 bg-light rounded text-muted" style="font-size: 0.75rem;">
+                                Red units require mandatory continuous emission (CEMS) and online effluent (OCEMS) telemetry to GPCB server.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 4: Ambient Air Quality by Sector Archetype -->
+        <div class="col-xl-6 col-lg-12">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-wind text-info me-2"></i> Ambient Air Quality (PM<sub>2.5</sub> vs PM<sub>10</sub> vs SO<sub>2</sub>)</h6>
+                        <small class="text-muted">Concentrations (&mu;g/m&sup3;) across major Gujarat industrial sector archetypes</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">NAAQS Benchmarks</span>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 250px;">
+                        <canvas id="airSectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="card shadow-sm border-0 mb-4 sticky-filter-bar">
+        <div class="card-body p-3">
+            <form method="GET" action="{{ url_for('pollution_benchmark_view') }}" class="row g-2 align-items-center">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                        <input type="text" name="search" class="form-control" placeholder="Search park name, district..." value="{{ search_query }}">
+                    </div>
+                </div>
+                
+                <div class="col-md-2">
+                    <select name="district" class="form-select form-select-sm">
+                        <option value="ALL">All Districts (32)</option>
+                        {% for d in districts %}
+                            <option value="{{ d.district_name }}" {% if selected_district == d.district_name %}selected{% endif %}>
+                                {{ d.district_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <select name="status" class="form-select form-select-sm">
+                        <option value="ALL">All CPCB Statuses</option>
+                        <option value="Critically" {% if selected_status == 'Critically' %}selected{% endif %}>Critically Polluted (CPA &ge;70)</option>
+                        <option value="Severely" {% if selected_status == 'Severely' %}selected{% endif %}>Severely Polluted (SPA 60–70)</option>
+                        <option value="Normal" {% if selected_status == 'Normal' %}selected{% endif %}>Normal (&lt;60)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <select name="stage" class="form-select form-select-sm">
+                        <option value="ALL">All Lifecycle Stages</option>
+                        <option value="Phase 1" {% if selected_stage == 'Phase 1' %}selected{% endif %}>Phase 1 Greenfield</option>
+                        <option value="Phase 2" {% if selected_stage == 'Phase 2' %}selected{% endif %}>Phase 2 Anchor Growth</option>
+                        <option value="Phase 3" {% if selected_stage == 'Phase 3' %}selected{% endif %}>Phase 3 Ancillary Saturation</option>
+                        <option value="Phase 4" {% if selected_stage == 'Phase 4' %}selected{% endif %}>Phase 4 Mature Remediation</option>
+                    </select>
+                </div>
+
+                <div class="col-md-1">
+                    <select name="year" class="form-select form-select-sm">
+                        <option value="2024" {% if selected_year == 2024 %}selected{% endif %}>2024</option>
+                        <option value="2022" {% if selected_year == 2022 %}selected{% endif %}>2022</option>
+                        <option value="2020" {% if selected_year == 2020 %}selected{% endif %}>2020</option>
+                        <option value="2018" {% if selected_year == 2018 %}selected{% endif %}>2018</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2 d-flex gap-1">
+                    <button type="submit" class="btn btn-sm btn-primary flex-grow-1">
+                        <i class="bi bi-funnel-fill me-1"></i> Apply
+                    </button>
+                    <a href="{{ url_for('pollution_benchmark_view') }}" class="btn btn-sm btn-outline-secondary" title="Reset Filters">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Filtered Data Table: 312 Industrial Estates -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+            <div>
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-table text-primary me-2"></i> Gujarat Industrial Estates Environmental Directory
+                </h6>
+                <small class="text-muted">Showing {{ benchmarks|length }} monitored industrial entities for panel year {{ selected_year }}</small>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-secondary-subtle text-secondary border">Total Entities: 312</span>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" style="font-size: 0.86rem;">
+                    <thead class="table-light text-uppercase text-secondary" style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                        <tr>
+                            <th class="ps-3">Estate / Park & District</th>
+                            <th>Lifecycle Stage</th>
+                            <th>CEPI Score</th>
+                            <th>CPCB Status</th>
+                            <th>Ambient Air (&mu;g/m&sup3;)</th>
+                            <th>CETP Effluent (COD / ZLD)</th>
+                            <th>Factory Composition (R/O/G/W)</th>
+                            <th class="text-end pe-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in benchmarks %}
+                        <tr>
+                            <!-- Estate & District -->
+                            <td class="ps-3">
+                                <a href="{{ url_for('park_detail', park_id=b.park_id) }}" class="fw-bold text-dark text-decoration-none hover-primary">
+                                    {{ b.park_name }}
+                                </a>
+                                <div class="text-muted small">
+                                    <i class="bi bi-geo-alt me-1"></i>{{ b.district_name }} &bull; 
+                                    <span class="badge bg-light text-dark border">{{ b.sector_category }}</span>
+                                </div>
+                            </td>
+
+                            <!-- Lifecycle Stage -->
+                            <td>
+                                {% if 'Phase 1' in b.inferred_lifecycle_stage %}
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">{{ b.inferred_lifecycle_stage }}</span>
+                                {% elif 'Phase 2' in b.inferred_lifecycle_stage %}
+                                    <span class="badge bg-info-subtle text-dark border border-info-subtle">{{ b.inferred_lifecycle_stage }}</span>
+                                {% elif 'Phase 3' in b.inferred_lifecycle_stage %}
+                                    <span class="badge bg-warning-subtle text-dark border border-warning-subtle">{{ b.inferred_lifecycle_stage }}</span>
+                                {% else %}
+                                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle">{{ b.inferred_lifecycle_stage }}</span>
+                                {% endif %}
+                            </td>
+
+                            <!-- CEPI Score -->
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="fw-bold fs-6 {% if b.cepi_score >= 70 %}text-danger{% elif b.cepi_score >= 60 %}text-warning{% else %}text-success{% endif %}">
+                                        {{ b.cepi_score }}
+                                    </span>
+                                </div>
+                                <div class="metric-subval">
+                                    Air: {{ b.cepi_air }} | Wtr: {{ b.cepi_water }} | Lnd: {{ b.cepi_land }}
+                                </div>
+                            </td>
+
+                            <!-- CPCB Status -->
+                            <td>
+                                {% if 'Critically' in b.cpcb_status %}
+                                    <span class="badge cepi-badge-cpa d-inline-flex align-items-center gap-1">
+                                        {% if b.has_moratorium %}<span class="pulse-dot"></span>{% endif %}
+                                        CPA (Moratorium)
+                                    </span>
+                                {% elif 'Severely' in b.cpcb_status %}
+                                    <span class="badge cepi-badge-spa">SPA (Severe)</span>
+                                {% else %}
+                                    <span class="badge cepi-badge-normal">Normal</span>
+                                {% endif %}
+                            </td>
+
+                            <!-- Ambient Air -->
+                            <td>
+                                <div>
+                                    <span class="fw-semibold {% if b.pm2_5 > 80 %}text-danger{% elif b.pm2_5 > 60 %}text-warning{% else %}text-dark{% endif %}">
+                                        PM<sub>2.5</sub>: {{ b.pm2_5 }}
+                                    </span>
+                                    <span class="text-muted small ms-1">| PM<sub>10</sub>: {{ b.pm10 }}</span>
+                                </div>
+                                <div class="metric-subval">SO<sub>2</sub>: {{ b.so2 }} &mu;g/m&sup3; | NO<sub>x</sub>: {{ b.nox }}</div>
+                            </td>
+
+                            <!-- CETP Effluent & ZLD -->
+                            <td>
+                                <div>
+                                    <span class="small fw-semibold {% if b.outlet_cod_mg_l > 250 %}text-danger{% else %}text-success{% endif %}">
+                                        Outlet COD: {{ b.outlet_cod_mg_l }} mg/L
+                                    </span>
+                                </div>
+                                <div class="metric-subval d-flex align-items-center gap-1 mt-1">
+                                    {% if b.is_zld_compliant %}
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle py-0">ZLD Compliant</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary-subtle text-secondary border py-0">Non-ZLD</span>
+                                    {% endif %}
+                                    {% if b.cetp_capacity_mld %}
+                                        <span>CETP: {{ b.cetp_capacity_mld }} MLD</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+
+                            <!-- Factory Composition Bar -->
+                            <td style="min-width: 140px;">
+                                <div class="d-flex justify-content-between metric-subval mb-1">
+                                    <span class="text-danger fw-bold">{{ b.pct_red_units }}% R</span>
+                                    <span class="text-warning fw-semibold">{{ b.pct_orange_units }}% O</span>
+                                    <span class="text-success fw-semibold">{{ b.pct_green_units }}% G</span>
+                                    <span class="text-secondary">{{ b.pct_white_units }}% W</span>
+                                </div>
+                                <div class="progress progress-cpcb">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ b.pct_red_units }}%" title="Red Category: {{ b.pct_red_units }}%"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ b.pct_orange_units }}%" title="Orange Category: {{ b.pct_orange_units }}%"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ b.pct_green_units }}%" title="Green Category: {{ b.pct_green_units }}%"></div>
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ b.pct_white_units }}%" title="White Category: {{ b.pct_white_units }}%"></div>
+                                </div>
+                            </td>
+
+                            <!-- Action Modal Trigger -->
+                            <td class="text-end pe-3">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="openParkHistoryModal({{ b.park_id }}, '{{ b.park_name|escape }}')">
+                                    <i class="bi bi-clock-history me-1"></i> Multi-Year
+                                </button>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center py-4 text-muted">
+                                No industrial estates found matching your filter criteria.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Multi-Year Time Series Modal -->
+<div class="modal fade" id="parkHistoryModal" tabindex="-1" aria-labelledby="parkHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title fw-bold" id="parkHistoryModalLabel">
+                    <i class="bi bi-activity text-warning me-2"></i> <span id="modalParkTitle">Industrial Park</span> History
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div id="modalParkMeta" class="text-muted small"></div>
+                    <span class="badge bg-primary" id="modalParkStageBadge">Lifecycle</span>
+                </div>
+                
+                <h6 class="fw-bold text-secondary mb-2">CEPI & Air Quality Trajectory (2018–2024)</h6>
+                <div style="height: 260px;" class="mb-4">
+                    <canvas id="modalTrajectoryCanvas"></canvas>
+                </div>
+
+                <div class="row g-2 text-center" id="modalHistoryGrid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <a href="#" id="modalDossierLink" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-building me-1"></i> View Full Estate Dossier
+                </a>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- 1. Lifecycle Fingerprint Chart ---
+        const ctxFingerprint = document.getElementById('lifecycleFingerprintChart').getContext('2d');
+        new Chart(ctxFingerprint, {
+            type: 'bar',
+            data: {
+                labels: ['Phase 1: Greenfield', 'Phase 2: Anchor Growth', 'Phase 3: Ancillary Saturation', 'Phase 4: Mature/Moratorium'],
+                datasets: [
+                    {
+                        label: 'Mean CEPI Score',
+                        data: [34.5, 48.2, 67.8, 76.4],
+                        backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                        borderColor: '#2563eb',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Ambient PM2.5 (ug/m3)',
+                        data: [46.8, 64.3, 88.5, 108.2],
+                        backgroundColor: 'rgba(239, 68, 68, 0.85)',
+                        borderColor: '#dc2626',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Red Unit Share (%)',
+                        data: [12.0, 26.5, 52.8, 71.4],
+                        backgroundColor: 'rgba(245, 158, 11, 0.85)',
+                        borderColor: '#d97706',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Treated Outlet COD (mg/L / 2)',
+                        data: [35.0, 75.0, 142.5, 175.0], // Scaled for visual comparison
+                        backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                        borderColor: '#059669',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                if (context.dataset.label.includes('COD')) {
+                                    return context.dataset.label + ': ' + (context.parsed.y * 2) + ' mg/L';
+                                }
+                                return context.dataset.label + ': ' + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Index / Concentration / Percentage' }
+                    }
+                }
+            }
+        });
+
+        // --- 2. CEPI vs Property Proximity Drag Scatter Plot ---
+        const scatterDataRaw = {{ scatter_data | tojson }};
+        const ctxScatter = document.getElementById('cepiDragScatterChart').getContext('2d');
+        
+        const standardPoints = scatterDataRaw.filter(p => !p.is_zld).map(p => ({
+            x: p.cepi,
+            y: p.drag_pct,
+            parkName: p.park_name,
+            district: p.district,
+            stage: p.stage
+        }));
+
+        const zldPoints = scatterDataRaw.filter(p => p.is_zld).map(p => ({
+            x: p.cepi,
+            y: p.drag_pct,
+            parkName: p.park_name,
+            district: p.district,
+            stage: p.stage
+        }));
+
+        new Chart(ctxScatter, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Standard CETP / Discharge',
+                        data: standardPoints,
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                        borderColor: '#dc2626',
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'ZLD Compliant (Remediated)',
+                        data: zldPoints,
+                        backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                        borderColor: '#059669',
+                        pointRadius: 7,
+                        pointHoverRadius: 9
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const pt = context.raw;
+                                return `${pt.parkName} (${pt.district}): CEPI=${pt.x}, Drag=${pt.y}% [${pt.stage}]`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'CEPI Pollution Score (CPCB Statutory Index)' },
+                        min: 25,
+                        max: 95
+                    },
+                    y: {
+                        title: { display: true, text: '<0.5km Property Proximity Price Drag (%)' },
+                        suggestedMin: -12,
+                        suggestedMax: 2
+                    }
+                }
+            }
+        });
+
+        // --- 3. CPCB Enterprise Donut Chart ---
+        const ctxDonut = document.getElementById('cpcbDonutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red Category (Heavy)', 'Orange Category (Moderate)', 'Green Category (Mild)', 'White Category (Clean)'],
+                datasets: [{
+                    data: [{{ kpis.avg_red_pct }}, 28.4, 20.2, 11.6],
+                    backgroundColor: ['#ef4444', '#f59e0b', '#10b981', '#94a3b8'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                cutout: '65%'
+            }
+        });
+
+        // --- 4. Ambient Air Quality by Sector Archetype ---
+        const ctxAir = document.getElementById('airSectorChart').getContext('2d');
+        new Chart(ctxAir, {
+            type: 'bar',
+            data: {
+                labels: ['Chemical & Petrochem', 'Textile & Dyeing', 'Ceramic & Minerals', 'Auto & Engineering', 'Electronics & MSME'],
+                datasets: [
+                    {
+                        label: 'PM2.5 (ug/m3)',
+                        data: [112.4, 94.2, 106.8, 68.5, 48.1],
+                        backgroundColor: '#ef4444'
+                    },
+                    {
+                        label: 'PM10 (ug/m3)',
+                        data: [178.6, 148.0, 185.3, 115.2, 82.4],
+                        backgroundColor: '#f59e0b'
+                    },
+                    {
+                        label: 'SO2 (ug/m3)',
+                        data: [58.2, 42.1, 49.6, 22.4, 12.8],
+                        backgroundColor: '#0284c7'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Concentration (ug/m3)' }
+                    }
+                }
+            }
+        });
+    });
+
+    // --- Modal Handler for Park Multi-Year Time Series ---
+    let modalChartInstance = null;
+
+    function openParkHistoryModal(parkId, parkName) {
+        document.getElementById('modalParkTitle').textContent = parkName;
+        document.getElementById('modalDossierLink').href = `/parks/${parkId}`;
+        
+        fetch(`/api/pollution/park/${parkId}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+                
+                const park = data.park;
+                const history = data.history;
+                
+                document.getElementById('modalParkMeta').innerHTML = `
+                    <strong>${park.district_name}</strong> Taluka: ${park.taluka_name} | Sector: ${park.sector_category} | ${park.authority_type}
+                `;
+                
+                const latest = history[history.length - 1];
+                document.getElementById('modalParkStageBadge').textContent = latest.inferred_lifecycle_stage;
+                document.getElementById('modalParkStageBadge').className = 'badge ' + 
+                    (latest.cepi_score >= 70 ? 'bg-danger' : latest.cepi_score >= 60 ? 'bg-warning text-dark' : 'bg-success');
+
+                // Render History Grid
+                let gridHtml = '';
+                history.forEach(h => {
+                    gridHtml += `
+                        <div class="col-3">
+                            <div class="p-2 border rounded bg-light">
+                                <div class="fw-bold small text-muted">${h.assessment_year}</div>
+                                <div class="fs-5 fw-bold ${h.cepi_score >= 70 ? 'text-danger' : 'text-primary'}">${h.cepi_score}</div>
+                                <div style="font-size:0.7rem;" class="text-secondary">PM2.5: ${h.pm2_5} | COD: ${h.outlet_cod_mg_l}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('modalHistoryGrid').innerHTML = gridHtml;
+
+                // Render Chart
+                const labels = history.map(h => h.assessment_year);
+                const cepiScores = history.map(h => h.cepi_score);
+                const pm25Values = history.map(h => h.pm2_5);
+                const codValues = history.map(h => h.outlet_cod_mg_l);
+
+                const ctxModal = document.getElementById('modalTrajectoryCanvas').getContext('2d');
+                if (modalChartInstance) {
+                    modalChartInstance.destroy();
+                }
+
+                modalChartInstance = new Chart(ctxModal, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'CEPI Overall Score',
+                                data: cepiScores,
+                                borderColor: '#2563eb',
+                                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                tension: 0.3,
+                                fill: true,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Ambient PM2.5 (ug/m3)',
+                                data: pm25Values,
+                                borderColor: '#dc2626',
+                                borderDash: [5, 5],
+                                tension: 0.3,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Outlet COD (mg/L)',
+                                data: codValues,
+                                borderColor: '#10b981',
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: { mode: 'index', intersect: false },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: { display: true, text: 'CEPI / PM2.5' }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: { drawOnChartArea: false },
+                                title: { display: true, text: 'Outlet COD (mg/L)' }
+                            }
+                        }
+                    }
+                });
+
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById('parkHistoryModal'));
+                modal.show();
+            })
+            .catch(err => {
+                console.error("Error loading park history:", err);
+                alert("Failed to load park pollution history.");
+            });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: clean_commercial_nodes (Clean Commercial Benchmark Nodes)
+# Table Order: Module 9 of 17 Core Schema Tables
+# Total Records: 8 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.205908Z
+"# DATA SOURCE: GIFT City SEZ Authority, Commercial Real Estate Registry (RERA Gujarat), SG Highway High-Street Planning Audits, and Taylor et al. econometric methodology."
+"# Description: IT parks, financial SEZs, and regional shopping nodes serving as the clean control group to disentangle industrial stigma from general commercial noise."
+# Primary Key: node_id
+# Foreign Key Constraints: taluka_id -> subdistricts_talukas(taluka_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * node_id: Primary key identifier
+#   * taluka_id: Foreign key reference to subdistricts_talukas
+"#   * node_name: Commercial node title (e.g. GIFT City Tech Node, SG Highway Corporate Hub)"
+"#   * category: Classification (IT/Financial SEZ, Commercial Complex, Retail High-Street)"
+#   * establishment_year: Year node commenced commercial operations
+#   * latitude: WGS84 centroid latitude coordinate
+#   * longitude: WGS84 centroid longitude coordinate
+# ==============================================================================
+
+node_id,taluka_id,node_name,category,establishment_year,latitude,longitude
+1,23,GIFT City Tech Node,IT / Financial SEZ,2011,23.1601,72.6841
+2,1,SG Highway Corporate Hub,IT & Commercial Complex,2008,23.0338,72.5085
+3,250,Alkapuri Business Center,Office Plaza & Retail,2005,22.3106,73.1706
+4,1,Vesu High Street & Finance Hub,Commercial & Retail Mall,2012,21.1418,72.7758
+5,102,Ankleshwar Tech & Retail Plaza,IT & Commercial Center,2018,21.6264,73.0012
+6,242,Kalawad Road Commercial Complex,Corporate & Shopping Node,2010,22.2812,70.7684
+7,13,Sanand Commercial Gateway,Retail & Office Arcade,2016,22.9833,72.3667
+8,1,Hazira Maritime Trade Center,Commercial & Logistics Hub,2014,21.1065,72.6482

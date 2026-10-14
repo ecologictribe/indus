@@ -1,0 +1,23 @@
+meta_file: gujarat_property_price_scapper.txt.meta.txt
+file_name: sources/gujarat_property_price_scapper.txt
+original_name: sources/property_price_scapper.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 0
+modified_utc: 2026-10-03T07:36:26.471512+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 1 dataset(s).
+NOTE: EMPTY FILE (0 bytes) - placeholder with no content.
+
+--- CONTENT VERBATIM ---
+  | <EMPTY FILE - 0 lines>
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.005341+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

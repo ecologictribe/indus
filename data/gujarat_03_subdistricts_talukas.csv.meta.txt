@@ -1,0 +1,50 @@
+meta_file: gujarat_03_subdistricts_talukas.csv.meta.txt
+file_name: gujarat_03_subdistricts_talukas.csv
+original_name: 03_subdistricts_talukas.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 5273
+modified_utc: 2026-10-03T07:31:49.235252+00:00
+
+--- TABLE / DATASET ---
+table_name: subdistricts_talukas
+display_title: Subdistricts & Talukas (250 Talukas)
+module_order: Module 3 of 12 Core Schema Tables
+description: Tehsils and Talukas within each district hosting industrial estates.
+total_records_declared: 250 rows
+export_timestamp_utc: 2026-10-03T07:31:45.688101Z
+
+--- KEYS ---
+primary_key: taluka_id
+foreign_keys: district_id -> districts(district_id)
+
+--- DATA PROFILE ---
+header: taluka_id,district_id,taluka_name
+n_columns: 3
+columns: taluka_id, district_id, taluka_name
+data_rows_observed: 250
+total_lines: 269
+comment_lines(#): 17
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * taluka_id: Primary key identifier
+# * district_id: Foreign key reference to districts table
+# * taluka_name: Official Taluka/Subdistrict name (e.g., Sanand, Ankleshwar, Choryasi, Bavla)
+
+--- DATA SOURCE (preamble verbatim) ---
+Gujarat Land Revenue Code, Taluka Panchayat administrative records, and GIDC regional maps.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+No dedicated file in data/sources/ for this dataset (all 7 source files were read; none matches).
+Attribution rests on the CSV preamble DATA SOURCE + ZIP README manifest.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 03_subdistricts_talukas.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same module table).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

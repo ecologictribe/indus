@@ -1,0 +1,4 @@
+--- SANAND-II BOL CADASTRAL GRID EXTRACTION ---
+Engineering Map Drawing No: GIDC/ENG/TP/SANAND-II/2018-REV
+Frontage standards: 18m and 24m arterial roads; 12m internal circulation.
+Corner plot designation: 10% premium on base allotment rate.

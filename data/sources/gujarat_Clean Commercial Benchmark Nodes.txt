@@ -1,0 +1,4 @@
+Clean Commercial Benchmark Nodes	
+IT parks, financial SEZs, and regional shopping nodes serving as the clean control group to disentangle industrial stigma from general commercial noise.
+
+ DATA SOURCE: GIFT City SEZ Authority, Commercial Real Estate Registry (RERA Gujarat), SG Highway High-Street Planning Audits, and Taylor et al. econometric methodology.

@@ -1,0 +1,23 @@
+meta_file: gujarat_neighbourhood_scapper.txt.meta.txt
+file_name: sources/gujarat_neighbourhood_scapper.txt
+original_name: sources/neighbourhood_scapper.txt
+prefix: gujarat_
+renamed: True
+extension: .txt
+size_bytes: 119
+modified_utc: 2026-10-03T07:38:19.262435+00:00
+
+--- ROLE ---
+file_role: source-note (provenance note in data/sources/, not a dataset)
+description: Provenance/method note cited by 2 dataset(s).
+
+--- CONTENT VERBATIM ---
+  | DATA SOURCE Urban Development Authorities (AUDA, VUDA, SUDA), Municipal Tax Records, and GIDC statutory notified zones.
+
+--- CITED BY (datasets whose meta quotes this note) ---
+  - gujarat_04_neighborhoods_jurisdictions.csv
+  - gujarat_industrial_estates_all_12_tables_csv.zip
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:47.005341+00:00
+generator: data/.quarantine/enrich_meta.py (sources/ pass)

@@ -1,0 +1,7 @@
+
+Chronological development milestones defining Pre/Post treatment event windows for econometric estimation.
+
+ DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+
+DATA SOURCE: State Gazette Notifications, GIDC land acquisition awards, Chief Inspector of Factories commissioning permits, and GPCB compliance filings.
+

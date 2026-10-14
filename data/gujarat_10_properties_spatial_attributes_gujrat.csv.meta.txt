@@ -1,0 +1,85 @@
+meta_file: gujarat_10_properties_spatial_attributes_gujrat.csv.meta.txt
+file_name: gujarat_10_properties_spatial_attributes_gujrat.csv
+original_name: 10_properties_spatial_attributes_gujrat.csv
+prefix: gujarat_
+renamed: True
+extension: .csv
+size_bytes: 64076
+modified_utc: 2026-10-03T07:43:38.561562+00:00
+
+--- TABLE / DATASET ---
+table_name: properties
+display_title: Properties & Parcel Spatial Attributes
+module_order: Module 10 of 12 Core Schema Tables
+description: Tracked residential and commercial land parcels, apartments, and houses across discrete spatial distance buffers.
+total_records_declared: 800 rows
+export_timestamp_utc: 2026-10-03T07:43:14.352080Z
+
+--- KEYS ---
+primary_key: property_id
+foreign_keys: neighborhood_id -> neighborhoods_jurisdictions, nearest_park_id -> industrial_parks, nearest_clean_commercial_id -> clean_commercial_nodes
+
+--- DATA PROFILE ---
+header: property_id,neighborhood_id,nearest_park_id,nearest_clean_commercial_id,property_type,lot_size_sqm,built_up_area_sqm,bedrooms,bathrooms,age_at_sale_years,distance_to_park_km,distance_buffer_bin,distance_to_clean_commercial_km,distance_to_highway_km,distance_to_urban_center_km
+n_columns: 15
+columns: property_id, neighborhood_id, nearest_park_id, nearest_clean_commercial_id, property_type, lot_size_sqm, built_up_area_sqm, bedrooms, bathrooms, age_at_sale_years, distance_to_park_km, distance_buffer_bin, distance_to_clean_commercial_km, distance_to_highway_km, distance_to_urban_center_km
+data_rows_observed: 800
+total_lines: 831
+comment_lines(#): 29
+blank_or_separator_lines: 1
+
+--- COLUMN DEFINITIONS (verbatim preamble) ---
+# * property_id: Primary key identifier
+# * neighborhood_id: Foreign key reference to neighborhood jurisdiction
+# * nearest_park_id: Foreign key reference to nearest industrial park
+# * nearest_clean_commercial_id: Foreign key reference to nearest clean commercial benchmark
+# * property_type: Parcel typology (Residential Apartment, Single Family Detached, Plot, Commercial Frontage)
+# * lot_size_sqm: Plot footprint size in square meters
+# * built_up_area_sqm: Covered usable built-up area in square meters
+# * bedrooms: Number of bedrooms
+# * bathrooms: Number of bathrooms
+# * age_at_sale_years: Structure age in years at point of transaction
+# * distance_to_park_km: Euclidean spatial distance to industrial park boundary (km)
+# * distance_buffer_bin: Distance gradient (<0.5km = Proximity Drag, 0.5-1.5km = Intermediate, 3-8km = Sweet Spot, Control >10km, Clean Commercial <0.3km)
+# * distance_to_clean_commercial_km: Distance to clean commercial benchmark node (km)
+# * distance_to_highway_km: Distance to nearest National/State Highway (km)
+# * distance_to_urban_center_km: Distance to district urban center / municipal core (km)
+
+--- DATA SOURCE (preamble verbatim) ---
+Sub-Registrar Offices (Revenue Department), Gujarat Real Estate Regulatory Authority (GUJRERA) project filings, and GIS Hedonic buffer radial calculations.
+
+--- SOURCES FOLDER EVIDENCE (data/sources/*.txt, studied 2026-10-03) ---
+[1] sources_file: sources/gujarat_Properties & Parcel Spatial Attributes.txt (335 bytes, 5 lines)
+    mapping_rationale: Exact match: Sub-Registrar Offices + GUJRERA + GIS hedonic buffers; description line also matches preamble Description verbatim.
+    content_verbatim:
+      | Properties
+      | Properties & Parcel Spatial Attributes	
+      | Tracked residential and commercial land parcels, apartments, and houses across discrete spatial distance buffers.
+      |
+      |  DATA SOURCE: Sub-Registrar Offices (Revenue Department), Gujarat Real Estate Regulatory Authority (GUJRERA) project filings, and GIS Hedonic buffer radial calculations.
+[2] sources_file: sources/gujarat_Clean Commercial Benchmark Nodes.txt (357 bytes, 4 lines)
+    mapping_rationale: Related via FK nearest_clean_commercial_id -> clean_commercial_nodes; explains control-group design (GIFT City SEZ, RERA, SG Highway audits, Taylor et al.). Table 09 lives only inside the ZIP.
+    content_verbatim:
+      | Clean Commercial Benchmark Nodes	
+      | IT parks, financial SEZs, and regional shopping nodes serving as the clean control group to disentangle industrial stigma from general commercial noise.
+      |
+      |  DATA SOURCE: GIFT City SEZ Authority, Commercial Real Estate Registry (RERA Gujarat), SG Highway High-Street Planning Audits, and Taylor et al. econometric methodology.
+[3] sources_file: sources/gujarat_Property_Tracker_Transcation.txt (546 bytes, 4 lines)
+    mapping_rationale: Downstream pricing panel (table 11) built on these parcels: IGR stamped registry + Jantar/Ready Reckoner 2012-2025 + NHB RESIDEX; columns listed apply to 11_property_transactions.csv (ZIP-only). Note filename typo 'Transcation'.
+    content_verbatim:
+      | Multi-year micro-level sale observations tracking real open-market prices against registered statutory circle rates (Jantar) from 2012 to 2025.
+      |
+      |  DATA SOURCE: Inspector General of Registration (IGR Gujarat) stamped transaction registry, Ready Reckoner / Jantar annual rate sheets (2012–2025), and National Housing Bank (NHB) RESIDEX verification.
+      | Columns: transaction_id, property_id, sale_date, sale_year, sale_quarter, market_transaction_price, price_per_sqm, registered_circle_rate_sqm, circle_to_market_ratio, is_repeat_sale, is_arms_length
+NOTE: source filename is misspelled 'gujarat_Property_Tracker_Transcation.txt' (should be Transaction); quoted exactly.
+NOTE: this file's own name contains legacy misspelling '..._gujrat.csv'; inside the ZIP the same table is correctly named 10_properties.csv.
+
+--- ARCHIVE / RELATIONS ---
+ZIP twin: 10_properties.csv inside gujarat_industrial_estates_all_12_tables_csv.zip (same 800-row table).
+FK graph: neighborhoods_jurisdictions <- properties -> industrial_parks + clean_commercial_nodes (ZIP table 09); downstream: property_transactions (ZIP 11) -> did_panel (ZIP 12).
+
+--- PROVENANCE ---
+meta_created_utc: 2026-10-03T07:59:46.989345+00:00
+generator: data/.quarantine/enrich_meta.py (preamble parser + sources/ reader + ZIP README + JSON _metadata)
+sources_consulted: CSV preamble + data/sources/*.txt (7 files) + ZIP README_METADATA_AND_DATA_SOURCES.md + JSON _metadata + observed row/col counts
+

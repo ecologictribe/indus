@@ -1,0 +1,43 @@
+### Equation & Econometric Model Rendering
+
+* **MathJax / KaTeX Integration:** Render the Difference-in-Differences equation using proper mathematical notation rather than raw monospaced code:
+
+$$\ln(P_{it}) = \beta_0 + \sum \gamma_b \text{Buffer}_b + \sum \delta_b (\text{Buffer}_b \times \text{Post}_t) + \theta_1 \text{Age}_{it} + \theta_2 \text{Highway\_Dist}_i + \tau_t + \varepsilon_{it}$$
+
+
+* **Interactive Variable Legend:** Add an expandable symbol key directly under the DiD equation defining every term ($P_{it}$ = property price, $\tau_t$ = year fixed effects, $\varepsilon_{it}$ = robust error term clustered at the Taluka level).
+
+---
+
+### Academic Citation & Open Science Replication Suite
+
+* **BibTeX / Citation Generator:** Add a "Cite this Paper / Framework" button that generates copyable citations in APA, Chicago, and BibTeX formats for researchers referencing the dataset or methodology.
+* **Replication Package Downloads:** Beyond `.db` and `.csv`, offer native econometric formats:
+* **Stata (`.dta`)** and **R (`.rds`)** pre-formatted data files.
+* **Jupyter Notebook (`.ipynb`) / Stata do-file** download containing the baseline regression script to verify the parallel trends assumption.
+
+
+* **Data Codebook (PDF/HTML):** Provide a dedicated link to a downloadable Data Dictionary detailing column definitions, measurement units, data sources (e.g., GIDC records, Jantar circle rates), and missing value protocols.
+
+---
+
+### Interactive Database Schema UX
+
+* **Interactive Table Schema Inspector:** Make the 12 table badges in the right sidebar (e.g., `properties`, `property_transactions`) clickable. Clicking a table name should open a panel displaying:
+* Column name, data type (e.g., `VARCHAR`, `REAL`, `INTEGER`), and primary/foreign key constraints.
+* A live 5-row sample data preview.
+
+
+* **Visual Entity-Relationship Diagram (ERD):** Add a toggle view to swap the hierarchical text list for an interactive vector ERD node map (using Mermaid.js or D3.js) showing state-to-transaction foreign key connections.
+
+---
+
+### Visual Lifecycle Timeline & Readability
+
+* **Phase Timeline Visualizer:** Convert the 4 textual lifecycle phases into an interactive horizontal step diagram or visual timeline:
+* *Phase 1 (Yrs 0–2)* $\rightarrow$ *Phase 2 (Yrs 3–5)* $\rightarrow$ *Phase 3 (Yrs 6–9)* $\rightarrow$ *Phase 4 (Yrs 10+)*
+* Highlight the price trajectory ($\pm \%$ capitalization impact) directly on each stage node.
+
+
+* **Sticky Table of Contents (Outline):** Add a compact "On this page" floating outline on the left margin so academic readers can jump directly between *Lifecycle Phases*, *Hedonic Model*, *DiD Specification*, *Circle Rates vs Market*, and *SQLite Architecture*.
+* **Econometric Terminology Tooltips:** Add subtle dotted-underline tooltips for region-specific or institutional terms (e.g., *Jantar Circle Rates*, *CEPI Index*, *GIDC Estate*) so non-regional researchers get quick contextual popovers without leaving the methodology flow.

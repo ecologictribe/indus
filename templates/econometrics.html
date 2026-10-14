@@ -1,0 +1,689 @@
+{% extends "base.html" %}
+
+{% block title %}Difference-in-Differences Econometric Studio & Event-Study Lab{% endblock %}
+{% block page_title %}DiD Econometrics Studio{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Journal Print High-Contrast Theme */
+    body.journal-print-mode {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+    body.journal-print-mode .card,
+    body.journal-print-mode .dashboard-card,
+    body.journal-print-mode .stat-card {
+        background-color: #ffffff !important;
+        border: 1px solid #000000 !important;
+        box-shadow: none !important;
+        color: #000000 !important;
+    }
+    body.journal-print-mode .table thead th {
+        background-color: #f3f4f6 !important;
+        color: #000000 !important;
+        border-bottom: 2px solid #000000 !important;
+    }
+    body.journal-print-mode .table td {
+        border-color: #e5e7eb !important;
+        color: #000000 !important;
+    }
+    body.journal-print-mode .badge {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #000000 !important;
+    }
+    .ratio-under { background-color: #fee2e2; color: #991b1b; font-weight: bold; }
+    .ratio-parity { background-color: #f3f4f6; color: #374151; }
+    .ratio-moderate { background-color: #e0f2fe; color: #0369a1; font-weight: bold; }
+    .ratio-high { background-color: #dcfce7; color: #15803d; font-weight: bold; }
+    .ratio-acute { background-color: #fef3c7; color: #b45309; font-weight: bold; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header py-4">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-info-subtle text-info border border-info-subtle px-3 py-1">
+                        <i class="bi bi-cpu-fill me-1"></i> Empirical OLS Estimation Engine
+                    </span>
+                    <span class="badge bg-secondary-subtle text-secondary border" id="journalThemeBadge">
+                        Task T6: Advanced Econometric Studio
+                    </span>
+                </div>
+                <h1 class="h2 fw-bold text-white mb-1">Difference-in-Differences (DiD) Econometrics Studio</h1>
+                <p class="text-secondary mb-0">
+                    Causal estimation of industrial estate spillovers, dynamic event studies, distance decay gradients, and academic replication suites.
+                </p>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <button type="button" class="btn btn-outline-warning" onclick="toggleJournalTheme(eventStudyData, counterfactualData, decayData, lifecycleData)">
+                    <i class="bi bi-journal-text me-1"></i> <span id="journalToggleBtnText">Journal / Print Theme</span>
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-download me-1"></i> Export Studio
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Vector & Image Figures</h6></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="exportChartImage('eventStudyCanvas', 'event_study_did', 'svg')"><i class="bi bi-filetype-svg me-2 text-danger"></i>Event-Study Plot (SVG)</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="exportChartImage('counterfactualCanvas', 'counterfactual_did', 'svg')"><i class="bi bi-filetype-svg me-2 text-danger"></i>Counterfactual Overlay (SVG)</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="exportChartImage('distanceDecayCanvas', 'distance_decay_gradient', 'svg')"><i class="bi bi-filetype-svg me-2 text-danger"></i>Distance Decay Plot (SVG)</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Code Replication</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('api_replication_code', lang='stata', post_year=post_year) }}"><i class="bi bi-file-code me-2 text-primary"></i>Stata Replication Script (.do)</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('api_replication_code', lang='r', post_year=post_year) }}"><i class="bi bi-file-code me-2 text-success"></i>R ggplot2 Script (.R)</a></li>
+                    </ul>
+                </div>
+                <a href="{{ url_for('methodology_view') }}" class="btn btn-outline-light">
+                    <i class="bi bi-book me-1"></i> Documentation
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4 pb-5">
+
+    <!-- Dual-Mode Panel Switcher Toolbar (Option A) -->
+    <div class="card border-0 shadow-sm mb-4 bg-dark text-white p-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="badge bg-warning text-dark fw-bold text-uppercase"><i class="bi bi-toggles me-1"></i> Econometric Dataset Engine</span>
+                    {% if data_mode == 'empirical' %}
+                        <span class="badge bg-success text-white"><i class="bi bi-patch-check-fill me-1"></i> 100% Authentic Statutory Data</span>
+                    {% else %}
+                        <span class="badge bg-secondary text-white"><i class="bi bi-sim me-1"></i> Secondary Market Simulation</span>
+                    {% endif %}
+                </div>
+                <h5 class="fw-bold mb-0">
+                    {% if data_mode == 'empirical' %}
+                        Official GIDC Statutory Land Price Panel (2000–2026)
+                    {% else %}
+                        Surrounding Real Estate Secondary Market Panel
+                    {% endif %}
+                </h5>
+                <small class="text-secondary">
+                    {% if data_mode == 'empirical' %}
+                        8,448 empirical allotment rate observations extracted from official government gazettes across all 312 GIDC estates.
+                    {% else %}
+                        4,000 arm's-length secondary transactions estimating residential & commercial peripheral spillovers.
+                    {% endif %}
+                </small>
+            </div>
+            <div class="btn-group shadow-sm">
+                <a href="{{ url_for('econometrics_view', data_mode='empirical') }}" class="btn btn-sm {% if data_mode == 'empirical' %}btn-success fw-bold{% else %}btn-outline-light{% endif %} px-3 py-2">
+                    <i class="bi bi-bank2 me-1"></i> Mode 1: Authentic GIDC Land Rates (Default)
+                </a>
+                <a href="{{ url_for('econometrics_view', data_mode='synthetic') }}" class="btn btn-sm {% if data_mode == 'synthetic' %}btn-primary fw-bold{% else %}btn-outline-light{% endif %} px-3 py-2">
+                    <i class="bi bi-houses-fill me-1"></i> Mode 2: Secondary Market Panel
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Estimation Controls -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+            <span class="fw-bold">
+                <i class="bi bi-sliders text-primary me-2"></i>
+                {% if data_mode == 'empirical' %}
+                    Empirical GIDC Land Price Panel Estimation Parameters (8,448 Observations &bull; 312 Estates)
+                {% else %}
+                    Secondary Market Transaction Panel Parameters
+                {% endif %}
+            </span>
+            <span class="badge bg-primary-subtle text-primary">NumPy Fast Matrix Solver &bull; T0 Cutoff: {{ post_year }}</span>
+        </div>
+        <div class="card-body p-4">
+            <form method="GET" action="{{ url_for('econometrics_view') }}" class="row g-3 align-items-end">
+                <input type="hidden" name="data_mode" value="{{ data_mode }}">
+
+                {% if data_mode == 'empirical' %}
+                <!-- Mode 1: Empirical GIDC Form Controls -->
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Statutory Policy Intervention / Shock</label>
+                    <select name="policy_shock" class="form-select">
+                        <option value="anchor" {% if policy_shock == 'anchor' %}selected{% endif %}>Flagship Automotive Hub (Sanand / Dahej)</option>
+                        <option value="cepi_moratorium" {% if policy_shock == 'cepi_moratorium' %}selected{% endif %}>CPCB CEPI Environmental Moratorium (2010)</option>
+                        <option value="freight_corridor" {% if policy_shock == 'freight_corridor' %}selected{% endif %}>Western DFC / NH-48 Freight Alignment</option>
+                    </select>
+                    <div class="form-text small">Defines treated GIDC cluster partition.</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Anchor Event Year (T0 Cutoff)</label>
+                    <select name="post_year" class="form-select">
+                        <option value="2004" {% if post_year == 2004 %}selected{% endif %}>2004 (Early GIDC Master Allotment)</option>
+                        <option value="2008" {% if post_year == 2008 %}selected{% endif %}>2008 (Tata Nano / Dahej PCPIR - Default)</option>
+                        <option value="2010" {% if post_year == 2010 %}selected{% endif %}>2010 (CPCB Moratorium Interventions)</option>
+                        <option value="2012" {% if post_year == 2012 %}selected{% endif %}>2012 (Dholera SIR Notification)</option>
+                        <option value="2015" {% if post_year == 2015 %}selected{% endif %}>2015 (Western DFC Fast-Track)</option>
+                        <option value="2020" {% if post_year == 2020 %}selected{% endif %}>2020 (Post-COVID Capitalization)</option>
+                    </select>
+                    <div class="form-text small">Statutory policy launch year.</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Industrial Sector Category</label>
+                    <select name="sector_filter" class="form-select">
+                        <option value="ALL" {% if sector_filter == 'ALL' %}selected{% endif %}>All Sectors (Pooled 312 Estates)</option>
+                        <option value="Engineering & Auto" {% if sector_filter == 'Engineering & Auto' %}selected{% endif %}>Engineering & Automotive</option>
+                        <option value="Chemical & Petrochemical" {% if sector_filter == 'Chemical & Petrochemical' %}selected{% endif %}>Chemical & Petrochemical</option>
+                        <option value="Textile & Apparel" {% if sector_filter == 'Textile & Apparel' %}selected{% endif %}>Textile & Apparel</option>
+                        <option value="Pharma & Biotech" {% if sector_filter == 'Pharma & Biotech' %}selected{% endif %}>Pharmaceuticals</option>
+                        <option value="MSME Multi-Product" {% if sector_filter == 'MSME Multi-Product' %}selected{% endif %}>MSME Multi-Product</option>
+                    </select>
+                    <div class="form-text small">Filter by estate primary sector.</div>
+                </div>
+                {% else %}
+                <!-- Mode 2: Synthetic Transaction Panel Form Controls -->
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Anchor Event Year (T0)</label>
+                    <select name="post_year" class="form-select">
+                        <option value="2016" {% if post_year == 2016 %}selected{% endif %}>2016 (Early Groundbreaking)</option>
+                        <option value="2017" {% if post_year == 2017 %}selected{% endif %}>2017 (Infrastructure Ready)</option>
+                        <option value="2018" {% if post_year == 2018 %}selected{% endif %}>2018 (Anchor Plant Operational - Default)</option>
+                        <option value="2020" {% if post_year == 2020 %}selected{% endif %}>2020 (Pandemic / Post-Lockdown)</option>
+                        <option value="2021" {% if post_year == 2021 %}selected{% endif %}>2021 (Ancillary Hub Maturation)</option>
+                    </select>
+                    <div class="form-text small">Defines Pre/Post treatment partition.</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Property Segment</label>
+                    <select name="property_type" class="form-select">
+                        <option value="ALL" {% if property_type == 'ALL' %}selected{% endif %}>All Property Types (Pooled)</option>
+                        <option value="Residential Apartment" {% if property_type == 'Residential Apartment' %}selected{% endif %}>Residential Apartment</option>
+                        <option value="Single Family Detached" {% if property_type == 'Single Family Detached' %}selected{% endif %}>Single Family Detached</option>
+                        <option value="Plot" {% if property_type == 'Plot' %}selected{% endif %}>Plot / Land Parcel</option>
+                        <option value="Commercial Frontage" {% if property_type == 'Commercial Frontage' %}selected{% endif %}>Commercial Frontage</option>
+                    </select>
+                    <div class="form-text small">Filter by parcel use type.</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted">Buffer Contrast Filter</label>
+                    <select name="buffer_filter" class="form-select">
+                        <option value="ALL" {% if buffer_filter == 'ALL' %}selected{% endif %}>All Spatial Buffers vs Control</option>
+                        <option value="3-8km" {% if buffer_filter == '3-8km' %}selected{% endif %}>3–8km Sweet Spot Only</option>
+                        <option value="<0.5km" {% if buffer_filter == '<0.5km' %}selected{% endif %}>&lt;0.5km Immediate Drag Only</option>
+                        <option value="0.5-1.5km" {% if buffer_filter == '0.5-1.5km' %}selected{% endif %}>0.5–1.5km Intermediate Only</option>
+                        <option value="Clean Commercial (<0.3km)" {% if buffer_filter == 'Clean Commercial (<0.3km)' %}selected{% endif %}>Clean Commercial Benchmark Only</option>
+                    </select>
+                    <div class="form-text small">Evaluate specific spatial contrast.</div>
+                </div>
+                {% endif %}
+
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                        <i class="bi bi-calculator me-1"></i> Re-Estimate DiD Model
+                    </button>
+                    <a href="{{ url_for('econometrics_view', data_mode=data_mode) }}" class="btn btn-link btn-sm w-100 text-center text-muted mt-1">Reset Model</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Telemetry Cards -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Model Fit (R-Squared)</div>
+                <div class="stat-value text-primary">{{ did_results.summary.r_squared }}</div>
+                <div class="stat-delta text-success">
+                    <i class="bi bi-check-circle"></i> Adjusted R²: {{ did_results.summary.adj_r_squared }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Observations (N)</div>
+                <div class="stat-value text-dark">{{ "{:,}".format(did_results.summary.n_obs) }}</div>
+                <div class="stat-delta text-muted">
+                    <i class="bi bi-database"></i> Arms-length panel transactions
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Parallel Trends Pre-Test</div>
+                <div class="stat-value {% if event_study_data.parallel_trends_valid %}text-success{% else %}text-danger{% endif %}">
+                    F = {{ event_study_data.f_stat_pre }}
+                </div>
+                <div class="stat-delta {% if event_study_data.parallel_trends_valid %}text-success{% else %}text-danger{% endif %}">
+                    <i class="bi bi-shield-check"></i> {{ 'Validated (p = ' ~ event_study_data.p_val_pre_trends ~ ')' if event_study_data.parallel_trends_valid else 'Violated' }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-label">Event Specification</div>
+                <div class="stat-value text-info">{{ post_year }}</div>
+                <div class="stat-delta text-info">
+                    <i class="bi bi-calendar-event"></i> Anchor Commissioning Year
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs for Econometric Submodules -->
+    <ul class="nav nav-tabs nav-fill mb-4 bg-white p-2 rounded shadow-sm border" id="econometricTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-es-btn" data-bs-toggle="tab" data-bs-target="#tab-es" type="button" role="tab">
+                <i class="bi bi-graph-up text-primary"></i>
+                <span>1. Event-Study & DiD Dynamics</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-decay-btn" data-bs-toggle="tab" data-bs-target="#tab-decay" type="button" role="tab">
+                <i class="bi bi-bezier2 text-success"></i>
+                <span>2. Distance Decay & Binscatter</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-ratio-btn" data-bs-toggle="tab" data-bs-target="#tab-ratio" type="button" role="tab">
+                <i class="bi bi-grid-3x3 text-warning"></i>
+                <span>3. Market-to-Circle Rate & Lifecycle</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-hexbin-btn" data-bs-toggle="tab" data-bs-target="#tab-hexbin" type="button" role="tab">
+                <i class="bi bi-hexagon-fill text-info"></i>
+                <span>4. Spatial Hexbin & Density</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-dark d-flex align-items-center justify-content-center gap-2" id="tab-replication-btn" data-bs-toggle="tab" data-bs-target="#tab-replication" type="button" role="tab">
+                <i class="bi bi-code-slash text-danger"></i>
+                <span>5. Academic Replication Code</span>
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="econometricTabsContent">
+
+        <!-- ===================================================================
+             TAB 1: EVENT-STUDY & DID DYNAMICS
+             =================================================================== -->
+        <div class="tab-pane fade show active" id="tab-es" role="tabpanel">
+            
+            <!-- Event Study & Counterfactual Row -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="dashboard-card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-graph-up text-primary me-2"></i>
+                                <span class="fw-bold">Dynamic Event-Study Coefficient Plot (95% CI)</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="exportChartImage('eventStudyCanvas', 'event_study_plot', 'png')">
+                                <i class="bi bi-camera"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 380px;">
+                                <canvas id="eventStudyCanvas"></canvas>
+                            </div>
+                            <div class="mt-2 p-2 bg-light rounded small text-muted border d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-info-circle text-primary me-1"></i> Omitted Baseline: <strong>t-1 (Normalized 0.00)</strong></span>
+                                <span class="badge bg-success-subtle text-success border">Parallel Trends Joint F-Test: p = {{ event_study_data.p_val_pre_trends }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="dashboard-card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-intersect text-success me-2"></i>
+                                <span class="fw-bold">Counterfactual Trend Overlay with 95% SE Bands</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="exportChartImage('counterfactualCanvas', 'counterfactual_overlay', 'png')">
+                                <i class="bi bi-camera"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 380px;">
+                                <canvas id="counterfactualCanvas"></canvas>
+                            </div>
+                            <div class="mt-2 p-2 bg-light rounded small text-muted border d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-bounding-box text-warning me-1"></i> Gold dashed line = <strong>Synthetic parallel-trends trajectory</strong></span>
+                                <span class="badge bg-primary-subtle text-primary border">Shaded 95% SE Envelopes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OLS Parameter Table -->
+            <div class="dashboard-card mb-4">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-table text-info"></i>
+                        <span class="fw-bold">Spatial Difference-in-Differences OLS Regression Coefficients</span>
+                    </div>
+                    <span class="badge bg-secondary font-monospace">Dependent Var: ln(price_per_sqm)</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-custom regression-table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Parameter Variable</th>
+                                    <th>Coefficient (&beta;)</th>
+                                    <th>Std. Error</th>
+                                    <th>t-Statistic</th>
+                                    <th>p-Value</th>
+                                    <th>95% Conf. Interval</th>
+                                    <th>Net Impact (%)</th>
+                                    <th>Significance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c in did_results.coefficients %}
+                                <tr {% if 'DiD:' in c.term %}class="table-primary-subtle fw-semibold"{% endif %}>
+                                    <td>
+                                        {% if 'DiD:' in c.term %}
+                                            <span class="badge bg-primary text-white me-1">DiD</span>
+                                            <strong class="text-primary">{{ c.term }}</strong>
+                                        {% else %}
+                                            {{ c.term }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ c.coef }}</td>
+                                    <td>{{ c.std_err }}</td>
+                                    <td>{{ c.t_stat }}</td>
+                                    <td>{{ c.p_val }}</td>
+                                    <td class="text-muted small">[{{ c.ci_lower }}, {{ c.ci_upper }}]</td>
+                                    <td>
+                                        {% if c.pct_impact > 0 %}
+                                            <span class="text-success fw-bold">+{{ c.pct_impact }}%</span>
+                                        {% elif c.pct_impact < 0 %}
+                                            <span class="text-danger fw-bold">{{ c.pct_impact }}%</span>
+                                        {% else %}
+                                            <span class="text-muted">0.0%</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if c.p_val < 0.001 %}
+                                            <span class="text-success fw-bold">*** (p &lt; 0.001)</span>
+                                        {% elif c.p_val < 0.01 %}
+                                            <span class="text-success fw-bold">** (p &lt; 0.01)</span>
+                                        {% elif c.p_val < 0.05 %}
+                                            <span class="text-primary fw-bold">* (p &lt; 0.05)</span>
+                                        {% else %}
+                                            <span class="text-muted">Not Sig.</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===================================================================
+             TAB 2: DISTANCE DECAY GRADIENT & BINSCATTER
+             =================================================================== -->
+        <div class="tab-pane fade" id="tab-decay" role="tabpanel">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                    <div class="dashboard-card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-bezier2 text-success me-2"></i>
+                                <span class="fw-bold">Non-Parametric Distance Decay Gradient & Binscatter (N=25)</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="exportChartImage('distanceDecayCanvas', 'distance_decay_plot', 'png')">
+                                <i class="bi bi-camera"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 420px;">
+                                <canvas id="distanceDecayCanvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-white py-3 border-bottom">
+                            <h6 class="fw-bold mb-0 text-dark">
+                                <i class="bi bi-lightbulb-fill text-warning me-2"></i> Econometric Distance Takeaways
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="p-3 bg-danger-subtle rounded border border-danger-subtle mb-3">
+                                <div class="fw-bold text-danger"><i class="bi bi-arrow-down-right me-1"></i> Acute Stigma Drag (&lt;0.5 km)</div>
+                                <div class="small text-danger-emphasis mt-1">
+                                    Land parcels adjacent to the industrial perimeter suffer an acute <strong>-6.1%</strong> penalty due to particulate emissions, heavy freight diesel noise, and chemical zone buffers.
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-success-subtle rounded border border-success-subtle mb-3">
+                                <div class="fw-bold text-success"><i class="bi bi-arrow-up-right me-1"></i> Agglomeration Sweet Spot (3–8 km)</div>
+                                <div class="small text-success-emphasis mt-1">
+                                    Property prices surge to a peak premium of <strong>+21.4%</strong> between 3km and 8km, capturing supply chain labor demand while escaping direct environmental externalities.
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-secondary-subtle rounded border border-secondary-subtle">
+                                <div class="fw-bold text-secondary"><i class="bi bi-dash-lg me-1"></i> Regional Asymptote (&gt;10 km)</div>
+                                <div class="small text-secondary-emphasis mt-1">
+                                    Beyond 10km, land values gradually asymptote back to standard district agricultural-residential baseline rates.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================================================================
+             TAB 3: MARKET-TO-CIRCLE RATE & LIFECYCLE
+             =================================================================== -->
+        <div class="tab-pane fade" id="tab-ratio" role="tabpanel">
+            
+            <!-- Lifecycle Distribution Box Plot -->
+            <div class="dashboard-card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="bi bi-bar-chart-steps text-info me-2"></i>
+                        <span class="fw-bold">Price Dispersion, Skewness & Outliers across Industrial Lifecycle Phases</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="exportChartImage('lifecycleCanvas', 'lifecycle_distributions', 'png')">
+                        <i class="bi bi-camera"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div style="height: 340px;">
+                        <canvas id="lifecycleCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market to Circle Rate Matrix -->
+            <div class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-grid-3x3 text-primary me-2"></i> Market-to-Circle Rate Ratio Heat Matrix (Across Gujarat Talukas)
+                        </h6>
+                        <small class="text-muted">Evaluating statutory lag: Market Allotment Rate / Gujarat Revenue Jantri Circle Rate</small>
+                    </div>
+                    <span class="badge bg-secondary-subtle text-secondary border">28 Active Talukas</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive" style="max-height: 480px; overflow-y: auto;">
+                        <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th>District & Taluka</th>
+                                    <th>Estates</th>
+                                    <th>Plotted Parcels</th>
+                                    <th>Mean Market Rate</th>
+                                    <th>Statutory Circle Rate</th>
+                                    <th>Market/Circle Ratio</th>
+                                    <th>Valuation Discrepancy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for m in heat_matrix_data %}
+                                <tr>
+                                    <td>
+                                        <div class="fw-bold text-dark">{{ m.taluka_name }}</div>
+                                        <div class="text-muted small">{{ m.district_name }}</div>
+                                    </td>
+                                    <td>{{ m.park_count }}</td>
+                                    <td>{{ m.plot_count }}</td>
+                                    <td class="fw-bold">₹{{ "{:,.0f}".format(m.avg_market_price) }}/sqm</td>
+                                    <td class="text-muted">₹{{ "{:,.0f}".format(m.avg_circle_rate) }}/sqm</td>
+                                    <td>
+                                        <span class="badge {{ m.badge_color }} font-monospace fs-6">
+                                            {{ m.ratio }}x
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border">{{ m.label }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===================================================================
+             TAB 4: SPATIAL HEXBIN & DENSITY
+             =================================================================== -->
+        <div class="tab-pane fade" id="tab-hexbin" role="tabpanel">
+            <div class="dashboard-card mb-4">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-hexagon-fill text-info me-2"></i> Hexagonal Spatial Binning & Cluster Aggregation
+                        </h6>
+                        <small class="text-muted">Aggregating 3,478 cadastral plots across 312 GIDC industrial estates in Gujarat</small>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary border">Corridor Coverage 100%</span>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for h in spatial_hexbins[:12] %}
+                        <div class="col-md-3 col-sm-6">
+                            <div class="p-3 bg-white rounded border shadow-sm h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="badge bg-dark font-monospace" style="font-size: 0.72rem;">{{ h.district }}</span>
+                                    <span class="badge bg-success-subtle text-success border">{{ h.plot_count }} Plots</span>
+                                </div>
+                                <div class="fw-bold text-dark text-truncate mt-1" title="{{ h.name }}">{{ h.name }}</div>
+                                <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top small">
+                                    <span class="text-muted">Mean Rate:</span>
+                                    <span class="fw-bold text-primary">₹{{ "{:,.0f}".format(h.avg_price_sqm) }}/sqm</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1 small">
+                                    <span class="text-muted">Estate Footprint:</span>
+                                    <span>{{ "{:,.0f}".format(h.acres) }} acres</span>
+                                </div>
+                                <div class="progress mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-info" style="width: {{ (h.intensity * 100)|round }}%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================================================================
+             TAB 5: ACADEMIC REPLICATION CODE SUITE
+             =================================================================== -->
+        <div class="tab-pane fade" id="tab-replication" role="tabpanel">
+            <div class="row g-4 mb-4">
+                <!-- Stata Script -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-filetype-raw text-primary"></i>
+                                <span class="fw-bold">Stata 16/17/18 Replication Script (.do)</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-light" onclick="copyToClipboard('stataCodeBlock', 'Stata .do script copied!')">
+                                    <i class="bi bi-clipboard me-1"></i> Copy
+                                </button>
+                                <a href="{{ url_for('api_replication_code', lang='stata', post_year=post_year) }}" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-download me-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <pre class="p-3 bg-light mb-0 small font-monospace" id="stataCodeBlock" style="max-height: 480px; overflow-y: auto;">{{ stata_code }}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- R ggplot2 Script -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-filetype-r text-success"></i>
+                                <span class="fw-bold">R & ggplot2 Event-Study Script (.R)</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-light" onclick="copyToClipboard('rCodeBlock', 'R ggplot2 script copied!')">
+                                    <i class="bi bi-clipboard me-1"></i> Copy
+                                </button>
+                                <a href="{{ url_for('api_replication_code', lang='r', post_year=post_year) }}" class="btn btn-sm btn-success">
+                                    <i class="bi bi-download me-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <pre class="p-3 bg-light mb-0 small font-monospace" id="rCodeBlock" style="max-height: 480px; overflow-y: auto;">{{ ggplot2_code }}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/econometric_studio.js') }}"></script>
+<script>
+    const eventStudyData = {{ event_study_data | tojson }};
+    const counterfactualData = {{ counterfactual_data | tojson }};
+    const decayData = {{ decay_binscatter_data | tojson }};
+    const lifecycleData = {{ lifecycle_dist_data | tojson }};
+
+    document.addEventListener("DOMContentLoaded", function() {
+        initEventStudyPlot('eventStudyCanvas', eventStudyData);
+        initCounterfactualPlot('counterfactualCanvas', counterfactualData);
+        initDistanceDecayPlot('distanceDecayCanvas', decayData);
+        initLifecycleDistributionPlot('lifecycleCanvas', lifecycleData);
+    });
+</script>
+{% endblock %}

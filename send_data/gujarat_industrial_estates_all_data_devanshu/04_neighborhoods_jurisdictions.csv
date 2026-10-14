@@ -1,0 +1,81 @@
+# ==============================================================================
+# GUJARAT INDUSTRIAL ESTATES PROPERTY DYNAMICS STUDY
+# ------------------------------------------------------------------------------
+# Table Name: neighborhoods_jurisdictions (Neighborhoods & Tax Jurisdictions)
+# Table Order: Module 4 of 17 Core Schema Tables
+# Total Records: 60 rows
+# Export Timestamp (UTC): 2026-10-03T16:12:17.175488Z
+"# DATA SOURCE: Urban Development Authorities (AUDA, VUDA, SUDA), Municipal Tax Records, and GIDC statutory notified zones."
+"# Description: Local municipal zones, village panchayats, and tax jurisdictions surrounding industrial estates."
+# Primary Key: neighborhood_id
+# Foreign Key Constraints: taluka_id -> subdistricts_talukas(taluka_id)
+# ------------------------------------------------------------------------------
+# COLUMN DEFINITIONS:
+#   * neighborhood_id: Primary key identifier
+#   * taluka_id: Foreign key reference to talukas table
+#   * neighborhood_name: Neighborhood or jurisdiction label
+#   * tax_jurisdiction_code: Local statutory property tax assessment code
+"#   * is_gated_community: Binary indicator (1 = Planned/Gated layout, 0 = Unplanned perimeter colony)"
+# ==============================================================================
+
+neighborhood_id,taluka_id,neighborhood_name,tax_jurisdiction_code,is_gated_community
+1,1,Apparel Park East Corridor,TAX-1-EAS,1
+2,1,Apparel Park West Residential Ring,TAX-1-WES,1
+3,1,Apparel Park North Industrial Border,TAX-1-NOR,0
+4,1,Apparel Park South Highway Fringe,TAX-1-SOU,0
+5,2,Behrampura East Corridor,TAX-2-EAS,1
+6,2,Behrampura West Residential Ring,TAX-2-WES,1
+7,2,Behrampura North Industrial Border,TAX-2-NOR,0
+8,2,Behrampura South Highway Fringe,TAX-2-SOU,0
+9,3,Bhagapura East Corridor,TAX-3-EAS,1
+10,3,Bhagapura West Residential Ring,TAX-3-WES,1
+11,3,Bhagapura North Industrial Border,TAX-3-NOR,0
+12,3,Bhagapura South Highway Fringe,TAX-3-SOU,0
+13,4,Chharodi East Corridor,TAX-4-EAS,1
+14,4,Chharodi West Residential Ring,TAX-4-WES,1
+15,4,Chharodi North Industrial Border,TAX-4-NOR,0
+16,4,Chharodi South Highway Fringe,TAX-4-SOU,0
+17,5,Dhandhuka East Corridor,TAX-5-EAS,1
+18,5,Dhandhuka West Residential Ring,TAX-5-WES,1
+19,5,Dhandhuka North Industrial Border,TAX-5-NOR,0
+20,5,Dhandhuka South Highway Fringe,TAX-5-SOU,0
+21,6,Dholka East Corridor,TAX-6-EAS,1
+22,6,Dholka West Residential Ring,TAX-6-WES,1
+23,6,Dholka North Industrial Border,TAX-6-NOR,0
+24,6,Dholka South Highway Fringe,TAX-6-SOU,0
+25,7,Kathwada East Corridor,TAX-7-EAS,1
+26,7,Kathwada West Residential Ring,TAX-7-WES,1
+27,7,Kathwada North Industrial Border,TAX-7-NOR,0
+28,7,Kathwada South Highway Fringe,TAX-7-SOU,0
+29,8,Kerala East Corridor,TAX-8-EAS,1
+30,8,Kerala West Residential Ring,TAX-8-WES,1
+31,8,Kerala North Industrial Border,TAX-8-NOR,0
+32,8,Kerala South Highway Fringe,TAX-8-SOU,0
+33,9,Khoraj East Corridor,TAX-9-EAS,1
+34,9,Khoraj West Residential Ring,TAX-9-WES,1
+35,9,Khoraj North Industrial Border,TAX-9-NOR,0
+36,9,Khoraj South Highway Fringe,TAX-9-SOU,0
+37,10,Mandal Vitthalapur East Corridor,TAX-10-EAS,1
+38,10,Mandal Vitthalapur West Residential Ring,TAX-10-WES,1
+39,10,Mandal Vitthalapur North Industrial Border,TAX-10-NOR,0
+40,10,Mandal Vitthalapur South Highway Fringe,TAX-10-SOU,0
+41,11,Naroda East Corridor,TAX-11-EAS,1
+42,11,Naroda West Residential Ring,TAX-11-WES,1
+43,11,Naroda North Industrial Border,TAX-11-NOR,0
+44,11,Naroda South Highway Fringe,TAX-11-SOU,0
+45,12,Odhav East Corridor,TAX-12-EAS,1
+46,12,Odhav West Residential Ring,TAX-12-WES,1
+47,12,Odhav North Industrial Border,TAX-12-NOR,0
+48,12,Odhav South Highway Fringe,TAX-12-SOU,0
+49,13,Sanand East Corridor,TAX-13-EAS,1
+50,13,Sanand West Residential Ring,TAX-13-WES,1
+51,13,Sanand North Industrial Border,TAX-13-NOR,0
+52,13,Sanand South Highway Fringe,TAX-13-SOU,0
+53,14,Sanand Women Park East Corridor,TAX-14-EAS,1
+54,14,Sanand Women Park West Residential Ring,TAX-14-WES,1
+55,14,Sanand Women Park North Industrial Border,TAX-14-NOR,0
+56,14,Sanand Women Park South Highway Fringe,TAX-14-SOU,0
+57,15,Vatva East Corridor,TAX-15-EAS,1
+58,15,Vatva West Residential Ring,TAX-15-WES,1
+59,15,Vatva North Industrial Border,TAX-15-NOR,0
+60,15,Vatva South Highway Fringe,TAX-15-SOU,0
